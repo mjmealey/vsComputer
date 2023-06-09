@@ -6,11 +6,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="/dist/output.css" />
+    <script src="app.js" defer></script>
   </head>
-  <body class="">
-    <header id="headerContainer" class="bg-black">
-      <h1 class="text-6xl text-white flex justify-center mr-auto p-5">Chess Mania</h1>
+  <body class="bg-green-800">
+    <header id="headerContainer" class="bg-black mt-auto">
+      <h1 class="text-6xl text-white flex justify-center mr-auto p-5">
+        Chess Mania
+      </h1>
     </header>
 
+    <main class="grid grid-cols-5 grid-rows-5">
+      <ul
+        class="flex gap-2 flex-wrap flex-col justify-center p-4 col-start-3 row-start-3 mt-5 ml-4"
+      >
+        <button
+          id="pvpLink"
+          class="bg-black p-3 hover:bg-gray-500 rounded-xl text-white"
+        >
+          Player vs Player</button
+        ><button
+          id="vsComputerLink"
+          class="bg-black p-3 hover:bg-gray-500 rounded-xl text-white"
+        >
+          vs Computer</button
+        ><button
+          id="rulesLink"
+          class="bg-black p-3 hover:bg-gray-500 rounded-xl text-white"
+        >
+          Rules
+        </button>
+      </ul>
+    </main>
+    <footer class="grid grid-cols-3 grid-rows-3 mt-44 text-white text-center bg-black">
+        <h2 class="text-center row-start-2 ml-12  col-start-2">&copy; Jake Mealey 2023 All rights reserved</h2>
+    </footer>
   </body>
 </html>
