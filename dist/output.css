@@ -715,7 +715,7 @@ video {
   grid-column:2;
   margin-left:8.5rem;
   position: relative;
-  left: 17vh;
+  left:14rem;
   justify-content: center;
   align-items: center;
 }
