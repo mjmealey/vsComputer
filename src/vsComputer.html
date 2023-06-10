@@ -4,9 +4,9 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/dist/output.css" />
+    <link rel="stylesheet" href="../dist/output.css" />
     <link rel="stylesheet" href="input.css" />
-    <script src="vsComputer.js" defer></script>
+    <script type="module" src="app.js" defer></script>
     <title>vs Computer</title>
   </head>
   <body class="bg-green-800">
@@ -15,30 +15,30 @@
         Chess Mania
       </h1>
     </header>
-    <main class="grid grid-cols-4  grid-rows-4" >
+    <main class="grid grid-cols-4 grid-rows-4">
       <form class="flex mt-5 relative p-5 grid-cols-5 grid-rows-3 col-start-2">
         <section class="flex justify-center items-center gap-2">
-        <label
-          class="text-white"
-          >Select a difficulty:</label
-        >
-        <select
-          class=""
-          id="difficultySelect"
-        >
-          <option value="selectDifficulty">Select a Difficulty</option>
-          <option value="veryEasy">Very Easy</option>
-          <option value="easy">Easy</option>
-          <option value="normal">Normal</option>
-          <option value="hard">Hard</option>
-          <option value="veryHard">Very Hard</option>
-          <option value="nearlyImpossible">Nearly Impossible</option>
-        </select>
+          <label class="text-white">Select a difficulty:</label>
+          <select class="" id="difficultySelect">
+            <option value="selectDifficulty">Select a Difficulty</option>
+            <option value="veryEasy">Very Easy</option>
+            <option value="easy">Easy</option>
+            <option value="normal">Normal</option>
+            <option value="hard">Hard</option>
+            <option value="veryHard">Very Hard</option>
+            <option value="nearlyImpossible">Nearly Impossible</option>
+          </select>
         </section>
-    
-        <button class="btn bg-black ml-36 relative left-1 w-56 rounded-xl hover:bg-gray-500 justify-center items-center  text-white p-2">Rules</button>
-    </form>
+
+        <button
+          class="btn bg-black ml-36 relative left-1 w-56 rounded-xl hover:bg-gray-500 justify-center items-center text-white p-2"
+        >
+          Rules
+        </button>
       </form>
+      <section id="gridContainer">
+
+      </section>
     </main>
   </body>
 </html>
