@@ -5,19 +5,7 @@ const vsComputer = () => {
     rowId: "rows",
     gridElementsClass: "gridElements",
   };
-  const gridIds = {
-    //row one
-    rowOneCellOne:"cell - 0-0",
-    rowOneCellTwo:"cell - 0-1",
-    rowOneCellThree:"cell - 0-2",
-    rowOneCellFour:"cell - 0-3",
-    rowOneCellFive:"cell - 0-4",
-    rowOneCellSix:"cell - 0-5",  
-    rowOneCellSeven:"cell - 0-6",
-    rowOneCellEight:"cell - 0-7",
 
-    //row two     
-  }
 
   const computerGrid = () => {
     console.log(gridElements.cellId);
@@ -31,7 +19,7 @@ const vsComputer = () => {
 
       for (let j = 0; j < 8; j++) {
         const cells = document.createElement(gridElements.div);
-        cells.id = "cell - " + i + "-"+ j;
+        cells.id = `cell-${i}-${j}`;
         cells.classList.add("cells");
         rows.appendChild(cells);
         console.log(cells.id);
