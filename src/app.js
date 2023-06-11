@@ -1,9 +1,7 @@
-import vsComputer from "./modules/vsComputer.js"
+import vsComputer from "./modules/vsComputer/vsComputer.js"
 
-const newVsComputer = vsComputer()
+vsComputer()
 
-newVsComputer.computerGrid(8,8)
-newVsComputer.gridCellFunctionality()
 
 const mainPageLinks = () => {
   const buttonIds = ["pvpLink", "vsComputerLink", "rulesLink"];
@@ -19,4 +17,3 @@ const mainPageLinks = () => {
   });
 };
 
-const mainPageLinksCall = mainPageLinks()
