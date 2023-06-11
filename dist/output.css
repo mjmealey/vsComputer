@@ -720,7 +720,7 @@ video {
   align-items: center;
 }
 
-div {
+.cells {
   display:flex;
   padding:65px;
   width: 10rem;
