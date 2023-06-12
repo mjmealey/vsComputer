@@ -5,6 +5,7 @@ const vsComputer = () => {
   newChessBoard.gridCellFunctionality()
   newChessBoard.cellColors()
   
+  
 
 }
 
