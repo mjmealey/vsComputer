@@ -2,7 +2,7 @@ import chessBoard from "./chessBoard.js"
 
 const vsComputer = () => {
   const newChessBoard = chessBoard()
-  newChessBoard.gridCellFunctionality()
+  newChessBoard.chessGame()
   newChessBoard.cellColors()
   
   
