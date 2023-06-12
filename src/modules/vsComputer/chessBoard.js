@@ -6,7 +6,6 @@ const chessBoard = () => {
     gridElementsClass: "gridElements",
   };
 
-  
   const gridContainer = document.getElementById(gridElements.gridContainerId);
 
   const gridCellIds = [];
@@ -28,7 +27,7 @@ const chessBoard = () => {
     }
   }
 
-  const gridCellFunctionality = () => {
+  const chessGame = () => {
     const mappedCellIds = gridCellIds.map((id) => document.getElementById(id));
     const chessMovePlaceHolder = {
       pawn: "Pawn",
@@ -37,6 +36,16 @@ const chessBoard = () => {
       king: "King",
       bishop: "Bishop",
       knight: "Knight",
+    };
+
+    const displayGameStateText = {
+      textElement: "div",
+      preGameStartingText: "Welcome to Chess!",
+      gameStartingText: "The game has begun!",
+    };
+
+    const stateOfCells = {
+      emptyCell: "",
     };
 
     const chessPiecePositions = [
@@ -77,19 +86,106 @@ const chessBoard = () => {
       [mappedCellIds[63], chessMovePlaceHolder.rook],
     ];
 
-    const arrangedPositions = chessPiecePositions.forEach(
+    chessPiecePositions.forEach(
       ([mappedCellIds, chessMovePlaceHolder]) =>
         (mappedCellIds.textContent = chessMovePlaceHolder)
     );
-    //event delegation
-    gridContainer.addEventListener("click", (e) => {
-      const clickedCell = e.target;
-      switch (true) {
-        case clickedCell.id === gridCellIds[0] &&
-          mappedCellIds[0].textContent === chessMovePlaceHolder.rook:
-          currentMove = chessMovePlaceHolder.rook;
-      }
-    });
+
+    //start of game
+    const displayGameState = document.createElement(
+      displayGameStateText.textElement
+    );
+    if (
+      mappedCellIds[0].textContent === chessMovePlaceHolder.rook &&
+      mappedCellIds[1].textContent === chessMovePlaceHolder.pawn &&
+      mappedCellIds[2].textContent === stateOfCells.emptyCell &&
+      mappedCellIds[3].textContent === stateOfCells.emptyCell &&
+      mappedCellIds[4].textContent === stateOfCells.emptyCell &&
+      mappedCellIds[5].textContent === stateOfCells.emptyCell &&
+      mappedCellIds[6].textContent === chessMovePlaceHolder.pawn &&
+      mappedCellIds[7].textContent === chessMovePlaceHolder.rook &&
+      mappedCellIds[8].textContent === chessMovePlaceHolder.knight &&
+      mappedCellIds[9].textContent === chessMovePlaceHolder.pawn &&
+      mappedCellIds[10].textContent === stateOfCells.emptyCell &&
+      mappedCellIds[11].textContent === stateOfCells.emptyCell &&
+      mappedCellIds[12].textContent === stateOfCells.emptyCell &&
+      mappedCellIds[13].textContent === stateOfCells.emptyCell &&
+      mappedCellIds[14].textContent === chessMovePlaceHolder.pawn &&
+      mappedCellIds[15].textContent === chessMovePlaceHolder.knight &&
+      mappedCellIds[16].textContent === chessMovePlaceHolder.bishop &&
+      mappedCellIds[17].textContent === chessMovePlaceHolder.pawn &&
+      mappedCellIds[18].textContent === stateOfCells.emptyCell &&
+      mappedCellIds[19].textContent === stateOfCells.emptyCell &&
+      mappedCellIds[20].textContent === stateOfCells.emptyCell &&
+      mappedCellIds[21].textContent === stateOfCells.emptyCell &&
+      mappedCellIds[22].textContent === chessMovePlaceHolder.pawn &&
+      mappedCellIds[23].textContent === chessMovePlaceHolder.bishop &&
+      mappedCellIds[24].textContent === chessMovePlaceHolder.queen &&
+      mappedCellIds[25].textContent === chessMovePlaceHolder.pawn &&
+      mappedCellIds[26].textContent === stateOfCells.emptyCell &&
+      mappedCellIds[27].textContent === stateOfCells.emptyCell &&
+      mappedCellIds[28].textContent === stateOfCells.emptyCell &&
+      mappedCellIds[29].textContent === stateOfCells.emptyCell &&
+      mappedCellIds[30].textContent === chessMovePlaceHolder.pawn &&
+      mappedCellIds[31].textContent === chessMovePlaceHolder.queen &&
+      mappedCellIds[32].textContent === chessMovePlaceHolder.king &&
+      mappedCellIds[33].textContent === chessMovePlaceHolder.pawn &&
+      mappedCellIds[34].textContent === stateOfCells.emptyCell &&
+      mappedCellIds[35].textContent === stateOfCells.emptyCell &&
+      mappedCellIds[36].textContent === stateOfCells.emptyCell &&
+      mappedCellIds[37].textContent === stateOfCells.emptyCell &&
+      mappedCellIds[38].textContent === chessMovePlaceHolder.pawn &&
+      mappedCellIds[39].textContent === chessMovePlaceHolder.king &&
+      mappedCellIds[40].textContent === chessMovePlaceHolder.bishop &&
+      mappedCellIds[41].textContent === chessMovePlaceHolder.pawn &&
+      mappedCellIds[42].textContent === stateOfCells.emptyCell &&
+      mappedCellIds[43].textContent === stateOfCells.emptyCell &&
+      mappedCellIds[44].textContent === stateOfCells.emptyCell &&
+      mappedCellIds[45].textContent === stateOfCells.emptyCell &&
+      mappedCellIds[46].textContent === chessMovePlaceHolder.pawn &&
+      mappedCellIds[47].textContent === chessMovePlaceHolder.bishop &&
+      mappedCellIds[48].textContent === chessMovePlaceHolder.knight &&
+      mappedCellIds[49].textContent === chessMovePlaceHolder.pawn &&
+      mappedCellIds[50].textContent === stateOfCells.emptyCell &&
+      mappedCellIds[51].textContent === stateOfCells.emptyCell &&
+      mappedCellIds[52].textContent === stateOfCells.emptyCell &&
+      mappedCellIds[53].textContent === stateOfCells.emptyCell &&
+      mappedCellIds[54].textContent === chessMovePlaceHolder.pawn &&
+      mappedCellIds[55].textContent === chessMovePlaceHolder.knight &&
+      mappedCellIds[56].textContent === chessMovePlaceHolder.rook &&
+      mappedCellIds[57].textContent === chessMovePlaceHolder.pawn &&
+      mappedCellIds[58].textContent === stateOfCells.emptyCell &&
+      mappedCellIds[59].textContent === stateOfCells.emptyCell &&
+      mappedCellIds[60].textContent === stateOfCells.emptyCell &&
+      mappedCellIds[61].textContent === stateOfCells.emptyCell &&
+      mappedCellIds[62].textContent === chessMovePlaceHolder.pawn &&
+      mappedCellIds[63].textContent === chessMovePlaceHolder.rook
+    ) {
+      displayGameState.innerText = displayGameStateText.preGameStartingText;
+      document.body.appendChild(displayGameState);
+    } else {
+      displayGameState.innerText = displayGameStateText.gameStartingText;
+    }
+
+    if (
+      //rook starting positions
+      mappedCellIds[0].textContent &&
+      mappedCellIds[7].textContent &&
+      mappedCellIds[57].textContent &&
+      mappedCellIds[63].textContent === chessMovePlaceHolder.rook
+
+      //knight starting positions
+      && mappedCellIds[8].textContent &&
+      mappedCellIds[15].textContent &&
+      mappedCellIds[48].textContent &&
+      mappedCellIds[55].textContent === chessMovePlaceHolder.knight
+
+      && mappedCellIds[]
+
+    ) {
+      console.log("Hi");
+    }
+
     return chessMovePlaceHolder;
   };
 
@@ -99,6 +195,7 @@ const chessBoard = () => {
       //default colors
       bisque: "bisque",
       brown: "#4b2424",
+      green: "green",
     };
 
     const defaultCellColors = [
@@ -172,7 +269,7 @@ const chessBoard = () => {
       mappedCellIds.style.borderColor = gridColors;
     });
   };
-  return { chessBoard, cellColors, gridCellFunctionality };
+  return { chessBoard, cellColors, chessGame };
 };
 
 export default chessBoard;
