@@ -6,6 +6,7 @@ const chessBoard = () => {
     gridElementsClass: "gridElements",
   };
 
+  
   const gridContainer = document.getElementById(gridElements.gridContainerId);
 
   const gridCellIds = [];
@@ -89,10 +90,10 @@ const chessBoard = () => {
           currentMove = chessMovePlaceHolder.rook;
       }
     });
-    return mappedCellIds, chessMovePlaceHolder;
+    return chessMovePlaceHolder;
   };
 
-  const cellColors = (mappedCellIds, chessMovePlaceHolder) => {
+  const cellColors = (mappedCellIds) => {
     mappedCellIds = gridCellIds.map((id) => document.getElementById(id));
     const gridColors = {
       //default colors
@@ -100,7 +101,6 @@ const chessBoard = () => {
       brown: "#4b2424",
     };
 
-    
     const defaultCellColors = [
       [mappedCellIds[0], gridColors.bisque],
       [mappedCellIds[1], gridColors.brown],
@@ -165,14 +165,12 @@ const chessBoard = () => {
       [mappedCellIds[60], gridColors.brown],
       [mappedCellIds[61], gridColors.bisque],
       [mappedCellIds[62], gridColors.brown],
-      [mappedCellIds[63], gridColors.bisque]   
+      [mappedCellIds[63], gridColors.bisque],
     ];
     defaultCellColors.forEach(([mappedCellIds, gridColors]) => {
       mappedCellIds.style.backgroundColor = gridColors;
       mappedCellIds.style.borderColor = gridColors;
     });
-
-    console.log(mappedCellIds);
   };
   return { chessBoard, cellColors, gridCellFunctionality };
 };
