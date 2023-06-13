@@ -42,10 +42,32 @@ const chessBoard = () => {
       textElement: "div",
       preGameStartingText: "Welcome to Chess!",
       gameStartingText: "The game has begun!",
+      ifRookIsClickedAtStart: "You cannot move rooks at the start of the game",
+      ifBishopIsClickedAtStart:
+        "You cannot move bishops at the start of the game",
+      ifQueenIsClickedAtStart:
+        "You cannot move the queen at the start of the game",
+      ifKingIsClickedAtStart:
+        "You cannot move the king at the start of the game",
+      ifKnightIsClicked: "Where would you like to move your knight?",
+      ifPawnIsClicked: "Where would you like to move your pawn?",
+      ifQueenIsClicked: "Where would you like to move your queen?",
+      ifKingIsClicked: "Where would you like to move your king?",
+      ifRookIsClicked: "Where would you like to move your rook?",
+      ifBishopIsClicked: "Where would you like to move your bishop?",
     };
 
     const stateOfCells = {
       emptyCell: "",
+    };
+
+    const firstMoveDecision = {
+      rook: "Rook",
+      knight: "Knight",
+      queen: "Queen",
+      king: "King",
+      bishop: "Bishop",
+      pawn: "Pawn",
     };
 
     const chessPiecePositions = [
@@ -174,22 +196,207 @@ const chessBoard = () => {
       displayGameState.innerText = displayGameStateText.gameStartingText;
     }
 
+    //event delegation
+    gridContainer.addEventListener("click", (e) => {
+      const clickedCell = e.target;
+      let currentPieceSelection = "";
+      let currentCellSelection = "";
+      let isFirstMove = null;
+      let firstMove = "";
+      let trackFirstMove = [];
+
+      switch (true) {
+        //first move(moves afterward will be calculated next)
+
+        //rook pieces(first move)
+        case clickedCell.id === gridCellIds[0] &&
+          mappedCellIds[0].textContent === chessMovePlaceHolder.rook &&
+          firstMove === "" &&
+          isFirstMove === null:
+          displayGameState.innerText =
+            displayGameStateText.ifRookIsClickedAtStart;
+
+          break;
+        case clickedCell.id === gridCellIds[7] &&
+          mappedCellIds[7].textContent === chessMovePlaceHolder.rook &&
+          firstMove === "" &&
+          isFirstMove === null:
+          displayGameState.innerText =
+            displayGameStateText.ifRookIsClickedAtStart;
+
+          console.log(firstMove);
+          break;
+        case clickedCell.id === gridCellIds[56] &&
+          mappedCellIds[56].textContent === chessMovePlaceHolder.rook &&
+          firstMove === "" &&
+          isFirstMove === null:
+          displayGameState.innerText =
+            displayGameStateText.ifRookIsClickedAtStart;
+          console.log(firstMove);
+          break;
+        case clickedCell.id === gridCellIds[63] &&
+          mappedCellIds[63].textContent === chessMovePlaceHolder.rook &&
+          firstMove === "" &&
+          isFirstMove === null:
+          displayGameState.innerText =
+            displayGameStateText.ifRookIsClickedAtStart;
+          console.log(firstMove);
+          break;
+
+        //knight pieces(first move)
+        case clickedCell.id === gridCellIds[8] &&
+          mappedCellIds[8].textContent === chessMovePlaceHolder.knight &&
+          firstMove === "" &&
+          isFirstMove === null:
+          firstMove.push(firstMoveDecision.knight);
+          displayGameState.innerText = displayGameStateText.ifKnightIsClicked;
+          console.log(firstMove);
+          break;
+        case clickedCell.id === gridCellIds[15] &&
+          mappedCellIds[15].textContent === chessMovePlaceHolder.knight &&
+          firstMove === "" &&
+          isFirstMove === null:
+          console.log(firstMove);
+          break;
+        case clickedCell.id === gridCellIds[48] &&
+          mappedCellIds[48].textContent === chessMovePlaceHolder.knight &&
+          firstMove === "" &&
+          isFirstMove === null:
+          console.log(firstMove);
+          break;
+        case clickedCell.id === gridCellIds[55] &&
+          mappedCellIds[55].textContent === chessMovePlaceHolder.knight &&
+          firstMove === "" &&
+          isFirstMove === null:
+          console.log(firstMove);
+          break;
+        //bishop pieces
+        case clickedCell.id === gridCellIds[16] &&
+          mappedCellIds[16].textContent === chessMovePlaceHolder.bishop &&
+          firstMove === "" &&
+          isFirstMove === null:
+          displayGameState.innerText =
+            displayGameStateText.ifBishopIsClickedAtStart;
+          console.log(firstMove);
+          break;
+        case clickedCell.id === gridCellIds[23] &&
+          mappedCellIds[23].textContent === chessMovePlaceHolder.bishop &&
+          firstMove === "" &&
+          isFirstMove === null:
+          displayGameState.innerText = displayGameState.innerText =
+            displayGameStateText.ifBishopIsClickedAtStart;
+          console.log(firstMove);
+          break;
+        case clickedCell.id === gridCellIds[40] &&
+          mappedCellIds[40].textContent === chessMovePlaceHolder.bishop &&
+          firstMove === "" &&
+          isFirstMove === null:
+          firstMove = "";
+          isFirstMove = null;
+          displayGameState.innerText =
+            displayGameStateText.ifBishopIsClickedAtStart;
+          break;
+        case clickedCell.id === gridCellIds[47] &&
+          mappedCellIds[47].textContent === chessMovePlaceHolder.bishop &&
+          firstMove === "" &&
+          isFirstMove === null:
+          firstMove = "";
+          isFirstMove = null;
+          displayGameState.innerText =
+            displayGameStateText.ifBishopIsClickedAtStart;
+          break;
+        //queen pieces(first move)
+        case clickedCell.id === gridCellIds[24] &&
+          mappedCellIds[24].textContent === chessMovePlaceHolder.queen &&
+          firstMove === "" &&
+          isFirstMove === null:
+          firstMove = "";
+          isFirstMove = null;
+          displayGameState.innerText =
+            displayGameStateText.ifQueenIsClickedAtStart;
+          break;
+        case clickedCell.id === gridCellIds[31] &&
+          mappedCellIds[24].textContent === chessMovePlaceHolder.queen &&
+          firstMove === "" &&
+          isFirstMove === null:
+          firstMove = "";
+          isFirstMove = null;
+          displayGameState.innerText =
+            displayGameStateText.ifQueenIsClickedAtStart;
+          break;
+        //king pieces(first move)
+        case clickedCell.id === gridCellIds[32] &&
+          mappedCellIds[32].textContent === chessMovePlaceHolder.king &&
+          firstMove === "" &&
+          isFirstMove === null:
+          firstMove = "";
+          isFirstMove = null;
+          displayGameState.innerText =
+            displayGameStateText.ifKingIsClickedAtStart;
+          break;
+        case clickedCell.id === gridCellIds[39] &&
+          mappedCellIds[39].textContent === chessMovePlaceHolder.king &&
+          firstMove === "" &&
+          isFirstMove === null:
+          firstMove = "";
+          isFirstMove = null;
+          displayGameState.innerText =
+          displayGameStateText.ifKingIsClickedAtStart;
+          break;
+        
+          //pawn pieces(first move)
+      }
+    });
     return chessMovePlaceHolder;
   };
 
   const cellColors = (mappedCellIds) => {
     mappedCellIds = gridCellIds.map((id) => document.getElementById(id));
     const gridColors = {
-      //default colors
+      //default grid
       bisque: "bisque",
       brown: "#4b2424",
+      //woodland grid
       green: "green",
-      red:"red",
-      black:"black",
-      blue:"blue",
-      white:"white"
+      woodBrown: "#8B4513",
+      //checker grid
+      red: "red",
+      black: "black",
+      //blue sky grid
+      blue: "blue",
+      white: "white",
+      //fun kingdom grid
+      purple: "purple",
+      pink: "pink",
+      //classic grid
+      classicBlack: "black",
+      classicWhite: "white",
+      //banana grid
+      yellow: "yellow",
+      bananaBrown: "#800000",
+      //fire and ice grid
+      fireRed: "crimson",
+      iceBlue: "lightblue",
     };
 
+    const colorSelectAttributes = {
+      //ids
+      selectId: "colorSelect",
+
+      //values
+      selectColor: "selectColor",
+      default: "default",
+      woodland: "woodland",
+      checker: "checker",
+      blueSky: "blueSky",
+      funKingdom: "funKingdom",
+      classic: "classic",
+      banana: "banana",
+      fireAndIce: "fireAndIce",
+    };
+
+    const colorSelect = document.getElementById(colorSelectAttributes.selectId);
+    //enabled by default
     const defaultCellColors = [
       [mappedCellIds[0], gridColors.bisque],
       [mappedCellIds[1], gridColors.brown],
@@ -259,6 +466,15 @@ const chessBoard = () => {
     defaultCellColors.forEach(([mappedCellIds, gridColors]) => {
       mappedCellIds.style.backgroundColor = gridColors;
       mappedCellIds.style.borderColor = gridColors;
+    });
+
+    colorSelect.addEventListener("input", (e) => {
+      if (e.target.id === colorSelectAttributes.selectId) {
+        switch (true) {
+          case colorSelect.value === colorSelectAttributes.woodland:
+            [mappedCellIds[0]];
+        }
+      }
     });
   };
   return { chessBoard, cellColors, chessGame };
