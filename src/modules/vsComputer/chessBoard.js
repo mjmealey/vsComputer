@@ -61,13 +61,15 @@ const chessBoard = () => {
       emptyCell: "",
     };
 
-    const firstMoveDecision = {
-      rook: "Rook",
-      knight: "Knight",
-      queen: "Queen",
-      king: "King",
-      bishop: "Bishop",
-      pawn: "Pawn",
+    const trackGameState = {
+      //first move
+      invalidFirstMove: "",
+      pawnFirstMove: "Pawn",
+      knightFirstMove: "Knight",
+      isFirstMove: true,
+      isNotFirstMove: false,
+      isInvalidFirstMove: null,
+      trackFirstMove: [],
     };
 
     const chessPiecePositions = [
@@ -199,152 +201,99 @@ const chessBoard = () => {
     //event delegation
     gridContainer.addEventListener("click", (e) => {
       const clickedCell = e.target;
-      let currentPieceSelection = "";
-      let currentCellSelection = "";
-      let isFirstMove = null;
-      let firstMove = "";
-      let trackFirstMove = [];
-
-      switch (true) {
+      let controlGameState = "";
+      let storeFirstMoveState = trackGameState.trackFirstMove;
+      switch (clickedCell.id) {
         //first move(moves afterward will be calculated next)
 
         //rook pieces(first move)
-        case clickedCell.id === gridCellIds[0] &&
-          mappedCellIds[0].textContent === chessMovePlaceHolder.rook &&
-          firstMove === "" &&
-          isFirstMove === null:
-          displayGameState.innerText =
-            displayGameStateText.ifRookIsClickedAtStart;
-
+        case gridCellIds[0]:
+        case gridCellIds[7]:
+        case gridCellIds[57]:
+        case gridCellIds[63]:
+          if (
+            mappedCellIds[(0, 7, 57, 63)].textContent ===
+            chessMovePlaceHolder.rook
+          ) {
+            displayGameState.innerText =
+              displayGameStateText.ifRookIsClickedAtStart;
+          }
           break;
-        case clickedCell.id === gridCellIds[7] &&
-          mappedCellIds[7].textContent === chessMovePlaceHolder.rook &&
-          firstMove === "" &&
-          isFirstMove === null:
-          displayGameState.innerText =
-            displayGameStateText.ifRookIsClickedAtStart;
-
-          console.log(firstMove);
-          break;
-        case clickedCell.id === gridCellIds[56] &&
-          mappedCellIds[56].textContent === chessMovePlaceHolder.rook &&
-          firstMove === "" &&
-          isFirstMove === null:
-          displayGameState.innerText =
-            displayGameStateText.ifRookIsClickedAtStart;
-          console.log(firstMove);
-          break;
-        case clickedCell.id === gridCellIds[63] &&
-          mappedCellIds[63].textContent === chessMovePlaceHolder.rook &&
-          firstMove === "" &&
-          isFirstMove === null:
-          displayGameState.innerText =
-            displayGameStateText.ifRookIsClickedAtStart;
-          console.log(firstMove);
-          break;
-
         //knight pieces(first move)
-        case clickedCell.id === gridCellIds[8] &&
-          mappedCellIds[8].textContent === chessMovePlaceHolder.knight &&
-          firstMove === "" &&
-          isFirstMove === null:
-          firstMove.push(firstMoveDecision.knight);
-          displayGameState.innerText = displayGameStateText.ifKnightIsClicked;
-          console.log(firstMove);
+        case gridCellIds[8]:
+        case gridCellIds[15]:
+        case gridCellIds[48]:
+        case gridCellIds[55]:
+          if (
+            mappedCellIds[(8, 15, 48, 55)].textContent ===
+              chessMovePlaceHolder.knight &&
+            controlGameState === trackGameState.invalidFirstMove
+          ) {
+            storeFirstMoveState.push(trackGameState.knightFirstMove);
+            displayGameState.innerText = displayGameStateText.ifKnightIsClicked;
+          }
           break;
-        case clickedCell.id === gridCellIds[15] &&
-          mappedCellIds[15].textContent === chessMovePlaceHolder.knight &&
-          firstMove === "" &&
-          isFirstMove === null:
-          console.log(firstMove);
+        //bishop pieces (first move)
+        case gridCellIds[16]:
+        case gridCellIds[23]:
+        case gridCellIds[40]:
+        case gridCellIds[47]:
+          if (
+            mappedCellIds[(16, 23, 40, 47)].textContent ===
+              chessMovePlaceHolder.bishop &&
+            controlGameState === trackGameState.invalidFirstMove
+          ) {
+            displayGameState.innerText =
+              displayGameStateText.ifBishopIsClickedAtStart;
+          }
           break;
-        case clickedCell.id === gridCellIds[48] &&
-          mappedCellIds[48].textContent === chessMovePlaceHolder.knight &&
-          firstMove === "" &&
-          isFirstMove === null:
-          console.log(firstMove);
+        //queen pieces (first move)
+        case gridCellIds[24]:
+        case gridCellIds[31]:
+          if (
+            mappedCellIds[(24, 31)].textContent ===
+              chessMovePlaceHolder.queen &&
+            controlGameState === trackGameState.invalidFirstMove
+          ) {
+            displayGameState.innerText =
+              displayGameStateText.ifQueenIsClickedAtStart;
+          }
           break;
-        case clickedCell.id === gridCellIds[55] &&
-          mappedCellIds[55].textContent === chessMovePlaceHolder.knight &&
-          firstMove === "" &&
-          isFirstMove === null:
-          console.log(firstMove);
+        //king pieces (first move)
+        case gridCellIds[32]:
+        case gridCellIds[39]:
+          if (
+            mappedCellIds[(32, 39)].textContent === chessMovePlaceHolder.king &&
+            controlGameState === trackGameState.invalidFirstMove
+          ) {
+            displayGameState.innerText =
+              displayGameStateText.ifKingIsClickedAtStart;
+          }
           break;
-        //bishop pieces
-        case clickedCell.id === gridCellIds[16] &&
-          mappedCellIds[16].textContent === chessMovePlaceHolder.bishop &&
-          firstMove === "" &&
-          isFirstMove === null:
-          displayGameState.innerText =
-            displayGameStateText.ifBishopIsClickedAtStart;
-          console.log(firstMove);
-          break;
-        case clickedCell.id === gridCellIds[23] &&
-          mappedCellIds[23].textContent === chessMovePlaceHolder.bishop &&
-          firstMove === "" &&
-          isFirstMove === null:
-          displayGameState.innerText = displayGameState.innerText =
-            displayGameStateText.ifBishopIsClickedAtStart;
-          console.log(firstMove);
-          break;
-        case clickedCell.id === gridCellIds[40] &&
-          mappedCellIds[40].textContent === chessMovePlaceHolder.bishop &&
-          firstMove === "" &&
-          isFirstMove === null:
-          firstMove = "";
-          isFirstMove = null;
-          displayGameState.innerText =
-            displayGameStateText.ifBishopIsClickedAtStart;
-          break;
-        case clickedCell.id === gridCellIds[47] &&
-          mappedCellIds[47].textContent === chessMovePlaceHolder.bishop &&
-          firstMove === "" &&
-          isFirstMove === null:
-          firstMove = "";
-          isFirstMove = null;
-          displayGameState.innerText =
-            displayGameStateText.ifBishopIsClickedAtStart;
-          break;
-        //queen pieces(first move)
-        case clickedCell.id === gridCellIds[24] &&
-          mappedCellIds[24].textContent === chessMovePlaceHolder.queen &&
-          firstMove === "" &&
-          isFirstMove === null:
-          firstMove = "";
-          isFirstMove = null;
-          displayGameState.innerText =
-            displayGameStateText.ifQueenIsClickedAtStart;
-          break;
-        case clickedCell.id === gridCellIds[31] &&
-          mappedCellIds[24].textContent === chessMovePlaceHolder.queen &&
-          firstMove === "" &&
-          isFirstMove === null:
-          firstMove = "";
-          isFirstMove = null;
-          displayGameState.innerText =
-            displayGameStateText.ifQueenIsClickedAtStart;
-          break;
-        //king pieces(first move)
-        case clickedCell.id === gridCellIds[32] &&
-          mappedCellIds[32].textContent === chessMovePlaceHolder.king &&
-          firstMove === "" &&
-          isFirstMove === null:
-          firstMove = "";
-          isFirstMove = null;
-          displayGameState.innerText =
-            displayGameStateText.ifKingIsClickedAtStart;
-          break;
-        case clickedCell.id === gridCellIds[39] &&
-          mappedCellIds[39].textContent === chessMovePlaceHolder.king &&
-          firstMove === "" &&
-          isFirstMove === null:
-          firstMove = "";
-          isFirstMove = null;
-          displayGameState.innerText =
-          displayGameStateText.ifKingIsClickedAtStart;
-          break;
-        
-          //pawn pieces(first move)
+        case gridCellIds[1]:
+        case gridCellIds[6]:
+        case gridCellIds[9]:
+        case gridCellIds[14]:
+        case gridCellIds[17]:
+        case gridCellIds[22]:
+        case gridCellIds[25]:
+        case gridCellIds[30]:
+        case gridCellIds[33]:
+        case gridCellIds[38]:
+        case gridCellIds[41]:
+        case gridCellIds[46]:
+        case gridCellIds[49]:
+        case gridCellIds[54]:
+        case gridCellIds[57]:
+        case gridCellIds[62]:
+          if (
+            mappedCellIds[
+              (1, 6, 9, 14, 17, 22, 25, 30, 33, 38, 41, 46, 49, 54, 57, 62)
+            ].textContent === chessMovePlaceHolder.pawn &&
+            controlGameState === trackGameState.invalidFirstMove
+          ) {
+            displayGameState.innerText = displayGameStateText.ifPawnIsClicked;
+          }
       }
     });
     return chessMovePlaceHolder;
