@@ -265,7 +265,8 @@ const chessBoard = () => {
             [0, 7, 57, 63].some(
               (indexNumber) =>
                 mappedCellIds[indexNumber]?.textContent ===
-                chessMovePlaceHolder.rook
+                  chessMovePlaceHolder.rook &&
+                trackGameState.invalidFirstMove === stateOfCells.emptyCell
             )
           ) {
             displayGameState.innerText =
@@ -282,7 +283,8 @@ const chessBoard = () => {
             [8, 15, 48, 55].some(
               (indexNumber) =>
                 mappedCellIds[indexNumber]?.textContent ===
-                chessMovePlaceHolder.knight
+                  chessMovePlaceHolder.knight &&
+                trackGameState.invalidFirstMove === stateOfCells.emptyCell
             )
           ) {
             trackGameState.invalidFirstMove = trackGameState.knightFirstMove;
@@ -295,15 +297,28 @@ const chessBoard = () => {
         case gridCellIds[23]:
         case gridCellIds[40]:
         case gridCellIds[47]:
-          if([16,23,40,47].some((indexNumber) => mappedCellIds[indexNumber].textContent === ))
+          if (
+            [16, 23, 40, 47].some(
+              (indexNumber) =>
+                mappedCellIds[indexNumber]?.textContent ===
+                  chessMovePlaceHolder.bishop &&
+                trackGameState.invalidFirstMove === stateOfCells.emptyCell
+            )
+          ) {
+            displayGameState.innerText =
+              displayGameStateText.ifBishopIsClickedAtStart;
+          }
           break;
         //queen pieces (first move)
         case gridCellIds[24]:
         case gridCellIds[31]:
           if (
-            mappedCellIds[[24, 31]].textContent ===
-              chessMovePlaceHolder.queen &&
-            controlGameState === trackGameState.invalidFirstMove
+            [24, 31].some(
+              (indexNumber) =>
+                mappedCellIds[indexNumber]?.textContent ===
+                  chessMovePlaceHolder.queen &&
+                trackGameState.invalidFirstMove === stateOfCells.emptyCell
+            )
           ) {
             displayGameState.innerText =
               displayGameStateText.ifQueenIsClickedAtStart;
@@ -313,11 +328,14 @@ const chessBoard = () => {
         case gridCellIds[32]:
         case gridCellIds[39]:
           if (
-            mappedCellIds[[32, 39]].textContent === chessMovePlaceHolder.king &&
-            controlGameState === trackGameState.invalidFirstMove
+            [32, 39].some(
+              (indexNumber) =>
+                mappedCellIds[indexNumber]?.textContent ===
+                  chessMovePlaceHolder.king &&
+                trackGameState.invalidFirstMove === stateOfCells.emptyCell
+            )
           ) {
-            displayGameState.innerText =
-              displayGameStateText.ifKingIsClickedAtStart;
+            displayGameState.innerText = displayGameStateText.ifKingIsClicked;
           }
           break;
         case gridCellIds[1]:
@@ -337,182 +355,188 @@ const chessBoard = () => {
         case gridCellIds[57]:
         case gridCellIds[62]:
           if (
-            mappedCellIds[
-              [1, 6, 9, 14, 17, 22, 25, 30, 33, 38, 41, 46, 49, 54, 57, 62]
-            ].textContent === chessMovePlaceHolder.pawn &&
-            controlGameState === trackGameState.invalidFirstMove
+            [1, 6, 9, 14, 17, 22, 25, 30, 33, 38, 41, 46, 49, 54, 57, 62].some(
+              (indexNumber) =>
+                mappedCellIds[indexNumber]?.textContent ===
+                  chessMovePlaceHolder.pawn &&
+                trackGameState.invalidFirstMove === stateOfCells.emptyCell
+            )
           ) {
-            displayGameState.innerText = displayGameStateText.ifPawnIsClicked;
+            trackGameState.isNotFirstMove = trackGameState.isFirstMove;
+            trackGameState.invalidFirstMove = trackGameState.pawnFirstMove;
+            trackGameState.trackFirstMove.push(trackGameState.pawnFirstMove);
+            console.log(trackGameState.trackFirstMove);
           }
       }
-    });
-    return chessMovePlaceHolder;
-  };
-
-  const cellColors = (mappedCellIds: index) => {
-    mappedCellIds = gridCellIds.map((id) => document.getElementById(id));
-
-    interface GridColors {
-      bisque: string;
-      brown: string;
-      green: string;
-      woodBrown: string;
-      red: string;
-      black: string;
-      blue: string;
-      white: string;
-      purple: string;
-      pink: string;
-      classicBlack: string;
-      classicWhite: string;
-      yellow: string;
-      bananaBrown: string;
-      fireRed: string;
-      iceBlue: string;
-    }
-
-    const gridColors: GridColors = {
-      //default grid
-      bisque: "bisque",
-      brown: "#4b2424",
-      //woodland grid
-      green: "green",
-      woodBrown: "#8B4513",
-      //checker grid
-      red: "red",
-      black: "black",
-      //blue sky grid
-      blue: "blue",
-      white: "white",
-      //fun kingdom grid
-      purple: "purple",
-      pink: "pink",
-      //classic grid
-      classicBlack: "black",
-      classicWhite: "white",
-      //banana grid
-      yellow: "yellow",
-      bananaBrown: "#800000",
-      //fire and ice grid
-      fireRed: "crimson",
-      iceBlue: "lightblue",
-    };
-
-    interface ColorSelectAttributes {
-      selectId: string;
-      selectColor: string;
-      default: string;
-      woodland: string;
-      checker: string;
-      blueSky: string;
-      funKingdom: string;
-      classic: string;
-      banana: string;
-      fireAndIce: string;
-    }
-
-    const colorSelectAttributes: ColorSelectAttributes = {
-      //ids
-      selectId: "colorSelect",
-
-      //values
-      selectColor: "selectColor",
-      default: "default",
-      woodland: "woodland",
-      checker: "checker",
-      blueSky: "blueSky",
-      funKingdom: "funKingdom",
-      classic: "classic",
-      banana: "banana",
-      fireAndIce: "fireAndIce",
-    };
-
-    const colorSelect: HTMLSelectElement = document.getElementById(
-      colorSelectAttributes.selectId
-    ) as HTMLSelectElement;
-    //enabled by default
-    const defaultCellColors = [
-      [mappedCellIds[0], gridColors.bisque],
-      [mappedCellIds[1], gridColors.brown],
-      [mappedCellIds[2], gridColors.bisque],
-      [mappedCellIds[3], gridColors.brown],
-      [mappedCellIds[4], gridColors.bisque],
-      [mappedCellIds[5], gridColors.brown],
-      [mappedCellIds[6], gridColors.bisque],
-      [mappedCellIds[7], gridColors.brown],
-      [mappedCellIds[8], gridColors.brown],
-      [mappedCellIds[9], gridColors.bisque],
-      [mappedCellIds[10], gridColors.brown],
-      [mappedCellIds[11], gridColors.bisque],
-      [mappedCellIds[12], gridColors.brown],
-      [mappedCellIds[13], gridColors.bisque],
-      [mappedCellIds[14], gridColors.brown],
-      [mappedCellIds[15], gridColors.bisque],
-      [mappedCellIds[16], gridColors.bisque],
-      [mappedCellIds[17], gridColors.brown],
-      [mappedCellIds[18], gridColors.bisque],
-      [mappedCellIds[19], gridColors.brown],
-      [mappedCellIds[20], gridColors.bisque],
-      [mappedCellIds[21], gridColors.brown],
-      [mappedCellIds[22], gridColors.bisque],
-      [mappedCellIds[23], gridColors.brown],
-      [mappedCellIds[24], gridColors.brown],
-      [mappedCellIds[25], gridColors.bisque],
-      [mappedCellIds[26], gridColors.brown],
-      [mappedCellIds[27], gridColors.bisque],
-      [mappedCellIds[28], gridColors.brown],
-      [mappedCellIds[29], gridColors.bisque],
-      [mappedCellIds[30], gridColors.brown],
-      [mappedCellIds[31], gridColors.bisque],
-      [mappedCellIds[32], gridColors.bisque],
-      [mappedCellIds[33], gridColors.brown],
-      [mappedCellIds[34], gridColors.bisque],
-      [mappedCellIds[35], gridColors.brown],
-      [mappedCellIds[36], gridColors.bisque],
-      [mappedCellIds[37], gridColors.brown],
-      [mappedCellIds[38], gridColors.bisque],
-      [mappedCellIds[39], gridColors.brown],
-      [mappedCellIds[40], gridColors.brown],
-      [mappedCellIds[41], gridColors.bisque],
-      [mappedCellIds[42], gridColors.brown],
-      [mappedCellIds[43], gridColors.bisque],
-      [mappedCellIds[44], gridColors.brown],
-      [mappedCellIds[45], gridColors.bisque],
-      [mappedCellIds[46], gridColors.brown],
-      [mappedCellIds[47], gridColors.bisque],
-      [mappedCellIds[48], gridColors.bisque],
-      [mappedCellIds[49], gridColors.brown],
-      [mappedCellIds[50], gridColors.bisque],
-      [mappedCellIds[51], gridColors.brown],
-      [mappedCellIds[52], gridColors.bisque],
-      [mappedCellIds[53], gridColors.brown],
-      [mappedCellIds[54], gridColors.bisque],
-      [mappedCellIds[55], gridColors.brown],
-      [mappedCellIds[56], gridColors.brown],
-      [mappedCellIds[57], gridColors.bisque],
-      [mappedCellIds[58], gridColors.brown],
-      [mappedCellIds[59], gridColors.bisque],
-      [mappedCellIds[60], gridColors.brown],
-      [mappedCellIds[61], gridColors.bisque],
-      [mappedCellIds[62], gridColors.brown],
-      [mappedCellIds[63], gridColors.bisque],
-    ];
-    defaultCellColors.forEach(([mappedCellIds, gridColors]) => {
-      mappedCellIds.style.backgroundColor = gridColors;
-      mappedCellIds.style.borderColor = gridColors;
+      return chessMovePlaceHolder;
     });
 
-    colorSelect.addEventListener("input", (e) => {
-      const selectedColor: selectedColor = e.target as HTMLElement;
-      if (selectedColor === colorSelectAttributes.selectId) {
-        switch (true) {
-          case colorSelect.value === colorSelectAttributes.woodland:
-            [mappedCellIds[0]];
-        }
+    const cellColors = (mappedCellIds: index) => {
+      mappedCellIds = gridCellIds.map((id) => document.getElementById(id));
+
+      interface GridColors {
+        bisque: string;
+        brown: string;
+        green: string;
+        woodBrown: string;
+        red: string;
+        black: string;
+        blue: string;
+        white: string;
+        purple: string;
+        pink: string;
+        classicBlack: string;
+        classicWhite: string;
+        yellow: string;
+        bananaBrown: string;
+        fireRed: string;
+        iceBlue: string;
       }
-    });
+
+      const gridColors: GridColors = {
+        //default grid
+        bisque: "bisque",
+        brown: "#4b2424",
+        //woodland grid
+        green: "green",
+        woodBrown: "#8B4513",
+        //checker grid
+        red: "red",
+        black: "black",
+        //blue sky grid
+        blue: "blue",
+        white: "white",
+        //fun kingdom grid
+        purple: "purple",
+        pink: "pink",
+        //classic grid
+        classicBlack: "black",
+        classicWhite: "white",
+        //banana grid
+        yellow: "yellow",
+        bananaBrown: "#800000",
+        //fire and ice grid
+        fireRed: "crimson",
+        iceBlue: "lightblue",
+      };
+
+      interface ColorSelectAttributes {
+        selectId: string;
+        selectColor: string;
+        default: string;
+        woodland: string;
+        checker: string;
+        blueSky: string;
+        funKingdom: string;
+        classic: string;
+        banana: string;
+        fireAndIce: string;
+      }
+
+      const colorSelectAttributes: ColorSelectAttributes = {
+        //ids
+        selectId: "colorSelect",
+
+        //values
+        selectColor: "selectColor",
+        default: "default",
+        woodland: "woodland",
+        checker: "checker",
+        blueSky: "blueSky",
+        funKingdom: "funKingdom",
+        classic: "classic",
+        banana: "banana",
+        fireAndIce: "fireAndIce",
+      };
+
+      const colorSelect: HTMLSelectElement = document.getElementById(
+        colorSelectAttributes.selectId
+      ) as HTMLSelectElement;
+      //enabled by default
+      const defaultCellColors = [
+        [mappedCellIds[0], gridColors.bisque],
+        [mappedCellIds[1], gridColors.brown],
+        [mappedCellIds[2], gridColors.bisque],
+        [mappedCellIds[3], gridColors.brown],
+        [mappedCellIds[4], gridColors.bisque],
+        [mappedCellIds[5], gridColors.brown],
+        [mappedCellIds[6], gridColors.bisque],
+        [mappedCellIds[7], gridColors.brown],
+        [mappedCellIds[8], gridColors.brown],
+        [mappedCellIds[9], gridColors.bisque],
+        [mappedCellIds[10], gridColors.brown],
+        [mappedCellIds[11], gridColors.bisque],
+        [mappedCellIds[12], gridColors.brown],
+        [mappedCellIds[13], gridColors.bisque],
+        [mappedCellIds[14], gridColors.brown],
+        [mappedCellIds[15], gridColors.bisque],
+        [mappedCellIds[16], gridColors.bisque],
+        [mappedCellIds[17], gridColors.brown],
+        [mappedCellIds[18], gridColors.bisque],
+        [mappedCellIds[19], gridColors.brown],
+        [mappedCellIds[20], gridColors.bisque],
+        [mappedCellIds[21], gridColors.brown],
+        [mappedCellIds[22], gridColors.bisque],
+        [mappedCellIds[23], gridColors.brown],
+        [mappedCellIds[24], gridColors.brown],
+        [mappedCellIds[25], gridColors.bisque],
+        [mappedCellIds[26], gridColors.brown],
+        [mappedCellIds[27], gridColors.bisque],
+        [mappedCellIds[28], gridColors.brown],
+        [mappedCellIds[29], gridColors.bisque],
+        [mappedCellIds[30], gridColors.brown],
+        [mappedCellIds[31], gridColors.bisque],
+        [mappedCellIds[32], gridColors.bisque],
+        [mappedCellIds[33], gridColors.brown],
+        [mappedCellIds[34], gridColors.bisque],
+        [mappedCellIds[35], gridColors.brown],
+        [mappedCellIds[36], gridColors.bisque],
+        [mappedCellIds[37], gridColors.brown],
+        [mappedCellIds[38], gridColors.bisque],
+        [mappedCellIds[39], gridColors.brown],
+        [mappedCellIds[40], gridColors.brown],
+        [mappedCellIds[41], gridColors.bisque],
+        [mappedCellIds[42], gridColors.brown],
+        [mappedCellIds[43], gridColors.bisque],
+        [mappedCellIds[44], gridColors.brown],
+        [mappedCellIds[45], gridColors.bisque],
+        [mappedCellIds[46], gridColors.brown],
+        [mappedCellIds[47], gridColors.bisque],
+        [mappedCellIds[48], gridColors.bisque],
+        [mappedCellIds[49], gridColors.brown],
+        [mappedCellIds[50], gridColors.bisque],
+        [mappedCellIds[51], gridColors.brown],
+        [mappedCellIds[52], gridColors.bisque],
+        [mappedCellIds[53], gridColors.brown],
+        [mappedCellIds[54], gridColors.bisque],
+        [mappedCellIds[55], gridColors.brown],
+        [mappedCellIds[56], gridColors.brown],
+        [mappedCellIds[57], gridColors.bisque],
+        [mappedCellIds[58], gridColors.brown],
+        [mappedCellIds[59], gridColors.bisque],
+        [mappedCellIds[60], gridColors.brown],
+        [mappedCellIds[61], gridColors.bisque],
+        [mappedCellIds[62], gridColors.brown],
+        [mappedCellIds[63], gridColors.bisque],
+      ];
+      defaultCellColors.forEach(([mappedCellIds, gridColors]) => {
+        mappedCellIds.style.backgroundColor = gridColors;
+        mappedCellIds.style.borderColor = gridColors;
+      });
+
+      colorSelect.addEventListener("input", (e) => {
+        const selectedColor: selectedColor = e.target as HTMLElement;
+        if (selectedColor === colorSelectAttributes.selectId) {
+          switch (true) {
+            case colorSelect.value === colorSelectAttributes.woodland:
+              [mappedCellIds[0]];
+          }
+        }
+      });
+      return { cellColors };
+    };
+    return { chessBoard, cellColors, chessGame };
   };
-  return { chessBoard, cellColors, chessGame };
 };
 
 export default chessBoard;
