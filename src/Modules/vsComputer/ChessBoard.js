@@ -6,74 +6,79 @@ const chessBoard = () => {
     gridElementsClass: "gridElements",
   };
 
-  const gridContainer = document.getElementById(gridElements.gridContainerId);
+  const displayGameStateText = {
+    textElement: "div",
+    preGameStartingText: "Welcome to Chess!",
+    gameStartingText: "The game has begun!",
+    ifRookIsClickedAtStart: "You cannot move rooks at the start of the game",
+    ifBishopIsClickedAtStart:
+      "You cannot move bishops at the start of the game",
+    ifQueenIsClickedAtStart:
+      "You cannot move the queen at the start of the game",
+    ifKingIsClickedAtStart: "You cannot move the king at the start of the game",
+    ifKnightIsClicked: "Where would you like to move your knight?",
+    ifPawnIsClicked: "Where would you like to move your pawn?",
+    ifQueenIsClicked: "Where would you like to move your queen?",
+    ifKingIsClicked: "Where would you like to move your king?",
+    ifRookIsClicked: "Where would you like to move your rook?",
+    ifBishopIsClicked: "Where would you like to move your bishop?",
+  };
 
+  const stateOfCells = {
+    emptyCell: "",
+  };
+
+  const trackGameState = {
+    //first move
+    emptyFirstMove: "",
+    pawnFirstMove: "Pawn",
+    knightFirstMove: "Knight",
+    isFirstMove: true,
+    isNotFirstMove: false,
+    isInvalidFirstMove: null,
+    trackFirstMove: [],
+  };
+
+  const chessMovePlaceHolder = {
+    pawn: "Pawn",
+    rook: "Rook",
+    queen: "Queen",
+    king: "King",
+    bishop: "Bishop",
+    knight: "Knight",
+  };
+  const displayGameState = document.createElement(
+    displayGameStateText.textElement
+  );
   const gridCellIds = [];
 
-  console.log(gridElements.gridContainerId);
+  const createChessBoard = () => {
+    const gridContainer = document.getElementById(gridElements.gridContainerId);
 
-  for (let i = 0; i < 8; i++) {
-    const rows = document.createElement(gridElements.div);
-    rows.id = gridElements.rowId;
-    rows.classList.add(gridElements.gridElementsClass);
-    gridContainer.appendChild(rows);
+    console.log(gridElements.gridContainerId);
 
-    for (let j = 0; j < 8; j++) {
-      const cells = document.createElement(gridElements.div);
-      const cellsId = `cell-${i}-${j}`;
-      cells.id = cellsId;
-      cells.classList.add("cells");
-      rows.appendChild(cells);
+    for (let i = 0; i < 8; i++) {
+      const rows = document.createElement(gridElements.div);
+      rows.id = gridElements.rowId;
+      rows.classList.add(gridElements.gridElementsClass);
+      gridContainer.appendChild(rows);
 
-      gridCellIds.push(cellsId);
+      for (let j = 0; j < 8; j++) {
+        const cells = document.createElement(gridElements.div);
+        const cellsId = `cell-${i}-${j}`;
+        cells.id = cellsId;
+        cells.classList.add("cells");
+        rows.appendChild(cells);
+
+        gridCellIds.push(cellsId);
+      }
     }
-  }
+  };
 
-  const chessGame = () => {
-    const mappedCellIds = gridCellIds.map((id) => document.getElementById(id));
-
-    const chessMovePlaceHolder = {
-      pawn: "Pawn",
-      rook: "Rook",
-      queen: "Queen",
-      king: "King",
-      bishop: "Bishop",
-      knight: "Knight",
-    };
-
-    const displayGameStateText = {
-      textElement: "div",
-      preGameStartingText: "Welcome to Chess!",
-      gameStartingText: "The game has begun!",
-      ifRookIsClickedAtStart: "You cannot move rooks at the start of the game",
-      ifBishopIsClickedAtStart:
-        "You cannot move bishops at the start of the game",
-      ifQueenIsClickedAtStart:
-        "You cannot move the queen at the start of the game",
-      ifKingIsClickedAtStart:
-        "You cannot move the king at the start of the game",
-      ifKnightIsClicked: "Where would you like to move your knight?",
-      ifPawnIsClicked: "Where would you like to move your pawn?",
-      ifQueenIsClicked: "Where would you like to move your queen?",
-      ifKingIsClicked: "Where would you like to move your king?",
-      ifRookIsClicked: "Where would you like to move your rook?",
-      ifBishopIsClicked: "Where would you like to move your bishop?",
-    };
-
-    const stateOfCells = {
-      emptyCell: "",
-    };
-
-    const trackGameState = {
-      //first move
-      invalidFirstMove: "",
-      pawnFirstMove: "Pawn",
-      knightFirstMove: "Knight",
-      isFirstMove: true,
-      isNotFirstMove: false,
-      isInvalidFirstMove: null,
-      trackFirstMove: [],
-    };
+  const chessGame = (mappedCellIds) => {
+    mappedCellIds = gridCellIds.map((id) => document.getElementById(id));
+    console.log(mappedCellIds);
+    console.log(gridCellIds);
 
     const chessPiecePositions = [
       //top two rows
@@ -114,14 +119,12 @@ const chessBoard = () => {
     ];
 
     chessPiecePositions.forEach(
-      ([mappedCellIds, chessMovePlaceHolder]) =>
-        (mappedCellIds.textContent = chessMovePlaceHolder)
+      ([gridCellIds, chessMovePlaceHolder]) =>
+        (gridCellIds.textContent = chessMovePlaceHolder)
     );
 
     //start of game
-    const displayGameState = document.createElement(
-      displayGameStateText.textElement
-    );
+
     if (
       //rook starting positions
       mappedCellIds[0].textContent === chessMovePlaceHolder.rook &&
@@ -200,33 +203,45 @@ const chessBoard = () => {
     } else {
       displayGameState.innerText = displayGameStateText.gameStartingText;
     }
+  };
 
-    //event delegation
+  //event delegation
+
+  const rookMoves = (mappedCellIds) => {
+    mappedCellIds = gridCellIds.map((id) => document.getElementById(id));
     gridContainer.addEventListener("click", (e) => {
-      const clickedCell = e.target;
-      switch (clickedCell.id) {
-        //first move(moves afterward will be calculated next)
+      const clickedRookCell = e.target;
 
-        //rook pieces(first move)
+      switch (clickedRookCell.id) {
+        //rook moves
         case gridCellIds[0]:
         case gridCellIds[7]:
         case gridCellIds[56]:
         case gridCellIds[63]:
+          //start of game
           if (
             [0, 7, 56, 63].some(
               (indexNumber) =>
                 mappedCellIds[indexNumber].textContent ===
                   chessMovePlaceHolder.rook &&
-                trackGameState.invalidFirstMove === stateOfCells.emptyCell
+                trackGameState.emptyFirstMove === stateOfCells.emptyCell
             )
           ) {
-            console.log("Hi");
             displayGameState.innerText =
               displayGameStateText.ifRookIsClickedAtStart;
           }
-
           break;
-        //knight pieces(first move)
+      }
+    });
+    return { rookMoves };
+  };
+
+  const knightMoves = (mappedCellIds) => {
+    mappedCellIds = gridCellIds.map((id) => document.getElementById(id));
+
+    gridContainer.addEventListener("click", (e) => {
+      const clickedKnightMoves = e.target;
+      switch (clickedKnightMoves.id) {
         case gridCellIds[8]:
         case gridCellIds[15]:
         case gridCellIds[48]:
@@ -236,14 +251,22 @@ const chessBoard = () => {
               (indexNumber) =>
                 mappedCellIds[indexNumber].textContent ===
                   chessMovePlaceHolder.knight &&
-                trackGameState.invalidFirstMove === stateOfCells.emptyCell
+                trackGameState.emptyFirstMove === stateOfCells.emptyCell
             )
           ) {
             displayGameState.innerText = displayGameStateText.ifKnightIsClicked;
-           
           }
           break;
-        //bishop pieces (first move)
+      }
+    });
+    return { knightMoves };
+  };
+
+  const bishopMoves = (mappedCellIds) => {
+    mappedCellIds = gridCellIds.map((id) => document.getElementById(id));
+    gridContainer.addEventListener("click", (e) => {
+      const clickedBishopMoves = e.target;
+      switch (clickedBishopMoves.id) {
         case gridCellIds[16]:
         case gridCellIds[23]:
         case gridCellIds[40]:
@@ -251,16 +274,28 @@ const chessBoard = () => {
           if (
             [16, 23, 40, 47].some(
               (indexNumber) =>
-                mappedCellIds[indexNumber]?.textContent ===
+                mappedCellIds[indexNumber].textContent ===
                   chessMovePlaceHolder.bishop &&
-                trackGameState.invalidFirstMove === stateOfCells.emptyCell
+                trackGameState.emptyFirstMove === stateOfCells.emptyCell
             )
           ) {
             displayGameState.innerText =
               displayGameStateText.ifBishopIsClickedAtStart;
           }
           break;
-        //queen pieces (first move)
+      }
+      return { bishopMoves };
+    });
+  };
+
+  //bishop pieces (first move)
+
+  //queen pieces (first move)
+  const queenMoves = (mappedCellIds) => {
+    mappedCellIds = gridCellIds.map((id) => document.getElementById(id));
+    gridContainer.addEventListener("click", (e) => {
+      const clickedQueenMoves = e.target;
+      switch (clickedQueenMoves.id) {
         case gridCellIds[24]:
         case gridCellIds[31]:
           if (
@@ -268,27 +303,46 @@ const chessBoard = () => {
               (indexNumber) =>
                 mappedCellIds[indexNumber]?.textContent ===
                   chessMovePlaceHolder.queen &&
-                trackGameState.invalidFirstMove === stateOfCells.emptyCell
+                trackGameState.emptyFirstMove === stateOfCells.emptyCell
             )
           ) {
             displayGameState.innerText =
               displayGameStateText.ifQueenIsClickedAtStart;
           }
           break;
-        //king pieces (first move)
+      }
+      return { queenMoves };
+    });
+  };
+
+  //king pieces (first move)
+  const kingMoves = (mappedCellIds) => {
+    mappedCellIds = gridCellIds.map((id) => document.getElementById(id));
+    gridContainer.addEventListener("click", (e) => {
+      const clickedKingMoves = e.target;
+      switch (clickedKingMoves.id) {
         case gridCellIds[32]:
         case gridCellIds[39]:
           if (
             [32, 39].some(
               (indexNumber) =>
-                mappedCellIds[indexNumber]?.textContent ===
+                mappedCellIds[indexNumber].textContent ===
                   chessMovePlaceHolder.king &&
-                trackGameState.invalidFirstMove === stateOfCells.emptyCell
+                trackGameState.emptyFirstMove === stateOfCells.emptyCell
             )
           ) {
-            displayGameState.innerText = displayGameStateText.ifKingIsClicked;
+            displayGameState.innerText =
+              displayGameStateText.ifKingIsClickedAtStart;
           }
-          break;
+      }
+    });
+    return {kingMoves}
+  };
+  const pawnMoves = (mappedCellIds) => {
+    mappedCellIds = gridCellIds.map((id) => document.getElementById(id));
+    gridContainer.addEventListener("click", (e) => {
+      const clickedPawnMoves = e.target;
+      switch (clickedPawnMoves.id) {
         case gridCellIds[1]:
         case gridCellIds[6]:
         case gridCellIds[9]:
@@ -310,7 +364,7 @@ const chessBoard = () => {
               (indexNumber) =>
                 mappedCellIds[indexNumber].textContent ===
                   chessMovePlaceHolder.pawn &&
-                trackGameState.invalidFirstMove === stateOfCells.emptyCell
+                trackGameState.emptyFirstMove === stateOfCells.emptyCell
             )
           ) {
             trackGameState.isNotFirstMove = trackGameState.isFirstMove;
@@ -319,7 +373,7 @@ const chessBoard = () => {
           }
       }
     });
-    return { chessGame };
+    return { pawnMoves };
   };
 
   const cellColors = (mappedCellIds) => {
@@ -452,7 +506,18 @@ const chessBoard = () => {
     });
     return { cellColors };
   };
-  return { chessBoard, cellColors, chessGame };
+  return {
+    chessBoard,
+    createChessBoard,
+    cellColors,
+    chessGame,
+    rookMoves,
+    knightMoves,
+    bishopMoves,
+    queenMoves,
+    pawnMoves,
+    kingMoves,
+  };
 };
 
 export default chessBoard;
