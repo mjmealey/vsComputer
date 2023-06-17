@@ -8,10 +8,12 @@ const vsComputer = () => {
   newChessBoard.cellColors()
   newChessBoard.rookMoves()
   newChessBoard.knightMoves()
-  newChessBoard.pawnMoves()
+  newChessBoard.pawnPositioning()
+  newChessBoard.pawnMovement()
   newChessBoard.queenMoves()
   newChessBoard.bishopMoves()
   newChessBoard.kingMoves()
+  newChessBoard.gridCellLocations()
  
 }
 
