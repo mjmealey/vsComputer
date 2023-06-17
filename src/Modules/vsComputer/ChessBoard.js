@@ -37,6 +37,14 @@ const chessBoard = () => {
     isNotFirstMove: false,
     isInvalidFirstMove: null,
     trackFirstMove: [],
+
+    //rest of game
+    currentRook: "Rook",
+    currentBishop: "Bishop",
+    currentKnight: "Knight",
+    currentQueen: "Queen",
+    currentKing: "King",
+    currentPawn: "Pawn",
   };
 
   const chessMovePlaceHolder = {
@@ -47,11 +55,25 @@ const chessBoard = () => {
     bishop: "Bishop",
     knight: "Knight",
   };
+  const currentPiece = {
+    emptyPiece: null,
+    currentPawn: "Pawn",
+    currentRook: "Rook",
+    currentBishop: "Bishop",
+    currentKnight: "Knight",
+    currentQueen: "Queen",
+    currentKing: "King",
+  };
+
+  //first move variable
+  let firstPiece = trackGameState.emptyFirstMove;
+  let clickedPiece = currentPiece.emptyPiece;
+  let currentClickedCell = "";
+
   const displayGameState = document.createElement(
     displayGameStateText.textElement
   );
   const gridCellIds = [];
-
   const createChessBoard = () => {
     const gridContainer = document.getElementById(gridElements.gridContainerId);
 
@@ -204,6 +226,71 @@ const chessBoard = () => {
       displayGameState.innerText = displayGameStateText.gameStartingText;
     }
   };
+  const gridCellLocations = () => {
+    document.addEventListener("click", (e) => {
+      let clickedId = e.target;
+      switch (clickedId.id) {
+        case gridCellIds[0]:
+          currentClickedCell = gridCellIds[0];
+          
+          break;
+        case gridCellIds[1]:
+          currentClickedCell = gridCellIds[1];
+          break;
+        case gridCellIds[2]:
+          currentClickedCell = gridCellIds[2];
+          break;
+        case gridCellIds[3]:
+          currentClickedCell = gridCellIds[3];
+          break;
+        case gridCellIds[4]:
+          currentClickedCell = gridCellIds[4];
+          break;
+        case gridCellIds[5]:
+          currentClickedCell = gridCellIds[5];
+          break;
+        case gridCellIds[6]:
+          currentClickedCell = gridCellIds[6];
+          break;
+        case gridCellIds[7]:
+          currentClickedCell = gridCellIds[7];
+          break;
+        case gridCellIds[8]:
+          currentClickedCell = gridCellIds[8];
+          break;
+        case gridCellIds[9]:
+          currentClickedCell = gridCellIds[9];
+           break;
+        case gridCellIds[10]:
+          currentClickedCell = gridCellIds[10];
+          break;
+        case gridCellIds[11]:
+          currentClickedCell = gridCellIds[11];
+          break;
+        case gridCellIds[12]:
+          currentClickedCell = gridCellIds[12];
+          break;
+        case gridCellIds[13]:
+          currentClickedCell = gridCellIds[13];
+          break;
+        case gridCellIds[14]:
+          currentClickedCell = gridCellIds[14];
+          break;
+        case gridCellIds[15]:
+          currentClickedCell = gridCellIds[15];
+          break;
+        case gridCellIds[16]:
+          currentClickedCell = gridCellIds[16];
+          break;
+        case gridCellIds[17]:
+          currentClickedCell = gridCellIds[17];
+          break;
+        case gridCellIds[18]:
+          currentClickedCell = gridCellIds[18];  
+      }
+    });
+    return { gridCellLocations };
+  };
 
   //event delegation
 
@@ -230,6 +317,8 @@ const chessBoard = () => {
             displayGameState.innerText =
               displayGameStateText.ifRookIsClickedAtStart;
           }
+          break;
+        default:
           break;
       }
     });
@@ -336,12 +425,16 @@ const chessBoard = () => {
           }
       }
     });
-    return {kingMoves}
+    return { kingMoves };
   };
-  const pawnMoves = (mappedCellIds) => {
+
+  //positioning for the pawn (separate function will be needed to control movement, but these are conditionals for movement of the pawn)
+  const pawnPositioning = (mappedCellIds) => {
     mappedCellIds = gridCellIds.map((id) => document.getElementById(id));
+
     gridContainer.addEventListener("click", (e) => {
       const clickedPawnMoves = e.target;
+
       switch (clickedPawnMoves.id) {
         case gridCellIds[1]:
         case gridCellIds[6]:
@@ -364,16 +457,33 @@ const chessBoard = () => {
               (indexNumber) =>
                 mappedCellIds[indexNumber].textContent ===
                   chessMovePlaceHolder.pawn &&
-                trackGameState.emptyFirstMove === stateOfCells.emptyCell
+                firstPiece === trackGameState.emptyFirstMove
             )
           ) {
-            trackGameState.isNotFirstMove = trackGameState.isFirstMove;
+            console.log(firstPiece);
+            firstPiece = trackGameState.pawnFirstMove
             displayGameState.innerText = displayGameStateText.ifPawnIsClicked;
             console.log(trackGameState.trackFirstMove);
           }
       }
     });
-    return { pawnMoves };
+  };
+  const pawnMovement = (mappedCellIds) => {
+    mappedCellIds = gridCellIds.map((id) => document.getElementById(id));
+    gridContainer.addEventListener("click", (e) => {
+      const movePawn = e.target;
+      switch (movePawn.id) {
+        case gridCellIds[2]:
+        //first move condiitonal
+        if(currentClickedCell === gridCellIds[1] && firstPiece === trackGameState.pawnFirstMove){
+          mappedCellIds[1].textContent = ""
+          mappedCellIds[2].textContent = chessMovePlaceHolder.pawn
+        } else if(currentClickedCell === gridCellIds[2] && firstPiece === trackGameState.pawnFirstMove){
+            mappedCellIds[14].textContent = trackGameState.emptyCell
+        }
+      }
+    });
+    return { pawnMovement };
   };
 
   const cellColors = (mappedCellIds) => {
@@ -515,8 +625,10 @@ const chessBoard = () => {
     knightMoves,
     bishopMoves,
     queenMoves,
-    pawnMoves,
+    pawnPositioning,
+    pawnMovement,
     kingMoves,
+    gridCellLocations,
   };
 };
 
