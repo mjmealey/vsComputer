@@ -102,48 +102,61 @@ const chessBoard = () => {
     console.log(mappedCellIds);
     console.log(gridCellIds);
 
-    const chessPiecePositions = [
-      //top two rows
-      [mappedCellIds[0], chessMovePlaceHolder.rook],
-      [mappedCellIds[1], chessMovePlaceHolder.pawn],
-      [mappedCellIds[8], chessMovePlaceHolder.knight],
-      [mappedCellIds[9], chessMovePlaceHolder.pawn],
-      [mappedCellIds[16], chessMovePlaceHolder.bishop],
-      [mappedCellIds[17], chessMovePlaceHolder.pawn],
-      [mappedCellIds[24], chessMovePlaceHolder.queen],
-      [mappedCellIds[25], chessMovePlaceHolder.pawn],
-      [mappedCellIds[32], chessMovePlaceHolder.king],
-      [mappedCellIds[33], chessMovePlaceHolder.pawn],
-      [mappedCellIds[40], chessMovePlaceHolder.bishop],
-      [mappedCellIds[41], chessMovePlaceHolder.pawn],
-      [mappedCellIds[48], chessMovePlaceHolder.knight],
-      [mappedCellIds[49], chessMovePlaceHolder.pawn],
-      [mappedCellIds[56], chessMovePlaceHolder.rook],
-      [mappedCellIds[57], chessMovePlaceHolder.pawn],
-
-      //bottom two rows
-      [mappedCellIds[6], chessMovePlaceHolder.pawn],
-      [mappedCellIds[7], chessMovePlaceHolder.rook],
-      [mappedCellIds[14], chessMovePlaceHolder.pawn],
-      [mappedCellIds[15], chessMovePlaceHolder.knight],
-      [mappedCellIds[22], chessMovePlaceHolder.pawn],
-      [mappedCellIds[23], chessMovePlaceHolder.bishop],
-      [mappedCellIds[30], chessMovePlaceHolder.pawn],
-      [mappedCellIds[31], chessMovePlaceHolder.queen],
-      [mappedCellIds[38], chessMovePlaceHolder.pawn],
-      [mappedCellIds[39], chessMovePlaceHolder.king],
-      [mappedCellIds[46], chessMovePlaceHolder.pawn],
-      [mappedCellIds[47], chessMovePlaceHolder.bishop],
-      [mappedCellIds[54], chessMovePlaceHolder.pawn],
-      [mappedCellIds[55], chessMovePlaceHolder.knight],
-      [mappedCellIds[62], chessMovePlaceHolder.pawn],
-      [mappedCellIds[63], chessMovePlaceHolder.rook],
-    ];
-
-    chessPiecePositions.forEach(
-      ([gridCellIds, chessMovePlaceHolder]) =>
-        (gridCellIds.textContent = chessMovePlaceHolder)
-    );
+    for (let index = 0; index < gridCellIds.length; index++) {
+      switch (index) {
+        //pawn starting cells
+        case 1:
+        case 6:
+        case 9:
+        case 14:
+        case 17:
+        case 22:
+        case 25:
+        case 30:
+        case 33:
+        case 38:
+        case 41:
+        case 46:
+        case 49:
+        case 54:
+        case 57:
+        case 62:
+          mappedCellIds[index].textContent = chessMovePlaceHolder.pawn;
+          break;
+        //rook starting cells
+        case 0:
+        case 7:
+        case 56:
+        case 63:
+          mappedCellIds[index].textContent = chessMovePlaceHolder.rook;
+          break;
+        //knight starting cells
+        case 8:
+        case 15:
+        case 48:
+        case 55:
+          mappedCellIds[index].textContent = chessMovePlaceHolder.knight;
+          break;
+        //bishop starting cells
+        case 16:
+        case 23:
+        case 40:
+        case 47:
+          mappedCellIds[index].textContent = chessMovePlaceHolder.bishop;
+          break;
+        case 24:
+        case 31:
+          mappedCellIds[index].textContent = chessMovePlaceHolder.queen;
+          break;
+        case 32:
+        case 39:
+          mappedCellIds[index].textContent = chessMovePlaceHolder.king;
+          break;
+          default:
+            displayGameState.innerText = displayGameStateText.preGameStartingText
+            document.body.appendChild(displayGameState)
+      }
+    }
 
     //start of game
 
@@ -228,70 +241,15 @@ const chessBoard = () => {
   };
   const gridCellLocations = () => {
     document.addEventListener("click", (e) => {
-      let clickedId = e.target;
-      switch (clickedId.id) {
-        case gridCellIds[0]:
-          currentClickedCell = gridCellIds[0];
-          
-          break;
-        case gridCellIds[1]:
-          currentClickedCell = gridCellIds[1];
-          break;
-        case gridCellIds[2]:
-          currentClickedCell = gridCellIds[2];
-          break;
-        case gridCellIds[3]:
-          currentClickedCell = gridCellIds[3];
-          break;
-        case gridCellIds[4]:
-          currentClickedCell = gridCellIds[4];
-          break;
-        case gridCellIds[5]:
-          currentClickedCell = gridCellIds[5];
-          break;
-        case gridCellIds[6]:
-          currentClickedCell = gridCellIds[6];
-          break;
-        case gridCellIds[7]:
-          currentClickedCell = gridCellIds[7];
-          break;
-        case gridCellIds[8]:
-          currentClickedCell = gridCellIds[8];
-          break;
-        case gridCellIds[9]:
-          currentClickedCell = gridCellIds[9];
-           break;
-        case gridCellIds[10]:
-          currentClickedCell = gridCellIds[10];
-          break;
-        case gridCellIds[11]:
-          currentClickedCell = gridCellIds[11];
-          break;
-        case gridCellIds[12]:
-          currentClickedCell = gridCellIds[12];
-          break;
-        case gridCellIds[13]:
-          currentClickedCell = gridCellIds[13];
-          break;
-        case gridCellIds[14]:
-          currentClickedCell = gridCellIds[14];
-          break;
-        case gridCellIds[15]:
-          currentClickedCell = gridCellIds[15];
-          break;
-        case gridCellIds[16]:
-          currentClickedCell = gridCellIds[16];
-          break;
-        case gridCellIds[17]:
-          currentClickedCell = gridCellIds[17];
-          break;
-        case gridCellIds[18]:
-          currentClickedCell = gridCellIds[18];  
+      let clickedCell = e.target.id;
+      for (let i = 0; i < gridCellIds.length; i++) {
+        if (clickedCell === gridCellIds[i]) {
+          currentClickedCell = gridCellIds[i];
+          console.log(currentClickedCell);
+        }
       }
     });
-    return { gridCellLocations };
   };
-
   //event delegation
 
   const rookMoves = (mappedCellIds) => {
@@ -461,7 +419,7 @@ const chessBoard = () => {
             )
           ) {
             console.log(firstPiece);
-            firstPiece = trackGameState.pawnFirstMove
+            firstPiece = trackGameState.pawnFirstMove;
             displayGameState.innerText = displayGameStateText.ifPawnIsClicked;
             console.log(trackGameState.trackFirstMove);
           }
@@ -474,13 +432,14 @@ const chessBoard = () => {
       const movePawn = e.target;
       switch (movePawn.id) {
         case gridCellIds[2]:
-        //first move condiitonal
-        if(currentClickedCell === gridCellIds[1] && firstPiece === trackGameState.pawnFirstMove){
-          mappedCellIds[1].textContent = ""
-          mappedCellIds[2].textContent = chessMovePlaceHolder.pawn
-        } else if(currentClickedCell === gridCellIds[2] && firstPiece === trackGameState.pawnFirstMove){
-            mappedCellIds[14].textContent = trackGameState.emptyCell
-        }
+          //first move condiitonal
+          if (
+            currentClickedCell === gridCellIds[1] &&
+            firstPiece === trackGameState.pawnFirstMove
+          ) {
+            mappedCellIds[1].textContent = "";
+            mappedCellIds[2].textContent = chessMovePlaceHolder.pawn;
+          }
       }
     });
     return { pawnMovement };
