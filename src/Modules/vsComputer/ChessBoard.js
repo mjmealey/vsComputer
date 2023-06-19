@@ -116,6 +116,7 @@ const chessBoard = () => {
       if (startingPawnCells.includes(startingCellIndex)) {
         mappedCellIds[startingCellIndex].textContent =
           chessMovePlaceHolder.pawn;
+         
       } else if (startingRookCells.includes(startingCellIndex)) {
         mappedCellIds[startingCellIndex].textContent =
           chessMovePlaceHolder.rook;
@@ -131,9 +132,10 @@ const chessBoard = () => {
       } else if (startingKingCells.includes(startingCellIndex)) {
         mappedCellIds[startingCellIndex].textContent =
           chessMovePlaceHolder.king;
-      } else {
-        displayGameState.innerText = displayGameStateText.preGameStartingText;
-        document.body.appendChild(displayGameState);
+      }
+      else {
+        displayGameState.innerText = displayGameStateText.preGameStartingText
+        document.body.appendChild(displayGameState)
       }
     }
 
@@ -155,21 +157,32 @@ const chessBoard = () => {
 
   const clickRookCell = (mappedCellIds) => {
     mappedCellIds = gridCellIds.map((id) => document.getElementById(id));
-    const startRookCells = [0, 7, 56, 63];
-    gridContainer.addEventListener("click", () => {
-      for (
-        let clickedRookCells = 0;
-        clickedRookCells < gridCellIds.length;
-        clickedRookCells++
-      ) {
-        if (startRookCells.includes(clickedRookCells)) {
-          displayGameState.innerText =
-            displayGameStateText.ifRookIsClickedAtStart;
-        }
-        else {displayGameState.innerText = displayGameStateText.ifRookIsClicked}
+    gridContainer.addEventListener("click", (e) => {
+      const clickedRookCell = e.target;
+
+      switch (clickedRookCell.id) {
+        //rook moves
+        case gridCellIds[0]:
+        case gridCellIds[7]:
+        case gridCellIds[56]:
+        case gridCellIds[63]:
+          //start of game
+          if (
+            [0, 7, 56, 63].some(
+              (indexNumber) =>
+                mappedCellIds[indexNumber].textContent ===
+                  chessMovePlaceHolder.rook &&
+                trackGameState.emptyFirstMove === stateOfCells.emptyCell
+            )
+          ) {
+            displayGameState.innerText =
+              displayGameStateText.ifRookIsClickedAtStart;
+          }
+          break;
+        default:
+          break;
       }
     });
-
     return { clickRookCell };
   };
 
@@ -198,6 +211,7 @@ const chessBoard = () => {
     });
     return { knightMoves };
   };
+
 
   const bishopMoves = (mappedCellIds) => {
     mappedCellIds = gridCellIds.map((id) => document.getElementById(id));
