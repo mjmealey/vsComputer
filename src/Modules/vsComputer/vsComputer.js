@@ -4,9 +4,9 @@ import chessBoard from "./ChessBoard.js"
 const vsComputer = () => {
   const newChessBoard = chessBoard()
   newChessBoard.createChessBoard()
-  newChessBoard.chessGame()
+  newChessBoard.startingCells()
   newChessBoard.cellColors()
-  newChessBoard.rookMoves()
+  newChessBoard.clickRookCell()
   newChessBoard.knightMoves()
   newChessBoard.pawnPositioning()
   newChessBoard.pawnMovement()
