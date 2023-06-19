@@ -97,148 +97,49 @@ const chessBoard = () => {
     }
   };
 
-  const chessGame = (mappedCellIds) => {
+  const startingCells = (mappedCellIds) => {
     mappedCellIds = gridCellIds.map((id) => document.getElementById(id));
-    console.log(mappedCellIds);
-    console.log(gridCellIds);
+    const startingPawnCells = [
+      1, 6, 9, 14, 17, 22, 25, 30, 33, 38, 41, 46, 49, 54, 57, 62,
+    ];
+    const startingRookCells = [0, 7, 56, 63];
+    const startingKnightCells = [8, 15, 48, 55];
+    const startingBishopCells = [16, 23, 40, 47];
+    const startingQueenCells = [24, 31];
+    const startingKingCells = [32, 39];
 
-    for (let index = 0; index < gridCellIds.length; index++) {
-      switch (index) {
-        //pawn starting cells
-        case 1:
-        case 6:
-        case 9:
-        case 14:
-        case 17:
-        case 22:
-        case 25:
-        case 30:
-        case 33:
-        case 38:
-        case 41:
-        case 46:
-        case 49:
-        case 54:
-        case 57:
-        case 62:
-          mappedCellIds[index].textContent = chessMovePlaceHolder.pawn;
-          break;
-        //rook starting cells
-        case 0:
-        case 7:
-        case 56:
-        case 63:
-          mappedCellIds[index].textContent = chessMovePlaceHolder.rook;
-          break;
-        //knight starting cells
-        case 8:
-        case 15:
-        case 48:
-        case 55:
-          mappedCellIds[index].textContent = chessMovePlaceHolder.knight;
-          break;
-        //bishop starting cells
-        case 16:
-        case 23:
-        case 40:
-        case 47:
-          mappedCellIds[index].textContent = chessMovePlaceHolder.bishop;
-          break;
-        case 24:
-        case 31:
-          mappedCellIds[index].textContent = chessMovePlaceHolder.queen;
-          break;
-        case 32:
-        case 39:
-          mappedCellIds[index].textContent = chessMovePlaceHolder.king;
-          break;
-          default:
-            displayGameState.innerText = displayGameStateText.preGameStartingText
-            document.body.appendChild(displayGameState)
+    for (
+      let startingCellIndex = 0;
+      startingCellIndex < gridCellIds.length;
+      startingCellIndex++
+    ) {
+      if (startingPawnCells.includes(startingCellIndex)) {
+        mappedCellIds[startingCellIndex].textContent =
+          chessMovePlaceHolder.pawn;
+      } else if (startingRookCells.includes(startingCellIndex)) {
+        mappedCellIds[startingCellIndex].textContent =
+          chessMovePlaceHolder.rook;
+      } else if (startingKnightCells.includes(startingCellIndex)) {
+        mappedCellIds[startingCellIndex].textContent =
+          chessMovePlaceHolder.knight;
+      } else if (startingBishopCells.includes(startingCellIndex)) {
+        mappedCellIds[startingCellIndex].textContent =
+          chessMovePlaceHolder.bishop;
+      } else if (startingQueenCells.includes(startingCellIndex)) {
+        mappedCellIds[startingCellIndex].textContent =
+          chessMovePlaceHolder.queen;
+      } else if (startingKingCells.includes(startingCellIndex)) {
+        mappedCellIds[startingCellIndex].textContent =
+          chessMovePlaceHolder.king;
+      } else {
+        displayGameState.innerText = displayGameStateText.preGameStartingText;
+        document.body.appendChild(displayGameState);
       }
     }
 
-    //start of game
-
-    if (
-      //rook starting positions
-      mappedCellIds[0].textContent === chessMovePlaceHolder.rook &&
-      mappedCellIds[7].textContent === chessMovePlaceHolder.rook &&
-      mappedCellIds[56].textContent === chessMovePlaceHolder.rook &&
-      mappedCellIds[63].textContent === chessMovePlaceHolder.rook &&
-      //knight starting positions
-      mappedCellIds[8].textContent === chessMovePlaceHolder.knight &&
-      mappedCellIds[15].textContent === chessMovePlaceHolder.knight &&
-      mappedCellIds[48].textContent === chessMovePlaceHolder.knight &&
-      mappedCellIds[55].textContent === chessMovePlaceHolder.knight &&
-      //bishop starting positions
-      mappedCellIds[16].textContent === chessMovePlaceHolder.bishop &&
-      mappedCellIds[23].textContent === chessMovePlaceHolder.bishop &&
-      mappedCellIds[40].textContent === chessMovePlaceHolder.bishop &&
-      mappedCellIds[47].textContent === chessMovePlaceHolder.bishop &&
-      //queen starting positions
-      mappedCellIds[24].textContent === chessMovePlaceHolder.queen &&
-      mappedCellIds[31].textContent === chessMovePlaceHolder.queen &&
-      //king starting positions
-      mappedCellIds[32].textContent === chessMovePlaceHolder.king &&
-      mappedCellIds[39].textContent === chessMovePlaceHolder.king &&
-      //pawn starting positions
-      mappedCellIds[1].textContent === chessMovePlaceHolder.pawn &&
-      mappedCellIds[6].textContent === chessMovePlaceHolder.pawn &&
-      mappedCellIds[9].textContent === chessMovePlaceHolder.pawn &&
-      mappedCellIds[14].textContent === chessMovePlaceHolder.pawn &&
-      mappedCellIds[17].textContent === chessMovePlaceHolder.pawn &&
-      mappedCellIds[22].textContent === chessMovePlaceHolder.pawn &&
-      mappedCellIds[25].textContent === chessMovePlaceHolder.pawn &&
-      mappedCellIds[30].textContent === chessMovePlaceHolder.pawn &&
-      mappedCellIds[33].textContent === chessMovePlaceHolder.pawn &&
-      mappedCellIds[38].textContent === chessMovePlaceHolder.pawn &&
-      mappedCellIds[41].textContent === chessMovePlaceHolder.pawn &&
-      mappedCellIds[46].textContent === chessMovePlaceHolder.pawn &&
-      mappedCellIds[49].textContent === chessMovePlaceHolder.pawn &&
-      mappedCellIds[54].textContent === chessMovePlaceHolder.pawn &&
-      mappedCellIds[57].textContent === chessMovePlaceHolder.pawn &&
-      mappedCellIds[62].textContent === chessMovePlaceHolder.pawn &&
-      //empty cells (at start of game)
-      mappedCellIds[2].textContent === stateOfCells.emptyCell &&
-      mappedCellIds[3].textContent === stateOfCells.emptyCell &&
-      mappedCellIds[4].textContent === stateOfCells.emptyCell &&
-      mappedCellIds[5].textContent === stateOfCells.emptyCell &&
-      mappedCellIds[10].textContent === stateOfCells.emptyCell &&
-      mappedCellIds[11].textContent === stateOfCells.emptyCell &&
-      mappedCellIds[12].textContent === stateOfCells.emptyCell &&
-      mappedCellIds[13].textContent === stateOfCells.emptyCell &&
-      mappedCellIds[18].textContent === stateOfCells.emptyCell &&
-      mappedCellIds[19].textContent === stateOfCells.emptyCell &&
-      mappedCellIds[20].textContent === stateOfCells.emptyCell &&
-      mappedCellIds[21].textContent === stateOfCells.emptyCell &&
-      mappedCellIds[26].textContent === stateOfCells.emptyCell &&
-      mappedCellIds[27].textContent === stateOfCells.emptyCell &&
-      mappedCellIds[28].textContent === stateOfCells.emptyCell &&
-      mappedCellIds[29].textContent === stateOfCells.emptyCell &&
-      mappedCellIds[34].textContent === stateOfCells.emptyCell &&
-      mappedCellIds[35].textContent === stateOfCells.emptyCell &&
-      mappedCellIds[36].textContent === stateOfCells.emptyCell &&
-      mappedCellIds[37].textContent === stateOfCells.emptyCell &&
-      mappedCellIds[42].textContent === stateOfCells.emptyCell &&
-      mappedCellIds[43].textContent === stateOfCells.emptyCell &&
-      mappedCellIds[44].textContent === stateOfCells.emptyCell &&
-      mappedCellIds[45].textContent === stateOfCells.emptyCell &&
-      mappedCellIds[50].textContent === stateOfCells.emptyCell &&
-      mappedCellIds[51].textContent === stateOfCells.emptyCell &&
-      mappedCellIds[52].textContent === stateOfCells.emptyCell &&
-      mappedCellIds[53].textContent === stateOfCells.emptyCell &&
-      mappedCellIds[58].textContent === stateOfCells.emptyCell &&
-      mappedCellIds[59].textContent === stateOfCells.emptyCell &&
-      mappedCellIds[60].textContent === stateOfCells.emptyCell &&
-      mappedCellIds[61].textContent === stateOfCells.emptyCell
-    ) {
-      displayGameState.innerText = displayGameStateText.preGameStartingText;
-      document.body.appendChild(displayGameState);
-    } else {
-      displayGameState.innerText = displayGameStateText.gameStartingText;
-    }
+    return { startingCells };
   };
+
   const gridCellLocations = () => {
     document.addEventListener("click", (e) => {
       let clickedCell = e.target.id;
@@ -252,35 +153,24 @@ const chessBoard = () => {
   };
   //event delegation
 
-  const rookMoves = (mappedCellIds) => {
+  const clickRookCell = (mappedCellIds) => {
     mappedCellIds = gridCellIds.map((id) => document.getElementById(id));
-    gridContainer.addEventListener("click", (e) => {
-      const clickedRookCell = e.target;
-
-      switch (clickedRookCell.id) {
-        //rook moves
-        case gridCellIds[0]:
-        case gridCellIds[7]:
-        case gridCellIds[56]:
-        case gridCellIds[63]:
-          //start of game
-          if (
-            [0, 7, 56, 63].some(
-              (indexNumber) =>
-                mappedCellIds[indexNumber].textContent ===
-                  chessMovePlaceHolder.rook &&
-                trackGameState.emptyFirstMove === stateOfCells.emptyCell
-            )
-          ) {
-            displayGameState.innerText =
-              displayGameStateText.ifRookIsClickedAtStart;
-          }
-          break;
-        default:
-          break;
+    const startRookCells = [0, 7, 56, 63];
+    gridContainer.addEventListener("click", () => {
+      for (
+        let clickedRookCells = 0;
+        clickedRookCells < gridCellIds.length;
+        clickedRookCells++
+      ) {
+        if (startRookCells.includes(clickedRookCells)) {
+          displayGameState.innerText =
+            displayGameStateText.ifRookIsClickedAtStart;
+        }
+        else {displayGameState.innerText = displayGameStateText.ifRookIsClicked}
       }
     });
-    return { rookMoves };
+
+    return { clickRookCell };
   };
 
   const knightMoves = (mappedCellIds) => {
@@ -491,78 +381,30 @@ const chessBoard = () => {
       fireAndIce: "fireAndIce",
     };
 
-    const colorSelect = document.getElementById(colorSelectAttributes.selectId);
-    //enabled by default
-    const defaultCellColors = [
-      [mappedCellIds[0], gridColors.bisque],
-      [mappedCellIds[1], gridColors.brown],
-      [mappedCellIds[2], gridColors.bisque],
-      [mappedCellIds[3], gridColors.brown],
-      [mappedCellIds[4], gridColors.bisque],
-      [mappedCellIds[5], gridColors.brown],
-      [mappedCellIds[6], gridColors.bisque],
-      [mappedCellIds[7], gridColors.brown],
-      [mappedCellIds[8], gridColors.brown],
-      [mappedCellIds[9], gridColors.bisque],
-      [mappedCellIds[10], gridColors.brown],
-      [mappedCellIds[11], gridColors.bisque],
-      [mappedCellIds[12], gridColors.brown],
-      [mappedCellIds[13], gridColors.bisque],
-      [mappedCellIds[14], gridColors.brown],
-      [mappedCellIds[15], gridColors.bisque],
-      [mappedCellIds[16], gridColors.bisque],
-      [mappedCellIds[17], gridColors.brown],
-      [mappedCellIds[18], gridColors.bisque],
-      [mappedCellIds[19], gridColors.brown],
-      [mappedCellIds[20], gridColors.bisque],
-      [mappedCellIds[21], gridColors.brown],
-      [mappedCellIds[22], gridColors.bisque],
-      [mappedCellIds[23], gridColors.brown],
-      [mappedCellIds[24], gridColors.brown],
-      [mappedCellIds[25], gridColors.bisque],
-      [mappedCellIds[26], gridColors.brown],
-      [mappedCellIds[27], gridColors.bisque],
-      [mappedCellIds[28], gridColors.brown],
-      [mappedCellIds[29], gridColors.bisque],
-      [mappedCellIds[30], gridColors.brown],
-      [mappedCellIds[31], gridColors.bisque],
-      [mappedCellIds[32], gridColors.bisque],
-      [mappedCellIds[33], gridColors.brown],
-      [mappedCellIds[34], gridColors.bisque],
-      [mappedCellIds[35], gridColors.brown],
-      [mappedCellIds[36], gridColors.bisque],
-      [mappedCellIds[37], gridColors.brown],
-      [mappedCellIds[38], gridColors.bisque],
-      [mappedCellIds[39], gridColors.brown],
-      [mappedCellIds[40], gridColors.brown],
-      [mappedCellIds[41], gridColors.bisque],
-      [mappedCellIds[42], gridColors.brown],
-      [mappedCellIds[43], gridColors.bisque],
-      [mappedCellIds[44], gridColors.brown],
-      [mappedCellIds[45], gridColors.bisque],
-      [mappedCellIds[46], gridColors.brown],
-      [mappedCellIds[47], gridColors.bisque],
-      [mappedCellIds[48], gridColors.bisque],
-      [mappedCellIds[49], gridColors.brown],
-      [mappedCellIds[50], gridColors.bisque],
-      [mappedCellIds[51], gridColors.brown],
-      [mappedCellIds[52], gridColors.bisque],
-      [mappedCellIds[53], gridColors.brown],
-      [mappedCellIds[54], gridColors.bisque],
-      [mappedCellIds[55], gridColors.brown],
-      [mappedCellIds[56], gridColors.brown],
-      [mappedCellIds[57], gridColors.bisque],
-      [mappedCellIds[58], gridColors.brown],
-      [mappedCellIds[59], gridColors.bisque],
-      [mappedCellIds[60], gridColors.brown],
-      [mappedCellIds[61], gridColors.bisque],
-      [mappedCellIds[62], gridColors.brown],
-      [mappedCellIds[63], gridColors.bisque],
+    let primaryColor = [
+      0, 2, 4, 6, 9, 11, 13, 15, 16, 18, 20, 22, 25, 27, 29, 31, 32, 34, 36, 38,
+      41, 43, 45, 47, 48, 50, 52, 54, 57, 59, 61, 63,
     ];
-    defaultCellColors.forEach(([mappedCellIds, gridColors]) => {
-      mappedCellIds.style.backgroundColor = gridColors;
-      mappedCellIds.style.borderColor = gridColors;
-    });
+    let secondaryColor = [
+      1, 3, 5, 7, 8, 10, 12, 14, 17, 19, 21, 23, 24, 26, 28, 30, 33, 35, 37, 39,
+      40, 42, 44, 46, 49, 51, 53, 55, 56, 58, 60, 62,
+    ];
+
+    for (
+      let defaultColorIndex = 0;
+      defaultColorIndex < gridCellIds.length;
+      defaultColorIndex++
+    ) {
+      if (primaryColor.includes(defaultColorIndex)) {
+        mappedCellIds[defaultColorIndex].style.backgroundColor =
+          gridColors.bisque;
+        mappedCellIds[defaultColorIndex].style.borderColor = gridColors.bisque;
+      } else if (secondaryColor.includes(defaultColorIndex)) {
+        mappedCellIds[defaultColorIndex].style.backgroundColor =
+          gridColors.brown;
+        mappedCellIds[defaultColorIndex].style.borderColor = gridColors.brown;
+      }
+    }
 
     colorSelect.addEventListener("input", (e) => {
       const selectedColor = e.target;
@@ -579,8 +421,8 @@ const chessBoard = () => {
     chessBoard,
     createChessBoard,
     cellColors,
-    chessGame,
-    rookMoves,
+    startingCells,
+    clickRookCell,
     knightMoves,
     bishopMoves,
     queenMoves,
