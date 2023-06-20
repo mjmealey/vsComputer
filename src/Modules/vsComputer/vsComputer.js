@@ -6,16 +6,17 @@ const vsComputer = () => {
   newChessBoard.createChessBoard()
   newChessBoard.startingCells()
   newChessBoard.cellColors()
+  newChessBoard.clickGridCells()
   newChessBoard.clickRookCell()
-  newChessBoard.knightMoves()
-  newChessBoard.pawnPositioning()
-  newChessBoard.pawnMovement()
-  newChessBoard.queenMoves()
-  newChessBoard.bishopMoves()
-  newChessBoard.kingMoves()
-  newChessBoard.gridCellLocations()
+  newChessBoard.clickKnightCell()
+  newChessBoard.clickBishopCell()
+  newChessBoard.clickQueenCell()
+  newChessBoard.clickKingCell()
+  newChessBoard.clickPawnCell()
  
 }
+
+
 
 export default vsComputer
 
