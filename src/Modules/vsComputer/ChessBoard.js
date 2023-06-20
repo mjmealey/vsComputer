@@ -24,13 +24,10 @@ const chessBoard = () => {
     ifBishopIsClicked: "Where would you like to move your bishop?",
   };
 
-  const stateOfCells = {
-    emptyCell: "",
-  };
-
   const trackGameState = {
     //first move
     emptyFirstMove: "",
+    emptyCell: "",
     pawnFirstMove: "Pawn",
     knightFirstMove: "Knight",
     isFirstMove: true,
@@ -98,6 +95,7 @@ const chessBoard = () => {
 
   const startingCells = (mappedCellIds) => {
     mappedCellIds = gridCellIds.map((id) => document.getElementById(id));
+    let isStartOfGame = true;
     const startingPawnCells = [
       1, 6, 9, 14, 17, 22, 25, 30, 33, 38, 41, 46, 49, 54, 57, 62,
     ];
@@ -106,7 +104,10 @@ const chessBoard = () => {
     const startingBishopCells = [16, 23, 40, 47];
     const startingQueenCells = [24, 31];
     const startingKingCells = [32, 39];
-
+    const startingEmptyCells = [
+      2, 3, 4, 5, 10, 11, 12, 13, 18, 19, 20, 21, 26, 27, 28, 29, 34, 35, 36,
+      37, 42, 43, 44, 45, 50, 51, 52, 53, 58, 59, 60, 61,
+    ];
     for (
       let startingCellIndex = 0;
       startingCellIndex < gridCellIds.length;
@@ -115,34 +116,40 @@ const chessBoard = () => {
       if (startingPawnCells.includes(startingCellIndex)) {
         mappedCellIds[startingCellIndex].textContent =
           chessMovePlaceHolder.pawn;
-        displayGameState.innerText = displayGameStateText.preGameStartingText;
       } else if (startingRookCells.includes(startingCellIndex)) {
         mappedCellIds[startingCellIndex].textContent =
           chessMovePlaceHolder.rook;
-        displayGameState.innerText = displayGameStateText.preGameStartingText;
       } else if (startingKnightCells.includes(startingCellIndex)) {
         mappedCellIds[startingCellIndex].textContent =
           chessMovePlaceHolder.knight;
-        displayGameState.innerText = displayGameStateText.preGameStartingText;
       } else if (startingBishopCells.includes(startingCellIndex)) {
         mappedCellIds[startingCellIndex].textContent =
           chessMovePlaceHolder.bishop;
-        displayGameState.innerText = displayGameStateText.preGameStartingText;
       } else if (startingQueenCells.includes(startingCellIndex)) {
         mappedCellIds[startingCellIndex].textContent =
           chessMovePlaceHolder.queen;
-        displayGameState.innerText = displayGameStateText.preGameStartingText;
       } else if (startingKingCells.includes(startingCellIndex)) {
         mappedCellIds[startingCellIndex].textContent =
           chessMovePlaceHolder.king;
-        displayGameState.innerText = displayGameStateText.preGameStartingText;
-      } else {
-        displayGameState.innerText = displayGameStateText.gameStartingText;
+      } else if (startingEmptyCells.includes(startingCellIndex)) {
+        mappedCellIds[startingCellIndex].textContent = trackGameState.emptyCell;
+      }
 
+      if (
+        mappedCellIds[startingCellIndex].textContent ===
+        trackGameState.emptyCell
+      ) {
+        isStartOfGame;
+        console.log(isStartOfGame);
+        displayGameState.innerText = displayGameStateText.preGameStartingText;
         document.body.appendChild(displayGameState);
       }
-    }
 
+      if (!isStartOfGame) {
+        displayGameState.innerText = displayGameStateText.gameStartingText;
+        console.log("The game has begun!");
+      }
+    }
     return { startingCells };
   };
 
@@ -258,6 +265,103 @@ const chessBoard = () => {
           break;
         case gridCellIds[62]:
           currentlyClickedCell = gridCellIds[62];
+          break;
+        //empty cells at start
+        case gridCellIds[2]:
+          currentlyClickedCell = gridCellIds[2];
+          break;
+        case gridCellIds[3]:
+          currentlyClickedCell = gridCellIds[3];
+          break;
+        case gridCellIds[4]:
+          currentlyClickedCell = gridCellIds[4];
+          break;
+        case gridCellIds[5]:
+          currentlyClickedCell = gridCellIds[5];
+          break;
+        case gridCellIds[10]:
+          currentlyClickedCell = gridCellIds[10];
+          break;
+        case gridCellIds[11]:
+          currentlyClickedCell = gridCellIds[11];
+          break;
+        case gridCellIds[12]:
+          currentlyClickedCell = gridCellIds[12];
+          break;
+        case gridCellIds[13]:
+          currentlyClickedCell = gridCellIds[13];
+          break;
+        case gridCellIds[18]:
+          currentlyClickedCell = gridCellIds[18];
+          break;
+        case gridCellIds[19]:
+          currentlyClickedCell = gridCellIds[19];
+          break;
+        case gridCellIds[20]:
+          currentlyClickedCell = gridCellIds[20];
+          break;
+        case gridCellIds[21]:
+          currentlyClickedCell = gridCellIds[21];
+          break;
+        case gridCellIds[26]:
+          currentlyClickedCell = gridCellIds[26];
+          break;
+        case gridCellIds[27]:
+          currentlyClickedCell = gridCellIds[27];
+          break;
+        case gridCellIds[28]:
+          currentlyClickedCell = gridCellIds[28];
+          break;
+        case gridCellIds[29]:
+          currentlyClickedCell = gridCellIds[29];
+          break;
+        case gridCellIds[34]:
+          currentlyClickedCell = gridCellIds[34];
+          break;
+        case gridCellIds[35]:
+          currentlyClickedCell = gridCellIds[35];
+          break;
+        case gridCellIds[36]:
+          currentlyClickedCell = gridCellIds[36];
+          break;
+        case gridCellIds[37]:
+          currentlyClickedCell = gridCellIds[37];
+          break;
+        case gridCellIds[42]:
+          currentlyClickedCell = gridCellIds[42];
+          break;
+        case gridCellIds[43]:
+          currentlyClickedCell = gridCellIds[43];
+          break;
+        case gridCellIds[44]:
+          currentlyClickedCell = gridCellIds[44];
+          break;
+        case gridCellIds[45]:
+          currentlyClickedCell = gridCellIds[45];
+          break;
+        case gridCellIds[50]:
+          currentlyClickedCell = gridCellIds[50];
+          break;
+        case gridCellIds[51]:
+          currentlyClickedCell = gridCellIds[51];
+          break;
+        case gridCellIds[52]:
+          currentlyClickedCell = gridCellIds[52];
+          break;
+        case gridCellIds[53]:
+          currentlyClickedCell = gridCellIds[53];
+          break;
+        case gridCellIds[58]:
+          currentlyClickedCell = gridCellIds[58];
+          break;
+        case gridCellIds[59]:
+          currentlyClickedCell = gridCellIds[59];
+          break;
+        case gridCellIds[60]:
+          currentlyClickedCell = gridCellIds[60];
+          break;
+        case gridCellIds[61]:
+          currentlyClickedCell = gridCellIds[61];
           break;
       }
 
@@ -444,14 +548,28 @@ const chessBoard = () => {
             gridCellIds[49] ||
             gridCellIds[54] ||
             gridCellIds[57] ||
-            gridCellIds[62] && mappedCellIds[6].textContent && mappedCellIds[9].textContent && mappedCellIds[14].textContent && mappedCellIds[17].textContent && mappedCellIds[22].textContent && mappedCellIds[25].textContent && mappedCellIds[30].textContent && mappedCellIds[33].textContent && mappedCellIds[38].textContent && mappedCellIds[41].textContent && mappedCellIds[46].textContent && mappedCellIds[49].textContent && mappedCellIds[54].textContent && mappedCellIds[57].textContent && mappedCellIds[62].textContent === chessMovePlaceHolder.pawn
+            (gridCellIds[62] &&
+              mappedCellIds[6].textContent &&
+              mappedCellIds[9].textContent &&
+              mappedCellIds[14].textContent &&
+              mappedCellIds[17].textContent &&
+              mappedCellIds[22].textContent &&
+              mappedCellIds[25].textContent &&
+              mappedCellIds[30].textContent &&
+              mappedCellIds[33].textContent &&
+              mappedCellIds[38].textContent &&
+              mappedCellIds[41].textContent &&
+              mappedCellIds[46].textContent &&
+              mappedCellIds[49].textContent &&
+              mappedCellIds[54].textContent &&
+              mappedCellIds[57].textContent &&
+              mappedCellIds[62].textContent === chessMovePlaceHolder.pawn)
           ) {
-            displayGameState.innerText = displayGameStateText.ifPawnIsClicked
+            displayGameState.innerText = displayGameStateText.ifPawnIsClicked;
           }
-
       }
     });
-    return {clickPawnCell}
+    return { clickPawnCell };
   };
 
   const cellColors = (mappedCellIds) => {
