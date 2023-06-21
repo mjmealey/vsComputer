@@ -28,6 +28,7 @@ const chessBoard = () => {
     //first move
     emptyFirstMove: "",
     emptyCell: "",
+    emptyPieceSelection:"",
     pawnFirstMove: "Pawn",
     knightFirstMove: "Knight",
     isFirstMove: true,
@@ -105,9 +106,43 @@ const chessBoard = () => {
     pawnCell54: "Pawn",
     pawnCell57: "Pawn",
     pawnCell62: "Pawn",
+
+    //empty cells at start
+    emptyCell2: "",
+    emptyCell3: "",
+    emptyCell4: "",
+    emptyCell5: "",
+    emptyCell10: "",
+    emptyCell11: "",
+    emptyCell12: "",
+    emptyCell13: "",
+    emptyCell18: "",
+    emptyCell19: "",
+    emptyCell20: "",
+    emptyCell21: "",
+    emptyCell26: "",
+    emptyCell27: "",
+    emptyCell28: "",
+    emptyCell29: "",
+    emptyCell34: "",
+    emptyCell35: "",
+    emptyCell36: "",
+    emptyCell37: "",
+    emptyCell42: "",
+    emptyCell43: "",
+    emptyCell44: "",
+    emptyCell45: "",
+    emptyCell50: "",
+    emptyCell51: "",
+    emptyCell52: "",
+    emptyCell53: "",
+    emptyCell58: "",
+    emptyCell59: "",
+    emptyCell60: "",
+    emptyCell61: "",
   };
 
-  const currentCell = {
+  const currentCellAssignment = {
     a1: "A1",
     a2: "A2",
     a3: "A3",
@@ -153,35 +188,35 @@ const chessBoard = () => {
     e7: "E7",
     e8: "E8",
 
-    f1:"F1",
-    f2:"F2",
-    f3:"F3",
-    f4:"F4",
-    f5:"F5",
-    f6:"F6",
-    f7:"F7",
-    f8:"F8",
+    f1: "F1",
+    f2: "F2",
+    f3: "F3",
+    f4: "F4",
+    f5: "F5",
+    f6: "F6",
+    f7: "F7",
+    f8: "F8",
 
-    g1:"G1",
-    g2:"G2",
-    g3:"G3",
-    g4:"G4",
-    g5:"G5",
-    g6:"G6",
-    g7:"G7",
-    g8:"G8",
+    g1: "G1",
+    g2: "G2",
+    g3: "G3",
+    g4: "G4",
+    g5: "G5",
+    g6: "G6",
+    g7: "G7",
+    g8: "G8",
 
-    h1:"H1",
-    h2:"H2",
-    h3:"H3",
-    h4:"H4",
-    h5:"H5",
-    h6:"H6",
-    h7:"H8",
-    h8:"H8",
+    h1: "H1",
+    h2: "H2",
+    h3: "H3",
+    h4: "H4",
+    h5: "H5",
+    h6: "H6",
+    h7: "H8",
+    h8: "H8",
   };
 
-  let clickedPiece = "";
+  let currentPiece = trackGameState.emptyPieceSelection
   let currentlyClickedCell = "";
   //first move variable
 
@@ -215,41 +250,7 @@ const chessBoard = () => {
   const startingCells = (mappedCellIds) => {
     mappedCellIds = gridCellIds.map((id) => document.getElementById(id));
     let isStartOfGame = true;
-    const startingPawnCells = [
-      1, 6, 9, 14, 17, 22, 25, 30, 33, 38, 41, 46, 49, 54, 57, 62,
-    ];
-    const startingRookCells = [0, 7, 56, 63];
-    const startingKnightCells = [8, 15, 48, 55];
-    const startingBishopCells = [16, 23, 40, 47];
-    const startingQueenCells = [24, 31];
-    const startingKingCells = [32, 39];
-    const startingEmptyCells = [
-      2, 3, 4, 5, 10, 11, 12, 13, 18, 19, 20, 21, 26, 27, 28, 29, 34, 35, 36,
-      37, 42, 43, 44, 45, 50, 51, 52, 53, 58, 59, 60, 61,
-    ];
-    for (
-      let startingCellIndex = 0;
-      startingCellIndex < gridCellIds.length;
-      startingCellIndex++
-    ) {
-      if (startingPawnCells.includes(startingCellIndex)) {
-        mappedCellIds[startingCellIndex].textContent = startingChessPieces.pawn;
-      } else if (startingRookCells.includes(startingCellIndex)) {
-        mappedCellIds[startingCellIndex].textContent = startingChessPieces.rook;
-      } else if (startingKnightCells.includes(startingCellIndex)) {
-        mappedCellIds[startingCellIndex].textContent =
-          startingChessPieces.knight;
-      } else if (startingBishopCells.includes(startingCellIndex)) {
-        mappedCellIds[startingCellIndex].textContent =
-          startingChessPieces.bishop;
-      } else if (startingQueenCells.includes(startingCellIndex)) {
-        mappedCellIds[startingCellIndex].textContent =
-          startingChessPieces.queen;
-      } else if (startingKingCells.includes(startingCellIndex)) {
-        mappedCellIds[startingCellIndex].textContent = startingChessPieces.king;
-      } else if (startingEmptyCells.includes(startingCellIndex)) {
-        mappedCellIds[startingCellIndex].textContent = trackGameState.emptyCell;
-      }
+   const pawnPositions = [PIECE_ASSIGNMENTS.pawnCell1, PIECE_ASSIGNMENTS.pawnCell6, PIECE_ASSIGNMENTS.pawnCell9, PIECE_ASSIGNMENTS.pawnCe]
 
       if (
         mappedCellIds[startingCellIndex].textContent ===
@@ -272,6 +273,8 @@ const chessBoard = () => {
   const clickGridCells = (mappedCellIds) => {
     mappedCellIds = gridCellIds.map((id) => document.getElementById(id));
 
+    let currentCell = trackGameState.emptyCell;
+    let firstPiece = "";
     document.addEventListener("click", (e) => {
       //accesses the contents of each individual cell
       const clickedCell = e.target.id;
@@ -334,7 +337,6 @@ const chessBoard = () => {
           currentlyClickedCell = gridCellIds[39];
           break;
 
-
         //pawn starting cells
         case gridCellIds[1]:
           currentlyClickedCell = gridCellIds[1];
@@ -347,7 +349,7 @@ const chessBoard = () => {
           mappedCellIds[6].textContent = PIECE_ASSIGNMENTS.pawnCell6;
           break;
         case gridCellIds[9]:
-          currentlyClickedCell = gridCellIds[9]
+          currentlyClickedCell = gridCellIds[9];
           mappedCellIds[9].textContent = trackGameState.emptyCell;
           mappedCellIds[9].textContent = PIECE_ASSIGNMENTS.pawnCell9;
           break;
@@ -377,7 +379,7 @@ const chessBoard = () => {
           mappedCellIds[30].textContent = PIECE_ASSIGNMENTS.pawnCell30;
           break;
         case gridCellIds[33]:
-          currentlyClickedCell = gridCellIds[33]
+          currentlyClickedCell = gridCellIds[33];
           mappedCellIds[33].textContent = trackGameState.emptyCell;
           mappedCellIds[33].textContent = PIECE_ASSIGNMENTS.pawnCell33;
           break;
@@ -402,7 +404,7 @@ const chessBoard = () => {
           mappedCellIds[49].textContent = PIECE_ASSIGNMENTS.pawnCell49;
           break;
         case gridCellIds[54]:
-          currentlyClickedCell = gridCellIds[54];0
+          currentlyClickedCell = gridCellIds[54];
           mappedCellIds[54].textContent = trackGameState.emptyCell;
           mappedCellIds[54].textContent = PIECE_ASSIGNMENTS.pawnCell54;
           break;
@@ -419,106 +421,174 @@ const chessBoard = () => {
 
         //empty cells at start
         case gridCellIds[2]:
-          
-
           currentlyClickedCell = gridCellIds[2];
+          currentCell = trackGameState.emptyCell;
+          currentCell = PIECE_ASSIGNMENTS.emptyCell2;
+
           break;
         case gridCellIds[3]:
           currentlyClickedCell = gridCellIds[3];
+          currentCell = trackGameState.emptyCell;
+          currentCell = PIECE_ASSIGNMENTS.emptyCell3;
+
           break;
         case gridCellIds[4]:
           currentlyClickedCell = gridCellIds[4];
+          currentCell = trackGameState.emptyCell;
+          currentCell = PIECE_ASSIGNMENTS.emptyCell4;
+
           break;
         case gridCellIds[5]:
           currentlyClickedCell = gridCellIds[5];
+          currentCell = trackGameState.emptyCell;
+          currentCell = PIECE_ASSIGNMENTS.emptyCell5;
+
           break;
         case gridCellIds[10]:
           currentlyClickedCell = gridCellIds[10];
+          currentCell = trackGameState.emptyCell;
+          currentCell = PIECE_ASSIGNMENTS.emptyCell10;
+
           break;
         case gridCellIds[11]:
           currentlyClickedCell = gridCellIds[11];
+          currentCell = trackGameState.emptyCell;
+          currentCell = PIECE_ASSIGNMENTS.emptyCell11;
+
           break;
         case gridCellIds[12]:
           currentlyClickedCell = gridCellIds[12];
+          currentCell = trackGameState.emptyCell;
+          currentCell = PIECE_ASSIGNMENTS.emptyCell12;
+
           break;
         case gridCellIds[13]:
           currentlyClickedCell = gridCellIds[13];
+          currentCell = trackGameState.emptyCell;
+          currentCell = PIECE_ASSIGNMENTS.emptyCell13;
           break;
         case gridCellIds[18]:
           currentlyClickedCell = gridCellIds[18];
+          currentCell = trackGameState.emptyCell;
+          currentCell = PIECE_ASSIGNMENTS.emptyCell18;
           break;
         case gridCellIds[19]:
           currentlyClickedCell = gridCellIds[19];
+          currentCell = trackGameState.emptyCell;
+          currentCell = PIECE_ASSIGNMENTS.emptyCell19;
           break;
         case gridCellIds[20]:
           currentlyClickedCell = gridCellIds[20];
+          currentCell = trackGameState.emptyCell;
+          currentCell = PIECE_ASSIGNMENTS.emptyCell20;
           break;
         case gridCellIds[21]:
           currentlyClickedCell = gridCellIds[21];
+          currentCell = trackGameState.emptyCell;
+          currentCell = PIECE_ASSIGNMENTS.emptyCell21;
           break;
         case gridCellIds[26]:
           currentlyClickedCell = gridCellIds[26];
+          currentCell = trackGameState.emptyCell;
+          currentCell = PIECE_ASSIGNMENTS.emptyCell26;
           break;
         case gridCellIds[27]:
           currentlyClickedCell = gridCellIds[27];
+          currentCell = trackGameState.emptyCell;
+          currentCell = PIECE_ASSIGNMENTS.emptyCell27;
           break;
         case gridCellIds[28]:
           currentlyClickedCell = gridCellIds[28];
+          currentCell = trackGameState.emptyCell;
+          currentCell = PIECE_ASSIGNMENTS.emptyCell28;
           break;
         case gridCellIds[29]:
           currentlyClickedCell = gridCellIds[29];
+          currentCell = trackGameState.emptyCell;
+          currentCell = PIECE_ASSIGNMENTS.emptyCell29;
           break;
         case gridCellIds[34]:
           currentlyClickedCell = gridCellIds[34];
+          currentCell = trackGameState.emptyCell;
+          currentCell = PIECE_ASSIGNMENTS.emptyCell34;
           break;
         case gridCellIds[35]:
           currentlyClickedCell = gridCellIds[35];
+          currentCell = trackGameState.emptyCell;
+          currentCell = PIECE_ASSIGNMENTS.emptyCell35;
           break;
         case gridCellIds[36]:
           currentlyClickedCell = gridCellIds[36];
+          currentCell = trackGameState.emptyCell;
+          currentCell = PIECE_ASSIGNMENTS.emptyCell36;
           break;
         case gridCellIds[37]:
           currentlyClickedCell = gridCellIds[37];
+          currentCell = trackGameState.emptyCell;
+          currentCell = PIECE_ASSIGNMENTS.emptyCell37;
           break;
         case gridCellIds[42]:
           currentlyClickedCell = gridCellIds[42];
+          currentCell = trackGameState.emptyCell;
+          currentCell = PIECE_ASSIGNMENTS.emptyCell42;
           break;
         case gridCellIds[43]:
           currentlyClickedCell = gridCellIds[43];
+          currentCell = trackGameState.emptyCell;
+          currentCell = PIECE_ASSIGNMENTS.emptyCell43;
           break;
         case gridCellIds[44]:
           currentlyClickedCell = gridCellIds[44];
+          currentCell = trackGameState.emptyCell;
+          currentCell = PIECE_ASSIGNMENTS.emptyCell44;
           break;
         case gridCellIds[45]:
           currentlyClickedCell = gridCellIds[45];
+          currentCell = trackGameState.emptyCell;
+          currentCell = PIECE_ASSIGNMENTS.emptyCell45;
           break;
         case gridCellIds[50]:
           currentlyClickedCell = gridCellIds[50];
+          currentCell = trackGameState.emptyCell;
+          currentCell = PIECE_ASSIGNMENTS.emptyCell50;
           break;
         case gridCellIds[51]:
           currentlyClickedCell = gridCellIds[51];
+          currentCell = trackGameState.emptyCell;
+          currentCell = PIECE_ASSIGNMENTS.emptyCell51;
           break;
         case gridCellIds[52]:
           currentlyClickedCell = gridCellIds[52];
+          currentCell = trackGameState.emptyCell;
+          currentCell = PIECE_ASSIGNMENTS.emptyCell52;
           break;
         case gridCellIds[53]:
           currentlyClickedCell = gridCellIds[53];
+          currentCell = trackGameState.emptyCell;
+          currentCell = PIECE_ASSIGNMENTS.emptyCell53;
           break;
         case gridCellIds[58]:
           currentlyClickedCell = gridCellIds[58];
+          currentCell = trackGameState.emptyCell;
+          currentCell = PIECE_ASSIGNMENTS.emptyCell58;
           break;
         case gridCellIds[59]:
           currentlyClickedCell = gridCellIds[59];
+          currentCell = trackGameState.emptyCell;
+          currentCell = PIECE_ASSIGNMENTS.emptyCell59;
           break;
         case gridCellIds[60]:
           currentlyClickedCell = gridCellIds[60];
+          currentCell = trackGameState.emptyCell;
+          currentCell = PIECE_ASSIGNMENTS.emptyCell60;
           break;
         case gridCellIds[61]:
           currentlyClickedCell = gridCellIds[61];
+          currentCell = trackGameState.emptyCell;
+          currentCell = PIECE_ASSIGNMENTS.emptyCell61;
           break;
       }
-
-     
+      
     });
     return { clickGridCells };
   };
@@ -529,6 +599,7 @@ const chessBoard = () => {
     document.addEventListener("click", (e) => {
       const rookClicks = e.target.id;
       console.log(gridCellIds);
+      
 
       //start of game
       switch (rookClicks) {
@@ -550,6 +621,8 @@ const chessBoard = () => {
               displayGameStateText.ifRookIsClickedAtStart;
           }
           break;
+        case gridCellIds[0]:
+           
       }
     });
     return { clickRookCell };
@@ -664,6 +737,7 @@ const chessBoard = () => {
       const PAWN_CLICKS = e.target.id;
 
       switch (PAWN_CLICKS) {
+        
         case gridCellIds[1]:
         case gridCellIds[6]:
         case gridCellIds[9]:
@@ -697,6 +771,7 @@ const chessBoard = () => {
             gridCellIds[54] ||
             gridCellIds[57] ||
             (gridCellIds[62] &&
+              mappedCellIds[1].textContent &&
               mappedCellIds[6].textContent &&
               mappedCellIds[9].textContent &&
               mappedCellIds[14].textContent &&
@@ -713,12 +788,17 @@ const chessBoard = () => {
               mappedCellIds[57].textContent &&
               mappedCellIds[62].textContent === startingChessPieces.pawn)
           ) {
-            clickedPiece = clickedPieces.emptyPiece;
-            clickedPiece = clickedPieces.currentPawn;
-            console.log(clickedPiece);
+        
             displayGameState.innerText = displayGameStateText.ifPawnIsClicked;
           }
-      }
+          break;
+          }
+          switch(PAWN_CLICKS){
+           case gridCellIds[1]:
+            if(mappedCellIds[1].textContent === startingChessPieces.pawn){
+               
+            }    
+          }
     });
     return { clickPawnCell };
   };
