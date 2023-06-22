@@ -13,13 +13,13 @@ const vsComputer = () => {
   newChessBoard.queenCellAssignments()
   newChessBoard.kingCellAssignments()
   newChessBoard.emptyCellAssignments()
-  newChessBoard.clickGridCells()
   newChessBoard.clickRookCell()
   newChessBoard.clickKnightCell()
   newChessBoard.clickBishopCell()
   newChessBoard.clickQueenCell()
   newChessBoard.clickKingCell()
   newChessBoard.clickPawnCell() 
+  newChessBoard.clickEmptyCell()
 }
 
 
