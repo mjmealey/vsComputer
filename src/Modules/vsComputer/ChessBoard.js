@@ -28,7 +28,7 @@ const chessBoard = () => {
     //first move
     emptyFirstMove: "",
     emptyCell: "",
-    emptyPieceSelection:"",
+    emptyPieceSelection: "",
     pawnFirstMove: "Pawn",
     knightFirstMove: "Knight",
     isFirstMove: true,
@@ -142,81 +142,7 @@ const chessBoard = () => {
     emptyCell61: "",
   };
 
-  const currentCellAssignment = {
-    a1: "A1",
-    a2: "A2",
-    a3: "A3",
-    a4: "A4",
-    a5: "A5",
-    a6: "A6",
-    a7: "A7",
-    a8: "A8",
-
-    b1: "B1",
-    b2: "B2",
-    b3: "B3",
-    b4: "B4",
-    b5: "B5",
-    b6: "B6",
-    b7: "B7",
-    b8: "B8",
-
-    c1: "C1",
-    c2: "C2",
-    c3: "C3",
-    c4: "C4",
-    c5: "C5",
-    c6: "C6",
-    c7: "C7",
-    c8: "C8",
-
-    d1: "D1",
-    d2: "D2",
-    d3: "D3",
-    d4: "D4",
-    d5: "D5",
-    d6: "D6",
-    d7: "D7",
-    d8: "D8",
-
-    e1: "E1",
-    e2: "E2",
-    e3: "E3",
-    e4: "E4",
-    e5: "E5",
-    e6: "E6",
-    e7: "E7",
-    e8: "E8",
-
-    f1: "F1",
-    f2: "F2",
-    f3: "F3",
-    f4: "F4",
-    f5: "F5",
-    f6: "F6",
-    f7: "F7",
-    f8: "F8",
-
-    g1: "G1",
-    g2: "G2",
-    g3: "G3",
-    g4: "G4",
-    g5: "G5",
-    g6: "G6",
-    g7: "G7",
-    g8: "G8",
-
-    h1: "H1",
-    h2: "H2",
-    h3: "H3",
-    h4: "H4",
-    h5: "H5",
-    h6: "H6",
-    h7: "H8",
-    h8: "H8",
-  };
-
-  let currentPiece = trackGameState.emptyPieceSelection
+  let currentPiece = trackGameState.emptyPieceSelection;
   let currentlyClickedCell = "";
   //first move variable
 
@@ -245,29 +171,133 @@ const chessBoard = () => {
         gridCellIds.push(cellsId);
       }
     }
+    return { createChessBoard };
   };
 
-  const startingCells = (mappedCellIds) => {
+  const startOfGame = (mappedCellIds) => {
     mappedCellIds = gridCellIds.map((id) => document.getElementById(id));
-    let isStartOfGame = true;
-   const pawnPositions = [PIECE_ASSIGNMENTS.pawnCell1, PIECE_ASSIGNMENTS.pawnCell6, PIECE_ASSIGNMENTS.pawnCell9, PIECE_ASSIGNMENTS.pawnCe]
-
-      if (
-        mappedCellIds[startingCellIndex].textContent ===
-        trackGameState.emptyCell
-      ) {
-        isStartOfGame;
-        console.log(isStartOfGame);
-        displayGameState.innerText = displayGameStateText.preGameStartingText;
-        document.body.appendChild(displayGameState);
-      }
-
-      if (!isStartOfGame) {
-        displayGameState.innerText = displayGameStateText.gameStartingText;
-        console.log("The game has begun!");
-      }
+    //empty cell assignments
+    if (emptyCellAssignments) {
+      displayGameState.innerText = displayGameStateText.preGameStartingText;
+      document.body.appendChild(displayGameState);
+    } else {
+      displayGameState.innerText = displayGameStateText.gameStartingText;
+      document.body.appendChild(displayGameState);
     }
-    return { startingCells };
+    return { startOfGame };
+  };
+
+  const pawnCellAssignments = (mappedCellIds) => {
+    mappedCellIds = gridCellIds.map((id) => document.getElementById(id));
+
+    mappedCellIds[1].textContent = PIECE_ASSIGNMENTS.pawnCell1;
+    mappedCellIds[6].textContent = PIECE_ASSIGNMENTS.pawnCell6;
+    mappedCellIds[9].textContent = PIECE_ASSIGNMENTS.pawnCell9;
+    mappedCellIds[14].textContent = PIECE_ASSIGNMENTS.pawnCell14;
+    mappedCellIds[17].textContent = PIECE_ASSIGNMENTS.pawnCell17;
+    mappedCellIds[22].textContent = PIECE_ASSIGNMENTS.pawnCell22;
+    mappedCellIds[25].textContent = PIECE_ASSIGNMENTS.pawnCell25;
+    mappedCellIds[30].textContent = PIECE_ASSIGNMENTS.pawnCell30;
+    mappedCellIds[33].textContent = PIECE_ASSIGNMENTS.pawnCell33;
+    mappedCellIds[38].textContent = PIECE_ASSIGNMENTS.pawnCell38;
+    mappedCellIds[41].textContent = PIECE_ASSIGNMENTS.pawnCell41;
+    mappedCellIds[46].textContent = PIECE_ASSIGNMENTS.pawnCell46;
+    mappedCellIds[49].textContent = PIECE_ASSIGNMENTS.pawnCell49;
+    mappedCellIds[54].textContent = PIECE_ASSIGNMENTS.pawnCell54;
+    mappedCellIds[57].textContent = PIECE_ASSIGNMENTS.pawnCell57;
+    mappedCellIds[62].textContent = PIECE_ASSIGNMENTS.pawnCell62;
+
+    return { pawnCellAssignments };
+  };
+
+  const rookCellAssignments = (mappedCellIds) => {
+    mappedCellIds = gridCellIds.map((id) => document.getElementById(id));
+
+    mappedCellIds[0].textContent = PIECE_ASSIGNMENTS.rookCell0;
+    mappedCellIds[7].textContent = PIECE_ASSIGNMENTS.rookCell7;
+    mappedCellIds[56].textContent = PIECE_ASSIGNMENTS.rookCell56;
+    mappedCellIds[63].textContent = PIECE_ASSIGNMENTS.rookCell63;
+
+    return { rookCellAssignments };
+  };
+
+  const knightCellAssignments = (mappedCellIds) => {
+    mappedCellIds = gridCellIds.map((id) => document.getElementById(id));
+
+    mappedCellIds[8].textContent = PIECE_ASSIGNMENTS.knightCell8;
+    mappedCellIds[15].textContent = PIECE_ASSIGNMENTS.knightCell15;
+    mappedCellIds[48].textContent = PIECE_ASSIGNMENTS.knightCell48;
+    mappedCellIds[55].textContent = PIECE_ASSIGNMENTS.knightCell55;
+
+    return { knightCellAssignments };
+  };
+
+  const bishopCellAssignments = (mappedCellIds) => {
+    mappedCellIds = gridCellIds.map((id) => document.getElementById(id));
+
+    mappedCellIds[16].textContent = PIECE_ASSIGNMENTS.bishopCell16;
+    mappedCellIds[23].textContent = PIECE_ASSIGNMENTS.bishopCell23;
+    mappedCellIds[40].textContent = PIECE_ASSIGNMENTS.bishopCell40;
+    mappedCellIds[47].textContent = PIECE_ASSIGNMENTS.bishopCell47;
+
+    return { bishopCellAssignments };
+  };
+
+  const queenCellAssignments = (mappedCellIds) => {
+    mappedCellIds = gridCellIds.map((id) => document.getElementById(id));
+
+    mappedCellIds[24].textContent = PIECE_ASSIGNMENTS.queenCell24;
+    mappedCellIds[31].textContent = PIECE_ASSIGNMENTS.queenCell31;
+
+    return { queenCellAssignments };
+  };
+
+  const kingCellAssignments = (mappedCellIds) => {
+    mappedCellIds = gridCellIds.map((id) => document.getElementById(id));
+
+    mappedCellIds[32].textContent = PIECE_ASSIGNMENTS.kingCell32;
+    mappedCellIds[39].textContent = PIECE_ASSIGNMENTS.kingCell39;
+
+    return { kingCellAssignments };
+  };
+
+  const emptyCellAssignments = (mappedCellIds) => {
+    mappedCellIds = gridCellIds.map((id) => document.getElementById(id));
+
+    mappedCellIds[2].textContent = PIECE_ASSIGNMENTS.emptyCell2;
+    mappedCellIds[3].textContent = PIECE_ASSIGNMENTS.emptyCell3;
+    mappedCellIds[4].textContent = PIECE_ASSIGNMENTS.emptyCell4;
+    mappedCellIds[5].textContent = PIECE_ASSIGNMENTS.emptyCell5;
+    mappedCellIds[10].textContent = PIECE_ASSIGNMENTS.emptyCell10;
+    mappedCellIds[11].textContent = PIECE_ASSIGNMENTS.emptyCell11;
+    mappedCellIds[12].textContent = PIECE_ASSIGNMENTS.emptyCell12;
+    mappedCellIds[13].textContent = PIECE_ASSIGNMENTS.emptyCell13;
+    mappedCellIds[18].textContent = PIECE_ASSIGNMENTS.emptyCell18;
+    mappedCellIds[19].textContent = PIECE_ASSIGNMENTS.emptyCell19;
+    mappedCellIds[20].textContent = PIECE_ASSIGNMENTS.emptyCell20;
+    mappedCellIds[21].textContent = PIECE_ASSIGNMENTS.emptyCell21;
+    mappedCellIds[26].textContent = PIECE_ASSIGNMENTS.emptyCell26;
+    mappedCellIds[27].textContent = PIECE_ASSIGNMENTS.emptyCell27;
+    mappedCellIds[28].textContent = PIECE_ASSIGNMENTS.emptyCell28;
+    mappedCellIds[29].textContent = PIECE_ASSIGNMENTS.emptyCell29;
+    mappedCellIds[34].textContent = PIECE_ASSIGNMENTS.emptyCell34;
+    mappedCellIds[35].textContent = PIECE_ASSIGNMENTS.emptyCell35;
+    mappedCellIds[36].textContent = PIECE_ASSIGNMENTS.emptyCell36;
+    mappedCellIds[37].textContent = PIECE_ASSIGNMENTS.emptyCell37;
+    mappedCellIds[42].textContent = PIECE_ASSIGNMENTS.emptyCell42;
+    mappedCellIds[43].textContent = PIECE_ASSIGNMENTS.emptyCell43;
+    mappedCellIds[44].textContent = PIECE_ASSIGNMENTS.emptyCell44;
+    mappedCellIds[45].textContent = PIECE_ASSIGNMENTS.emptyCell45;
+    mappedCellIds[50].textContent = PIECE_ASSIGNMENTS.emptyCell50;
+    mappedCellIds[51].textContent = PIECE_ASSIGNMENTS.emptyCell51;
+    mappedCellIds[52].textContent = PIECE_ASSIGNMENTS.emptyCell52;
+    mappedCellIds[53].textContent = PIECE_ASSIGNMENTS.emptyCell53;
+    mappedCellIds[58].textContent = PIECE_ASSIGNMENTS.emptyCell58;
+    mappedCellIds[59].textContent = PIECE_ASSIGNMENTS.emptyCell59;
+    mappedCellIds[60].textContent = PIECE_ASSIGNMENTS.emptyCell60;
+    mappedCellIds[61].textContent = PIECE_ASSIGNMENTS.emptyCell61;
+
+    return { emptyCellAssignments };
   };
 
   const clickGridCells = (mappedCellIds) => {
@@ -340,8 +370,7 @@ const chessBoard = () => {
         //pawn starting cells
         case gridCellIds[1]:
           currentlyClickedCell = gridCellIds[1];
-          mappedCellIds[1].textContent = trackGameState.emptyCell;
-          mappedCellIds[1].textContent = PIECE_ASSIGNMENTS.pawnCell1;
+
           break;
         case gridCellIds[6]:
           currentlyClickedCell = gridCellIds[6];
@@ -588,7 +617,6 @@ const chessBoard = () => {
           currentCell = PIECE_ASSIGNMENTS.emptyCell61;
           break;
       }
-      
     });
     return { clickGridCells };
   };
@@ -599,7 +627,6 @@ const chessBoard = () => {
     document.addEventListener("click", (e) => {
       const rookClicks = e.target.id;
       console.log(gridCellIds);
-      
 
       //start of game
       switch (rookClicks) {
@@ -622,7 +649,6 @@ const chessBoard = () => {
           }
           break;
         case gridCellIds[0]:
-           
       }
     });
     return { clickRookCell };
@@ -737,7 +763,6 @@ const chessBoard = () => {
       const PAWN_CLICKS = e.target.id;
 
       switch (PAWN_CLICKS) {
-        
         case gridCellIds[1]:
         case gridCellIds[6]:
         case gridCellIds[9]:
@@ -788,17 +813,15 @@ const chessBoard = () => {
               mappedCellIds[57].textContent &&
               mappedCellIds[62].textContent === startingChessPieces.pawn)
           ) {
-        
             displayGameState.innerText = displayGameStateText.ifPawnIsClicked;
           }
           break;
+      }
+      switch (PAWN_CLICKS) {
+        case gridCellIds[1]:
+          if (mappedCellIds[1].textContent === startingChessPieces.pawn) {
           }
-          switch(PAWN_CLICKS){
-           case gridCellIds[1]:
-            if(mappedCellIds[1].textContent === startingChessPieces.pawn){
-               
-            }    
-          }
+      }
     });
     return { clickPawnCell };
   };
@@ -1008,7 +1031,14 @@ const chessBoard = () => {
     chessBoard,
     createChessBoard,
     cellColors,
-    startingCells,
+    startOfGame,
+    pawnCellAssignments,
+    rookCellAssignments,
+    knightCellAssignments,
+    bishopCellAssignments,
+    queenCellAssignments,
+    kingCellAssignments,
+    emptyCellAssignments,
     clickRookCell,
     clickKnightCell,
     clickBishopCell,
