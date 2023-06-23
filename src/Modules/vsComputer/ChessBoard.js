@@ -64,22 +64,70 @@ const chessBoard = () => {
 
   const PAWN_ASSIGNMENTS = {
     //starting pawn positions
-    pawnCell1: "Pawn",
-    pawnCell6: "Pawn",
-    pawnCell9: "Pawn",
-    pawnCell14: "Pawn",
-    pawnCell17: "Pawn",
-    pawnCell22: "Pawn",
-    pawnCell25: "Pawn",
-    pawnCell30: "Pawn",
-    pawnCell33: "Pawn",
-    pawnCell38: "Pawn",
-    pawnCell41: "Pawn",
-    pawnCell46: "Pawn",
-    pawnCell49: "Pawn",
-    pawnCell54: "Pawn",
-    pawnCell57: "Pawn",
-    pawnCell62: "Pawn",
+    pawnCell1: {
+      pieceName: "Pawn",
+      pawnCellNum: 1,
+    },
+    pawnCell6: {
+      pieceName: "Pawn",
+      pawnCellNum: 2,
+    },
+    pawnCell9: {
+      pieceName: "Pawn",
+      pawnCellNum: 9,
+    },
+    pawnCell14: {
+      pieceName: "Pawn",
+      pawnCellNum: 14,
+    },
+    pawnCell17: {
+      pieceName: "Pawn",
+      pawnCellNum: 17,
+    },
+    pawnCell22: {
+      pieceName: "Pawn",
+      pawnCellNum: 22,
+    },
+    pawnCell25: {
+      pieceName: "Pawn",
+      pawnCellNum: 25,
+    },
+    pawnCell30: {
+      pieceName: "Pawn",
+      pawnCellNum: 30,
+    },
+    pawnCell33: {
+      pieceName: "Pawn",
+      pawnCellNum: 33,
+    },
+    pawnCell38: {
+      pieceName: "Pawn",
+      pawnCellNum: 38,
+    },
+    pawnCell41: {
+      pieceName: "Pawn",
+      pawnCellNum: 41,
+    },
+    pawnCell46: {
+      pieceName: "Pawn",
+      pawnCellNum: 46,
+    },
+    pawnCell49: {
+      pieceName: "Pawn",
+      pawnCellNum: 49,
+    },
+    pawnCell54: {
+      pieceName: "Pawn",
+      pawnCellNum: 54,
+    },
+    pawnCell57: {
+      pieceName: "Pawn",
+      pawnCellNum: 57,
+    },
+    pawnCell62: {
+      pieceName: "Pawn",
+      pawnCellNum: 62,
+    },
   };
 
   const ROOK_ASSIGNMENTS = {
@@ -206,22 +254,22 @@ const chessBoard = () => {
   const pawnCellAssignments = (mappedCellIds) => {
     mappedCellIds = gridCellIds.map((id) => document.getElementById(id));
 
-    mappedCellIds[1].textContent = PAWN_ASSIGNMENTS.pawnCell1;
-    mappedCellIds[6].textContent = PAWN_ASSIGNMENTS.pawnCell6;
-    mappedCellIds[9].textContent = PAWN_ASSIGNMENTS.pawnCell9;
-    mappedCellIds[14].textContent = PAWN_ASSIGNMENTS.pawnCell14;
-    mappedCellIds[17].textContent = PAWN_ASSIGNMENTS.pawnCell17;
-    mappedCellIds[22].textContent = PAWN_ASSIGNMENTS.pawnCell22;
-    mappedCellIds[25].textContent = PAWN_ASSIGNMENTS.pawnCell25;
-    mappedCellIds[30].textContent = PAWN_ASSIGNMENTS.pawnCell30;
-    mappedCellIds[33].textContent = PAWN_ASSIGNMENTS.pawnCell33;
-    mappedCellIds[38].textContent = PAWN_ASSIGNMENTS.pawnCell38;
-    mappedCellIds[41].textContent = PAWN_ASSIGNMENTS.pawnCell41;
-    mappedCellIds[46].textContent = PAWN_ASSIGNMENTS.pawnCell46;
-    mappedCellIds[49].textContent = PAWN_ASSIGNMENTS.pawnCell49;
-    mappedCellIds[54].textContent = PAWN_ASSIGNMENTS.pawnCell54;
-    mappedCellIds[57].textContent = PAWN_ASSIGNMENTS.pawnCell57;
-    mappedCellIds[62].textContent = PAWN_ASSIGNMENTS.pawnCell62;
+    mappedCellIds[1].textContent = PAWN_ASSIGNMENTS.pawnCell1.pieceName;
+    mappedCellIds[6].textContent = PAWN_ASSIGNMENTS.pawnCell6.pieceName;
+    mappedCellIds[9].textContent = PAWN_ASSIGNMENTS.pawnCell9.pieceName;
+    mappedCellIds[14].textContent = PAWN_ASSIGNMENTS.pawnCell14.pieceName;
+    mappedCellIds[17].textContent = PAWN_ASSIGNMENTS.pawnCell17.pieceName;
+    mappedCellIds[22].textContent = PAWN_ASSIGNMENTS.pawnCell22.pieceName;
+    mappedCellIds[25].textContent = PAWN_ASSIGNMENTS.pawnCell25.pieceName;
+    mappedCellIds[30].textContent = PAWN_ASSIGNMENTS.pawnCell30.pieceName;
+    mappedCellIds[33].textContent = PAWN_ASSIGNMENTS.pawnCell33.pieceName;
+    mappedCellIds[38].textContent = PAWN_ASSIGNMENTS.pawnCell38.pieceName;
+    mappedCellIds[41].textContent = PAWN_ASSIGNMENTS.pawnCell41.pieceName;
+    mappedCellIds[46].textContent = PAWN_ASSIGNMENTS.pawnCell46.pieceName;
+    mappedCellIds[49].textContent = PAWN_ASSIGNMENTS.pawnCell49.pieceName;
+    mappedCellIds[54].textContent = PAWN_ASSIGNMENTS.pawnCell54.pieceName;
+    mappedCellIds[57].textContent = PAWN_ASSIGNMENTS.pawnCell57.pieceName;
+    mappedCellIds[62].textContent = PAWN_ASSIGNMENTS.pawnCell62.pieceName;
 
     return { pawnCellAssignments };
   };
@@ -459,114 +507,129 @@ const chessBoard = () => {
 
       switch (PAWN_CLICKS) {
         case gridCellIds[1]:
-          if (mappedCellIds[1].textContent === PAWN_ASSIGNMENTS.pawnCell1) {
+          if (mappedCellIds[1].textContent === PAWN_ASSIGNMENTS.pawnCell1.pieceName) {
             currentPawn = trackGameState.emptyPieceSelection;
-            currentPawn = PAWN_ASSIGNMENTS.pawnCell1;
+            currentPawn = PAWN_ASSIGNMENTS.pawnCell1.pawnCellNum;
             console.log(currentPawn);
             displayGameState.innerText = displayGameStateText.ifPawnIsClicked;
           }
           break;
         case gridCellIds[6]:
-          if (mappedCellIds[6].textContent === PAWN_ASSIGNMENTS.pawnCell6) {
+          if (mappedCellIds[6].textContent === PAWN_ASSIGNMENTS.pawnCell6.pieceName) {
+            
             currentPawn = trackGameState.emptyPieceSelection;
-            currentPawn = PAWN_ASSIGNMENTS.pawnCell6;
+            currentPawn = PAWN_ASSIGNMENTS.pawnCell6.pawnCellNum;
             displayGameState.innerText = displayGameStateText.ifPawnIsClicked;
           }
           break;
         case gridCellIds[9]:
-          if (mappedCellIds[9].textContent === PAWN_ASSIGNMENTS.pawnCell9) {
+          if (mappedCellIds[9].textContent === PAWN_ASSIGNMENTS.pawnCell9.pieceName) {
+            
             currentPawn = trackGameState.emptyPieceSelection;
-            currentPawn = PAWN_ASSIGNMENTS.pawnCell9;
+            currentPawn = PAWN_ASSIGNMENTS.pawnCell9.pawnCellNum;
             displayGameState.innerText = displayGameStateText.ifPawnIsClicked;
           }
           break;
         case gridCellIds[14]:
-          if (mappedCellIds[14].textContent === PAWN_ASSIGNMENTS.pawnCell14) {
+          if (mappedCellIds[14].textContent === PAWN_ASSIGNMENTS.pawnCell14.pieceName) {
+            
             currentPawn = trackGameState.emptyPieceSelection;
-            currentPawn = PAWN_ASSIGNMENTS.pawnCell14;
+            currentPawn = PAWN_ASSIGNMENTS.pawnCell14.pawnCellNum;
             displayGameState.innerText = displayGameStateText.ifPawnIsClicked;
           }
           break;
         case gridCellIds[17]:
-          if (mappedCellIds[17].textContent === PAWN_ASSIGNMENTS.pawnCell17) {
+          if (mappedCellIds[17].textContent === PAWN_ASSIGNMENTS.pawnCell17.pieceName) {
+            
             currentPawn = trackGameState.emptyPieceSelection;
-            currentPawn = PAWN_ASSIGNMENTS.pawnCell17;
+            currentPawn = PAWN_ASSIGNMENTS.pawnCell17.pawnCellNum;
             displayGameState.innerText = displayGameStateText.ifPawnIsClicked;
           }
           break;
         case gridCellIds[22]:
-          if (mappedCellIds[22].textContent === PAWN_ASSIGNMENTS.pawnCell22) {
+          if (mappedCellIds[22].textContent === PAWN_ASSIGNMENTS.pawnCell22.pieceName) {
+            
             currentPawn = trackGameState.emptyPieceSelection;
-            currentPawn = PAWN_ASSIGNMENTS.pawnCell22;
+            currentPawn = PAWN_ASSIGNMENTS.pawnCell22.pawnCellNum;
             displayGameState.innerText = displayGameStateText.ifPawnIsClicked;
           }
           break;
         case gridCellIds[25]:
-          if (mappedCellIds[25].textContent === PAWN_ASSIGNMENTS.pawnCell25) {
+          if (mappedCellIds[25].textContent === PAWN_ASSIGNMENTS.pawnCell25.pieceName) {
+            
             currentPawn = trackGameState.emptyPieceSelection;
-            currentPawn = PAWN_ASSIGNMENTS.pawnCell25;
+            currentPawn = PAWN_ASSIGNMENTS.pawnCell25.pawnCellNum;
             displayGameState.innerText = displayGameStateText.ifPawnIsClicked;
           }
           break;
         case gridCellIds[30]:
-          if (mappedCellIds[30].textContent === PAWN_ASSIGNMENTS.pawnCell30) {
+          if (mappedCellIds[30].textContent === PAWN_ASSIGNMENTS.pawnCell30.pieceName) {
+            
             currentPawn = trackGameState.emptyPieceSelection;
-            currentPawn = PAWN_ASSIGNMENTS.pawnCell30;
+            currentPawn = PAWN_ASSIGNMENTS.pawnCell30.pawnCellNum;
             displayGameState.innerText = displayGameStateText.ifPawnIsClicked;
           }
           break;
         case gridCellIds[33]:
-          if (mappedCellIds[33].textContent === PAWN_ASSIGNMENTS.pawnCell33) {
+          if (mappedCellIds[33].textContent === PAWN_ASSIGNMENTS.pawnCell33.pieceName) {
+            
             currentPawn = trackGameState.emptyPieceSelection;
-            currentPawn = PAWN_ASSIGNMENTS.pawnCell33;
+            currentPawn = PAWN_ASSIGNMENTS.pawnCell33.pawnCellNum;
             displayGameState.innerText = displayGameStateText.ifPawnIsClicked;
           }
           break;
         case gridCellIds[38]:
-          if (mappedCellIds[38].textContent === PAWN_ASSIGNMENTS.pawnCell38) {
+          if (mappedCellIds[38].textContent === PAWN_ASSIGNMENTS.pawnCell38.pieceName) {
+            
             currentPawn = trackGameState.emptyPieceSelection;
-            currentPawn = PAWN_ASSIGNMENTS.pawnCell38;
+            currentPawn = PAWN_ASSIGNMENTS.pawnCell38.pawnCellNum;
             displayGameState.innerText = displayGameStateText.ifPawnIsClicked;
           }
           break;
         case gridCellIds[41]:
-          if (mappedCellIds[41].textContent === PAWN_ASSIGNMENTS.pawnCell41) {
+          if (mappedCellIds[41].textContent === PAWN_ASSIGNMENTS.pawnCell41.pieceName) {
+            
             currentPawn = trackGameState.emptyPieceSelection;
-            currentPawn = PAWN_ASSIGNMENTS.pawnCell41;
+            currentPawn = PAWN_ASSIGNMENTS.pawnCell41.pawnCellNum;
             displayGameState.innerText = displayGameStateText.ifPawnIsClicked;
           }
           break;
         case gridCellIds[46]:
-          if (mappedCellIds[46].textContent === PAWN_ASSIGNMENTS.pawnCell46) {
+          if (mappedCellIds[46].textContent === PAWN_ASSIGNMENTS.pawnCell46.pieceName) {
+            
             currentPawn = trackGameState.emptyPieceSelection;
-            currentPawn = PAWN_ASSIGNMENTS.pawnCell46;
+            currentPawn = PAWN_ASSIGNMENTS.pawnCell46.pawnCellNum;
             displayGameState.innerText = displayGameStateText.ifPawnIsClicked;
           }
           break;
         case gridCellIds[49]:
-          if (mappedCellIds[49].textContent === PAWN_ASSIGNMENTS.pawnCell49) {
+          if (mappedCellIds[49].textContent === PAWN_ASSIGNMENTS.pawnCell49.pieceName) {
+            
             currentPawn = trackGameState.emptyPieceSelection;
-            currentPawn = PAWN_ASSIGNMENTS.pawnCell49;
+            currentPawn = PAWN_ASSIGNMENTS.pawnCell49.pawnCellNum;
             displayGameState.innerText = displayGameStateText.ifPawnIsClicked;
           }
           break;
         case gridCellIds[54]:
-          if (mappedCellIds[54].textContent === PAWN_ASSIGNMENTS.pawnCell54) {
+          if (mappedCellIds[54].textContent === PAWN_ASSIGNMENTS.pawnCell54.pieceName) {
+            
             currentPawn = trackGameState.emptyPieceSelection;
-            currentPawn = PAWN_ASSIGNMENTS.pawnCell54;
+            currentPawn = PAWN_ASSIGNMENTS.pawnCell54.pawnCellNum;
             displayGameState.innerText = displayGameStateText.ifPawnIsClicked;
           }
         case gridCellIds[57]:
-          if (mappedCellIds[57].textContent === PAWN_ASSIGNMENTS.pawnCell57) {
+          if (mappedCellIds[57].textContent === PAWN_ASSIGNMENTS.pawnCell57.pieceName) {
+            
             currentPawn = trackGameState.emptyPieceSelection;
-            currentPawn = PAWN_ASSIGNMENTS.pawnCell57;
+            currentPawn = PAWN_ASSIGNMENTS.pawnCell57.pawnCellNum;
             displayGameState.innerText = displayGameStateText.ifPawnIsClicked;
           }
           break;
         case gridCellIds[62]:
-          if (mappedCellIds[62].textContent === PAWN_ASSIGNMENTS.pawnCell62) {
+          if (mappedCellIds[62].textContent === PAWN_ASSIGNMENTS.pawnCell62.pieceName) {
+            
             currentPawn = trackGameState.emptyPieceSelection;
-            currentPawn = PAWN_ASSIGNMENTS.pawnCell62;
+            currentPawn = PAWN_ASSIGNMENTS.pawnCell62.pawnCellNum;
             displayGameState.innerText = displayGameStateText.ifPawnIsClicked;
           }
           break;
@@ -593,10 +656,10 @@ const chessBoard = () => {
           if (
             mappedCellIds[2].textContent ===
               EMPTY_CELL_ASSIGNMENTS.emptyCell2 &&
-            currentPawn === PAWN_ASSIGNMENTS.pawnCell1
+            currentPawn === PAWN_ASSIGNMENTS.pawnCell1.pawnCellNum
           ) {
             mappedCellIds[1].textContent = trackGameState.emptyCell;
-            mappedCellIds[2].textContent = currentPawn;
+            mappedCellIds[2].textContent = PAWN_ASSIGNMENTS.pawnCell1.pieceName;
             currentPawn = trackGameState.emptyPieceSelection;
           }
 
@@ -613,10 +676,10 @@ const chessBoard = () => {
           if (
             mappedCellIds[3].textContent ===
               EMPTY_CELL_ASSIGNMENTS.emptyCell3 &&
-            currentPawn === PAWN_ASSIGNMENTS.pawnCell1
+            currentPawn === PAWN_ASSIGNMENTS.pawnCell1.pawnCellNum
           ) {
             mappedCellIds[1].textContent = trackGameState.emptyCell;
-            mappedCellIds[3].textContent = PAWN_ASSIGNMENTS.pawnCell1;
+            mappedCellIds[3].textContent = PAWN_ASSIGNMENTS.pawnCell1.pieceName;
             currentPawn = trackGameState.emptyPieceSelection;
           }
 
@@ -631,10 +694,10 @@ const chessBoard = () => {
           if (
             mappedCellIds[4].textContent ===
               EMPTY_CELL_ASSIGNMENTS.emptyCell4 &&
-            currentPawn === PAWN_ASSIGNMENTS.pawnCell6
+            currentPawn === PAWN_ASSIGNMENTS.pawnCell6.pawnCellNum
           ) {
             mappedCellIds[6].textContent = trackGameState.emptyCell;
-            mappedCellIds[4].textContent = currentPawn;
+            mappedCellIds[4].textContent = PAWN_ASSIGNMENTS.pawnCell6.pieceName;
             currentPawn = trackGameState.emptyPieceSelection;
           }
           break;
@@ -648,10 +711,10 @@ const chessBoard = () => {
           if (
             mappedCellIds[5].textContent ===
               EMPTY_CELL_ASSIGNMENTS.emptyCell5 &&
-            currentPawn === PAWN_ASSIGNMENTS.pawnCell6
+            currentPawn === PAWN_ASSIGNMENTS.pawnCell6.pawnCellNum
           ) {
             mappedCellIds[6].textContent = trackGameState.emptyCell;
-            mappedCellIds[5].textContent = currentPawn;
+            mappedCellIds[5].textContent = PAWN_ASSIGNMENTS.pawnCell6.pieceName;
             currentPawn = trackGameState.emptyPieceSelection;
           }
           break;
@@ -665,10 +728,10 @@ const chessBoard = () => {
           if (
             mappedCellIds[10].textContent ===
               EMPTY_CELL_ASSIGNMENTS.emptyCell12 &&
-            currentPawn === PAWN_ASSIGNMENTS.pawnCell9
+            currentPawn === PAWN_ASSIGNMENTS.pawnCell9.pawnCellNum
           ) {
             mappedCellIds[9].textContent = trackGameState.emptyCell;
-            mappedCellIds[10].textContent = currentPawn;
+            mappedCellIds[10].textContent = PAWN_ASSIGNMENTS.pawnCell9.pieceName;
             currentPawn = trackGameState.emptyPieceSelection;
           }
 
@@ -683,10 +746,10 @@ const chessBoard = () => {
           if (
             mappedCellIds[11].textContent ===
               EMPTY_CELL_ASSIGNMENTS.emptyCell11 &&
-            currentPawn === PAWN_ASSIGNMENTS.pawnCell9
+            currentPawn === PAWN_ASSIGNMENTS.pawnCell9.pawnCellNum
           ) {
             mappedCellIds[9].textContent = trackGameState.emptyCell;
-            mappedCellIds[11].textContent = currentPawn;
+            mappedCellIds[11].textContent = PAWN_ASSIGNMENTS.pawnCell11.pieceName;
           }
           break;
         case gridCellIds[12]:
@@ -699,7 +762,7 @@ const chessBoard = () => {
           if (
             mappedCellIds[12].textContent ===
               EMPTY_CELL_ASSIGNMENTS.emptyCell12 &&
-            currentPawn === PAWN_ASSIGNMENTS.pawnCell14
+            currentPawn === PAWN_ASSIGNMENTS.pawnCell14.pawnCellNum
           ) {
             mappedCellIds[14].textContent = trackGameState.emptyPieceSelection;
             mappedCellIds[12].textContent = currentPawn;
@@ -716,10 +779,10 @@ const chessBoard = () => {
           if (
             mappedCellIds[13].textContent ===
               EMPTY_CELL_ASSIGNMENTS.emptyCell13 &&
-            currentPawn === PAWN_ASSIGNMENTS.pawnCell14
+            currentPawn === PAWN_ASSIGNMENTS.pawnCell14.pawnCellNum
           ) {
             mappedCellIds[14].textContent = trackGameState.emptyCell;
-            mappedCellIds[13].textContent = currentPawn;
+            mappedCellIds[13].textContent = PAWN_ASSIGNMENTS.pawnCell14.pieceName;
             currentPawn = trackGameState.emptyPieceSelection;
           }
           break;
@@ -733,10 +796,10 @@ const chessBoard = () => {
           if (
             mappedCellIds[18].textContent ===
               EMPTY_CELL_ASSIGNMENTS.emptyCell18 &&
-            currentPawn === PAWN_ASSIGNMENTS.pawnCell17
+            currentPawn === PAWN_ASSIGNMENTS.pawnCell17.pawnCellNum
           ) {
             mappedCellIds[17].textContent = trackGameState.emptyCell;
-            mappedCellIds[18].textContent = currentPawn;
+            mappedCellIds[18].textContent = PAWN_ASSIGNMENTS.pawnCell17.pieceName
             currentPawn = trackGameState.emptyPieceSelection;
           }
           break;
@@ -750,10 +813,10 @@ const chessBoard = () => {
           if (
             mappedCellIds[19].textContent ===
               EMPTY_CELL_ASSIGNMENTS.emptyCell19 &&
-            currentPawn === PAWN_ASSIGNMENTS.pawnCell17
+            currentPawn === PAWN_ASSIGNMENTS.pawnCell17.pawnCellNum
           ) {
             mappedCellIds[17].textContent = trackGameState.emptyCell;
-            mappedCellIds[19].textContent = currentPawn;
+            mappedCellIds[19].textContent = PAWN_ASSIGNMENTS.pawnCell17.pieceName;
             currentPawn = trackGameState.emptyPieceSelection;
           }
           break;
@@ -767,10 +830,10 @@ const chessBoard = () => {
           if (
             mappedCellIds[20].textContent ===
               EMPTY_CELL_ASSIGNMENTS.emptyCell20 &&
-            currentPawn === PAWN_ASSIGNMENTS.pawnCell22
+            currentPawn === PAWN_ASSIGNMENTS.pawnCell22.pawnCellNum
           ) {
             mappedCellIds[22].textContent = trackGameState.emptyCell;
-            mappedCellIds[20].textContent = currentPawn;
+            mappedCellIds[20].textContent = PAWN_ASSIGNMENTS.pawnCell22.pieceName;
             currentPawn = trackGameState.emptyPieceSelection;
           }
           break;
@@ -784,10 +847,10 @@ const chessBoard = () => {
           if (
             mappedCellIds[21].textContent ===
               EMPTY_CELL_ASSIGNMENTS.emptyCell21 &&
-            currentPawn === PAWN_ASSIGNMENTS.pawnCell22
+            currentPawn === PAWN_ASSIGNMENTS.pawnCell22.pawnCellNum
           ) {
             mappedCellIds[22].textContent = trackGameState.emptyCell;
-            mappedCellIds[21].textContent = currentPawn;
+            mappedCellIds[21].textContent = PAWN_ASSIGNMENTS.pawnCell22.pieceName;
             currentPawn = trackGameState.emptyPieceSelection;
           }
           break;
@@ -801,10 +864,10 @@ const chessBoard = () => {
           if (
             mappedCellIds[26].textContent ===
               EMPTY_CELL_ASSIGNMENTS.emptyCell26 &&
-            currentPawn === PAWN_ASSIGNMENTS.pawnCell25
+            currentPawn === PAWN_ASSIGNMENTS.pawnCell25.pawnCellNum
           ) {
             mappedCellIds[25].textContent = trackGameState.emptyCell;
-            mappedCellIds[26].textContent = currentPawn;
+            mappedCellIds[26].textContent = PAWN_ASSIGNMENTS.pawnCell25.pieceName;
             currentPawn = trackGameState.emptyPieceSelection;
           }
           break;
@@ -818,10 +881,10 @@ const chessBoard = () => {
           if (
             mappedCellIds[27].textContent ===
               EMPTY_CELL_ASSIGNMENTS.emptyCell27 &&
-            currentPawn === PAWN_ASSIGNMENTS.pawnCell25
+            currentPawn === PAWN_ASSIGNMENTS.pawnCell25.pawnCellNum
           ) {
             mappedCellIds[25].textContent = trackGameState.emptyCell;
-            mappedCellIds[27].textContent = currentPawn;
+            mappedCellIds[27].textContent = PAWN_ASSIGNMENTS.pawnCell25.pieceName;
             currentPawn = trackGameState.emptyPieceSelection;
           }
           break;
@@ -835,11 +898,11 @@ const chessBoard = () => {
           if (
             mappedCellIds[28].textContent ===
               EMPTY_CELL_ASSIGNMENTS.emptyCell28 &&
-            currentPawn === PAWN_ASSIGNMENTS.pawnCell30
+            currentPawn === PAWN_ASSIGNMENTS.pawnCell30.pawnCellNum
           ) {
             mappedCellIds[30].textContent = trackGameState.emptyCell;
-            mappedCellIds[28].textContent = currentPawn;
-            currentPawn = trackGameState.emptyFirstMove;
+            mappedCellIds[28].textContent = PAWN_ASSIGNMENTS.pawnCell30.pieceName;
+            currentPawn = trackGameState.emptyPieceSelection;
           }
           break;
         case gridCellIds[29]:
@@ -852,10 +915,10 @@ const chessBoard = () => {
           if (
             mappedCellIds[29].textContent ===
               EMPTY_CELL_ASSIGNMENTS.emptyCell29 &&
-            currentPawn === PAWN_ASSIGNMENTS.pawnCell30
+            currentPawn === PAWN_ASSIGNMENTS.pawnCell30.pawnCellNum
           ) {
             mappedCellIds[30].textContent = trackGameState.emptyCell;
-            mappedCellIds[29].textContent = currentPawn;
+            mappedCellIds[29].textContent = PAWN_ASSIGNMENTS.pawnCell30.pieceName;
             currentPawn = trackGameState.emptyPieceSelection;
           }
           break;
@@ -869,10 +932,10 @@ const chessBoard = () => {
           if (
             mappedCellIds[34].textContent ===
               EMPTY_CELL_ASSIGNMENTS.emptyCell34 &&
-            currentPawn === PAWN_ASSIGNMENTS.pawnCell33
+            currentPawn === PAWN_ASSIGNMENTS.pawnCell33.pawnCellNum
           ) {
             mappedCellIds[33].textContent = trackGameState.emptyCell;
-            mappedCellIds[34].textContent = currentPawn;
+            mappedCellIds[34].textContent = PAWN_ASSIGNMENTS.pawnCell33.pieceName;
             currentPawn = trackGameState.emptyPieceSelection;
           }
           break;
@@ -886,10 +949,10 @@ const chessBoard = () => {
           if (
             mappedCellIds[35].textContent ===
               EMPTY_CELL_ASSIGNMENTS.emptyCell35 &&
-            currentPawn === PAWN_ASSIGNMENTS.pawnCell33
+            currentPawn === PAWN_ASSIGNMENTS.pawnCell33.pawnCellNum
           ) {
             mappedCellIds[33].textContent = trackGameState.emptyCell;
-            mappedCellIds[35].textContent = currentPawn;
+            mappedCellIds[35].textContent = PAWN_ASSIGNMENTS.pawnCell33.pieceName;
             currentPawn = trackGameState.emptyPieceSelection;
           }
           break;
@@ -903,10 +966,10 @@ const chessBoard = () => {
           if (
             mappedCellIds[36].textContent ===
               EMPTY_CELL_ASSIGNMENTS.emptyCell36 &&
-            currentPawn === PAWN_ASSIGNMENTS.pawnCell38
+            currentPawn === PAWN_ASSIGNMENTS.pawnCell38.pawnCellNum
           ) {
             mappedCellIds[38].textContent = trackGameState.emptyCell;
-            mappedCellIds[36].textContent = currentPawn;
+            mappedCellIds[36].textContent = PAWN_ASSIGNMENTS.pawnCell38.pieceName;
             currentPawn = trackGameState.emptyPieceSelection;
           }
           break;
@@ -920,10 +983,10 @@ const chessBoard = () => {
           if (
             mappedCellIds[37].textContent ===
               EMPTY_CELL_ASSIGNMENTS.emptyCell37 &&
-            currentPawn === PAWN_ASSIGNMENTS.pawnCell38
+            currentPawn === PAWN_ASSIGNMENTS.pawnCell38.pawnCellNum
           ) {
             mappedCellIds[38].textContent = trackGameState.emptyCell;
-            mappedCellIds[37].textContent = currentPawn;
+            mappedCellIds[37].textContent = PAWN_ASSIGNMENTS.pawnCell38.pieceName;
             currentPawn = trackGameState.emptyPieceSelection;
           }
           break;
@@ -937,10 +1000,10 @@ const chessBoard = () => {
           if (
             mappedCellIds[42].textContent ===
               EMPTY_CELL_ASSIGNMENTS.emptyCell42 &&
-            currentPawn === PAWN_ASSIGNMENTS.pawnCell41
+            currentPawn === PAWN_ASSIGNMENTS.pawnCell41.pawnCellNum
           ) {
             mappedCellIds[41].textContent = trackGameState.emptyCell;
-            mappedCellIds[42].textContent = currentPawn;
+            mappedCellIds[42].textContent = PAWN_ASSIGNMENTS.pawnCell41.pieceName;
             currentPawn = trackGameState.emptyPieceSelection;
           }
           break;
@@ -970,10 +1033,10 @@ const chessBoard = () => {
           if (
             mappedCellIds[45].textContent ===
               EMPTY_CELL_ASSIGNMENTS.emptyCell45 &&
-            currentPawn === PAWN_ASSIGNMENTS.pawnCell46
+            currentPawn === PAWN_ASSIGNMENTS.pawnCell46.pawnCellNum
           ) {
             mappedCellIds[46].textContent = trackGameState.emptyCell;
-            mappedCellIds[45].textContent = currentPawn;
+            mappedCellIds[45].textContent = PAWN_ASSIGNMENTS.pawnCell46.pieceName;
             currentPawn = trackGameState.emptyPieceSelection;
           }
           break;
@@ -987,10 +1050,10 @@ const chessBoard = () => {
           if (
             mappedCellIds[50].textContent ===
               EMPTY_CELL_ASSIGNMENTS.emptyCell50 &&
-            currentPawn === PAWN_ASSIGNMENTS.pawnCell49
+            currentPawn === PAWN_ASSIGNMENTS.pawnCell49.pawnCellNum
           ) {
             mappedCellIds[49].textContent = trackGameState.emptyCell;
-            mappedCellIds[50].textContent = currentPawn;
+            mappedCellIds[50].textContent = PAWN_ASSIGNMENTS.pawnCell49.pieceName;
             currentPawn = trackGameState.emptyPieceSelection;
           }
 
@@ -1005,10 +1068,10 @@ const chessBoard = () => {
           if (
             mappedCellIds[51].textContent ===
               EMPTY_CELL_ASSIGNMENTS.emptyCell51 &&
-            currentPawn === PAWN_ASSIGNMENTS.pawnCell49
+            currentPawn === PAWN_ASSIGNMENTS.pawnCell49.pawnCellNum
           ) {
             mappedCellIds[49].textContent = trackGameState.emptyCell;
-            mappedCellIds[51].textContent = currentPawn;
+            mappedCellIds[51].textContent = PAWN_ASSIGNMENTS.pawnCell49.pieceName;
             currentPawn = trackGameState.emptyPieceSelection;
           }
           break;
@@ -1022,10 +1085,10 @@ const chessBoard = () => {
           if (
             mappedCellIds[52].textContent ===
               EMPTY_CELL_ASSIGNMENTS.emptyCell52 &&
-            currentPawn === PAWN_ASSIGNMENTS.pawnCell54
+            currentPawn === PAWN_ASSIGNMENTS.pawnCell54.pawnCellNum
           ) {
             mappedCellIds[54].textContent = trackGameState.emptyCell;
-            mappedCellIds[52].textContent = currentPawn;
+            mappedCellIds[52].textContent = PAWN_ASSIGNMENTS.pawnCell54.pieceName;
             currentPawn = trackGameState.emptyPieceSelection;
           }
           break;
@@ -1039,10 +1102,10 @@ const chessBoard = () => {
           if (
             mappedCellIds[53].textContent ===
               EMPTY_CELL_ASSIGNMENTS.emptyCell53 &&
-            currentPawn === PAWN_ASSIGNMENTS.pawnCell54
+            currentPawn === PAWN_ASSIGNMENTS.pawnCell54.pawnCellNum
           ) {
             mappedCellIds[54].textContent = trackGameState.emptyCell;
-            mappedCellIds[53].textContent = currentPawn;
+            mappedCellIds[53].textContent = PAWN_ASSIGNMENTS.pawnCell54.pieceName;
             currentPawn = trackGameState.emptyCell;
           }
           break;
@@ -1056,10 +1119,10 @@ const chessBoard = () => {
           if (
             mappedCellIds[58].textContent ===
               EMPTY_CELL_ASSIGNMENTS.emptyCell58 &&
-            currentPawn === PAWN_ASSIGNMENTS.pawnCell57
+            currentPawn === PAWN_ASSIGNMENTS.pawnCell57.pawnCellNum
           ) {
             mappedCellIds[57].textContent = trackGameState.emptyCell;
-            mappedCellIds[58].textContent = currentPawn;
+            mappedCellIds[58].textContent = PAWN_ASSIGNMENTS.pawnCell57.pieceName;
             currentPawn = trackGameState.emptyPieceSelection;
           }
           break;
@@ -1074,10 +1137,10 @@ const chessBoard = () => {
           if (
             mappedCellIds[59].textContent ===
               EMPTY_CELL_ASSIGNMENTS.emptyCell59 &&
-            currentPawn === PAWN_ASSIGNMENTS.pawnCell57
+            currentPawn === PAWN_ASSIGNMENTS.pawnCell57.pawnCellNum
           ) {
             mappedCellIds[57].textContent = trackGameState.emptyCell;
-            mappedCellIds[59].textContent = currentPawn;
+            mappedCellIds[59].textContent = PAWN_ASSIGNMENTS.pawnCell57.pieceName;
             currentPawn = trackGameState.emptyPieceSelection;
           }
           break;
@@ -1088,23 +1151,31 @@ const chessBoard = () => {
             currentEmptyCell = trackGameState.emptyCell;
             currentEmptyCell = EMPTY_CELL_ASSIGNMENTS.emptyCell60;
           }
-          if(mappedCellIds[60].textContent === EMPTY_CELL_ASSIGNMENTS.emptyCell60 && currentPawn === PAWN_ASSIGNMENTS.pawnCell62){
-            mappedCellIds[62].textContent = trackGameState.emptyCell
-            mappedCellIds[60].textContent = currentPawn
-            currentPawn = trackGameState.emptyPieceSelection
+          if (
+            mappedCellIds[60].textContent ===
+              EMPTY_CELL_ASSIGNMENTS.emptyCell60 &&
+            currentPawn === PAWN_ASSIGNMENTS.pawnCell62.pawnCellNum
+          ) {
+            mappedCellIds[62].textContent = trackGameState.emptyCell;
+            mappedCellIds[60].textContent = PAWN_ASSIGNMENTS.pawnCell62.pieceName;
+            currentPawn = trackGameState.emptyPieceSelection;
           }
         case gridCellIds[61]:
           if (
-            mappedCellIds[61].textContent === EMPTY_CELL_ASSIGNMENTS.emptyCell61
+            mappedCellIds[61].textContent === EMPTY_CELL_ASSIGNMENTS.emptyCell61.pawnCellNum
           ) {
             currentEmptyCell = trackGameState.emptyCell;
             currentEmptyCell = EMPTY_CELL_ASSIGNMENTS.emptyCell61;
           }
-          if(mappedCellIds[61].textContent === EMPTY_CELL_ASSIGNMENTS.emptyCell61 && currentPawn === PAWN_ASSIGNMENTS.pawnCell62){
-            mappedCellIds[62].textContent = trackGameState.emptyCell
-            mappedCellIds[61].textContent = currentPawn
-            currentPawn = trackGameState.emptyPieceSelection
-          } 
+          if (
+            mappedCellIds[61].textContent ===
+              EMPTY_CELL_ASSIGNMENTS.emptyCell61 &&
+            currentPawn === PAWN_ASSIGNMENTS.pawnCell62.pawnCellNum
+          ) {
+            mappedCellIds[62].textContent = trackGameState.emptyCell;
+            mappedCellIds[61].textContent = PAWN_ASSIGNMENTS.pawnCell62.pieceName;
+            currentPawn = trackGameState.emptyPieceSelection;
+          }
       }
     });
     return { clickEmptyCell };
