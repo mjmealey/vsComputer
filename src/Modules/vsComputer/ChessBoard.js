@@ -154,13 +154,11 @@ const chessBoard = () => {
     emptyCell61: "",
   };
 
-  const PIECE_ASSIGNMENTS = {
-    //empty cells at start
-  };
-
   let currentPiece = trackGameState.emptyPieceSelection;
-  let currentPawn = trackGameState.emptyPieceSelection
+  let currentPawn = trackGameState.emptyPieceSelection;
   let currentlyClickedCell = "";
+  let firstPiece = "";
+  let firstPawn = "";
   //first move variable
 
   const displayGameState = document.createElement(
@@ -464,7 +462,7 @@ const chessBoard = () => {
           if (mappedCellIds[1].textContent === PAWN_ASSIGNMENTS.pawnCell1) {
             currentPawn = trackGameState.emptyPieceSelection;
             currentPawn = PAWN_ASSIGNMENTS.pawnCell1;
-            console.log(currentPawn)
+            console.log(currentPawn);
             displayGameState.innerText = displayGameStateText.ifPawnIsClicked;
           }
           break;
@@ -590,16 +588,20 @@ const chessBoard = () => {
           ) {
             currentEmptyCell = trackGameState.emptyCell;
             currentEmptyCell = EMPTY_CELL_ASSIGNMENTS.emptyCell2;
-          } 
-          if(mappedCellIds[2].textContent === EMPTY_CELL_ASSIGNMENTS.emptyCell2 && currentPawn === PAWN_ASSIGNMENTS.pawnCell1){
-            mappedCellIds[1].textContent = trackGameState.emptyPieceSelection
-            mappedCellIds[2].textContent = PAWN_ASSIGNMENTS.pawnCell1
           }
-          
+          //allows for the farthest left pawn to move from its cell to the next cell
+          if (
+            mappedCellIds[2].textContent ===
+              EMPTY_CELL_ASSIGNMENTS.emptyCell2 &&
+            currentPawn === PAWN_ASSIGNMENTS.pawnCell1
+          ) {
+            mappedCellIds[1].textContent = trackGameState.emptyCell;
+            mappedCellIds[2].textContent = currentPawn;
+            currentPawn = trackGameState.emptyPieceSelection;
+          }
+
           break;
-          default:
-        }
-          switch(EMPTY_CELL_CLICKS){
+
         case gridCellIds[3]:
           if (
             mappedCellIds[3].textContent === EMPTY_CELL_ASSIGNMENTS.emptyCell3
@@ -607,7 +609,17 @@ const chessBoard = () => {
             currentEmptyCell = trackGameState.emptyCell;
             currentEmptyCell = EMPTY_CELL_ASSIGNMENTS.emptyCell3;
           }
-          
+
+          if (
+            mappedCellIds[3].textContent ===
+              EMPTY_CELL_ASSIGNMENTS.emptyCell3 &&
+            currentPawn === PAWN_ASSIGNMENTS.pawnCell1
+          ) {
+            mappedCellIds[1].textContent = trackGameState.emptyCell;
+            mappedCellIds[3].textContent = PAWN_ASSIGNMENTS.pawnCell1;
+            currentPawn = trackGameState.emptyPieceSelection;
+          }
+
           break;
         case gridCellIds[4]:
           if (
@@ -615,6 +627,15 @@ const chessBoard = () => {
           ) {
             currentEmptyCell = trackGameState.emptyCell;
             currentEmptyCell = EMPTY_CELL_ASSIGNMENTS.emptyCell4;
+          }
+          if (
+            mappedCellIds[4].textContent ===
+              EMPTY_CELL_ASSIGNMENTS.emptyCell4 &&
+            currentPawn === PAWN_ASSIGNMENTS.pawnCell6
+          ) {
+            mappedCellIds[6].textContent = trackGameState.emptyCell;
+            mappedCellIds[4].textContent = currentPawn;
+            currentPawn = trackGameState.emptyPieceSelection;
           }
           break;
         case gridCellIds[5]:
@@ -624,6 +645,15 @@ const chessBoard = () => {
             currentEmptyCell = trackGameState.emptyCell;
             currentEmptyCell = EMPTY_CELL_ASSIGNMENTS.emptyCell5;
           }
+          if (
+            mappedCellIds[5].textContent ===
+              EMPTY_CELL_ASSIGNMENTS.emptyCell5 &&
+            currentPawn === PAWN_ASSIGNMENTS.pawnCell6
+          ) {
+            mappedCellIds[6].textContent = trackGameState.emptyCell;
+            mappedCellIds[5].textContent = currentPawn;
+            currentPawn = trackGameState.emptyPieceSelection;
+          }
           break;
         case gridCellIds[10]:
           if (
@@ -632,6 +662,16 @@ const chessBoard = () => {
             currentEmptyCell = trackGameState.emptyCell;
             currentEmptyCell = EMPTY_CELL_ASSIGNMENTS.emptyCell10;
           }
+          if (
+            mappedCellIds[10].textContent ===
+              EMPTY_CELL_ASSIGNMENTS.emptyCell12 &&
+            currentPawn === PAWN_ASSIGNMENTS.pawnCell9
+          ) {
+            mappedCellIds[9].textContent = trackGameState.emptyCell;
+            mappedCellIds[10].textContent = currentPawn;
+            currentPawn = trackGameState.emptyPieceSelection;
+          }
+
           break;
         case gridCellIds[11]:
           if (
@@ -639,6 +679,14 @@ const chessBoard = () => {
           ) {
             currentEmptyCell = trackGameState.emptyCell;
             currentEmptyCell = EMPTY_CELL_ASSIGNMENTS.emptyCell11;
+          }
+          if (
+            mappedCellIds[11].textContent ===
+              EMPTY_CELL_ASSIGNMENTS.emptyCell11 &&
+            currentPawn === PAWN_ASSIGNMENTS.pawnCell9
+          ) {
+            mappedCellIds[9].textContent = trackGameState.emptyCell;
+            mappedCellIds[11].textContent = currentPawn;
           }
           break;
         case gridCellIds[12]:
@@ -648,6 +696,15 @@ const chessBoard = () => {
             currentEmptyCell = trackGameState.emptyCell;
             currentEmptyCell = EMPTY_CELL_ASSIGNMENTS.emptyCell12;
           }
+          if (
+            mappedCellIds[12].textContent ===
+              EMPTY_CELL_ASSIGNMENTS.emptyCell12 &&
+            currentPawn === PAWN_ASSIGNMENTS.pawnCell14
+          ) {
+            mappedCellIds[14].textContent = trackGameState.emptyPieceSelection;
+            mappedCellIds[12].textContent = currentPawn;
+            currentPawn = trackGameState.emptyPieceSelection;
+          }
           break;
         case gridCellIds[13]:
           if (
@@ -655,6 +712,15 @@ const chessBoard = () => {
           ) {
             currentEmptyCell = trackGameState.emptyCell;
             currentEmptyCell = EMPTY_CELL_ASSIGNMENTS.emptyCell13;
+          }
+          if (
+            mappedCellIds[13].textContent ===
+              EMPTY_CELL_ASSIGNMENTS.emptyCell13 &&
+            currentPawn === PAWN_ASSIGNMENTS.pawnCell14
+          ) {
+            mappedCellIds[14].textContent = trackGameState.emptyCell;
+            mappedCellIds[13].textContent = currentPawn;
+            currentPawn = trackGameState.emptyPieceSelection;
           }
           break;
         case gridCellIds[18]:
@@ -664,6 +730,15 @@ const chessBoard = () => {
             currentEmptyCell = trackGameState.emptyCell;
             currentEmptyCell = EMPTY_CELL_ASSIGNMENTS.emptyCell18;
           }
+          if (
+            mappedCellIds[18].textContent ===
+              EMPTY_CELL_ASSIGNMENTS.emptyCell18 &&
+            currentPawn === PAWN_ASSIGNMENTS.pawnCell17
+          ) {
+            mappedCellIds[17].textContent = trackGameState.emptyCell;
+            mappedCellIds[18].textContent = currentPawn;
+            currentPawn = trackGameState.emptyPieceSelection;
+          }
           break;
         case gridCellIds[19]:
           if (
@@ -671,6 +746,15 @@ const chessBoard = () => {
           ) {
             currentEmptyCell = trackGameState.emptyCell;
             currentEmptyCell = EMPTY_CELL_ASSIGNMENTS.emptyCell19;
+          }
+          if (
+            mappedCellIds[19].textContent ===
+              EMPTY_CELL_ASSIGNMENTS.emptyCell19 &&
+            currentPawn === PAWN_ASSIGNMENTS.pawnCell17
+          ) {
+            mappedCellIds[17].textContent = trackGameState.emptyCell;
+            mappedCellIds[19].textContent = currentPawn;
+            currentPawn = trackGameState.emptyPieceSelection;
           }
           break;
         case gridCellIds[20]:
@@ -680,6 +764,15 @@ const chessBoard = () => {
             currentEmptyCell = trackGameState.emptyCell;
             currentEmptyCell = EMPTY_CELL_ASSIGNMENTS.emptyCell20;
           }
+          if (
+            mappedCellIds[20].textContent ===
+              EMPTY_CELL_ASSIGNMENTS.emptyCell20 &&
+            currentPawn === PAWN_ASSIGNMENTS.pawnCell22
+          ) {
+            mappedCellIds[22].textContent = trackGameState.emptyCell;
+            mappedCellIds[20].textContent = currentPawn;
+            currentPawn = trackGameState.emptyPieceSelection;
+          }
           break;
         case gridCellIds[21]:
           if (
@@ -687,6 +780,15 @@ const chessBoard = () => {
           ) {
             currentEmptyCell = trackGameState.emptyCell;
             currentEmptyCell = EMPTY_CELL_ASSIGNMENTS.emptyCell20;
+          }
+          if (
+            mappedCellIds[21].textContent ===
+              EMPTY_CELL_ASSIGNMENTS.emptyCell21 &&
+            currentPawn === PAWN_ASSIGNMENTS.pawnCell22
+          ) {
+            mappedCellIds[22].textContent = trackGameState.emptyCell;
+            mappedCellIds[21].textContent = currentPawn;
+            currentPawn = trackGameState.emptyPieceSelection;
           }
           break;
         case gridCellIds[26]:
@@ -696,6 +798,15 @@ const chessBoard = () => {
             currentEmptyCell = trackGameState.emptyCell;
             currentEmptyCell = EMPTY_CELL_ASSIGNMENTS.emptyCell26;
           }
+          if (
+            mappedCellIds[26].textContent ===
+              EMPTY_CELL_ASSIGNMENTS.emptyCell26 &&
+            currentPawn === PAWN_ASSIGNMENTS.pawnCell25
+          ) {
+            mappedCellIds[25].textContent = trackGameState.emptyCell;
+            mappedCellIds[26].textContent = currentPawn;
+            currentPawn = trackGameState.emptyPieceSelection;
+          }
           break;
         case gridCellIds[27]:
           if (
@@ -703,6 +814,15 @@ const chessBoard = () => {
           ) {
             currentEmptyCell = trackGameState.emptyCell;
             currentEmptyCell = EMPTY_CELL_ASSIGNMENTS.emptyCell27;
+          }
+          if (
+            mappedCellIds[27].textContent ===
+              EMPTY_CELL_ASSIGNMENTS.emptyCell27 &&
+            currentPawn === PAWN_ASSIGNMENTS.pawnCell25
+          ) {
+            mappedCellIds[25].textContent = trackGameState.emptyCell;
+            mappedCellIds[27].textContent = currentPawn;
+            currentPawn = trackGameState.emptyPieceSelection;
           }
           break;
         case gridCellIds[28]:
@@ -712,6 +832,15 @@ const chessBoard = () => {
             currentEmptyCell = trackGameState.emptyCell;
             currentEmptyCell = EMPTY_CELL_ASSIGNMENTS.emptyCell28;
           }
+          if (
+            mappedCellIds[28].textContent ===
+              EMPTY_CELL_ASSIGNMENTS.emptyCell28 &&
+            currentPawn === PAWN_ASSIGNMENTS.pawnCell30
+          ) {
+            mappedCellIds[30].textContent = trackGameState.emptyCell;
+            mappedCellIds[28].textContent = currentPawn;
+            currentPawn = trackGameState.emptyFirstMove;
+          }
           break;
         case gridCellIds[29]:
           if (
@@ -719,6 +848,15 @@ const chessBoard = () => {
           ) {
             currentEmptyCell = trackGameState.emptyCell;
             currentEmptyCell = EMPTY_CELL_ASSIGNMENTS.emptyCell29;
+          }
+          if (
+            mappedCellIds[29].textContent ===
+              EMPTY_CELL_ASSIGNMENTS.emptyCell29 &&
+            currentPawn === PAWN_ASSIGNMENTS.pawnCell30
+          ) {
+            mappedCellIds[30].textContent = trackGameState.emptyCell;
+            mappedCellIds[29].textContent = currentPawn;
+            currentPawn = trackGameState.emptyPieceSelection;
           }
           break;
         case gridCellIds[34]:
@@ -728,6 +866,15 @@ const chessBoard = () => {
             currentEmptyCell = trackGameState.emptyCell;
             currentEmptyCell = EMPTY_CELL_ASSIGNMENTS.emptyCell34;
           }
+          if (
+            mappedCellIds[34].textContent ===
+              EMPTY_CELL_ASSIGNMENTS.emptyCell34 &&
+            currentPawn === PAWN_ASSIGNMENTS.pawnCell33
+          ) {
+            mappedCellIds[33].textContent = trackGameState.emptyCell;
+            mappedCellIds[34].textContent = currentPawn;
+            currentPawn = trackGameState.emptyPieceSelection;
+          }
           break;
         case gridCellIds[35]:
           if (
@@ -735,6 +882,15 @@ const chessBoard = () => {
           ) {
             currentEmptyCell = trackGameState.emptyCell;
             currentEmptyCell = EMPTY_CELL_ASSIGNMENTS.emptyCell35;
+          }
+          if (
+            mappedCellIds[35].textContent ===
+              EMPTY_CELL_ASSIGNMENTS.emptyCell35 &&
+            currentPawn === PAWN_ASSIGNMENTS.pawnCell33
+          ) {
+            mappedCellIds[33].textContent = trackGameState.emptyCell;
+            mappedCellIds[35].textContent = currentPawn;
+            currentPawn = trackGameState.emptyPieceSelection;
           }
           break;
         case gridCellIds[36]:
@@ -744,6 +900,15 @@ const chessBoard = () => {
             currentEmptyCell = trackGameState.emptyCell;
             currentEmptyCell = EMPTY_CELL_ASSIGNMENTS.emptyCell36;
           }
+          if (
+            mappedCellIds[36].textContent ===
+              EMPTY_CELL_ASSIGNMENTS.emptyCell36 &&
+            currentPawn === PAWN_ASSIGNMENTS.pawnCell38
+          ) {
+            mappedCellIds[38].textContent = trackGameState.emptyCell;
+            mappedCellIds[36].textContent = currentPawn;
+            currentPawn = trackGameState.emptyPieceSelection;
+          }
           break;
         case gridCellIds[37]:
           if (
@@ -752,6 +917,15 @@ const chessBoard = () => {
             currentEmptyCell = trackGameState.emptyCell;
             currentEmptyCell = EMPTY_CELL_ASSIGNMENTS.emptyCell37;
           }
+          if (
+            mappedCellIds[37].textContent ===
+              EMPTY_CELL_ASSIGNMENTS.emptyCell37 &&
+            currentPawn === PAWN_ASSIGNMENTS.pawnCell38
+          ) {
+            mappedCellIds[38].textContent = trackGameState.emptyCell;
+            mappedCellIds[37].textContent = currentPawn;
+            currentPawn = trackGameState.emptyPieceSelection;
+          }
           break;
         case gridCellIds[42]:
           if (
@@ -759,6 +933,15 @@ const chessBoard = () => {
           ) {
             currentEmptyCell = trackGameState.emptyCell;
             currentEmptyCell = EMPTY_CELL_ASSIGNMENTS.emptyCell42;
+          }
+          if (
+            mappedCellIds[42].textContent ===
+              EMPTY_CELL_ASSIGNMENTS.emptyCell42 &&
+            currentPawn === PAWN_ASSIGNMENTS.pawnCell41
+          ) {
+            mappedCellIds[41].textContent = trackGameState.emptyCell;
+            mappedCellIds[42].textContent = currentPawn;
+            currentPawn = trackGameState.emptyPieceSelection;
           }
           break;
         case gridCellIds[43]:
@@ -784,6 +967,15 @@ const chessBoard = () => {
             currentEmptyCell = trackGameState.emptyCell;
             currentEmptyCell = EMPTY_CELL_ASSIGNMENTS.emptyCell45;
           }
+          if (
+            mappedCellIds[45].textContent ===
+              EMPTY_CELL_ASSIGNMENTS.emptyCell45 &&
+            currentPawn === PAWN_ASSIGNMENTS.pawnCell46
+          ) {
+            mappedCellIds[46].textContent = trackGameState.emptyCell;
+            mappedCellIds[45].textContent = currentPawn;
+            currentPawn = trackGameState.emptyPieceSelection;
+          }
           break;
         case gridCellIds[50]:
           if (
@@ -792,6 +984,16 @@ const chessBoard = () => {
             currentEmptyCell = trackGameState.emptyCell;
             currentEmptyCell = EMPTY_CELL_ASSIGNMENTS.emptyCell50;
           }
+          if (
+            mappedCellIds[50].textContent ===
+              EMPTY_CELL_ASSIGNMENTS.emptyCell50 &&
+            currentPawn === PAWN_ASSIGNMENTS.pawnCell49
+          ) {
+            mappedCellIds[49].textContent = trackGameState.emptyCell;
+            mappedCellIds[50].textContent = currentPawn;
+            currentPawn = trackGameState.emptyPieceSelection;
+          }
+
           break;
         case gridCellIds[51]:
           if (
@@ -799,6 +1001,15 @@ const chessBoard = () => {
           ) {
             currentEmptyCell = trackGameState.emptyCell;
             currentEmptyCell = EMPTY_CELL_ASSIGNMENTS.emptyCell51;
+          }
+          if (
+            mappedCellIds[51].textContent ===
+              EMPTY_CELL_ASSIGNMENTS.emptyCell51 &&
+            currentPawn === PAWN_ASSIGNMENTS.pawnCell49
+          ) {
+            mappedCellIds[49].textContent = trackGameState.emptyCell;
+            mappedCellIds[51].textContent = currentPawn;
+            currentPawn = trackGameState.emptyPieceSelection;
           }
           break;
         case gridCellIds[52]:
@@ -808,6 +1019,15 @@ const chessBoard = () => {
             currentEmptyCell = trackGameState.emptyCell;
             currentEmptyCell = EMPTY_CELL_ASSIGNMENTS.emptyCell52;
           }
+          if (
+            mappedCellIds[52].textContent ===
+              EMPTY_CELL_ASSIGNMENTS.emptyCell52 &&
+            currentPawn === PAWN_ASSIGNMENTS.pawnCell54
+          ) {
+            mappedCellIds[54].textContent = trackGameState.emptyCell;
+            mappedCellIds[52].textContent = currentPawn;
+            currentPawn = trackGameState.emptyPieceSelection;
+          }
           break;
         case gridCellIds[53]:
           if (
@@ -815,6 +1035,15 @@ const chessBoard = () => {
           ) {
             currentEmptyCell = trackGameState.emptyCell;
             currentEmptyCell = EMPTY_CELL_ASSIGNMENTS.emptyCell53;
+          }
+          if (
+            mappedCellIds[53].textContent ===
+              EMPTY_CELL_ASSIGNMENTS.emptyCell53 &&
+            currentPawn === PAWN_ASSIGNMENTS.pawnCell54
+          ) {
+            mappedCellIds[54].textContent = trackGameState.emptyCell;
+            mappedCellIds[53].textContent = currentPawn;
+            currentPawn = trackGameState.emptyCell;
           }
           break;
         case gridCellIds[58]:
@@ -824,6 +1053,15 @@ const chessBoard = () => {
             currentEmptyCell = trackGameState.emptyCell;
             currentEmptyCell = EMPTY_CELL_ASSIGNMENTS.emptyCell58;
           }
+          if (
+            mappedCellIds[58].textContent ===
+              EMPTY_CELL_ASSIGNMENTS.emptyCell58 &&
+            currentPawn === PAWN_ASSIGNMENTS.pawnCell57
+          ) {
+            mappedCellIds[57].textContent = trackGameState.emptyCell;
+            mappedCellIds[58].textContent = currentPawn;
+            currentPawn = trackGameState.emptyPieceSelection;
+          }
           break;
         case gridCellIds[59]:
           if (
@@ -831,6 +1069,16 @@ const chessBoard = () => {
           ) {
             currentEmptyCell = trackGameState.emptyCell;
             currentEmptyCell = EMPTY_CELL_ASSIGNMENTS.emptyCell59;
+          }
+
+          if (
+            mappedCellIds[59].textContent ===
+              EMPTY_CELL_ASSIGNMENTS.emptyCell59 &&
+            currentPawn === PAWN_ASSIGNMENTS.pawnCell57
+          ) {
+            mappedCellIds[57].textContent = trackGameState.emptyCell;
+            mappedCellIds[59].textContent = currentPawn;
+            currentPawn = trackGameState.emptyPieceSelection;
           }
           break;
         case gridCellIds[60]:
@@ -840,6 +1088,11 @@ const chessBoard = () => {
             currentEmptyCell = trackGameState.emptyCell;
             currentEmptyCell = EMPTY_CELL_ASSIGNMENTS.emptyCell60;
           }
+          if(mappedCellIds[60].textContent === EMPTY_CELL_ASSIGNMENTS.emptyCell60 && currentPawn === PAWN_ASSIGNMENTS.pawnCell62){
+            mappedCellIds[62].textContent = trackGameState.emptyCell
+            mappedCellIds[60].textContent = currentPawn
+            currentPawn = trackGameState.emptyPieceSelection
+          }
         case gridCellIds[61]:
           if (
             mappedCellIds[61].textContent === EMPTY_CELL_ASSIGNMENTS.emptyCell61
@@ -847,6 +1100,11 @@ const chessBoard = () => {
             currentEmptyCell = trackGameState.emptyCell;
             currentEmptyCell = EMPTY_CELL_ASSIGNMENTS.emptyCell61;
           }
+          if(mappedCellIds[61].textContent === EMPTY_CELL_ASSIGNMENTS.emptyCell61 && currentPawn === PAWN_ASSIGNMENTS.pawnCell62){
+            mappedCellIds[62].textContent = trackGameState.emptyCell
+            mappedCellIds[61].textContent = currentPawn
+            currentPawn = trackGameState.emptyPieceSelection
+          } 
       }
     });
     return { clickEmptyCell };
