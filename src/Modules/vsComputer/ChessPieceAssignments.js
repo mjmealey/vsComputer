@@ -12,18 +12,16 @@ import {
 } from "./assignmentObjects.js";
 
 import {
-    displayGameStateTextObject,
-    trackGameStateObject
-} from "./gameStateObjects.js"
+  displayGameStateTextObject,
+  trackGameStateObject,
+} from "./gameStateObjects.js";
 
 const displayGameState = document.createElement(
-    displayGameStateTextObject.textElement
-  );
-    document.body.appendChild(displayGameState)
+  displayGameStateTextObject.textElement
+);
+document.body.appendChild(displayGameState);
 
 const ChessPieceAssignments = () => {
-
-
   let currentPiece = trackGameStateObject.emptyPieceSelection;
   let currentPawn = trackGameStateObject.emptyPieceSelection;
   let currentPawnPiece = trackGameStateObject.emptyPieceSelection;
@@ -32,13 +30,13 @@ const ChessPieceAssignments = () => {
   let firstPawn = "";
   //first move variable
 
-  
   const startOfGame = (mappedCellIds) => {
     mappedCellIds = gridCellIds.map((id) => document.getElementById(id));
     console.log(gridCellIds);
     //empty cell assignments
     if (emptyCellAssignments) {
-      displayGameState.innerText = displayGameStateTextObject.preGameStartingText;
+      displayGameState.innerText =
+        displayGameStateTextObject.preGameStartingText;
     } else {
       displayGameState.innerText = displayGameStateTextObject.gameStartingText;
     }
@@ -51,19 +49,32 @@ const ChessPieceAssignments = () => {
     mappedCellIds[1].textContent = pawnAssignmentObject.pawnCellOne.pieceName;
     mappedCellIds[6].textContent = pawnAssignmentObject.pawnCellSix.pieceName;
     mappedCellIds[9].textContent = pawnAssignmentObject.pawnCellNine.pieceName;
-    mappedCellIds[14].textContent = pawnAssignmentObject.pawnCellFourteen.pieceName;
-    mappedCellIds[17].textContent = pawnAssignmentObject.pawnCellSeventeen.pieceName;
-    mappedCellIds[22].textContent = pawnAssignmentObject.pawnCellTwentyTwo.pieceName;
-    mappedCellIds[25].textContent = pawnAssignmentObject.pawnCellTwentyFive.pieceName;
-    mappedCellIds[30].textContent = pawnAssignmentObject.pawnCellThirty.pieceName;
-    mappedCellIds[33].textContent = pawnAssignmentObject.pawnCellThirtyThree.pieceName;
-    mappedCellIds[38].textContent = pawnAssignmentObject.pawnCellThirtyEight.pieceName;
-    mappedCellIds[41].textContent = pawnAssignmentObject.pawnCellFortyOne.pieceName;
-    mappedCellIds[46].textContent = pawnAssignmentObject.pawnCellFortySix.pieceName;
-    mappedCellIds[49].textContent = pawnAssignmentObject.pawnCellFortyNine.pieceName;
-    mappedCellIds[54].textContent = pawnAssignmentObject.pawnCellFiftyFour.pieceName;
-    mappedCellIds[57].textContent = pawnAssignmentObject.pawnCellFiftySeven.pieceName;
-    mappedCellIds[62].textContent = pawnAssignmentObject.pawnCellSixtyTwo.pieceName;
+    mappedCellIds[14].textContent =
+      pawnAssignmentObject.pawnCellFourteen.pieceName;
+    mappedCellIds[17].textContent =
+      pawnAssignmentObject.pawnCellSeventeen.pieceName;
+    mappedCellIds[22].textContent =
+      pawnAssignmentObject.pawnCellTwentyTwo.pieceName;
+    mappedCellIds[25].textContent =
+      pawnAssignmentObject.pawnCellTwentyFive.pieceName;
+    mappedCellIds[30].textContent =
+      pawnAssignmentObject.pawnCellThirty.pieceName;
+    mappedCellIds[33].textContent =
+      pawnAssignmentObject.pawnCellThirtyThree.pieceName;
+    mappedCellIds[38].textContent =
+      pawnAssignmentObject.pawnCellThirtyEight.pieceName;
+    mappedCellIds[41].textContent =
+      pawnAssignmentObject.pawnCellFortyOne.pieceName;
+    mappedCellIds[46].textContent =
+      pawnAssignmentObject.pawnCellFortySix.pieceName;
+    mappedCellIds[49].textContent =
+      pawnAssignmentObject.pawnCellFortyNine.pieceName;
+    mappedCellIds[54].textContent =
+      pawnAssignmentObject.pawnCellFiftyFour.pieceName;
+    mappedCellIds[57].textContent =
+      pawnAssignmentObject.pawnCellFiftySeven.pieceName;
+    mappedCellIds[62].textContent =
+      pawnAssignmentObject.pawnCellSixtyTwo.pieceName;
 
     return { pawnCellAssignments };
   };
@@ -172,4 +183,4 @@ const ChessPieceAssignments = () => {
 
 export default ChessPieceAssignments;
 export const getCellIds = gridCellIds;
-export const getDisplayGameState = displayGameState
+export const getDisplayGameState = displayGameState;
