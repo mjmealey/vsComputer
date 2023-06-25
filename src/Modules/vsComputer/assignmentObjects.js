@@ -1,77 +1,132 @@
 const PAWN_ASSIGNMENTS = {
   //starting pawn positions
-  pawnCell1: {
+  pawnCellOne: {
     pieceName: "Pawn",
-    pieceNameOne: "Pawn",
-    pieceNameTwo: "Pawn",
-    pieceNameThree: "Pawn",
-    pieceNameFour: "Pawn",
-    pieceNameFive: "Pawn",
-    pawnCellNumOne: 1,
-    pawnCellNumTwo: 2,
-    pawnCellNumThree: 3,
-    pawnCellNumFour: 4,
-    pawnCellNumFive: 5,
+    pawnCellNum: 1,
+    //properties for moving two spaces
+    isFirstPawnMove:true,
+    isNotFirstPawnMove:false,
+    
   },
-  pawnCell6: {
+  pawnCellSix: {
     pieceName: "Pawn",
     pawnCellNum: 2,
+    //properties for moving two spaces
+    isFirstPawnMove:true,
+    isNotFirstPawnMove:false,
+    
   },
-  pawnCell9: {
+  pawnCellNine: {
     pieceName: "Pawn",
     pawnCellNum: 9,
+    //properties for moving two spaces
+    isFirstPawnMove:true,
+    isNotFirstPawnMove:false,
+    
   },
-  pawnCell14: {
+  pawnCellFourteen: {
     pieceName: "Pawn",
     pawnCellNum: 14,
+    //properties for moving two spaces
+    isFirstPawnMove:true,
+    isNotFirstPawnMove:false,
+    
   },
-  pawnCell17: {
+  pawnCellSeventeen: {
     pieceName: "Pawn",
     pawnCellNum: 17,
+    //properties for moving two spaces
+    isFirstPawnMove:true,
+    isNotFirstPawnMove:false,
+    
   },
-  pawnCell22: {
+  pawnCellTwentyTwo: {
     pieceName: "Pawn",
     pawnCellNum: 22,
+    //properties for moving two spaces
+    isFirstPawnMove:true,
+    isNotFirstPawnMove:false,
+    
   },
-  pawnCell25: {
+  pawnCellTwentyFive: {
     pieceName: "Pawn",
     pawnCellNum: 25,
+    //properties for moving two spaces
+    isFirstPawnMove:true,
+    isNotFirstPawnMove:false,
+    
   },
-  pawnCell30: {
+  pawnCellThirty: {
     pieceName: "Pawn",
     pawnCellNum: 30,
+    //properties for moving two spaces
+    isFirstPawnMove:true,
+    isNotFirstPawnMove:false,
+    
   },
-  pawnCell33: {
+  pawnCellThirtyThree: {
     pieceName: "Pawn",
     pawnCellNum: 33,
+    //properties for moving two spaces
+    isFirstPawnMove:true,
+    isNotFirstPawnMove:false,
+    
   },
-  pawnCell38: {
+  pawnCellThirtyEight: {
     pieceName: "Pawn",
     pawnCellNum: 38,
+    //properties for moving two spaces
+    isFirstPawnMove:true,
+    isNotFirstPawnMove:false,
+    
   },
-  pawnCell41: {
+  pawnCellFortyOne: {
     pieceName: "Pawn",
     pawnCellNum: 41,
+    //properties for moving two spaces
+    isFirstPawnMove:true,
+    isNotFirstPawnMove:false,
+    
   },
-  pawnCell46: {
+  pawnCellFortySix: {
     pieceName: "Pawn",
     pawnCellNum: 46,
+    //properties for moving two spaces
+    isFirstPawnMove:true,
+    isNotFirstPawnMove:false,
+    
   },
-  pawnCell49: {
+  pawnCellFortyNine: {
     pieceName: "Pawn",
     pawnCellNum: 49,
+    //properties for moving two spaces
+    isFirstPawnMove:true,
+    isNotFirstPawnMove:false,
+    
   },
-  pawnCell54: {
+  pawnCellFiftyFour: {
     pieceName: "Pawn",
     pawnCellNum: 54,
+    //properties for moving two spaces
+    isFirstPawnMove:true,
+    isNotFirstPawnMove:false,
+    
   },
-  pawnCell57: {
+  pawnCellFiftySeven: {
     pieceName: "Pawn",
     pawnCellNum: 57,
+    //properties for moving two spaces
+    isFirstPawnMove:true,
+    isNotFirstPawnMove:false,
+    
   },
-  pawnCell62: {
+  pawnCellSixtyTwo: {
     pieceName: "Pawn",
     pawnCellNum: 62,
+    //properties for moving two spaces
+    isFirstPawnMove:true,
+    isNotFirstPawnMove:false,
+    
   },
 };
 
