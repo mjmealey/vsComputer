@@ -1,10 +1,10 @@
 import { getCellIds } from "./ChessPieceAssignments.js";
 import {
-    gridColorsObject,
-    colorSelectAttributesObject,
-} from "./chessColorObjects.js"
+  gridColorsObject,
+  colorSelectAttributesObject,
+} from "./chessColorObjects.js";
 const ChessBoardColors = () => {
-    const cellColors = (mappedCellIds) => {
+  const cellColors = (mappedCellIds) => {
     mappedCellIds = getCellIds.map((id) => document.getElementById(id));
 
     let primaryColor = [
@@ -23,136 +23,138 @@ const ChessBoardColors = () => {
     ) {
       if (primaryColor.includes(defaultColorIndex)) {
         mappedCellIds[defaultColorIndex].style.backgroundColor =
-          gridColors.bisque;
-        mappedCellIds[defaultColorIndex].style.borderColor = gridColors.bisque;
+          gridColorsObject.bisque;
+        mappedCellIds[defaultColorIndex].style.borderColor =
+          gridColorsObject.bisque;
       } else if (secondaryColor.includes(defaultColorIndex)) {
         mappedCellIds[defaultColorIndex].style.backgroundColor =
-          gridColors.brown;
-        mappedCellIds[defaultColorIndex].style.borderColor = gridColors.brown;
+          gridColorsObject.brown;
+        mappedCellIds[defaultColorIndex].style.borderColor =
+          gridColorsObject.brown;
       }
     }
 
     colorSelect.addEventListener("input", (e) => {
       const selectedColor = e.target.id;
-      if (selectedColor === colorSelectAttributes.selectId) {
+      if (selectedColor === colorSelectAttributesObject.selectId) {
         switch (true) {
-          case colorSelect.value === colorSelectAttributes.default:
-            gridCellIds.forEach((_, defaultColors) => {
+          case colorSelect.value === colorSelectAttributesObject.default:
+            getCellIds.forEach((_, defaultColors) => {
               if (primaryColor.includes(defaultColors)) {
                 mappedCellIds[defaultColors].style.backgroundColor =
-                  gridColors.bisque;
+                  gridColorsObject.bisque;
                 mappedCellIds[defaultColors].style.borderColor =
-                  gridColors.bisque;
+                  gridColorsObject.bisque;
               } else if (secondaryColor.includes(defaultColors)) {
                 mappedCellIds[defaultColors].style.backgroundColor =
-                  gridColors.brown;
+                  gridColorsObject.brown;
                 mappedCellIds[defaultColors].style.borderColor =
-                  gridColors.brown;
+                  gridColorsObject.brown;
               }
             });
             break;
-          case colorSelect.value === colorSelectAttributes.woodland:
-            gridCellIds.forEach((_, woodlandColorIndex) => {
+          case colorSelect.value === colorSelectAttributesObject.woodland:
+            getCellIds.forEach((_, woodlandColorIndex) => {
               if (primaryColor.includes(woodlandColorIndex)) {
                 mappedCellIds[woodlandColorIndex].style.backgroundColor =
-                  gridColors.green;
+                  gridColorsObject.green;
                 mappedCellIds[woodlandColorIndex].style.borderColor =
-                  gridColors.green;
+                  gridColorsObject.green;
               } else if (secondaryColor.includes(woodlandColorIndex)) {
                 mappedCellIds[woodlandColorIndex].style.backgroundColor =
-                  gridColors.woodBrown;
+                  gridColorsObject.woodBrown;
                 mappedCellIds[woodlandColorIndex].style.borderColor =
-                  gridColors.woodBrown;
+                  gridColorsObject.woodBrown;
               }
             });
             break;
-          case colorSelect.value === colorSelectAttributes.checker:
-            gridCellIds.forEach((_, checkerColorIndex) => {
+          case colorSelect.value === colorSelectAttributesObject.checker:
+            getCellIds.forEach((_, checkerColorIndex) => {
               if (primaryColor.includes(checkerColorIndex)) {
                 mappedCellIds[checkerColorIndex].style.backgroundColor =
-                  gridColors.red;
+                  gridColorsObject.red;
                 mappedCellIds[checkerColorIndex].style.borderColor =
-                  gridColors.red;
+                  gridColorsObject.red;
               } else if (secondaryColor.includes(checkerColorIndex)) {
                 mappedCellIds[checkerColorIndex].style.backgroundColor =
-                  gridColors.black;
+                  gridColorsObject.black;
                 mappedCellIds[checkerColorIndex].style.borderColor =
-                  gridColors.black;
+                  gridColorsObject.black;
               }
             });
             break;
-          case colorSelect.value === colorSelectAttributes.blueSky:
-            gridCellIds.forEach((_, blueSkyColorIndex) => {
+          case colorSelect.value === colorSelectAttributesObject.blueSky:
+            getCellIds.forEach((_, blueSkyColorIndex) => {
               if (primaryColor.includes(blueSkyColorIndex)) {
                 mappedCellIds[blueSkyColorIndex].style.backgroundColor =
-                  gridColors.blue;
+                  gridColorsObject.blue;
                 mappedCellIds[blueSkyColorIndex].style.borderColor =
-                  gridColors.blue;
+                  gridColorsObject.blue;
               } else if (secondaryColor.includes(blueSkyColorIndex)) {
                 mappedCellIds[blueSkyColorIndex].style.backgroundColor =
-                  gridColors.white;
+                  gridColorsObject.white;
                 mappedCellIds[blueSkyColorIndex].style.borderColor =
-                  gridColors.white;
+                  gridColorsObject.white;
               }
             });
             break;
-          case colorSelect.value === colorSelectAttributes.funKingdom:
-            gridCellIds.forEach((_, funKingdomColorIndex) => {
+          case colorSelect.value === colorSelectAttributesObject.funKingdom:
+            getCellIds.forEach((_, funKingdomColorIndex) => {
               if (primaryColor.includes(funKingdomColorIndex)) {
                 mappedCellIds[funKingdomColorIndex].style.backgroundColor =
-                  gridColors.purple;
+                  gridColorsObject.purple;
                 mappedCellIds[funKingdomColorIndex].style.borderColor =
                   gridColors.purple;
               } else if (secondaryColor.includes(funKingdomColorIndex)) {
                 mappedCellIds[funKingdomColorIndex].style.backgroundColor =
-                  gridColors.pink;
+                  gridColorsObject.pink;
                 mappedCellIds[funKingdomColorIndex].style.borderColor =
-                  gridColors.pink;
+                  gridColorsObject.pink;
               }
             });
             break;
-          case colorSelect.value === colorSelectAttributes.classic:
-            gridCellIds.forEach((_, classicColorIndex) => {
+          case colorSelect.value === colorSelectAttributesObject.classic:
+            getCellIds.forEach((_, classicColorIndex) => {
               if (primaryColor.includes(classicColorIndex)) {
                 mappedCellIds[classicColorIndex].style.backgroundColor =
-                  gridColors.classicWhite;
+                  gridColorsObject.classicWhite;
                 mappedCellIds[classicColorIndex].style.borderColor =
-                  gridColors.classicWhite;
+                  gridColorsObject.classicWhite;
               } else if (secondaryColor.includes(classicColorIndex)) {
                 mappedCellIds[classicColorIndex].style.backgroundColor =
-                  gridColors.classicBlack;
+                  gridColorsObject.classicBlack;
                 mappedCellIds[classicColorIndex].style.borderColor =
-                  gridColors.classicBlack;
+                  gridColorsObject.classicBlack;
               }
             });
             break;
-          case colorSelect.value === colorSelectAttributes.kingdom:
-            gridCellIds.forEach((_, kingdomColorIndex) => {
+          case colorSelect.value === colorSelectAttributesObject.kingdom:
+            getCellIds.forEach((_, kingdomColorIndex) => {
               if (primaryColor.includes(kingdomColorIndex)) {
                 mappedCellIds[kingdomColorIndex].style.backgroundColor =
-                  gridColors.blue;
+                  gridColorsObject.blue;
                 mappedCellIds[kingdomColorIndex].style.borderColor =
-                  gridColors.blue;
+                  gridColorsObject.blue;
               } else if (secondaryColor.includes(kingdomColorIndex)) {
                 mappedCellIds[kingdomColorIndex].style.backgroundColor =
-                  gridColors.yellow;
+                  gridColorsObject.yellow;
                 mappedCellIds[kingdomColorIndex].style.borderColor =
-                  gridColors.yellow;
+                  gridColorsObject.yellow;
               }
             });
             break;
-          case colorSelect.value === colorSelectAttributes.fireAndIce:
-            gridCellIds.forEach((_, fireAndIceColorIndex) => {
+          case colorSelect.value === colorSelectAttributesObject.fireAndIce:
+            getCellIds.forEach((_, fireAndIceColorIndex) => {
               if (primaryColor.includes(fireAndIceColorIndex)) {
                 mappedCellIds[fireAndIceColorIndex].style.backgroundColor =
-                  gridColors.iceBlue;
+                  gridColorsObject.iceBlue;
                 mappedCellIds[fireAndIceColorIndex].style.borderColor =
-                  gridColors.iceBlue;
+                  gridColorsObject.iceBlue;
               } else if (secondaryColor.includes(fireAndIceColorIndex)) {
                 mappedCellIds[fireAndIceColorIndex].style.backgroundColor =
-                  gridColors.fireRed;
+                  gridColorsObject.fireRed;
                 mappedCellIds[fireAndIceColorIndex].style.borderColor =
-                  gridColors.fireRed;
+                  gridColorsObject.fireRed;
               }
             });
             break;
@@ -161,8 +163,7 @@ const ChessBoardColors = () => {
     });
     return { cellColors };
   };
-  return {cellColors}
-}
+  return { cellColors };
+};
 
-
-  export default ChessBoardColors
+export default ChessBoardColors;
