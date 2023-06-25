@@ -16,6 +16,11 @@ import {
     trackGameStateObject
 } from "./gameStateObjects.js"
 
+const displayGameState = document.createElement(
+    displayGameStateTextObject.textElement
+  );
+    document.body.appendChild(displayGameState)
+
 const ChessPieceAssignments = () => {
 
 
@@ -27,20 +32,15 @@ const ChessPieceAssignments = () => {
   let firstPawn = "";
   //first move variable
 
-  const displayGameState = document.createElement(
-    displayGameStateTextObject.textElement
-  );
-
+  
   const startOfGame = (mappedCellIds) => {
     mappedCellIds = gridCellIds.map((id) => document.getElementById(id));
     console.log(gridCellIds);
     //empty cell assignments
     if (emptyCellAssignments) {
       displayGameState.innerText = displayGameStateTextObject.preGameStartingText;
-      document.body.appendChild(displayGameState);
     } else {
       displayGameState.innerText = displayGameStateTextObject.gameStartingText;
-      document.body.appendChild(displayGameState);
     }
     return { startOfGame };
   };
@@ -48,22 +48,22 @@ const ChessPieceAssignments = () => {
   const pawnCellAssignments = (mappedCellIds) => {
     mappedCellIds = gridCellIds.map((id) => document.getElementById(id));
 
-    mappedCellIds[1].textContent = pawnAssignmentObject.pawnCell1.pieceName;
-    mappedCellIds[6].textContent = pawnAssignmentObject.pawnCell6.pieceName;
-    mappedCellIds[9].textContent = pawnAssignmentObject.pawnCell9.pieceName;
-    mappedCellIds[14].textContent = pawnAssignmentObject.pawnCell14.pieceName;
-    mappedCellIds[17].textContent = pawnAssignmentObject.pawnCell17.pieceName;
-    mappedCellIds[22].textContent = pawnAssignmentObject.pawnCell22.pieceName;
-    mappedCellIds[25].textContent = pawnAssignmentObject.pawnCell25.pieceName;
-    mappedCellIds[30].textContent = pawnAssignmentObject.pawnCell30.pieceName;
-    mappedCellIds[33].textContent = pawnAssignmentObject.pawnCell33.pieceName;
-    mappedCellIds[38].textContent = pawnAssignmentObject.pawnCell38.pieceName;
-    mappedCellIds[41].textContent = pawnAssignmentObject.pawnCell41.pieceName;
-    mappedCellIds[46].textContent = pawnAssignmentObject.pawnCell46.pieceName;
-    mappedCellIds[49].textContent = pawnAssignmentObject.pawnCell49.pieceName;
-    mappedCellIds[54].textContent = pawnAssignmentObject.pawnCell54.pieceName;
-    mappedCellIds[57].textContent = pawnAssignmentObject.pawnCell57.pieceName;
-    mappedCellIds[62].textContent = pawnAssignmentObject.pawnCell62.pieceName;
+    mappedCellIds[1].textContent = pawnAssignmentObject.pawnCellOne.pieceName;
+    mappedCellIds[6].textContent = pawnAssignmentObject.pawnCellSix.pieceName;
+    mappedCellIds[9].textContent = pawnAssignmentObject.pawnCellNine.pieceName;
+    mappedCellIds[14].textContent = pawnAssignmentObject.pawnCellFourteen.pieceName;
+    mappedCellIds[17].textContent = pawnAssignmentObject.pawnCellSeventeen.pieceName;
+    mappedCellIds[22].textContent = pawnAssignmentObject.pawnCellTwentyTwo.pieceName;
+    mappedCellIds[25].textContent = pawnAssignmentObject.pawnCellTwentyFive.pieceName;
+    mappedCellIds[30].textContent = pawnAssignmentObject.pawnCellThirty.pieceName;
+    mappedCellIds[33].textContent = pawnAssignmentObject.pawnCellThirtyThree.pieceName;
+    mappedCellIds[38].textContent = pawnAssignmentObject.pawnCellThirtyEight.pieceName;
+    mappedCellIds[41].textContent = pawnAssignmentObject.pawnCellFortyOne.pieceName;
+    mappedCellIds[46].textContent = pawnAssignmentObject.pawnCellFortySix.pieceName;
+    mappedCellIds[49].textContent = pawnAssignmentObject.pawnCellFortyNine.pieceName;
+    mappedCellIds[54].textContent = pawnAssignmentObject.pawnCellFiftyFour.pieceName;
+    mappedCellIds[57].textContent = pawnAssignmentObject.pawnCellFiftySeven.pieceName;
+    mappedCellIds[62].textContent = pawnAssignmentObject.pawnCellSixtyTwo.pieceName;
 
     return { pawnCellAssignments };
   };
@@ -172,3 +172,4 @@ const ChessPieceAssignments = () => {
 
 export default ChessPieceAssignments;
 export const getCellIds = gridCellIds;
+export const getDisplayGameState = displayGameState
