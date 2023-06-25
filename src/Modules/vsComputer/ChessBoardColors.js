@@ -1,50 +1,11 @@
 import { getCellIds } from "./ChessPieceAssignments.js";
+import {
+    gridColorsObject,
+    colorSelectAttributesObject,
+} from "./chessColorObjects.js"
 const ChessBoardColors = () => {
     const cellColors = (mappedCellIds) => {
     mappedCellIds = getCellIds.map((id) => document.getElementById(id));
-
-    const gridColors = {
-      //default grid
-      bisque: "bisque",
-      brown: "#4b2424",
-      //woodland grid
-      green: "green",
-      woodBrown: "#8B4513",
-      //checker grid
-      red: "red",
-      black: "black",
-      //blue sky grid
-      blue: "blue",
-      white: "white",
-      //fun kingdom grid
-      purple: "purple",
-      pink: "pink",
-      //classic grid
-      classicBlack: "black",
-      classicWhite: "white",
-      //kingdom grid
-      yellow: "yellow",
-      blue: "blue",
-      //fire and ice grid
-      fireRed: "crimson",
-      iceBlue: "lightblue",
-    };
-
-    const colorSelectAttributes = {
-      //ids
-      selectId: "colorSelect",
-
-      //values
-      selectColor: "selectColor",
-      default: "default",
-      woodland: "woodland",
-      checker: "checker",
-      blueSky: "blueSky",
-      funKingdom: "funKingdom",
-      classic: "classic",
-      kingdom: "kingdom",
-      fireAndIce: "fireAndIce",
-    };
 
     let primaryColor = [
       0, 2, 4, 6, 9, 11, 13, 15, 16, 18, 20, 22, 25, 27, 29, 31, 32, 34, 36, 38,
