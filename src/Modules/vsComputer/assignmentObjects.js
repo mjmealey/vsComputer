@@ -3,6 +3,11 @@ const PAWN_ASSIGNMENTS = {
   pawnCellOne: {
     pieceName: "Pawn",
     pawnCellNum: 1,
+    pawnCellNumTwo:2,
+    pawnCellNumThree:3,
+    pawnCellNumFour:4,
+    pawnCellNumFive:5,
+    pawnCellNumSix:6,
     //properties for moving two spaces
     isFirstMove:true,
     isNotFirstMove:false,
@@ -10,7 +15,7 @@ const PAWN_ASSIGNMENTS = {
   },
   pawnCellSix: {
     pieceName: "Pawn",
-    pawnCellNum: 2,
+    pawnCellNum: 6,
     //properties for moving two spaces
     isFirstMove:true,
     isNotFirstMove:false,
