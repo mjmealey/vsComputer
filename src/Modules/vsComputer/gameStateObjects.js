@@ -14,6 +14,7 @@ const displayGameStateText = {
     ifKingIsClicked: "Where would you like to move your king?",
     ifRookIsClicked: "Where would you like to move your rook?",
     ifBishopIsClicked: "Where would you like to move your bishop?",
+    ifUserTriesToMovePawnsAfterFirstMove:"Sorry, but double spaces are only allowed for this pawn's first nove"
   };
 
   const trackGameState = {
