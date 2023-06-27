@@ -15,6 +15,7 @@ const vsComputer = () => {
   newChessBoardColors.cellColors() 
   const newChessPieceClick = ChessPieceClicks()
   newChessPieceClick.clickPawnCell() 
+
 };
 
 export default vsComputer;
