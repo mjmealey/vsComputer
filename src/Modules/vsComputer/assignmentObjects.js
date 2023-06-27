@@ -11,7 +11,7 @@ const PAWN_ASSIGNMENTS = {
     //properties for moving two spaces
     isFirstMove:true,
     isNotFirstMove:false,
-    
+      
   },
   pawnCellSix: {
     pieceName: "Pawn",
