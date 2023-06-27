@@ -17,43 +17,14 @@ import {
 
 const ChessPieceClicks = () => {
   //variables to control each chess piece click
-  let currentPawn = trackGameStateObject.emptyPieceSelection;
+
   let currentlyClickedCell = trackGameStateObject.emptyPieceSelection;
-  //top pawns first moves
-  let cellOnePawnFirstMove = pawnAssignmentObject.pawnCellOne.isNotFirstMove;
-  let cellNinePawnFirstMove = pawnAssignmentObject.pawnCellOne.isNotFirstMove;
-  let cellSeventeenPawnFirstMove =
-    pawnAssignmentObject.pawnCellSeventeen.isNotFirstMove;
-  let cellTwentyFivePawnFirstMove =
-    pawnAssignmentObject.pawnCellTwentyFive.isNotFirstMove;
-  let cellThirtyThreePawnFirstMove =
-    pawnAssignmentObject.pawnCellThirtyThree.isNotFirstMove;
-  let cellFortyOnePawnFirstMove =
-    pawnAssignmentObject.pawnCellFortyOne.isNotFirstMove;
-  let cellFortyNinePawnFirstMove =
-    pawnAssignmentObject.pawnCellFortyNine.isNotFirstMove;
-  let cellFiftySevenPawnFirstMove =
-    pawnAssignmentObject.pawnCellFiftySeven.isNotFirstMove;
-  //bottom pawns first moves
-  let cellSixPawnFirstMove = pawnAssignmentObject.pawnCellSix.isNotFirstMove;
-  let cellFourteenPawnFirstMove =
-    pawnAssignmentObject.pawnCellFourteen.isNotFirstMove;
-  let cellTwentyTwoPawnFirstMove =
-    pawnAssignmentObject.pawnCellTwentyTwo.isNotFirstMove;
-  let cellThirtyPawnFirstMove =
-    pawnAssignmentObject.pawnCellThirty.isNotFirstMove;
-  let cellThirtyEightPawnFirstMove =
-    pawnAssignmentObject.pawnCellThirtyEight.isNotFirstMove;
-  let cellFortySixPawnFirstMove =
-    pawnAssignmentObject.pawnCellFortySix.isNotFirstMove;
-  let cellFiftyFourPawnFirstMove =
-    pawnAssignmentObject.pawnCellFiftyFour.isNotFirstMove;
-  let cellSixtyTwoPawnFirstMove =
-    pawnAssignmentObject.pawnCellSixtyTwo.isNotFirstMove;
-  //pawn clicks
+
   const clickPawnCell = (mappedCellIds) => {
     mappedCellIds = getCellIds.map((id) => document.getElementById(id));
-
+    let currentPawn = trackGameStateObject.emptyPieceSelection;
+    let nextPawnMoveReady = false;
+    let firstPawnMove = false;
     gridContainer.addEventListener("click", (e) => {
       const PAWN_CLICKS = e.target.id;
 
@@ -64,31 +35,49 @@ const ChessPieceClicks = () => {
             pawnAssignmentObject.pawnCellOne.pieceName
           ) {
             currentPawn = pawnAssignmentObject.pawnCellOne.pawnCellNum;
-            cellOnePawnFirstMove = pawnAssignmentObject.pawnCellOne.isFirstMove;
+            firstPawnMove = pawnAssignmentObject.pawnCellOne.isNotFirstMove;
             getDisplayGameState.innerText =
               displayGameStateTextObject.ifPawnIsClicked;
           }
           break;
-          case getCellIds[2]:
-            if(currentPawn === pawnAssignmentObject.pawnCellOne.pawnCellNum){
-              mappedCellIds[2].textContent = pawnAssignmentObject.pawnCellOne.pieceName
-              mappedCellIds[1].textContent = trackGameStateObject.emptyCell
-            }
-            break;
+        case getCellIds[2]:
+          if (
+            mappedCellIds[1].textContent ===
+              pawnAssignmentObject.pawnCellOne.pieceName &&
+            currentPawn === pawnAssignmentObject.pawnCellOne.pawnCellNum
+          ) {
+            mappedCellIds[2].textContent =
+              pawnAssignmentObject.pawnCellOne.pieceName;
+            mappedCellIds[1].textContent = trackGameStateObject.emptyCell;
+            firstPawnMove = pawnAssignmentObject.pawnCellOne.isFirstMove;
+          } else if(mappedCellIds[2].textContent === pawnAssignmentObject.pawnCellOne.pieceName){
+            console.log("keep it")
+            nextPawnMoveReady = pawnAssignmentObject.pawnCellOne.nextMoveIsReady
+          } 
+
+
+          break;
         case getCellIds[3]:
+          //double space logic
           if (
             mappedCellIds[1].textContent ===
               pawnAssignmentObject.pawnCellOne.pieceName &&
             currentPawn === pawnAssignmentObject.pawnCellOne.pawnCellNum &&
-            cellOnePawnFirstMove ===
-              pawnAssignmentObject.pawnCellOne.isFirstMove
+            firstPawnMove === pawnAssignmentObject.pawnCellOne.isNotFirstMove
           ) {
             mappedCellIds[1].textContent = trackGameStateObject.emptyCell;
             mappedCellIds[3].textContent =
               pawnAssignmentObject.pawnCellOne.pieceName;
-            cellOnePawnFirstMove = pawnAssignmentObject.pawnCellOne.isFirstMove;
+            firstPawnMove = pawnAssignmentObject.pawnCellOne.isFirstMove;
             currentPawn = trackGameStateObject.emptyPieceSelection;
           }
+
+          if(nextPawnMoveReady === pawnAssignmentObject.pawnCellOne.nextMoveIsNotReady){
+            mappedCellIds[2].textContent = trackGameStateObject.emptyCell
+            mappedCellIds[3].textContent = pawnAssignmentObject.pawnCellOne.pieceName
+            nextPawnMoveReady = false 
+          }
+        
           break;
         case getCellIds[9]:
           if (
@@ -98,31 +87,42 @@ const ChessPieceClicks = () => {
             currentPawn = pawnAssignmentObject.pawnCellNine.pawnCellNum;
             getDisplayGameState.innerText =
               displayGameStateTextObject.ifPawnIsClicked;
-            cellNinePawnFirstMove =
+            firstPawnMove =
               pawnAssignmentObject.pawnCellNine.isNotFirstMove;
-            console.log(cellNinePawnFirstMove);
           }
           break;
-          case getCellIds[10]:
-            if(currentPawn === pawnAssignmentObject.pawnCellNine.pawnCellNum){
-              mappedCellIds[9].textContent = trackGameStateObject.emptyCell
-              mappedCellIds[10].textContent = pawnAssignmentObject.pawnCellNine.pieceName
-              cellNinePawnFirstMove = pawnAssignmentObject.pawnCellNine.isFirstMove
-            }
+        case getCellIds[10]:
+          if (
+            mappedCellIds[9].textContent === pawnAssignmentObject.pawnCellNine.pieceName &&
+            currentPawn === pawnAssignmentObject.pawnCellNine.pawnCellNum 
+          ) {
+            mappedCellIds[9].textContent = trackGameStateObject.emptyCell;
+            mappedCellIds[10].textContent =
+              pawnAssignmentObject.pawnCellNine.pieceName;
+            firstPawnMove =
+              pawnAssignmentObject.pawnCellNine.isFirstMove;
+          } else if(mappedCellIds[10].textContent === pawnAssignmentObject.pawnCellNine.pieceName){
+            nextPawnMoveReady = pawnAssignmentObject.pawnCellNine.nextMoveIsReady
+          }
+          break;
         case getCellIds[11]:
           if (
             mappedCellIds[9].textContent ===
               pawnAssignmentObject.pawnCellNine.pieceName &&
             currentPawn === pawnAssignmentObject.pawnCellNine.pawnCellNum
           ) {
+            console.log("hi")
             mappedCellIds[9].textContent = trackGameStateObject.emptyCell;
             mappedCellIds[11].textContent =
               pawnAssignmentObject.pawnCellNine.pieceName;
             currentPawn = trackGameStateObject.emptyPieceSelection;
             getDisplayGameState.innerText =
               displayGameStateTextObject.ifPawnIsClicked;
-            cellNinePawnFirstMove =
+            firstPawnMove =
               pawnAssignmentObject.pawnCellNine.isFirstMove;
+          } else if(nextPawnMoveReady === pawnAssignmentObject.pawnCellNine.nextMoveIsReady){
+            console.log("hello")
+            mappedCellIds[10].textContent = trackGameStateObject.emptyCell
           }
           break;
         case getCellIds[17]:
@@ -133,8 +133,23 @@ const ChessPieceClicks = () => {
             currentPawn = pawnAssignmentObject.pawnCellSeventeen.pawnCellNum;
             getDisplayGameState.innerText =
               displayGameStateTextObject.ifPawnIsClicked;
-            cellSeventeenPawnFirstMove =
+            firstPawnMove =
               pawnAssignmentObject.pawnCellSeventeen.isNotFirstMove;
+              nextPawnMoveReady = pawnAssignmentObject.pawnCellSeventeen.nextMoveIsNotReady
+          }
+          break;
+        case getCellIds[18]:
+          if (
+            mappedCellIds[17].textContent ===
+              pawnAssignmentObject.pawnCellSeventeen.pieceName &&
+            currentPawn === pawnAssignmentObject.pawnCellSeventeen.pawnCellNum
+          ) {
+            console.log("hi");
+            mappedCellIds[17].textContent = trackGameStateObject.emptyCell;
+            mappedCellIds[18].textContent =
+              pawnAssignmentObject.pawnCellSeventeen.pieceName;
+          } else if(mappedCellIds[18].textContent === pawnAssignmentObject.pawnCellSeventeen.pieceName){
+            nextPawnMoveReady = pawnAssignmentObject.pawnCellSeventeen.nextMoveIsReady 
           }
           break;
         case getCellIds[19]:
@@ -143,6 +158,7 @@ const ChessPieceClicks = () => {
               pawnAssignmentObject.pawnCellSeventeen.pieceName &&
             currentPawn === pawnAssignmentObject.pawnCellSeventeen.pawnCellNum
           ) {
+            console.log("hi")
             mappedCellIds[17].textContent = trackGameStateObject.emptyCell;
             mappedCellIds[19].textContent =
               pawnAssignmentObject.pawnCellSeventeen.pieceName;
@@ -151,6 +167,11 @@ const ChessPieceClicks = () => {
               displayGameStateTextObject.ifPawnIsClicked;
             cellSeventeenPawnFirstMove =
               pawnAssignmentObject.pawnCellSeventeen.isFirstMove;
+          } else if(nextPawnMoveReady === pawnAssignmentObject.pawnCellSeventeen.nextMoveIsNotReady){
+            console.log("hi")
+            mappedCellIds[18].textContent = trackGameStateObject.emptyCell
+            mappedCellIds[19].textContent = pawnAssignmentObject.pawnCellSeventeen.pieceName
+          
           }
           break;
         case getCellIds[25]:
@@ -165,6 +186,18 @@ const ChessPieceClicks = () => {
               pawnAssignmentObject.pawnCellTwentyFive.isNotFirstMove;
           }
           break;
+        case getCellIds[26]:
+          if (
+            mappedCellIds[25].textContent ===
+              pawnAssignmentObject.pawnCellTwentyFive.pieceName &&
+            currentPawn === pawnAssignmentObject.pawnCellTwentyFive.pawnCellNum
+          ) {
+            mappedCellIds[25].textContent = trackGameStateObject.emptyCell;
+            mappedCellIds[26].textContent =
+              pawnAssignmentObject.pawnCellTwentyFive.pieceName;
+            cellTwentyFivePawnFirstMove =
+              pawnAssignmentObject.pawnCellTwentyFive.isFirstMove;
+          }
         case getCellIds[27]:
           if (
             mappedCellIds[25].textContent ===
@@ -189,6 +222,19 @@ const ChessPieceClicks = () => {
               displayGameStateTextObject.ifPawnIsClicked;
             cellThirtyThreePawnFirstMove =
               pawnAssignmentObject.pawnCellThirtyThree.isNotFirstMove;
+          }
+          break;
+        case getCellIds[34]:
+          if (
+            mappedCellIds[33].textContent ===
+              pawnAssignmentObject.pawnCellThirtyThree.pieceName &&
+            currentPawn === pawnAssignmentObject.pawnCellThirtyThree.pawnCellNum
+          ) {
+            mappedCellIds[33].textContent = trackGameStateObject.emptyCell;
+            mappedCellIds[34].textContent =
+              pawnAssignmentObject.pawnCellThirtyThree.pieceName;
+            cellThirtyThreePawnFirstMove =
+              pawnAssignmentObject.pawnCellThirtyThree.isFirstMove;
           }
           break;
         case getCellIds[35]:
@@ -216,6 +262,18 @@ const ChessPieceClicks = () => {
               pawnAssignmentObject.pawnCellFortyOne.isNotFirstMove;
           }
           break;
+        case getCellIds[42]:
+          if (
+            mappedCellIds[41].textContent ===
+              pawnAssignmentObject.pawnCellFortyOne.pieceName &&
+            currentPawn === pawnAssignmentObject.pawnCellFortyOne.pawnCellNum
+          ) {
+            mappedCellIds[41].textContent = trackGameStateObject.emptyCell;
+            mappedCellIds[42].textContent =
+              pawnAssignmentObject.pawnCellFortyOne.pieceName;
+            cellFortyOnePawnFirstMove =
+              pawnAssignmentObject.pawnCellFortyOne.isFirstMove;
+          }
         case getCellIds[43]:
           if (
             mappedCellIds[41].textContent ===
@@ -241,6 +299,18 @@ const ChessPieceClicks = () => {
               pawnAssignmentObject.pawnCellFortyNine.isNotFirstMove;
           }
           break;
+        case getCellIds[50]:
+          if (
+            mappedCellIds[49].textContent ===
+              pawnAssignmentObject.pawnCellFortyNine.pieceName &&
+            currentPawn === pawnAssignmentObject.pawnCellFortyNine.pawnCellNum
+          ) {
+            mappedCellIds[49].textContent = trackGameStateObject.emptyCell;
+            mappedCellIds[50].textContent =
+              pawnAssignmentObject.pawnCellFortyNine.pieceName;
+            cellFortyNinePawnFirstMove =
+              pawnAssignmentObject.pawnCellFortyNine.isFirstMove;
+          }
         case getCellIds[51]:
           if (
             mappedCellIds[49].textContent ===
@@ -264,6 +334,19 @@ const ChessPieceClicks = () => {
               displayGameStateTextObject.ifPawnIsClicked;
             cellFiftySevenPawnFirstMove =
               pawnAssignmentObject.pawnCellFiftySeven.isNotFirstMove;
+          }
+          break;
+        case getCellIds[58]:
+          if (
+            mappedCellIds[57].textContent ===
+              pawnAssignmentObject.pawnCellFiftySeven.pieceName &&
+            currentPawn === pawnAssignmentObject.pawnCellFiftySeven.pawnCellNum
+          ) {
+            mappedCellIds[57].textContent = trackGameStateObject.emptyCell;
+            mappedCellIds[58].textContent =
+              pawnAssignmentObject.pawnCellFiftySeven.pieceName;
+            cellFiftySevenPawnFirstMove =
+              pawnAssignmentObject.pawnCellFiftySeven.isFirstMove;
           }
           break;
         case getCellIds[59]:
@@ -292,6 +375,17 @@ const ChessPieceClicks = () => {
               pawnAssignmentObject.pawnCellSix.isNotFirstMove;
           }
           break;
+        case getCellIds[5]:
+          if (
+            mappedCellIds[6].textContent ===
+              pawnAssignmentObject.pawnCellSix.pieceName &&
+            currentPawn === pawnAssignmentObject.pawnCellSix.pawnCellNum
+          ) {
+            mappedCellIds[6].textContent = trackGameStateObject.emptyCell;
+            mappedCellIds[5].textContent =
+              pawnAssignmentObject.pawnCellSix.pieceName;
+            cellSixPawnFirstMove = pawnAssignmentObject.pawnCellSix.isFirstMove;
+          }
         case getCellIds[4]:
           if (
             mappedCellIds[6].textContent ===
@@ -315,6 +409,19 @@ const ChessPieceClicks = () => {
               displayGameStateTextObject.ifPawnIsClicked;
             cellFourteenPawnFirstMove =
               pawnAssignmentObject.pawnCellFourteen.isNotFirstMove;
+          }
+          break;
+        case getCellIds[13]:
+          if (
+            mappedCellIds[14].textContent ===
+              pawnAssignmentObject.pawnCellFourteen.pieceName &&
+            currentPawn === pawnAssignmentObject.pawnCellFourteen.pawnCellNum
+          ) {
+            mappedCellIds[14].textContent = trackGameStateObject.emptyCell;
+            mappedCellIds[13].textContent =
+              pawnAssignmentObject.pawnCellFourteen.pieceName;
+            cellFourteenPawnFirstMove =
+              pawnAssignmentObject.pawnCellFourteen.isFirstMove;
           }
           break;
         case getCellIds[12]:
@@ -343,6 +450,18 @@ const ChessPieceClicks = () => {
               pawnAssignmentObject.pawnCellTwentyTwo.isNotFirstMove;
           }
           break;
+        case getCellIds[21]:
+          if (
+            mappedCellIds[22].textContent ===
+              pawnAssignmentObject.pawnCellTwentyTwo.pieceName &&
+            currentPawn === pawnAssignmentObject.pawnCellTwentyTwo.pawnCellNum
+          ) {
+            mappedCellIds[22].textContent = trackGameStateObject.emptyCell;
+            mappedCellIds[21].textContent =
+              pawnAssignmentObject.pawnCellTwentyTwo.pieceName;
+            cellTwentyTwoPawnFirstMove =
+              pawnAssignmentObject.pawnCellTwentyTwo.isFirstMove;
+          }
         case getCellIds[20]:
           if (
             mappedCellIds[22].textContent ===
@@ -368,6 +487,18 @@ const ChessPieceClicks = () => {
               pawnAssignmentObject.pawnCellThirty.isNotFirstMove;
           }
           break;
+        case getCellIds[29]:
+          if (
+            mappedCellIds[30].textContent ===
+              pawnAssignmentObject.pawnCellThirty.pieceName &&
+            currentPawn === pawnAssignmentObject.pawnCellThirty.pawnCellNum
+          ) {
+            mappedCellIds[30].textContent = trackGameStateObject.emptyCell;
+            mappedCellIds[29].textContent =
+              pawnAssignmentObject.pawnCellThirty.pieceName;
+            cellThirtyPawnFirstMove =
+              pawnAssignmentObject.pawnCellThirty.isFirstMove;
+          }
         case getCellIds[28]:
           if (
             mappedCellIds[30].textContent ===
@@ -393,6 +524,18 @@ const ChessPieceClicks = () => {
               pawnAssignmentObject.pawnCellThirtyEight.isNotFirstMove;
           }
           break;
+        case getCellIds[37]:
+          if (
+            mappedCellIds[38].textContent ===
+              pawnAssignmentObject.pawnCellThirtyEight.pieceName &&
+            currentPawn === pawnAssignmentObject.pawnCellThirtyEight.pawnCellNum
+          ) {
+            mappedCellIds[38].textContent = trackGameStateObject.emptyCell;
+            mappedCellIds[37].textContent =
+              pawnAssignmentObject.pawnCellThirtyEight.pieceName;
+            cellThirtyEightPawnFirstMove =
+              pawnAssignmentObject.pawnCellThirtyEight.isFirstMove;
+          }
         case getCellIds[36]:
           if (
             mappedCellIds[38].textContent ===
@@ -418,6 +561,18 @@ const ChessPieceClicks = () => {
               pawnAssignmentObject.pawnCellFortySix.isNotFirstMove;
           }
           break;
+        case getCellIds[45]:
+          if (
+            mappedCellIds[46].textContent ===
+              pawnAssignmentObject.pawnCellFortySix.pieceName &&
+            currentPawn === pawnAssignmentObject.pawnCellFortySix.pawnCellNum
+          ) {
+            mappedCellIds[46].textContent = trackGameStateObject.emptyCell;
+            mappedCellIds[45].textContent =
+              pawnAssignmentObject.pawnCellFortySix.pieceName;
+            cellFortySixPawnFirstMove =
+              pawnAssignmentObject.pawnCellFortySix.isFirstMove;
+          }
         case getCellIds[44]:
           if (
             mappedCellIds[46].textContent ===
@@ -443,15 +598,31 @@ const ChessPieceClicks = () => {
               pawnAssignmentObject.pawnCellFiftyFour.isNotFirstMove;
           }
           break;
-        case getCellIds[52]:
+        case getCellIds[53]:
           if (
             mappedCellIds[54].textContent ===
               pawnAssignmentObject.pawnCellFiftyFour.pieceName &&
             currentPawn === pawnAssignmentObject.pawnCellFiftyFour.pawnCellNum
           ) {
             mappedCellIds[54].textContent = trackGameStateObject.emptyCell;
+            mappedCellIds[53].textContent =
+              pawnAssignmentObject.pawnCellFiftyFour.pieceName;
+            cellFiftyFourPawnFirstMove =
+              pawnAssignmentObject.pawnCellFiftyFour.isFirstMove;
+          }
+          break;
+        case getCellIds[52]:
+          if (
+            mappedCellIds[54].textContent ===
+              pawnAssignmentObject.pawnCellFiftyFour.pieceName &&
+            currentPawn === pawnAssignmentObject.pawnCellFiftyFour.pawnCellNum
+          ) {
+            mappedCellIds[54].textContent =
+              trackGameStateObject.emptyPieceSelection;
             mappedCellIds[52].textContent =
               pawnAssignmentObject.pawnCellFiftyFour.pieceName;
+            cellFiftyFourPawnFirstMove =
+              pawnAssignmentObject.pawnCellFiftyFour.isFirstMove;
           }
           break;
         case getCellIds[62]:
@@ -466,6 +637,18 @@ const ChessPieceClicks = () => {
               pawnAssignmentObject.pawnCellSixtyTwo.isNotFirstMove;
           }
           break;
+        case getCellIds[61]:
+          if (
+            mappedCellIds[62].textContent ===
+              pawnAssignmentObject.pawnCellSixtyTwo.pieceName &&
+            currentPawn === pawnAssignmentObject.pawnCellSixtyTwo.pawnCellNum
+          ) {
+            mappedCellIds[62].textContent = trackGameStateObject.emptyCell;
+            mappedCellIds[61].textContent =
+              pawnAssignmentObject.pawnCellSixtyTwo.pieceName;
+            cellSixtyTwoPawnFirstMove =
+              pawnAssignmentObject.pawnCellSixtyTwo.isFirstMove;
+          }
         case getCellIds[60]:
           if (
             mappedCellIds[62].textContent ===
