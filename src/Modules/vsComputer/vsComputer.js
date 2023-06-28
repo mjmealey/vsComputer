@@ -1,10 +1,9 @@
 import ChessPieceAssignments from "./ChessPieceAssignments.js";
 import ChessBoardColors from "./ChessBoardColors.js";
-import ChessPieceClicks from "./ChessPieceClicks.js";
+import Pawn from "./Pawn.js";
 
 const vsComputer = () => {
   const newChessPieceAssignments = ChessPieceAssignments();
-  newChessPieceAssignments.pawnCellAssignments();
   newChessPieceAssignments.kingCellAssignments()
   newChessPieceAssignments.queenCellAssignments()
   newChessPieceAssignments.bishopCellAssignments()
@@ -13,8 +12,9 @@ const vsComputer = () => {
   newChessPieceAssignments.startOfGame()
   const newChessBoardColors = ChessBoardColors()
   newChessBoardColors.cellColors() 
-  const newChessPieceClick = ChessPieceClicks()
-  newChessPieceClick.clickPawnCell() 
+  const newPawn = Pawn()
+  newPawn.PAWN_CELL_ASSIGNMENTS()
+  newPawn.DOUBLE_SPACES()
 };
 
 export default vsComputer;
