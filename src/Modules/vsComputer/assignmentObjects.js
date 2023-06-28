@@ -1,137 +1,138 @@
 const PAWN_ASSIGNMENTS = {
-  //starting pawn positions
+  pieceName: "Pawn",
+
+  
   pawnCellOne: {
-    pieceName: "Pawn",
-    pawnCellNum: 1,
-    pawnCellNumTwo:2,
-    pawnCellNumThree:3,
-    pawnCellNumFour:4,
-    pawnCellNumFive:5,
-    pawnCellNumSix:6,
-    //properties for moving two spaces
-    isFirstMove:true,
-    isNotFirstMove:false,
-      
+    pawnCellStartingPosition: 1,
+    readyForNextPawnMove: "Ready for Cell One Pawn Move",
+    notReadyForNextPawnMove: "Not Ready for Cell One Pawn Move",
+    firstPawnMoveComplete: "First Pawn Move Complete for Cell One",
+    firstPawnMoveNotComplete: "First Pawn Move Not Complete for Cell One",
+    //watches for the position of cell one's pawn(going off of array index)
+    cellOnePawnOnCellOne:"Cell One Pawn is on Cell One",
+    cellOnePawnOnCellTwo:"Cell One Pawn is on Cell Two",
+    cellOnePawnOnCellThree:"Cell One Pawn is on Cell Three",
+    cellOnePawnOnCellFour:"Cell One Pawn is on Cell Four",
+    cellOnePawnOnCellFive:"Cell One Pawn is on Cell Five",
   },
   pawnCellSix: {
-    pieceName: "Pawn",
-    pawnCellNum: 6,
-    //properties for moving two spaces
-    isFirstMove:true,
-    isNotFirstMove:false,
-    
+    pawnCellStartingPosition: 6,
+    readyForNextPawnMove: "Ready for Cell Six Pawn Move",
+    notReadyForNextPawnMove: "Not Ready for Cell Six Pawn Move",
+    firstPawnMoveComplete: "First Pawn Move Complete for Cell Six",
+    firstPawnMoveNotComplete: "First Pawn Move Not Complete for Cell Six",
+    //watches for the position of cell six's pawn
+    cellSixPawnOnCellOne:"Cell Six Pawn is on Cell One",
+    cellSixPawnOnCellTwo:"Cell Six Pawn is on Cell Two",
+    cellSixPawnOnCellThree:"Cell Six Pawn is on Cell Three",
+    cellSixPawnOnCellFour:"Cell Six Pawn is on Cell Four",
+    cellSixPawnOnCellFive:"Cell Six Pawn is on Cell Five",
+   
   },
   pawnCellNine: {
-    pieceName: "Pawn",
-    pawnCellNum: 9,
-    //properties for moving two spaces
-    isFirstMove:true,
-    isNotFirstMove:false,
-    
+    pawnCellStartingPosition: 9,
+    readyForNextPawnMove: "Ready for Cell Nine Pawn Move",
+    notReadyForNextPawnMove: "Not Ready for Cell Nine Pawn Move",
+    firstPawnMoveComplete: "First Pawn Move Complete for Cell Nine",
+    firstPawnMoveNotComplete: "First Pawn Move Not Complete for Cell Nine",
   },
   pawnCellFourteen: {
-    pieceName: "Pawn",
-    pawnCellNum: 14,
-    //properties for moving two spaces
-    isFirstMove:true,
-    isNotFirstMove:false,
-    
+    pawnCellStartingPosition: 14,
+    readyForNextPawnMove: "Ready for Cell Fourteen Pawn Move",
+    notReadyForNextPawnMove: "Not Ready for Cell Fourteen Pawn Move",
+    firstPawnMoveComplete: "First Pawn Move Complete for Cell Fourteen",
+    firstPawnMoveNotComplete: "First Pawn Move Not Complete for Cell Fourteen",
   },
   pawnCellSeventeen: {
-    pieceName: "Pawn",
-    pawnCellNum: 17,
-    //properties for moving two spaces
-    isFirstMove:true,
-    isNotFirstMove:false,
-    
+    pawnCellStartingPosition: 17,
+    readyForNextPawnMove: "Ready for Cell Seventeen Pawn Move",
+    notReadyForNextPawnMove: "Not Ready for Cell Seventeen Pawn Move",
+    firstPawnMoveComplete: "First Pawn Move Complete for Cell Seventeen",
+    firstPawnMoveNotComplete: "First Pawn Move Not Complete for Cell Seventeen",
   },
   pawnCellTwentyTwo: {
-    pieceName: "Pawn",
-    pawnCellNum: 22,
-    //properties for moving two spaces
-    isFirstMove:true,
-    isNotFirstMove:false,
-    
+    pawnCellStartingPosition: 22,
+    readyForNextPawnMove: "Ready for Cell Twenty-Two Pawn Move",
+    notReadyForNextPawnMove: "Not Ready for Cell Twenty Two Pawn Move",
+    firstPawnMoveComplete: "First Pawn Move Complete for Cell Twenty-Two",
+    firstPawnMoveNotComplete:
+      "First Pawn Move Not Complete for Cell Twenty-Two",
   },
   pawnCellTwentyFive: {
-    pieceName: "Pawn",
-    pawnCellNum: 25,
-    //properties for moving two spaces
-    isFirstMove:true,
-    isNotFirstMove:false,
-    
+    pawnCellStartingPosition: 25,
+    readyForNextPawnMove: "Ready for Cell Twenty-Five Pawn Move",
+    notReadyForNextPawnMove: "Not Ready for Cell Twenty Five Pawn Move",
+    firstPawnMoveComplete: "First Pawn Move Complete for Cell Twenty-Five",
+    firstPawnMoveNotComplete:
+      "First Pawn Move Not Complete for Cell Twenty-Five",
   },
   pawnCellThirty: {
-    pieceName: "Pawn",
-    pawnCellNum: 30,
-    //properties for moving two spaces
-    isFirstMove:true,
-    isNotFirstMove:false,
-    
+    pawnCellStartingPosition: 30,
+    readyForNextPawnMove: "Not Ready for Cell Thirty Pawn Move",
+    notReadyForNextPawnMove: "Not Ready for Cell Thirty Pawn Move",
+    firstPawnMoveComplete: "First Pawn Move Complete for Cell Thirty",
+    firstPawnMoveNotComplete: "First Pawn Move Not Complete for Cell Thirty",
   },
   pawnCellThirtyThree: {
-    pieceName: "Pawn",
-    pawnCellNum: 33,
-    //properties for moving two spaces
-    isFirstMove:true,
-    isNotFirstMove:false,
-    
+    pawnCellStartingPosition: 33,
+    readyForNextPawnMove: "Ready for Cell Thirty-Three Pawn Move",
+    notReadyForNextPawnMove: "Not Ready for Cell Thirty-Three Pawn Move",
+    firstPawnMoveComplete: "First Pawn Move Complete for Cell Thirty-Three",
+    firstPawnMoveNotComplete:
+      "First Pawn Move Not Complete for Cell Thirty-Three",
   },
   pawnCellThirtyEight: {
-    pieceName: "Pawn",
-    pawnCellNum: 38,
-    //properties for moving two spaces
-    isFirstMove:true,
-    isNotFirstMove:false,
-    
+    pawnCellStartingPosition: 38,
+    readyForNextPawnMove: "Ready for Cell Thirty-Eight Pawn Move",
+    notReadyForNextPawnMove: "Not Ready for Cell Thirty-Eight Pawn Move",
+    firstPawnMoveComplete: "First Pawn Move Complete for Cell Thirty-Eight",
+    firstPawnMoveNotComplete:
+      "First Pawn Move Not Complete for Cell Thirty-Eight",
   },
   pawnCellFortyOne: {
-    pieceName: "Pawn",
-    pawnCellNum: 41,
-    //properties for moving two spaces
-    isFirstMove:true,
-    isNotFirstMove:false,
-    
+    pawnCellStartingPosition: 41,
+    readyForNextPawnMove: "Ready for Cell Forty-One Pawn Move",
+    notReadyForNextPawnMove: "Not Ready for Cell Forty-One Pawn Move",
+    firstPawnMoveComplete: "First Pawn Move Complete for Cell Forty-One",
+    firstPawnMoveNotComplete: "First Pawn Move Not Complete for Cell Forty-One",
   },
   pawnCellFortySix: {
-    pieceName: "Pawn",
-    pawnCellNum: 46,
-    //properties for moving two spaces
-    isFirstMove:true,
-    isNotFirstMove:false,
-    
+    pawnCellStartingPosition: 46,
+    readyForNextPawnMove: "Ready for Cell Forty-Six Pawn Move",
+    notReadyForNextPawnMove: "Not Ready for Cell Forty-Six Pawn Move",
+    firstPawnMoveComplete: "First Pawn Move Complete for Cell Forty-Six",
+    firstPawnMoveNotComplete: "First Pawn Move Not Complete for Cell Forty-Six",
   },
   pawnCellFortyNine: {
-    pieceName: "Pawn",
-    pawnCellNum: 49,
-    //properties for moving two spaces
-    isFirstMove:true,
-    isNotFirstMove:false,
-    
+    pawnCellStartingPosition: 49,
+    readyForNextPawnMove: "Ready for Cell Forty-Nine Pawn Move",
+    notReadyForNextPawnMove: "Not Ready for Cell Forty-Nine Pawn Move",
+    firstPawnMoveComplete: "First Pawn Move Complete for Cell Forty-Nine",
+    firstPawnMoveNotComplete:
+      "First Pawn Move Not Complete for Cell Forty-Nine",
   },
   pawnCellFiftyFour: {
-    pieceName: "Pawn",
-    pawnCellNum: 54,
-    //properties for moving two spaces
-    isFirstMove:true,
-    isNotFirstMove:false,
-    
+    pawnCellStartingPosition: 54,
+    readyForNextPawnMove: "Ready for Cell Fifty-Four Pawn Move",
+    notReadyForNextPawnMove: "Not Ready for Cell Fifty-Four Pawn Move",
+    firstPawnMoveComplete: "First Pawn Move Complete for Cell Fifty-Four",
+    firstPawnMoveNotComplete:
+      "First Pawn Move Not Complete for Cell Fifty-Four",
   },
   pawnCellFiftySeven: {
-    pieceName: "Pawn",
-    pawnCellNum: 57,
-    //properties for moving two spaces
-    isFirstMove:true,
-    isNotFirstMove:false,
-    
+    pawnCellStartingPosition: 57,
+    readyForNextPawnMove: "Ready for Cell Fifty-Seven Pawn Move",
+    notReadyForNextPawnMove: "Not Ready for Cell Fifty-Seven Pawn Move",
+    firstPawnMoveComplete: "First Pawn Move Complete for Cell Fifty-Seven",
+    firstPawnMoveNotComplete:
+      "First Pawn Move Not Complete for Cell Fifty-Seven",
   },
   pawnCellSixtyTwo: {
-    pieceName: "Pawn",
-    pawnCellNum: 62,
-    //properties for moving two spaces
-    isFirstMove:true,
-    isNotFirstMove:false,
-    
+    pawnCellStartingPosition: 62,
+    readyForNextPawnMove: "Ready for Cell Sixty-Two Pawn Move",
+    notReadyForNextPawnMove: "Ready for Cell Sixty-Two Pawn Move",
+    firstPawnMoveComplete: "First Pawn Move Complete for Cell Sixty-Two",
+    firstPawnMoveNotComplete: "First Pawn Move Not Complete for Cell Sixty-Two",
   },
 };
 
