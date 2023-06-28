@@ -20,55 +20,9 @@ const ChessPieceClicks = () => {
   const clickPawnCell = (mappedCellIds) => {
     mappedCellIds = getCellIds.map((id) => document.getElementById(id));
     let currentPawn = `${trackGameStateObject.emptyPieceSelection}`;
-    let nextPawnMoveReady = false;
+  
     //watching for top side first pawn moves
-    let firstPawnMoves = [
-      `${pawnAssignmentObject.pawnCellOne.firstPawnMoveNotComplete}`,
-      `${pawnAssignmentObject.pawnCellNine.firstPawnMoveNotComplete}`,
-      `${pawnAssignmentObject.pawnCellSeventeen.firstPawnMoveNotComplete}`,
-      `${pawnAssignmentObject.pawnCellTwentyFive.firstPawnMoveNotComplete}`,
-      `${pawnAssignmentObject.pawnCellThirtyThree.firstPawnMoveNotComplete}`,
-      `${pawnAssignmentObject.pawnCellFortyOne.firstPawnMoveNotComplete}`,
-      `${pawnAssignmentObject.pawnCellFortyNine.firstPawnMoveNotComplete}`,
-      `${pawnAssignmentObject.pawnCellFiftySeven.firstPawnMoveNotComplete}`,
-      //watching for bottom side first pawn moves
-      `${pawnAssignmentObject.pawnCellSix.firstPawnMoveNotComplete}`,
-      `${pawnAssignmentObject.pawnCellFourteen.firstPawnMoveNotComplete}`,
-      `${pawnAssignmentObject.pawnCellFourteen.firstPawnMoveNotComplete}`,
-      `${pawnAssignmentObject.pawnCellThirty.firstPawnMoveNotComplete}`,
-      `${pawnAssignmentObject.pawnCellThirtyEight.firstPawnMoveNotComplete}`,
-      `${pawnAssignmentObject.pawnCellFortySix.firstPawnMoveNotComplete}`,
-      `${pawnAssignmentObject.pawnCellFiftyFour.firstPawnMoveNotComplete}`,
-      `${pawnAssignmentObject.pawnCellSixtyTwo.firstPawnMoveNotComplete}`,
-    ];
-
-    let nextPawnMove = [
-      `${pawnAssignmentObject.pawnCellOne.notReadyForNextPawnMove}`,
-      `${pawnAssignmentObject.pawnCellNine.notReadyForNextPawnMove}`,
-      `${pawnAssignmentObject.pawnCellSeventeen.notReadyForNextPawnMove}`,
-      `${pawnAssignmentObject.pawnCellTwentyFive.notReadyForNextPawnMove}`,
-      `${pawnAssignmentObject.pawnCellThirtyThree.notReadyForNextPawnMove}`,
-      `${pawnAssignmentObject.pawnCellFortyOne.notReadyForNextPawnMove}`,
-      `${pawnAssignmentObject.pawnCellFortyNine.notReadyForNextPawnMove}`,
-      `${pawnAssignmentObject.pawnCellFiftySeven.notReadyForNextPawnMove}`,
-      //watching for bottom side first pawn moves
-      `${pawnAssignmentObject.pawnCellSix.notReadyForNextPawnMove}`,
-      `${pawnAssignmentObject.pawnCellFourteen.notReadyForNextPawnMove}`,
-      `${pawnAssignmentObject.pawnCellFourteen.notReadyForNextPawnMove}`,
-      `${pawnAssignmentObject.pawnCellThirty.notReadyForNextPawnMove}`,
-      `${pawnAssignmentObject.pawnCellThirtyEight.notReadyForNextPawnMove}`,
-      `${pawnAssignmentObject.pawnCellFortySix.notReadyForNextPawnMove}`,
-      `${pawnAssignmentObject.pawnCellFiftyFour.notReadyForNextPawnMove}`,
-      `${pawnAssignmentObject.pawnCellSixtyTwo.notReadyForNextPawnMove}`,
-    ];
-
-    let possibleCellOnePositions = [
-      `${pawnAssignmentObject.pawnCellOne.cellOnePawnNotOnCellOne}`,
-      `${pawnAssignmentObject.pawnCellOne.cellOnePawnNotOnCellTwo}`,
-      `${pawnAssignmentObject.pawnCellOne.cellOnePawnNotOnCellThree}`,
-      `${pawnAssignmentObject.pawnCellOne.cellOnePawnNotOnCellFour}`,
-      `${pawnAssignmentObject.pawnCellOne.cellOnePawnNotOnCellFive}`,
-    ];
+  
     gridContainer.addEventListener("click", (e) => {
       const PAWN_CLICKS = e.target.id;
       switch (PAWN_CLICKS) {
@@ -226,7 +180,7 @@ const ChessPieceClicks = () => {
             mappedCellIds[25].textContent = `${trackGameStateObject.emptyCell}`
             mappedCellIds[26].textContent = `${pawnAssignmentObject.pieceName}`
             firstPawnMoves[3] = `${pawnAssignmentObject.pawnCellTwentyFive.firstPawnMoveComplete}`
-            
+
           }
             break;
           case getCellIds[27]:
