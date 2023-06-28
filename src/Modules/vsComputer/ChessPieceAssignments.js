@@ -45,40 +45,34 @@ const ChessPieceAssignments = () => {
 
   const pawnCellAssignments = (mappedCellIds) => {
     mappedCellIds = gridCellIds.map((id) => document.getElementById(id));
-
-    mappedCellIds[1].textContent = pawnAssignmentObject.pawnCellOne.pieceName;
-    mappedCellIds[6].textContent = pawnAssignmentObject.pawnCellSix.pieceName;
-    mappedCellIds[9].textContent = pawnAssignmentObject.pawnCellNine.pieceName;
-    mappedCellIds[14].textContent =
-      pawnAssignmentObject.pawnCellFourteen.pieceName;
-    mappedCellIds[17].textContent =
-      pawnAssignmentObject.pawnCellSeventeen.pieceName;
-    mappedCellIds[22].textContent =
-      pawnAssignmentObject.pawnCellTwentyTwo.pieceName;
-    mappedCellIds[25].textContent =
-      pawnAssignmentObject.pawnCellTwentyFive.pieceName;
-    mappedCellIds[30].textContent =
-      pawnAssignmentObject.pawnCellThirty.pieceName;
-    mappedCellIds[33].textContent =
-      pawnAssignmentObject.pawnCellThirtyThree.pieceName;
-    mappedCellIds[38].textContent =
-      pawnAssignmentObject.pawnCellThirtyEight.pieceName;
-    mappedCellIds[41].textContent =
-      pawnAssignmentObject.pawnCellFortyOne.pieceName;
-    mappedCellIds[46].textContent =
-      pawnAssignmentObject.pawnCellFortySix.pieceName;
-    mappedCellIds[49].textContent =
-      pawnAssignmentObject.pawnCellFortyNine.pieceName;
-    mappedCellIds[54].textContent =
-      pawnAssignmentObject.pawnCellFiftyFour.pieceName;
-    mappedCellIds[57].textContent =
-      pawnAssignmentObject.pawnCellFiftySeven.pieceName;
-    mappedCellIds[62].textContent =
-      pawnAssignmentObject.pawnCellSixtyTwo.pieceName;
-
+    const topPawnAssignments = [1, 9, 17, 25, 33, 41, 49, 57];
+    const bottomPawnAssignments = [6, 14, 22, 30, 38, 46, 54, 62];
+    //handles top side pawn names
+    for (
+      let topPawnsIndex = 0;
+      topPawnsIndex < getCellIds.length;
+      topPawnsIndex++
+    ) {
+      if (topPawnAssignments.includes(topPawnsIndex)) {
+        mappedCellIds[
+          topPawnsIndex
+        ].textContent = `${pawnAssignmentObject.pieceName}`;
+      }
+    }
+    //handles bottom side pawn names
+    for (
+      let bottomPawnsIndex = 0;
+      bottomPawnsIndex < getCellIds.length;
+      bottomPawnsIndex++
+    ) {
+      if (bottomPawnAssignments.includes(bottomPawnsIndex)) {
+        mappedCellIds[
+          bottomPawnsIndex
+        ].textContent = `${pawnAssignmentObject.pieceName}`;
+      }
+    }
     return { pawnCellAssignments };
   };
-
   const rookCellAssignments = (mappedCellIds) => {
     mappedCellIds = gridCellIds.map((id) => document.getElementById(id));
 
