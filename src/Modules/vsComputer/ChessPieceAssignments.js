@@ -3,7 +3,6 @@ import createChessBoard from "./ChessBoard.js";
 const gridCellIds = createChessBoard();
 
 import {
-  pawnAssignmentObject,
   rookAssignmentObject,
   knightAssignmentObject,
   bishopAssignmentObject,
@@ -22,13 +21,7 @@ const displayGameState = document.createElement(
 document.body.appendChild(displayGameState);
 
 const ChessPieceAssignments = () => {
-  let currentPiece = trackGameStateObject.emptyPieceSelection;
-  let currentPawn = trackGameStateObject.emptyPieceSelection;
-  let currentPawnPiece = trackGameStateObject.emptyPieceSelection;
-  let currentlyClickedCell = "";
-  let firstPiece = "";
-  let firstPawn = "";
-  //first move variable
+
 
   const startOfGame = (mappedCellIds) => {
     mappedCellIds = gridCellIds.map((id) => document.getElementById(id));
@@ -43,36 +36,7 @@ const ChessPieceAssignments = () => {
     return { startOfGame };
   };
 
-  const pawnCellAssignments = (mappedCellIds) => {
-    mappedCellIds = gridCellIds.map((id) => document.getElementById(id));
-    const topPawnAssignments = [1, 9, 17, 25, 33, 41, 49, 57];
-    const bottomPawnAssignments = [6, 14, 22, 30, 38, 46, 54, 62];
-    //handles top side pawn names
-    for (
-      let topPawnsIndex = 0;
-      topPawnsIndex < getCellIds.length;
-      topPawnsIndex++
-    ) {
-      if (topPawnAssignments.includes(topPawnsIndex)) {
-        mappedCellIds[
-          topPawnsIndex
-        ].textContent = `${pawnAssignmentObject.pieceName}`;
-      }
-    }
-    //handles bottom side pawn names
-    for (
-      let bottomPawnsIndex = 0;
-      bottomPawnsIndex < getCellIds.length;
-      bottomPawnsIndex++
-    ) {
-      if (bottomPawnAssignments.includes(bottomPawnsIndex)) {
-        mappedCellIds[
-          bottomPawnsIndex
-        ].textContent = `${pawnAssignmentObject.pieceName}`;
-      }
-    }
-    return { pawnCellAssignments };
-  };
+ 
   const rookCellAssignments = (mappedCellIds) => {
     mappedCellIds = gridCellIds.map((id) => document.getElementById(id));
 
@@ -165,7 +129,6 @@ const ChessPieceAssignments = () => {
 
   return {
     startOfGame,
-    pawnCellAssignments,
     kingCellAssignments,
     rookCellAssignments,
     queenCellAssignments,
