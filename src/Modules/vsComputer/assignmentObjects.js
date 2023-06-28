@@ -1,7 +1,6 @@
 const PAWN_ASSIGNMENTS = {
   pieceName: "Pawn",
 
-  
   pawnCellOne: {
     pawnCellStartingPosition: 1,
     readyForNextPawnMove: "Ready for Cell One Pawn Move",
@@ -9,11 +8,17 @@ const PAWN_ASSIGNMENTS = {
     firstPawnMoveComplete: "First Pawn Move Complete for Cell One",
     firstPawnMoveNotComplete: "First Pawn Move Not Complete for Cell One",
     //watches for the position of cell one's pawn(going off of array index)
-    cellOnePawnOnCellOne:"Cell One Pawn is on Cell One",
-    cellOnePawnOnCellTwo:"Cell One Pawn is on Cell Two",
-    cellOnePawnOnCellThree:"Cell One Pawn is on Cell Three",
-    cellOnePawnOnCellFour:"Cell One Pawn is on Cell Four",
-    cellOnePawnOnCellFive:"Cell One Pawn is on Cell Five",
+    cellOnePawnOnCellOne: "Cell One Pawn is on Cell One",
+    cellOnePawnOnCellTwo: "Cell One Pawn is on Cell Two",
+    cellOnePawnOnCellThree: "Cell One Pawn is on Cell Three",
+    cellOnePawnOnCellFour: "Cell One Pawn is on Cell Four",
+    cellOnePawnOnCellFive: "Cell One Pawn is on Cell Five",
+    //watches for the positions where the cell one pawn is not located 
+    cellOnePawnNotOnCellOne: "Cell One Pawn is not on Cell One",
+    cellOnePawnNotOnCellTwo: "Cell One Pawn is not on Cell Two",
+    cellOnePawnNotOnCellThree: "Cell One Pawn not is on Cell Three",
+    cellOnePawnNotOnCellFour: "Cell One Pawn is not on Cell Four",
+    cellOnePawnNotOnCellFive: "Cell One Pawn is not on Cell Five",
   },
   pawnCellSix: {
     pawnCellStartingPosition: 6,
@@ -22,12 +27,11 @@ const PAWN_ASSIGNMENTS = {
     firstPawnMoveComplete: "First Pawn Move Complete for Cell Six",
     firstPawnMoveNotComplete: "First Pawn Move Not Complete for Cell Six",
     //watches for the position of cell six's pawn
-    cellSixPawnOnCellOne:"Cell Six Pawn is on Cell One",
-    cellSixPawnOnCellTwo:"Cell Six Pawn is on Cell Two",
-    cellSixPawnOnCellThree:"Cell Six Pawn is on Cell Three",
-    cellSixPawnOnCellFour:"Cell Six Pawn is on Cell Four",
-    cellSixPawnOnCellFive:"Cell Six Pawn is on Cell Five",
-   
+    cellSixPawnOnCellOne: "Cell Six Pawn is on Cell One",
+    cellSixPawnOnCellTwo: "Cell Six Pawn is on Cell Two",
+    cellSixPawnOnCellThree: "Cell Six Pawn is on Cell Three",
+    cellSixPawnOnCellFour: "Cell Six Pawn is on Cell Four",
+    cellSixPawnOnCellFive: "Cell Six Pawn is on Cell Five",
   },
   pawnCellNine: {
     pawnCellStartingPosition: 9,
