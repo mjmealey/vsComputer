@@ -478,7 +478,6 @@ const Pawn = () => {
             firstPawnMoves[0] = `${pawnAssignmentObject.pawnCellOne.firstPawnMoveComplete}`;
             mappedCellIds[1].textContent = `${trackGameStateObject.emptyCell}`;
             mappedCellIds[2].textContent = `${pawnAssignmentObject.pieceName}`;
-           
           }
 
           break;
@@ -571,20 +570,23 @@ const Pawn = () => {
   //watches for double and single spaces to assure nothing goes through afterwards aside from standard moves
   const PREVENT_PAWNS_ON_FIRST_SPACES_AFTER_DOUBLE = (mappedCellIds) => {
     mappedCellIds = getCellIds.map((id) => document.getElementById(id));
-    let doubleMoveComplete = false;
-    let firstSingleSpaceMove = false;
-
     gridContainer.addEventListener("click", (e) => {
-      const PREVENT_ADDITIONAL_CLICKS = e.target.id
+      const PREVENT_ADDITIONAL_CLICKS = e.target.id;
 
-      switch(PREVENT_ADDITIONAL_CLICKS){
+      switch (PREVENT_ADDITIONAL_CLICKS) {
         case getCellIds[2]:
-        if(mappedCellIds[3].textContent === `${pawnAssignmentObject.pieceName}` &&  doubleSpacePawnMove[0] === `${pawnAssignmentObject.pawnCellOne.doubleSpacePawnMoveComplete}`){}
-        mappedCellIds[2].textContent = `${trackGameStateObject.emptyCell}`
+          if (
+            mappedCellIds[3].textContent ===
+              `${pawnAssignmentObject.pieceName}` &&
+            doubleSpacePawnMove[0] ===
+              `${pawnAssignmentObject.pawnCellOne.doubleSpacePawnMoveComplete}`
+          ) {
+          }
+          mappedCellIds[2].textContent = `${trackGameStateObject.emptyCell}`;
       }
-    })
+    });
 
-    return {PREVENT_PAWNS_ON_FIRST_SPACES_AFTER_DOUBLE}
+    return { PREVENT_PAWNS_ON_FIRST_SPACES_AFTER_DOUBLE };
   };
   return {
     PAWN_CELL_ASSIGNMENTS,
