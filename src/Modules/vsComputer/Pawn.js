@@ -16,7 +16,7 @@ const Pawn = () => {
     //watching for bottom side first pawn moves
     `${pawnAssignmentObject.pawnCellSix.firstPawnMoveNotComplete}`,
     `${pawnAssignmentObject.pawnCellFourteen.firstPawnMoveNotComplete}`,
-    `${pawnAssignmentObject.pawnCellFourteen.firstPawnMoveNotComplete}`,
+    `${pawnAssignmentObject.pawnCellTwentyTwo.firstPawnMoveNotComplete}`,
     `${pawnAssignmentObject.pawnCellThirty.firstPawnMoveNotComplete}`,
     `${pawnAssignmentObject.pawnCellThirtyEight.firstPawnMoveNotComplete}`,
     `${pawnAssignmentObject.pawnCellFortySix.firstPawnMoveNotComplete}`,
@@ -83,6 +83,7 @@ const Pawn = () => {
     }
     return { PAWN_CELL_ASSIGNMENTS };
   };
+ 
   //controls double spaces for pawns at the start of the game
   const DOUBLE_SPACES = (mappedCellIds) => {
     mappedCellIds = getCellIds.map((id) => document.getElementById(id));
@@ -214,6 +215,178 @@ const Pawn = () => {
             mappedCellIds[43].textContent = `${pawnAssignmentObject.pieceName}`;
             firstPawnMoves[5] = `${pawnAssignmentObject.pawnCellTwentyFive.firstPawnMoveComplete}`;
           }
+          break;
+        case getCellIds[49]:
+          if (
+            mappedCellIds[49].textContent ===
+              `${pawnAssignmentObject.pieceName}` &&
+            firstPawnMoves[6] ===
+              `${pawnAssignmentObject.pawnCellFortyNine.firstPawnMoveNotComplete}`
+          ) {
+            currentPawn = `${pawnAssignmentObject.pawnCellFortyNine.pawnCellStartingPosition}`;
+          }
+          break;
+        case getCellIds[51]:
+          if (
+            currentPawn ===
+            `${pawnAssignmentObject.pawnCellFortyNine.pawnCellStartingPosition}`
+          ) {
+            mappedCellIds[49].textContent = `${trackGameStateObject.emptyCell}`;
+            mappedCellIds[51].textContent = `${pawnAssignmentObject.pieceName}`;
+            firstPawnMoves[6] = `${pawnAssignmentObject.pawnCellFortyNine.firstPawnMoveComplete}`;
+          }
+          break;
+        case getCellIds[57]:
+          if (
+            mappedCellIds[57].textContent ===
+              `${pawnAssignmentObject.pieceName}` &&
+            firstPawnMoves[7] ===
+              `${pawnAssignmentObject.pawnCellFiftySeven.firstPawnMoveNotComplete}`
+          ) {
+            console.log("hi");
+            currentPawn = `${pawnAssignmentObject.pawnCellFiftySeven.pawnCellStartingPosition}`;
+          }
+          break;
+        case getCellIds[59]:
+          if (
+            currentPawn ===
+            `${pawnAssignmentObject.pawnCellFiftySeven.pawnCellStartingPosition}`
+          ) {
+            mappedCellIds[57].textContent = `${trackGameStateObject.emptyCell}`;
+            mappedCellIds[59].textContent = `${pawnAssignmentObject.pieceName}`;
+            firstPawnMoves[7] = `${pawnAssignmentObject.pawnCellFiftySeven.firstPawnMoveComplete}`;
+          }
+
+        //bottom side pawns
+        case getCellIds[6]:
+          if (
+            mappedCellIds[6].textContent ===
+              `${pawnAssignmentObject.pieceName}` &&
+            firstPawnMoves[8] ===
+              `${pawnAssignmentObject.pawnCellSix.firstPawnMoveNotComplete}`
+          ) {
+            currentPawn = `${pawnAssignmentObject.pawnCellSix.pawnCellStartingPosition}`;
+          }
+          break;
+        case getCellIds[4]:
+          if (
+            currentPawn ===
+            `${pawnAssignmentObject.pawnCellSix.pawnCellStartingPosition}`
+          ) {
+            mappedCellIds[6].textContent = `${trackGameStateObject.emptyCell}`;
+            mappedCellIds[4].textContent = `${pawnAssignmentObject.pieceName}`;
+            firstPawnMoves[8] = `${pawnAssignmentObject.pawnCellSix.firstPawnMoveComplete}`;
+          }
+          break;
+        case getCellIds[14]:
+          if (
+            mappedCellIds[14].textContent ===
+              `${pawnAssignmentObject.pieceName}` &&
+            firstPawnMoves[9] ===
+              `${pawnAssignmentObject.pawnCellFourteen.firstPawnMoveNotComplete}`
+          ) {
+            currentPawn = `${pawnAssignmentObject.pawnCellFourteen.pawnCellStartingPosition}`;
+          }
+          break;
+        case getCellIds[12]:
+          console.log(firstPawnMoves[10]);
+          if (
+            currentPawn ===
+            `${pawnAssignmentObject.pawnCellFourteen.pawnCellStartingPosition}`
+          ) {
+            mappedCellIds[14].textContent = `${trackGameStateObject.emptyCell}`;
+            mappedCellIds[12].textContent = `${pawnAssignmentObject.pieceName}`;
+            firstPawnMoves[9] = `${pawnAssignmentObject.pawnCellFourteen.firstPawnMoveComplete}`;
+          }
+          break;
+
+        case getCellIds[22]:
+          if (
+            mappedCellIds[22].textContent ===
+              `${pawnAssignmentObject.pieceName}` &&
+            firstPawnMoves[10] ===
+              `${pawnAssignmentObject.pawnCellTwentyTwo.firstPawnMoveNotComplete}`
+          ) {
+            currentPawn = `${pawnAssignmentObject.pawnCellTwentyTwo.pawnCellStartingPosition}`;
+          }
+          break;
+        case getCellIds[20]:
+          if (
+            currentPawn ===
+            `${pawnAssignmentObject.pawnCellTwentyTwo.pawnCellStartingPosition}`
+          ) {
+            mappedCellIds[22].textContent = `${trackGameStateObject.emptyCell}`;
+            mappedCellIds[20].textContent = `${pawnAssignmentObject.pieceName}`;
+            firstPawnMoves[10] = `${pawnAssignmentObject.pawnCellTwentyTwo.firstPawnMoveComplete}`;
+          }
+          break;
+        case getCellIds[30]:
+          if (
+            mappedCellIds[30].textContent ===
+              `${pawnAssignmentObject.pieceName}` &&
+            firstPawnMoves[11] ===
+              `${pawnAssignmentObject.pawnCellThirty.firstPawnMoveNotComplete}`
+          ) {
+            currentPawn = `${pawnAssignmentObject.pawnCellThirty.pawnCellStartingPosition}`;
+          }
+          break;
+        case getCellIds[28]:
+          if (
+            currentPawn ===
+            `${pawnAssignmentObject.pawnCellThirty.pawnCellStartingPosition}`
+          ) {
+            mappedCellIds[30].textContent = `${trackGameStateObject.emptyCell}`;
+            mappedCellIds[28].textContent = `${pawnAssignmentObject.pieceName}`;
+            firstPawnMoves[11] = `${pawnAssignmentObject.pawnCellThirty.firstPawnMoveComplete}`;
+          }
+          break;
+        case getCellIds[38]:
+            if(mappedCellIds[38].textContent === `${pawnAssignmentObject.pieceName}` && firstPawnMoves[12] === `${pawnAssignmentObject.pawnCellThirtyEight.firstPawnMoveNotComplete}`){
+                currentPawn = `${pawnAssignmentObject.pawnCellThirtyEight.pawnCellStartingPosition}`
+            }
+            break;
+        case getCellIds[36]:
+            if(currentPawn === `${pawnAssignmentObject.pawnCellThirtyEight.pawnCellStartingPosition}`){
+                mappedCellIds[38].textContent = `${trackGameStateObject.emptyCell}`
+                mappedCellIds[36].textContent = `${pawnAssignmentObject.pieceName}`
+                firstPawnMoves[12] = `${pawnAssignmentObject.pawnCellThirtyEight.firstPawnMoveComplete}`
+            }
+            break;
+        case getCellIds[46]:
+            if(mappedCellIds[46].textContent === `${pawnAssignmentObject.pieceName}` && firstPawnMoves[13] === `${pawnAssignmentObject.pawnCellFortySix.firstPawnMoveNotComplete}`){
+                currentPawn = `${pawnAssignmentObject.pawnCellFortySix.pawnCellStartingPosition}`
+            }
+            break;
+        case getCellIds[44]:
+            if(currentPawn === `${pawnAssignmentObject.pawnCellFortySix.pawnCellStartingPosition}`){
+                mappedCellIds[46].textContent = `${trackGameStateObject.emptyCell}`
+                mappedCellIds[44].textContent = `${pawnAssignmentObject.pieceName}`
+                firstPawnMoves[13] = `${pawnAssignmentObject.pawnCellFortySix.firstPawnMoveComplete}`
+            }
+            break;
+        case getCellIds[54]:
+            if(mappedCellIds[54].textContent === `${pawnAssignmentObject.pieceName}` && firstPawnMoves[14] === `${pawnAssignmentObject.pawnCellFiftyFour.firstPawnMoveNotComplete}`){
+                currentPawn = `${pawnAssignmentObject.pawnCellFiftyFour.pawnCellStartingPosition}`
+            }
+            break;
+        case getCellIds[52]:
+            if(currentPawn === `${pawnAssignmentObject.pawnCellFiftyFour.pawnCellStartingPosition}`){
+                mappedCellIds[54].textContent = `${trackGameStateObject.emptyCell}`
+                mappedCellIds[52].textContent = `${pawnAssignmentObject.pieceName}`
+                firstPawnMoves[14] = `${pawnAssignmentObject.pawnCellFiftyFour.firstPawnMoveComplete}`
+            }
+            break;
+        case getCellIds[62]:
+            if(mappedCellIds[62].textContent === `${pawnAssignmentObject.pieceName}` && firstPawnMoves[15] === `${pawnAssignmentObject.pawnCellSixtyTwo.firstPawnMoveNotComplete}`){
+                currentPawn = `${pawnAssignmentObject.pawnCellSixtyTwo.pawnCellStartingPosition}`
+            }
+            break;
+        case getCellIds[60]:
+            if(currentPawn === `${pawnAssignmentObject.pawnCellSixtyTwo.pawnCellStartingPosition}`){
+                mappedCellIds[62].textContent = `${trackGameStateObject.emptyCell}`
+                mappedCellIds[60].textContent = `${pawnAssignmentObject.pieceName}`
+                firstPawnMoves[16] = `${pawnAssignmentObject.pawnCellSixtyTwo.firstPawnMoveComplete}`
+            }
       }
     });
     return { DOUBLE_SPACES };
