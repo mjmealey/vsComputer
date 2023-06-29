@@ -15,6 +15,8 @@ const vsComputer = () => {
   const newPawn = Pawn()
   newPawn.PAWN_CELL_ASSIGNMENTS()
   newPawn.DOUBLE_SPACES()
+  newPawn.MOVE_ONE_SPACE_AT_START()
+  newPawn.PREVENT_PAWNS_ON_FIRST_SPACES_AFTER_DOUBLE()
 };
 
 export default vsComputer;
