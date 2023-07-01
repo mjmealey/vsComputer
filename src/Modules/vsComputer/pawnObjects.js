@@ -3,7 +3,7 @@ const PAWN_ASSIGNMENTS = {
   //tracks the top side pawns
   topSidePawns: {
     pawnOne: {
-      startingCell: { startingPosition: 1 },
+      startingPosition: 1,
       watchForNextPawnMove: {
         readyForNextPawnMove: { isReady: true },
         notReadyForNextPawnMove: { isReady: false },
@@ -11,7 +11,6 @@ const PAWN_ASSIGNMENTS = {
       watchForDoubleSpace: {
         doubleSpaceMoveComplete: { isComplete: true },
         doubleSpaceMoveNotComplete: { isComplete: false },
-        doubleSpaceMoveNotUsed: { isComplete: null },
       },
       watchForFirstMove: {
         firstMoveComplete: { moveComplete: true },
@@ -28,7 +27,7 @@ const PAWN_ASSIGNMENTS = {
     },
 
     pawnTwo: {
-      pawnCellStartingPosition: 9,
+      startingPosition: 9,
       watchForNextPawnMove: {
         readyForNextPawnMove: { isReady: true },
         notReadyForNextPawnMove: { isReady: false },
@@ -44,7 +43,7 @@ const PAWN_ASSIGNMENTS = {
     },
 
     pawnThree: {
-      pawnCellStartingPosition: 17,
+      startingPosition: 17,
       watchForNextPawnMove: {
         readyForNextPawnMove: { isReady: true },
         notReadyForNextPawnMove: { isReady: false },
@@ -60,7 +59,7 @@ const PAWN_ASSIGNMENTS = {
     },
 
     pawnFour: {
-      pawnCellStartingPosition: 25,
+      startingPosition: 25,
       watchForNextPawnMove: {
         readyForNextPawnMove: { isReady: true },
         notReadyForNextPawnMove: { isReady: false },
@@ -76,7 +75,7 @@ const PAWN_ASSIGNMENTS = {
     },
 
     pawnFive: {
-      pawnCellStartingPosition: 33,
+      startingPosition: 33,
       watchForNextPawnMove: {
         readyForNextPawnMove: { isReady: true },
         notReadyForNextPawnMove: { isReady: false },
@@ -92,7 +91,7 @@ const PAWN_ASSIGNMENTS = {
     },
 
     pawnSix: {
-      pawnCellStartingPosition: 41,
+      startingPosition: 41,
       watchForNextPawnMove: {
         readyForNextPawnMove: { isReady: true },
         notReadyForNextPawnMove: { isReady: false },
@@ -108,7 +107,7 @@ const PAWN_ASSIGNMENTS = {
     },
 
     pawnSeven: {
-      pawnCellStartingPosition: 49,
+      startingPosition: 49,
       watchForNextPawnMove: {
         readyForNextPawnMove: { isReady: true },
         notReadyForNextPawnMove: { isReady: false },
@@ -124,7 +123,7 @@ const PAWN_ASSIGNMENTS = {
     },
 
     pawnEight: {
-      pawnCellStartingPosition: 57,
+      startingPosition: 57,
       watchForNextPawnMove: {
         readyForNextPawnMove: { isReady: true },
         notReadyForNextPawnMove: { isReady: false },
@@ -142,7 +141,7 @@ const PAWN_ASSIGNMENTS = {
 
   bottomSidePawns: {
     pawnOne: {
-      pawnCellStartingPosition: 6,
+      startingPosition: 6,
       watchForNextPawnMove: {
         readyForNextPawnMove: { isReady: true },
         notReadyForNextPawnMove: { isReady: false },
@@ -157,7 +156,7 @@ const PAWN_ASSIGNMENTS = {
       },
     },
     pawnTwo: {
-      pawnCellStartingPosition: 14,
+      startingPosition: 14,
       watchForNextPawnMove: {
         readyForNextPawnMove: { isReady: true },
         notReadyForNextPawnMove: { isReady: false },
@@ -172,7 +171,7 @@ const PAWN_ASSIGNMENTS = {
       },
     },
     pawnThree: {
-      pawnCellStartingPosition: 22,
+      startingPosition: 22,
       watchForNextPawnMove: {
         readyForNextPawnMove: { isReady: true },
         notReadyForNextPawnMove: { isReady: false },
@@ -187,7 +186,7 @@ const PAWN_ASSIGNMENTS = {
       },
     },
     pawnFour: {
-      pawnCellStartingPosition: 30,
+      startingPosition: 30,
       watchForNextPawnMove: {
         readyForNextPawnMove: { isReady: true },
         notReadyForNextPawnMove: { isReady: false },
@@ -202,7 +201,7 @@ const PAWN_ASSIGNMENTS = {
       },
     },
     pawnFive: {
-      pawnCellStartingPosition: 38,
+      startingPosition: 38,
       watchForNextPawnMove: {
         readyForNextPawnMove: { isReady: true },
         notReadyForNextPawnMove: { isReady: false },
@@ -217,7 +216,7 @@ const PAWN_ASSIGNMENTS = {
       },
     },
     pawnSix: {
-      pawnCellStartingPosition: 46,
+      startingPosition: 46,
       watchForNextPawnMove: {
         readyForNextPawnMove: { isReady: true },
         notReadyForNextPawnMove: { isReady: false },
@@ -232,7 +231,7 @@ const PAWN_ASSIGNMENTS = {
       },
     },
     pawnSeven: {
-      pawnCellStartingPosition: 54,
+      startingPosition: 54,
       watchForNextPawnMove: {
         readyForNextPawnMove: { isReady: true },
         notReadyForNextPawnMove: { isReady: false },
@@ -247,7 +246,7 @@ const PAWN_ASSIGNMENTS = {
       },
     },
     pawnEight: {
-      pawnCellStartingPosition: 62,
+      startingPosition: 62,
       watchForNextPawnMove: {
         readyForNextPawnMove: { isReady: true },
         notReadyForNextPawnMove: { isReady: false },
