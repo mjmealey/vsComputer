@@ -2,77 +2,11 @@ import { getCellIds } from "./ChessPieceAssignments.js";
 import { trackGameStateObject } from "./gameStateObjects.js";
 import { displayGameStateTextObject } from "./gameStateObjects.js";
 import { pawnAssignmentObject } from "./pawnObjects.js";
-
+import { firstPawnMovesArray } from "./pawnArrays.js";
+console.log(firstPawnMovesArray)
 const Pawn = () => {
   //watches for pawn moves where double spacing does not happen at the start of the game
-  let firstPawnMoves = [
-    `${pawnAssignmentObject.pawnCellOne.firstPawnMoveNotComplete}`,
-    `${pawnAssignmentObject.pawnCellNine.firstPawnMoveNotComplete}`,
-    `${pawnAssignmentObject.pawnCellSeventeen.firstPawnMoveNotComplete}`,
-    `${pawnAssignmentObject.pawnCellTwentyFive.firstPawnMoveNotComplete}`,
-    `${pawnAssignmentObject.pawnCellThirtyThree.firstPawnMoveNotComplete}`,
-    `${pawnAssignmentObject.pawnCellFortyOne.firstPawnMoveNotComplete}`,
-    `${pawnAssignmentObject.pawnCellFortyNine.firstPawnMoveNotComplete}`,
-    `${pawnAssignmentObject.pawnCellFiftySeven.firstPawnMoveNotComplete}`,
-    //watching for bottom side first pawn moves
-    `${pawnAssignmentObject.pawnCellSix.firstPawnMoveNotComplete}`,
-    `${pawnAssignmentObject.pawnCellFourteen.firstPawnMoveNotComplete}`,
-    `${pawnAssignmentObject.pawnCellTwentyTwo.firstPawnMoveNotComplete}`,
-    `${pawnAssignmentObject.pawnCellThirty.firstPawnMoveNotComplete}`,
-    `${pawnAssignmentObject.pawnCellThirtyEight.firstPawnMoveNotComplete}`,
-    `${pawnAssignmentObject.pawnCellFortySix.firstPawnMoveNotComplete}`,
-    `${pawnAssignmentObject.pawnCellFiftyFour.firstPawnMoveNotComplete}`,
-    `${pawnAssignmentObject.pawnCellSixtyTwo.firstPawnMoveNotComplete}`,
-  ];
-  //array values will be changed by watching for the pawns to complete their double space or if they decide to not double space it will remain as not complete
-  let doubleSpacePawnMove = [
-    //watching for top side double spaces
-    `${pawnAssignmentObject.pawnCellOne.doubleSpacePawnMoveNotComplete}`,
-    `${pawnAssignmentObject.pawnCellNine.doubleSpacePawnMoveNotComplete}`,
-    `${pawnAssignmentObject.pawnCellSeventeen.doubleSpacePawnMoveNotComplete}`,
-    `${pawnAssignmentObject.pawnCellTwentyFive.doubleSpacePawnMoveNotComplete}`,
-    `${pawnAssignmentObject.pawnCellThirtyThree.doubleSpacePawnMoveNotComplete}`,
-    `${pawnAssignmentObject.pawnCellFortyOne.doubleSpacePawnMoveNotComplete}`,
-    `${pawnAssignmentObject.pawnCellFortyNine.doubleSpacePawnMoveNotComplete}`,
-    `${pawnAssignmentObject.pawnCellFiftySeven.doubleSpacePawnMoveNotComplete}`,
-    //watching for bottom side double spaces
-    `${pawnAssignmentObject.pawnCellSix.doubleSpacePawnMoveNotComplete}`,
-    `${pawnAssignmentObject.pawnCellFourteen.doubleSpacePawnMoveNotComplete}`,
-    `${pawnAssignmentObject.pawnCellTwentyTwo.doubleSpacePawnMoveNotComplete}`,
-    `${pawnAssignmentObject.pawnCellThirty.doubleSpacePawnMoveNotComplete}`,
-    `${pawnAssignmentObject.pawnCellThirtyEight.doubleSpacePawnMoveNotComplete}`,
-    `${pawnAssignmentObject.pawnCellFortySix.doubleSpacePawnMoveNotComplete}`,
-    `${pawnAssignmentObject.pawnCellFiftyFour.doubleSpacePawnMoveNotComplete}`,
-    `${pawnAssignmentObject.pawnCellSixtyTwo.doubleSpacePawnMoveNotComplete}`,
-  ];
-
-  let nextPawnMove = [
-    `${pawnAssignmentObject.pawnCellOne.notReadyForNextPawnMove}`,
-    `${pawnAssignmentObject.pawnCellNine.notReadyForNextPawnMove}`,
-    `${pawnAssignmentObject.pawnCellSeventeen.notReadyForNextPawnMove}`,
-    `${pawnAssignmentObject.pawnCellTwentyFive.notReadyForNextPawnMove}`,
-    `${pawnAssignmentObject.pawnCellThirtyThree.notReadyForNextPawnMove}`,
-    `${pawnAssignmentObject.pawnCellFortyOne.notReadyForNextPawnMove}`,
-    `${pawnAssignmentObject.pawnCellFortyNine.notReadyForNextPawnMove}`,
-    `${pawnAssignmentObject.pawnCellFiftySeven.notReadyForNextPawnMove}`,
-    //watching for bottom side first pawn moves
-    `${pawnAssignmentObject.pawnCellSix.notReadyForNextPawnMove}`,
-    `${pawnAssignmentObject.pawnCellFourteen.notReadyForNextPawnMove}`,
-    `${pawnAssignmentObject.pawnCellFourteen.notReadyForNextPawnMove}`,
-    `${pawnAssignmentObject.pawnCellThirty.notReadyForNextPawnMove}`,
-    `${pawnAssignmentObject.pawnCellThirtyEight.notReadyForNextPawnMove}`,
-    `${pawnAssignmentObject.pawnCellFortySix.notReadyForNextPawnMove}`,
-    `${pawnAssignmentObject.pawnCellFiftyFour.notReadyForNextPawnMove}`,
-    `${pawnAssignmentObject.pawnCellSixtyTwo.notReadyForNextPawnMove}`,
-  ];
-
-  let possibleCellOnePositions = [
-    `${pawnAssignmentObject.pawnCellOne.cellOnePawnNotOnCellOne}`,
-    `${pawnAssignmentObject.pawnCellOne.cellOnePawnNotOnCellTwo}`,
-    `${pawnAssignmentObject.pawnCellOne.cellOnePawnNotOnCellThree}`,
-    `${pawnAssignmentObject.pawnCellOne.cellOnePawnNotOnCellFour}`,
-    `${pawnAssignmentObject.pawnCellOne.cellOnePawnNotOnCellFive}`,
-  ];
+ 
 
   let currentPawn = `${trackGameStateObject.emptyPieceSelection}`;
 
