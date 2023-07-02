@@ -3,38 +3,45 @@ const PAWN_ASSIGNMENTS = {
   //tracks the top side pawns
   topSidePawns: {
     pawnOne: {
-      startingPosition: 1,
+      pawnCellStartingPosition: { startingPosition: 1 },
       watchForNextPawnMove: {
-        readyForNextPawnMove: { isReady: true },
-        notReadyForNextPawnMove: { isReady: false },
+        readyForNextPawnMove: { isReadyForNextMove: true },
+        notReadyForNextPawnMove: { notReadyForNextMove: false },
       },
       watchForDoubleSpace: {
-        doubleSpaceMoveComplete: { isComplete: true },
-        doubleSpaceMoveNotComplete: { isComplete: false },
+        doubleSpacePawnMoveComplete: { isComplete: true },
+        doubleSpacePawnMoveNotComplete: { notComplete: false },
       },
       watchForFirstMove: {
-        firstMoveComplete: { moveComplete: true },
-        firstMoveNotComplete: { moveComplete: false },
+        firstMoveComplete: { isComplete: true },
+        firstMoveNotComplete: { isComplete: false },
       },
 
       watchForPosition: {
+        //watches for the position of cell one's pawn(going off of array index which starts from 0 and counts up)
         onCellOneOfRowOne: { Cell: 1, Row: 1 },
-        onCellTwoOfRowOne: { Cell: 2, Row: 1 },
-        onCellThreeOfRowOne: { Cell: 3, Row: 1 },
-        onCellFourOfRowOne: { Cell: 4, Row: 1 },
-        onCellFiveOfRowOne: { Cell: 5, Row: 1 },
+        onCellTwo: { Cell: 2, Row: 1 },
+        onCellThree: { Cell: 3, Row: 1 },
+        onCellFour: { Cell: 4, Row: 1 },
+        onCellFive: { Cell: 5, Row: 1 },
+        //watches for the positions where the cell one pawn is not located
+        cellOnePawnNotOnCellOne: "Cell One Pawn is not on Cell One",
+        cellOnePawnNotOnCellTwo: "Cell One Pawn is not on Cell Two",
+        cellOnePawnNotOnCellThree: "Cell One Pawn not is on Cell Three",
+        cellOnePawnNotOnCellFour: "Cell One Pawn is not on Cell Four",
+        cellOnePawnNotOnCellFive: "Cell One Pawn is not on Cell Five",
       },
     },
 
     pawnTwo: {
-      startingPosition: 9,
+      pawnCellStartingPosition: 9,
       watchForNextPawnMove: {
-        readyForNextPawnMove: { isReady: true },
-        notReadyForNextPawnMove: { isReady: false },
+        readyForNextPawnMove: { isReadyForNextMove: true },
+        notReadyForNextPawnMove: { notReadyForNextMove: false },
       },
       watchForDoubleSpace: {
-        doubleSpaceMoveComplete: { moveComplete: true },
-        doubleSpaceMoveNotComplete: { moveComplete: false },
+        doubleSpacePawnMoveComplete: { isComplete: true },
+        doubleSpacePawnMoveNotComplete: { notComplete: false },
       },
       watchForFirstMove: {
         firstMoveComplete: { isComplete: true },
@@ -43,14 +50,14 @@ const PAWN_ASSIGNMENTS = {
     },
 
     pawnThree: {
-      startingPosition: 17,
+      pawnCellStartingPosition: 17,
       watchForNextPawnMove: {
-        readyForNextPawnMove: { isReady: true },
-        notReadyForNextPawnMove: { isReady: false },
+        readyForNextPawnMove: { isReadyForNextMove: true },
+        notReadyForNextPawnMove: { notReadyForNextMove: false },
       },
       watchForDoubleSpace: {
-        doubleSpaceMoveComplete: { moveComplete: true },
-        doubleSpaceMoveNotComplete: { moveComplete: false },
+        doubleSpacePawnMoveComplete: { isComplete: true },
+        doubleSpacePawnMoveNotComplete: { notComplete: false },
       },
       watchForFirstMove: {
         firstMoveComplete: { isComplete: true },
@@ -59,14 +66,14 @@ const PAWN_ASSIGNMENTS = {
     },
 
     pawnFour: {
-      startingPosition: 25,
+      pawnCellStartingPosition: 25,
       watchForNextPawnMove: {
-        readyForNextPawnMove: { isReady: true },
-        notReadyForNextPawnMove: { isReady: false },
+        readyForNextPawnMove: { isReadyForNextMove: true },
+        notReadyForNextPawnMove: { notReadyForNextMove: false },
       },
       watchForDoubleSpace: {
-        doubleSpaceMoveComplete: { moveComplete: true },
-        doubleSpaceMoveNotComplete: { moveComplete: false },
+        doubleSpacePawnMoveComplete: { isComplete: true },
+        doubleSpacePawnMoveNotComplete: { notComplete: false },
       },
       watchForFirstMove: {
         firstMoveComplete: { isComplete: true },
@@ -75,14 +82,14 @@ const PAWN_ASSIGNMENTS = {
     },
 
     pawnFive: {
-      startingPosition: 33,
+      pawnCellStartingPosition: 33,
       watchForNextPawnMove: {
-        readyForNextPawnMove: { isReady: true },
-        notReadyForNextPawnMove: { isReady: false },
+        readyForNextPawnMove: { isReadyForNextMove: true },
+        notReadyForNextPawnMove: { notReadyForNextMove: false },
       },
       watchForDoubleSpace: {
-        doubleSpaceMoveComplete: { moveComplete: true },
-        doubleSpaceMoveNotComplete: { moveComplete: false },
+        doubleSpacePawnMoveComplete: { isComplete: true },
+        doubleSpacePawnMoveNotComplete: { notComplete: false },
       },
       watchForFirstMove: {
         firstMoveComplete: { isComplete: true },
@@ -91,14 +98,14 @@ const PAWN_ASSIGNMENTS = {
     },
 
     pawnSix: {
-      startingPosition: 41,
+      pawnCellStartingPosition: 41,
       watchForNextPawnMove: {
-        readyForNextPawnMove: { isReady: true },
-        notReadyForNextPawnMove: { isReady: false },
+        readyForNextPawnMove: { isReadyForNextMove: true },
+        notReadyForNextPawnMove: { notReadyForNextMove: false },
       },
       watchForDoubleSpace: {
-        doubleSpaceMoveComplete: { moveComplete: true },
-        doubleSpaceMoveNotComplete: { moveComplete: false },
+        doubleSpacePawnMoveComplete: { isComplete: true },
+        doubleSpacePawnMoveNotComplete: { notComplete: false },
       },
       watchForFirstMove: {
         firstMoveComplete: { isComplete: true },
@@ -107,14 +114,14 @@ const PAWN_ASSIGNMENTS = {
     },
 
     pawnSeven: {
-      startingPosition: 49,
+      pawnCellStartingPosition: 49,
       watchForNextPawnMove: {
-        readyForNextPawnMove: { isReady: true },
-        notReadyForNextPawnMove: { isReady: false },
+        readyForNextPawnMove: { isReadyForNextMove: true },
+        notReadyForNextPawnMove: { notReadyForNextMove: false },
       },
       watchForDoubleSpace: {
-        doubleSpaceMoveComplete: { moveComplete: true },
-        doubleSpaceMoveNotComplete: { moveComplete: false },
+        doubleSpacePawnMoveComplete: { isComplete: true },
+        doubleSpacePawnMoveNotComplete: { notComplete: false },
       },
       watchForFirstMove: {
         firstMoveComplete: { isComplete: true },
@@ -123,14 +130,14 @@ const PAWN_ASSIGNMENTS = {
     },
 
     pawnEight: {
-      startingPosition: 57,
+      pawnCellStartingPosition: 57,
       watchForNextPawnMove: {
-        readyForNextPawnMove: { isReady: true },
-        notReadyForNextPawnMove: { isReady: false },
+        readyForNextPawnMove: { isReadyForNextMove: true },
+        notReadyForNextPawnMove: { notReadyForNextMove: false },
       },
       watchForDoubleSpace: {
-        doubleSpaceMoveComplete: { moveComplete: true },
-        doubleSpaceMoveNotComplete: { moveComplete: false },
+        doubleSpacePawnMoveComplete: { isComplete: true },
+        doubleSpacePawnMoveNotComplete: { notComplete: false },
       },
       watchForFirstMove: {
         firstMoveComplete: { isComplete: true },
@@ -141,14 +148,14 @@ const PAWN_ASSIGNMENTS = {
 
   bottomSidePawns: {
     pawnOne: {
-      startingPosition: 6,
+      pawnCellStartingPosition: 6,
       watchForNextPawnMove: {
-        readyForNextPawnMove: { isReady: true },
-        notReadyForNextPawnMove: { isReady: false },
+        readyForNextPawnMove: { isReadyForNextMove: true },
+        notReadyForNextPawnMove: { notReadyForNextMove: false },
       },
       watchForDoubleSpace: {
-        doubleSpaceMoveComplete: { moveComplete: true },
-        doubleSpaceMoveNotComplete: { moveComplete: false },
+        doubleSpacePawnMoveComplete: { isComplete: true },
+        doubleSpacePawnMoveNotComplete: { notComplete: false },
       },
       watchForFirstMove: {
         firstMoveComplete: { isComplete: true },
@@ -156,14 +163,14 @@ const PAWN_ASSIGNMENTS = {
       },
     },
     pawnTwo: {
-      startingPosition: 14,
+      pawnCellStartingPosition: 14,
       watchForNextPawnMove: {
-        readyForNextPawnMove: { isReady: true },
-        notReadyForNextPawnMove: { isReady: false },
+        readyForNextPawnMove: { isReadyForNextMove: true },
+        notReadyForNextPawnMove: { notReadyForNextMove: false },
       },
       watchForDoubleSpace: {
-        doubleSpaceMoveComplete: { moveComplete: true },
-        doubleSpaceMoveNotComplete: { moveComplete: false },
+        doubleSpacePawnMoveComplete: { isComplete: true },
+        doubleSpacePawnMoveNotComplete: { notComplete: false },
       },
       watchForFirstMove: {
         firstMoveComplete: { isComplete: true },
@@ -171,14 +178,14 @@ const PAWN_ASSIGNMENTS = {
       },
     },
     pawnThree: {
-      startingPosition: 22,
+      pawnCellStartingPosition: 22,
       watchForNextPawnMove: {
-        readyForNextPawnMove: { isReady: true },
-        notReadyForNextPawnMove: { isReady: false },
+        readyForNextPawnMove: { isReadyForNextMove: true },
+        notReadyForNextPawnMove: { notReadyForNextMove: false },
       },
       watchForDoubleSpace: {
-        doubleSpaceMoveComplete: { moveComplete: true },
-        doubleSpaceMoveNotComplete: { moveComplete: false },
+        doubleSpacePawnMoveComplete: { isComplete: true },
+        doubleSpacePawnMoveNotComplete: { notComplete: false },
       },
       watchForFirstMove: {
         firstMoveComplete: { isComplete: true },
@@ -186,14 +193,14 @@ const PAWN_ASSIGNMENTS = {
       },
     },
     pawnFour: {
-      startingPosition: 30,
+      pawnCellStartingPosition: 30,
       watchForNextPawnMove: {
-        readyForNextPawnMove: { isReady: true },
-        notReadyForNextPawnMove: { isReady: false },
+        readyForNextPawnMove: { isReadyForNextMove: true },
+        notReadyForNextPawnMove: { notReadyForNextMove: false },
       },
       watchForDoubleSpace: {
-        doubleSpaceMoveComplete: { moveComplete: true },
-        doubleSpaceMoveNotComplete: { moveComplete: false },
+        doubleSpacePawnMoveComplete: { isComplete: true },
+        doubleSpacePawnMoveNotComplete: { notComplete: false },
       },
       watchForFirstMove: {
         firstMoveComplete: { isComplete: true },
@@ -201,14 +208,14 @@ const PAWN_ASSIGNMENTS = {
       },
     },
     pawnFive: {
-      startingPosition: 38,
+      pawnCellStartingPosition: 38,
       watchForNextPawnMove: {
-        readyForNextPawnMove: { isReady: true },
-        notReadyForNextPawnMove: { isReady: false },
+        readyForNextPawnMove: { isReadyForNextMove: true },
+        notReadyForNextPawnMove: { notReadyForNextMove: false },
       },
       watchForDoubleSpace: {
-        doubleSpaceMoveComplete: { moveComplete: true },
-        doubleSpaceMoveNotComplete: { moveComplete: false },
+        doubleSpacePawnMoveComplete: { isComplete: true },
+        doubleSpacePawnMoveNotComplete: { notComplete: false },
       },
       watchForFirstMove: {
         firstMoveComplete: { isComplete: true },
@@ -216,14 +223,14 @@ const PAWN_ASSIGNMENTS = {
       },
     },
     pawnSix: {
-      startingPosition: 46,
+      pawnCellStartingPosition: 46,
       watchForNextPawnMove: {
-        readyForNextPawnMove: { isReady: true },
-        notReadyForNextPawnMove: { isReady: false },
+        readyForNextPawnMove: { isReadyForNextMove: true },
+        notReadyForNextPawnMove: { notReadyForNextMove: false },
       },
       watchForDoubleSpace: {
-        doubleSpaceMoveComplete: { moveComplete: true },
-        doubleSpaceMoveNotComplete: { moveComplete: false },
+        doubleSpacePawnMoveComplete: { isComplete: true },
+        doubleSpacePawnMoveNotComplete: { notComplete: false },
       },
       watchForFirstMove: {
         firstMoveComplete: { isComplete: true },
@@ -231,14 +238,14 @@ const PAWN_ASSIGNMENTS = {
       },
     },
     pawnSeven: {
-      startingPosition: 54,
+      pawnCellStartingPosition: 54,
       watchForNextPawnMove: {
-        readyForNextPawnMove: { isReady: true },
-        notReadyForNextPawnMove: { isReady: false },
+        readyForNextPawnMove: { isReadyForNextMove: true },
+        notReadyForNextPawnMove: { notReadyForNextMove: false },
       },
       watchForDoubleSpace: {
-        doubleSpaceMoveComplete: { moveComplete: true },
-        doubleSpaceMoveNotComplete: { moveComplete: false },
+        doubleSpacePawnMoveComplete: { isComplete: true },
+        doubleSpacePawnMoveNotComplete: { notComplete: false },
       },
       watchForFirstMove: {
         firstMoveComplete: { isComplete: true },
@@ -246,14 +253,14 @@ const PAWN_ASSIGNMENTS = {
       },
     },
     pawnEight: {
-      startingPosition: 62,
+      pawnCellStartingPosition: 62,
       watchForNextPawnMove: {
-        readyForNextPawnMove: { isReady: true },
-        notReadyForNextPawnMove: { isReady: false },
+        readyForNextPawnMove: { isReadyForNextMove: true },
+        notReadyForNextPawnMove: { notReadyForNextMove: false },
       },
       watchForDoubleSpace: {
-        doubleSpaceMoveComplete: { moveComplete: true },
-        doubleSpaceMoveNotComplete: { moveComplete: false },
+        doubleSpacePawnMoveComplete: { isComplete: true },
+        doubleSpacePawnMoveNotComplete: { notComplete: false },
       },
       watchForFirstMove: {
         firstMoveComplete: { isComplete: true },

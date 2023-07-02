@@ -4,8 +4,8 @@ import {
   displayGameStateTextObject,
 } from "./gameStateObjects.js";
 import { pawnAssignmentObject } from "./pawnObjects.js";
-import { doubleSpacePawnMoveArray, firstPawnMovesArray } from "./pawnArrays.js";
-console.log(firstPawnMovesArray);
+import { trackFirstMovesArray, trackDoubleMovesArray } from "./pawnArrays.js";
+
 const Pawn = () => {
   //watches for pawn moves where double spacing does not happen at the start of the game
 
@@ -25,7 +25,7 @@ const Pawn = () => {
       if (topPawnAssignments.includes(topPawnsIndex)) {
         mappedCellIds[
           topPawnsIndex
-        ].textContent = `${pawnAssignmentObject.pieceName}`;
+        ].textContent = `${pawnAssignmentObject.topSidePawns[0].pieceName}`;
       }
     }
     //handles bottom side pawn names
@@ -37,7 +37,7 @@ const Pawn = () => {
       if (bottomPawnAssignments.includes(bottomPawnsIndex)) {
         mappedCellIds[
           bottomPawnsIndex
-        ].textContent = `${pawnAssignmentObject.pieceName}`;
+        ].textContent = `${pawnAssignmentObject.bottomSidePawns[0].pieceName}`;
       }
     }
     return { PAWN_CELL_ASSIGNMENTS };
@@ -73,6 +73,10 @@ const Pawn = () => {
 
     return { WATCH_PAWN_POSITIONS };
   };
+  console.log(pawnAssignmentObject.topSidePawns[0].startingPositions[0]);
+  console.log(trackDoubleMovesArray[0]);
+  console.log(pawnAssignmentObject.topSidePawns[0].startingPositions[0])
+
   //logic for controlling the first move for each pawn at the start of the game
   //controls double spaces for pawns at the start of the game
   const DOUBLE_SPACES = (mappedCellIds) => {
@@ -86,19 +90,19 @@ const Pawn = () => {
         case getCellIds[1]:
           if (
             mappedCellIds[1].textContent ===
-              `${pawnAssignmentObject.pieceName}` &&
-            doubleSpacePawnMoveArray[0] ===
-              `${pawnAssignmentObject.topSidePawns.pawnOne.watchForDoubleSpace.doubleSpaceMoveNotComplete}`
+              `${pawnAssignmentObject.topSidePawns[0].pieceName}` &&
+            trackDoubleMovesArray[0] ===
+              `${pawnAssignmentObject.topSidePawns[0].watchForDoubleSpace.doubleSpaceMoveNotComplete}`
           ) {
-            currentPawn = `${pawnAssignmentObject.topSidePawns.pawnOne.startingPosition}`;
-            console.log(currentPawn);
+            console.log("hi");
+            currentPawn = `${pawnAssignmentObject.topSidePawns[0].startingPositions[0]}`;
           }
           if (
-            doubleSpacePawnMoveArray[0] ===
-            `${pawnAssignmentObject.topSidePawns.pawnOne.doubleSpacePawnMoveComplete}`
+            trackDoubleMovesArray[0] ===
+            `${pawnAssignmentObject.topSidePawns[0].watchForDoubleSpace.doubleSpaceMoveComplete}`
           ) {
-            firstPawnMovesArray[0] ===
-              `${pawnAssignmentObject.topSidePawns.pawnOne.firstPawnMoveComplete}`;
+            trackFirstMovesArray[0] ===
+              `${pawnAssignmentObject.topSidePawns[0].watchForFirstMove.firstMoveComplete}`;
           }
           break;
 
@@ -431,8 +435,8 @@ const Pawn = () => {
           if (
             mappedCellIds[1].textContent ===
               `${pawnAssignmentObject.pieceName}` &&
-            firstPawnMoves[0] ===
-              `${pawnAssignmentObject.pawnCellOne.firstPawnMoveNotComplete}`
+            trackFirstMovesArray[0] ===
+              `${pawnAssignmentObject.topSidePawns[0].watchForFirstMove.firstMoveNotComplete}`
           ) {
             currentPawn = `${pawnAssignmentObject.pawnCellOne.pawnCellStartingPosition}`;
           }
