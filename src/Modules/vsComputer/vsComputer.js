@@ -14,9 +14,8 @@ const vsComputer = () => {
   newChessBoardColors.cellColors() 
   const newPawn = Pawn()
   newPawn.PAWN_CELL_ASSIGNMENTS()
-  newPawn.WATCH_PAWN_POSITIONS()
-  newPawn.DOUBLE_SPACES()
-  newPawn.MOVE_ONE_SPACE_AT_START()
+  newPawn.handleComputerSideDoubleSpaceClicks()
+  newPawn.DOUBLE_SPACES_ON_BOTTOMSIDE()
   newPawn.PREVENT_PAWNS_ON_FIRST_SPACES_AFTER_DOUBLE()
   newPawn.PREVENT_PAWNS_FROM_DUPLICATING_ON_SECOND_SPACE_AFTER_FIRST_SINGLE_SPACE()
 };
