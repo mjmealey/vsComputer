@@ -1,7 +1,7 @@
 const PAWN_ASSIGNMENTS = {
   pieceName: "Pawn",
   //tracks the top side pawns
-  topSidePawns: {
+  computerSide: {
     pawnOne: {
       pawnCellStartingPosition: { startingPosition: 1 },
       watchForNextPawnMove: {

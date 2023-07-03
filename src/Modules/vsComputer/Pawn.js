@@ -48,18 +48,20 @@ const Pawn = () => {
     return { PAWN_CELL_ASSIGNMENTS };
   };
 
-  const handleComputerSideDoubleSpaces = (e) => {
-  const mappedCellIds = getCellIds.map((id) => document.getElementById(id));
-    let watchPawnOneDoubleSpace = `${pawnAssignmentObject.computerSide.pawnOne.watchForDoubleSpace.doubleSpaceMoveNotComplete}`
-    
-    const handleDoubleSpaceClicks = e.target.id
-      
-    switch (handleDoubleSpaceClicks) {
+  const handleComputerSidePawnOneDoubleSpaceClicks = () => {
+    gridContainer.addEventListener("click", handleFirstPawnComputerSideDoubleSpace)
+
+    return {handleComputerSidePawnOneDoubleSpaceClicks}
+  }
+
+  const handleFirstPawnComputerSideDoubleSpace = (mappedCellIds) => {
+    const firstPawnClicks = e.target.id;
+    switch (firstPawnClicks) {
       case getCellIds[1]:
         if (
           mappedCellIds[1].textContent ===
             `${pawnAssignmentObject.pieceName}` &&
-           doubleSpacePawnMoveArray[0] === watchPawnOneDoubleSpace
+          doubleSpacePawnMoveArray[0] === watchPawnOneDoubleSpace
         ) {
           console.log("hi");
           currentPawn = `${pawnAssignmentObject.computerSide.pawnOne.startingPosition}`;
@@ -72,7 +74,6 @@ const Pawn = () => {
             `${pawnAssignmentObject.computerSide.pawnOne.firstMoveNotComplete}`;
         }
         break;
-
       case getCellIds[3]:
         if (
           currentPawn ===
@@ -82,7 +83,21 @@ const Pawn = () => {
           mappedCellIds[3].textContent = `${pawnAssignmentObject.pieceName}`;
           doubleSpacePawnMoveArray[0] = `${pawnAssignmentObject.computerSide.pawnOne.watchForDoubleSpace.doubleSpaceMoveComplete}`;
         }
+    }
+  };
+
+  const handleComputerSideDoubleSpaces = (e) => {
+    const mappedCellIds = getCellIds.map((id) => document.getElementById(id));
+    let watchPawnOneDoubleSpace = `${pawnAssignmentObject.computerSide.pawnOne.watchForDoubleSpace.doubleSpaceMoveNotComplete}`;
+
+    const handleDoubleSpaceClicks = e.target.id;
+
+    switch (handleDoubleSpaceClicks) {
+      case getCellIds[1]:
         break;
+
+      case getCellIds[3]:
+
       case getCellIds[9]:
         if (
           mappedCellIds[9].textContent ===
