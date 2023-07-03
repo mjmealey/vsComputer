@@ -46,23 +46,23 @@ let firstPawnMoves = [
   ];
 
   let nextPawnMove = [
-    `${pawnAssignmentObject.computerSide.pawnOne.notReadyForNextPawnMove}`,
-    `${pawnAssignmentObject.computerSide.pawnTwo.notReadyForNextPawnMove}`,
-    `${pawnAssignmentObject.computerSide.pawnThree.notReadyForNextPawnMove}`,
-    `${pawnAssignmentObject.computerSide.pawnFour.notReadyForNextPawnMove}`,
-    `${pawnAssignmentObject.computerSide.pawnFive.notReadyForNextPawnMove}`,
-    `${pawnAssignmentObject.computerSide.pawnSix.notReadyForNextPawnMove}`,
-    `${pawnAssignmentObject.computerSide.pawnSeven.notReadyForNextPawnMove}`,
-    `${pawnAssignmentObject.computerSide.pawnEight.notReadyForNextPawnMove}`,
+    `${pawnAssignmentObject.computerSide.pawnOne.watchForNextMove.notReadyForNextMove}`,
+    `${pawnAssignmentObject.computerSide.pawnTwo.watchForNextMove.notReadyForNextMove}`,
+    `${pawnAssignmentObject.computerSide.pawnThree.watchForNextMove.notReadyForNextMove}`,
+    `${pawnAssignmentObject.computerSide.pawnFour.watchForNextMove.notReadyForNextMove}`,
+    `${pawnAssignmentObject.computerSide.pawnFive.watchForNextMove.notReadyForNextMove}`,
+    `${pawnAssignmentObject.computerSide.pawnSix.watchForNextMove.notReadyForNextMove}`,
+    `${pawnAssignmentObject.computerSide.pawnSeven.watchForNextMove.notReadyForNextMove}`,
+    `${pawnAssignmentObject.computerSide.pawnEight.watchForNextMove.notReadyForNextMove}`,
     //watching for bottom side first pawn moves
-    `${pawnAssignmentObject.playerSide.pawnOne.notReadyForNextPawnMove}`,
-    `${pawnAssignmentObject.playerSide.pawnTwo.notReadyForNextPawnMove}`,
-    `${pawnAssignmentObject.playerSide.pawnThree.notReadyForNextPawnMove}`,
-    `${pawnAssignmentObject.playerSide.pawnFour.notReadyForNextPawnMove}`,
-    `${pawnAssignmentObject.playerSide.pawnFive.notReadyForNextPawnMove}`,
-    `${pawnAssignmentObject.playerSide.pawnSix.notReadyForNextPawnMove}`,
-    `${pawnAssignmentObject.playerSide.pawnSeven.notReadyForNextPawnMove}`,
-    `${pawnAssignmentObject.playerSide.pawnEight.notReadyForNextPawnMove}`,
+    `${pawnAssignmentObject.playerSide.pawnOne.watchForNextMove.notReadyForNextMove}`,
+    `${pawnAssignmentObject.playerSide.pawnTwo.watchForNextMove.notReadyForNextMove}`,
+    `${pawnAssignmentObject.playerSide.pawnThree.watchForNextMove.notReadyForNextMove}`,
+    `${pawnAssignmentObject.playerSide.pawnFour.watchForNextMove.notReadyForNextMove}`,
+    `${pawnAssignmentObject.playerSide.pawnFive.watchForNextMove.notReadyForNextMove}`,
+    `${pawnAssignmentObject.playerSide.pawnSix.watchForNextMove.notReadyForNextMove}`,
+    `${pawnAssignmentObject.playerSide.pawnSeven.watchForNextMove.notReadyForNextMove}`,
+    `${pawnAssignmentObject.playerSide.pawnEight.watchForNextMove.notReadyForNextMove}`,
   ];
 
   let possibleCellOnePositions = [
