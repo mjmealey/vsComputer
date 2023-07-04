@@ -1,9 +1,28 @@
-import PawnCellAssignments from "./pawnModules/PawnAssignments.js"
-
+import PawnCellAssignments from "./pawnFiles/pawnModules/PawnAssignments.js"
+import ComputerDoubleSpace from "./pawnFiles/computerModules/ComputerDoubleSpace.js"
+import PlayerDoubleSpace from "./pawnFiles/playerModules/PlayerDoubleSpace.js"
 const Pawn = () => {
 const newPawnAssignments = PawnCellAssignments()
 newPawnAssignments.computerSideAssignments()
 newPawnAssignments.playerSideAssignments()
+const newComputerDoubleSpace = ComputerDoubleSpace()
+newComputerDoubleSpace.handleFirstComputerSideDoubleSpaceClicks() 
+newComputerDoubleSpace.handleSecondComputerSideDoubleSpaceClicks()
+newComputerDoubleSpace.handleThirdComputerSideDoubleSpaceClicks()
+newComputerDoubleSpace.handleFourthComputerSideDoubleSpaceClicks()
+newComputerDoubleSpace.handleFifthComputerSideDoubleSpaceClicks()
+newComputerDoubleSpace.handleSixthComputerSideDoubleSpaceClicks()
+newComputerDoubleSpace.handleSeventhComputerSideDoubleSpaceClicks()
+newComputerDoubleSpace.handleEighthComputerSideDoubleSpaceClicks()
+const newPlayerDoubleSpace = PlayerDoubleSpace()
+newPlayerDoubleSpace.firstPlayerSideDoubleSpaceClicks()
+newPlayerDoubleSpace.secondPlayerSideDoubleSpaceClicks()
+newPlayerDoubleSpace.thirdPlayerSideDoubleSpaceClicks()
+newPlayerDoubleSpace.fourthPlayerSideDoubleSpaceClicks()
+newPlayerDoubleSpace.fifthPlayerSideDoubleSpaceClicks()
+newPlayerDoubleSpace.sixthPlayerSideDoubleSpaceClicks()
+newPlayerDoubleSpace.seventhPlayerSideDoubleSpaceClicks()
+newPlayerDoubleSpace.eighthPlayerSideDoubleSpaceClicks()
 }
 
 export default Pawn 
