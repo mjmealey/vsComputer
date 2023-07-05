@@ -2,7 +2,6 @@ import { singleSpaceAtStartArray } from "../../objects/pawnArrays.js"
 import { trackGameStateObject } from "../../../objects/gameStateObjects.js";
 import { pawnAssignmentObject } from "../../objects/pawnObjects.js";
 import { getCellIds } from "../../../modules/ChessPieceAssignments.js";
-
 const ComputerSingleSpaceAtStart = () => {
   const mappedCellIds = getCellIds.map((id) => document.getElementById(id));
   let currentPawn = `${trackGameStateObject.emptyPieceSelection}`;
