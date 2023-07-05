@@ -1,6 +1,5 @@
-import ChessPieceAssignments from "./ChessPieceAssignments.js";
-import ChessBoardColors from "./ChessBoardColors.js";
-import Pawn from "./Pawn.js";
+import ChessPieceAssignments from "./modules/ChessPieceAssignments.js";
+import ChessBoardColors from "./modules/ChessBoardColors.js";
 
 const vsComputer = () => {
   const newChessPieceAssignments = ChessPieceAssignments();

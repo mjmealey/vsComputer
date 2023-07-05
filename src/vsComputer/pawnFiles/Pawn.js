@@ -1,0 +1,39 @@
+import PawnCellAssignments from "./modules/general-modules/PawnCellAssignments.js"
+import ComputerDoubleSpace from "./modules/computer-modules/ComputerDoubleSpace.js"
+import PlayerDoubleSpace from "./modules/player-modules/PlayerDoubleSpace.js"
+import ComputerSingleSpaceAtStart from "./modules/computer-modules/ComputerSingleSpaceAtStart.js"
+
+const Pawn = () => {
+const newPawnAssignments = PawnCellAssignments()
+newPawnAssignments.computerSideAssignments()
+newPawnAssignments.playerSideAssignments()
+const newComputerDoubleSpace = ComputerDoubleSpace()
+newComputerDoubleSpace.handleFirstComputerSideDoubleSpaceClicks() 
+newComputerDoubleSpace.handleSecondComputerSideDoubleSpaceClicks()
+newComputerDoubleSpace.handleThirdComputerSideDoubleSpaceClicks()
+newComputerDoubleSpace.handleFourthComputerSideDoubleSpaceClicks()
+newComputerDoubleSpace.handleFifthComputerSideDoubleSpaceClicks()
+newComputerDoubleSpace.handleSixthComputerSideDoubleSpaceClicks()
+newComputerDoubleSpace.handleSeventhComputerSideDoubleSpaceClicks()
+newComputerDoubleSpace.handleEighthComputerSideDoubleSpaceClicks()
+const newPlayerDoubleSpace = PlayerDoubleSpace()
+newPlayerDoubleSpace.firstPlayerSideDoubleSpaceClicks()
+newPlayerDoubleSpace.secondPlayerSideDoubleSpaceClicks()
+newPlayerDoubleSpace.thirdPlayerSideDoubleSpaceClicks()
+newPlayerDoubleSpace.fourthPlayerSideDoubleSpaceClicks()
+newPlayerDoubleSpace.fifthPlayerSideDoubleSpaceClicks()
+newPlayerDoubleSpace.sixthPlayerSideDoubleSpaceClicks()
+newPlayerDoubleSpace.seventhPlayerSideDoubleSpaceClicks()
+newPlayerDoubleSpace.eighthPlayerSideDoubleSpaceClicks()
+const newComputerSingleSpaceAtStart = ComputerSingleSpaceAtStart()
+newComputerSingleSpaceAtStart.handleFirstComputerSideDoubleSpaceAtStartClicks()
+newComputerSingleSpaceAtStart.handleSecondComputerSideSingleSpaceAtStartClicks()
+newComputerSingleSpaceAtStart.handleThirdComputerSideSingleSpaceAtStartClicks()
+newComputerSingleSpaceAtStart.handleFourthComputerSideSingleSpaceAtStartClicks()
+newComputerSingleSpaceAtStart.handleFifthComputerSideSingleSpaceAtStartClicks()
+newComputerSingleSpaceAtStart.handleSixthComputerSideSingleSpaceAtStartClicks()
+newComputerSingleSpaceAtStart.handleSeventhComputerSideSingleSpaceAtStartClicks()
+newComputerSingleSpaceAtStart.handleEighthComputerSideSingleSpaceAtStartClicks()
+}
+
+export default Pawn 
