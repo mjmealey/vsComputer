@@ -2,7 +2,7 @@ import { pawnAssignmentObject } from "./pawnObjects.js";
 
 
 
-let firstPawnMoves = [
+let singleSpaceAtStart = [
     //watching for top side pawn first moves
     `${pawnAssignmentObject.computerSide.pawnOne.watchForFirstMove.firstMoveNotComplete}`,
     `${pawnAssignmentObject.computerSide.pawnTwo.watchForFirstMove.firstMoveNotComplete}`,
@@ -74,7 +74,7 @@ let firstPawnMoves = [
   ];
 
 
-  export let firstPawnMovesArray = firstPawnMoves
+  export let singleSpaceAtStartArray = singleSpaceAtStart
   export let doubleSpacePawnMoveArray = doubleSpacePawnMove
   export let nextPawnMoveArray = nextPawnMove
   export let possibleCellOnePositionsArray = possibleCellOnePositions
