@@ -2,6 +2,7 @@ import PawnCellAssignments from "./modules/general-modules/PawnCellAssignments.j
 import ComputerDoubleSpace from "./modules/computer-modules/ComputerDoubleSpace.js"
 import PlayerDoubleSpace from "./modules/player-modules/PlayerDoubleSpace.js"
 import ComputerSingleSpaceAtStart from "./modules/computer-modules/ComputerSingleSpaceAtStart.js"
+import PlayerSingleSpaceAtStart from "./modules/player-modules/PlayerSingleSpace.js"
 
 const Pawn = () => {
 const newPawnAssignments = PawnCellAssignments()
@@ -34,6 +35,15 @@ newComputerSingleSpaceAtStart.handleFifthComputerSideSingleSpaceAtStartClicks()
 newComputerSingleSpaceAtStart.handleSixthComputerSideSingleSpaceAtStartClicks()
 newComputerSingleSpaceAtStart.handleSeventhComputerSideSingleSpaceAtStartClicks()
 newComputerSingleSpaceAtStart.handleEighthComputerSideSingleSpaceAtStartClicks()
+const newPlayerSingleSpaceAtStart = PlayerSingleSpaceAtStart()
+newPlayerSingleSpaceAtStart.handleFirstPlayerSingleSpaceAtStartClicks()
+newPlayerSingleSpaceAtStart.handleSecondPlayerSingleSpaceAtStartClicks()
+newPlayerSingleSpaceAtStart.handleThirdPlayerSingleSpaceAtStartClicks()
+newPlayerSingleSpaceAtStart.handleFourthPlayerSingleSpaceAtStartClicks()
+newPlayerSingleSpaceAtStart.handleFifthPlayerSingleSpaceAtStartClicks()
+newPlayerSingleSpaceAtStart.handleSixthPlayerSingleSpaceAtStartClicks()
+newPlayerSingleSpaceAtStart.handleSeventhPlayerSingleSpaceAtStartClicks()
+newPlayerSingleSpaceAtStart.handleEighthPlayerSingleSpaceAtStartClicks()
 }
 
 export default Pawn 
