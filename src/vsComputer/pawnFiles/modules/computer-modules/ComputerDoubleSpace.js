@@ -1,7 +1,8 @@
 import { getCellIds } from "../../../modules/ChessPieceAssignments.js";
 import { pawnAssignmentObject } from "../../objects/pawnObjects.js";
 import { trackGameStateObject } from "../../../objects/gameStateObjects.js";
-import { doubleSpacePawnMoveArray } from "../../objects/pawnArrays.js"
+import { doubleSpacePawnMoveArray } from "../../objects/pawnArrays.js";
+
 const ComputerDoubleSpace = () => {
   const handleFirstComputerSideDoubleSpaceClicks = () => {
     gridContainer.addEventListener("click", handleFirstComputerSideDoubleSpace);
@@ -262,7 +263,9 @@ const ComputerDoubleSpace = () => {
         break;
     }
   };
+
   return {
+    //double spacing
     handleFirstComputerSideDoubleSpaceClicks,
     handleSecondComputerSideDoubleSpaceClicks,
     handleThirdComputerSideDoubleSpaceClicks,
