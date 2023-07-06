@@ -10,6 +10,12 @@ const PreventPlayerDuplication = () => {
   const watchForEmptyCellAfterDoubleSpace = `${trackGameStateObject.emptyCell}`;
   const watchForEmptyCellAfterSingleSpace = `${trackGameStateObject.emptyCell}`;
 
+  const firstPlayerPreventDuplicationClicks = () => {
+    gridContainer.addEventListener("click", firstPlayerPreventDuplication);
+
+    return { firstPlayerPreventDuplicationClicks };
+  };
+
   const firstPlayerPreventDuplication = (e) => {
     const firstPlayerDoubleSpaceComplete = `${pawnAssignmentObject.playerSide.pawnOne.watchForDoubleSpace.doubleSpaceMoveComplete}`;
     const firstPlayerSingleSpaceComplete = `${pawnAssignmentObject.playerSide.pawnOne.watchForFirstMove.firstMoveComplete}`;
@@ -33,6 +39,12 @@ const PreventPlayerDuplication = () => {
         }
         break;
     }
+  };
+
+  const secondPlayerPreventDuplicationClicks = () => {
+    gridContainer.addEventListener("click", secondPlayerPreventDuplication);
+
+    return { secondPlayerPreventDuplicationClicks };
   };
 
   const secondPlayerPreventDuplication = (e) => {
@@ -60,6 +72,12 @@ const PreventPlayerDuplication = () => {
     }
   };
 
+  const thirdPlayerPreventDuplicationClicks = () => {
+    gridContainer.addEventListener("click", thirdPlayerPreventDuplication);
+
+    return { thirdPlayerPreventDuplicationClicks };
+  };
+
   const thirdPlayerPreventDuplication = (e) => {
     const thirdPlayerDoubleSpaceComplete = `${pawnAssignmentObject.playerSide.pawnThree.watchForDoubleSpace.doubleSpaceMoveComplete}`;
     const thirdPlayerSingleSpaceComplete = `${pawnAssignmentObject.playerSide.pawnThree.watchForFirstMove.firstMoveComplete}`;
@@ -68,10 +86,8 @@ const PreventPlayerDuplication = () => {
     switch (thirdPlayerPreventDuplication) {
       case getCellIds[21]:
         if (
-          (mappedCellIds[20].textContent =
-            `${watchPieceName}` &&
-            doubleSpacePawnMoveArray[10] ===
-              `${thirdPlayerDoubleSpaceComplete}`)
+          mappedCellIds[20].textContent === `${watchPieceName}` &&
+          doubleSpacePawnMoveArray[10] === `${thirdPlayerDoubleSpaceComplete}`
         ) {
           mappedCellIds[21].textContent = `${watchForEmptyCellAfterDoubleSpace}`;
         }
@@ -85,6 +101,12 @@ const PreventPlayerDuplication = () => {
         }
         break;
     }
+  };
+
+  const fourthPlayerPreventDuplicationClicks = () => {
+    gridContainer.addEventListener("click", fourthPlayerPreventDuplication);
+
+    return { fourthPlayerPreventDuplicationClicks };
   };
 
   const fourthPlayerPreventDuplication = (e) => {
@@ -112,6 +134,12 @@ const PreventPlayerDuplication = () => {
     }
   };
 
+  const fifthPlayerPreventDuplicationClicks = () => {
+    gridContainer.addEventListener("click", fifthPlayerPreventDuplication);
+
+    return { fifthPlayerPreventDuplicationClicks };
+  };
+
   const fifthPlayerPreventDuplication = (e) => {
     const fifthPlayerDoubleSpaceComplete = `${pawnAssignmentObject.playerSide.pawnFive.watchForDoubleSpace.doubleSpaceMoveComplete}`;
     const fifthPlayerSingleSpaceComplete = `${pawnAssignmentObject.playerSide.pawnFive.watchForFirstMove.firstMoveComplete}`;
@@ -136,6 +164,13 @@ const PreventPlayerDuplication = () => {
         break;
     }
   };
+
+  const sixthPlayerPreventDuplicationClicks = () => {
+    gridContainer.addEventListener("click", sixthPlayerPreventDuplication);
+
+    return { sixthPlayerPreventDuplicationClicks };
+  };
+
   const sixthPlayerPreventDuplication = (e) => {
     const sixthPlayerDoubleSpaceComplete = `${pawnAssignmentObject.playerSide.pawnSix.watchForDoubleSpace.doubleSpaceMoveComplete}`;
     const sixthPlayerSingleSpaceComplete = `${pawnAssignmentObject.playerSide.pawnSix.watchForFirstMove.firstMoveComplete}`;
@@ -160,6 +195,13 @@ const PreventPlayerDuplication = () => {
         break;
     }
   };
+
+  const seventhPlayerPreventDuplicationClicks = () => {
+    gridContainer.addEventListener("click", seventhPlayerPreventDuplication);
+
+    return { seventhPlayerPreventDuplicationClicks };
+  };
+
   const seventhPlayerPreventDuplication = (e) => {
     const seventhPlayerDoubleSpaceComplete = `${pawnAssignmentObject.playerSide.pawnSeven.watchForDoubleSpace.doubleSpaceMoveComplete}`;
     const seventhPlayerSingleSpaceComplete = `${pawnAssignmentObject.playerSide.pawnSeven.watchForFirstMove.firstMoveComplete}`;
@@ -183,6 +225,12 @@ const PreventPlayerDuplication = () => {
         }
         break;
     }
+  };
+
+  const eighthPlayerPreventDuplicationClicks = () => {
+    gridContainer.addEventListener("click", eighthPlayerPreventDuplication);
+
+    return { eighthPlayerPreventDuplicationClicks };
   };
 
   const eighthPlayerPreventDuplication = (e) => {
@@ -209,4 +257,16 @@ const PreventPlayerDuplication = () => {
         break;
     }
   };
+  return {
+    firstPlayerPreventDuplicationClicks,
+    secondPlayerPreventDuplicationClicks,
+    thirdPlayerPreventDuplicationClicks,
+    fourthPlayerPreventDuplicationClicks,
+    fifthPlayerPreventDuplicationClicks,
+    sixthPlayerPreventDuplicationClicks,
+    seventhPlayerPreventDuplicationClicks,
+    eighthPlayerPreventDuplicationClicks,
+  };
 };
+
+export default PreventPlayerDuplication;
