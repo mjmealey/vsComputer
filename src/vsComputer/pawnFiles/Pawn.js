@@ -3,7 +3,7 @@ import ComputerDoubleSpace from "./modules/computer-modules/ComputerDoubleSpace.
 import PlayerDoubleSpace from "./modules/player-modules/PlayerDoubleSpace.js";
 import ComputerSingleSpaceAtStart from "./modules/computer-modules/ComputerSingleSpaceAtStart.js";
 import PlayerSingleSpaceAtStart from "./modules/player-modules/PlayerSingleSpace.js";
-import PreventComputerDuplication from "./modules/computer-modules/computerPreventDuplicates.js";
+import PreventComputerDuplication from "./modules/computer-modules/PreventComputerDuplication.js";
 
 const Pawn = () => {
   const newPawnAssignments = PawnCellAssignments();
