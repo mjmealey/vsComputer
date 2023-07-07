@@ -8,10 +8,6 @@ const PAWN_ASSIGNMENTS = {
         readyForNextMove: { isReadyForNextMove: true },
         notReadyForNextMove: { isReadyForNextMove: false },
       },
-      watchForDoubleSpace: {
-        doubleSpaceMoveComplete: { isComplete: true },
-        doubleSpaceMoveNotComplete: { isComplete: false },
-      },
       watchForFirstMove: {
         firstMoveComplete: { isComplete: true },
         firstMoveNotComplete: { isComplete: false },
@@ -43,6 +39,10 @@ const PAWN_ASSIGNMENTS = {
         doubleSpaceMoveComplete: { isComplete: true },
         doubleSpaceMoveNotComplete: { isComplete: false },
       },
+      watchForSingleSpaceAtStart: {
+        singleSpaceAtStartUsed: { isUsed: true },
+        singleSpaceAtStartNotUsed: { isUsed: false },
+      },
       watchForFirstMove: {
         firstMoveComplete: { isComplete: true },
         firstMoveNotComplete: { isComplete: false },
@@ -58,6 +58,10 @@ const PAWN_ASSIGNMENTS = {
       watchForDoubleSpace: {
         doubleSpaceMoveComplete: { isComplete: true },
         doubleSpaceMoveNotComplete: { isComplete: false },
+      },
+      watchForSingleSpaceAtStart: {
+        singleSpaceAtStartUsed: { isUsed: true },
+        singleSpaceAtStartNotUsed: { isUsed: false },
       },
       watchForFirstMove: {
         firstMoveComplete: { isComplete: true },
@@ -75,6 +79,10 @@ const PAWN_ASSIGNMENTS = {
         doubleSpaceMoveComplete: { isComplete: true },
         doubleSpaceMoveNotComplete: { isComplete: false },
       },
+      watchForSingleSpaceAtStart: {
+        singleSpaceAtStartUsed: { isUsed: true },
+        singleSpaceAtStartNotUsed: { isUsed: false },
+      },
       watchForFirstMove: {
         firstMoveComplete: { isComplete: true },
         firstMoveNotComplete: { isComplete: false },
@@ -90,6 +98,10 @@ const PAWN_ASSIGNMENTS = {
       watchForDoubleSpace: {
         doubleSpaceMoveComplete: { isComplete: true },
         doubleSpaceMoveNotComplete: { isComplete: false },
+      },
+      watchForSingleSpaceAtStart: {
+        singleSpaceAtStartUsed: { isUsed: true },
+        singleSpaceAtStartNotUsed: { isUsed: false },
       },
       watchForFirstMove: {
         firstMoveComplete: { isComplete: true },
@@ -107,6 +119,10 @@ const PAWN_ASSIGNMENTS = {
         doubleSpaceMoveComplete: { isComplete: true },
         doubleSpaceMoveNotComplete: { isComplete: false },
       },
+      watchForSingleSpaceAtStart: {
+        singleSpaceAtStartUsed: { isUsed: true },
+        singleSpaceAtStartNotUsed: { isUsed: false },
+      },
       watchForFirstMove: {
         firstMoveComplete: { isComplete: true },
         firstMoveNotComplete: { isComplete: false },
@@ -123,6 +139,10 @@ const PAWN_ASSIGNMENTS = {
         doubleSpaceMoveComplete: { isComplete: true },
         doubleSpaceMoveNotComplete: { isComplete: false },
       },
+      watchForSingleSpaceAtStart: {
+        singleSpaceAtStartUsed: { isUsed: true },
+        singleSpaceAtStartNotUsed: { isUsed: false },
+      },
       watchForFirstMove: {
         firstMoveComplete: { isComplete: true },
         firstMoveNotComplete: { isComplete: false },
@@ -138,6 +158,10 @@ const PAWN_ASSIGNMENTS = {
       watchForDoubleSpace: {
         doubleSpaceMoveComplete: { isComplete: true },
         doubleSpaceMoveNotComplete: { isComplete: false },
+      },
+      watchForSingleSpaceAtStart: {
+        singleSpaceAtStartUsed: { isUsed: true },
+        singleSpaceAtStartNotUsed: { isUsed: false },
       },
       watchForFirstMove: {
         firstMoveComplete: { isComplete: true },
@@ -157,6 +181,10 @@ const PAWN_ASSIGNMENTS = {
         doubleSpaceMoveComplete: { isComplete: true },
         doubleSpaceMoveNotComplete: { isComplete: false },
       },
+      watchForSingleSpaceAtStart: {
+        singleSpaceAtStartUsed: { isUsed: true },
+        singleSpaceAtStartNotUsed: { isUsed: false },
+      },
       watchForFirstMove: {
         firstMoveComplete: { isComplete: true },
         firstMoveNotComplete: { isComplete: false },
@@ -171,6 +199,10 @@ const PAWN_ASSIGNMENTS = {
       watchForDoubleSpace: {
         doubleSpaceMoveComplete: { isComplete: true },
         doubleSpaceMoveNotComplete: { isComplete: false },
+      },
+      watchForSingleSpaceAtStart: {
+        singleSpaceAtStartUsed: { isUsed: true },
+        singleSpaceAtStartNotUsed: { isUsed: false },
       },
       watchForFirstMove: {
         firstMoveComplete: { isComplete: true },
@@ -187,6 +219,10 @@ const PAWN_ASSIGNMENTS = {
         doubleSpaceMoveComplete: { isComplete: true },
         doubleSpaceMoveNotComplete: { isComplete: false },
       },
+      watchForSingleSpaceAtStart: {
+        singleSpaceAtStartUsed: { isUsed: true },
+        singleSpaceAtStartNotUsed: { isUsed: false },
+      },
       watchForFirstMove: {
         firstMoveComplete: { isComplete: true },
         firstMoveNotComplete: { isComplete: false },
@@ -201,6 +237,10 @@ const PAWN_ASSIGNMENTS = {
       watchForDoubleSpace: {
         doubleSpaceMoveComplete: { isComplete: true },
         doubleSpaceMoveNotComplete: { isComplete: false },
+      },
+      watchForSingleSpaceAtStart: {
+        singleSpaceAtStartUsed: { isUsed: true },
+        singleSpaceAtStartNotUsed: { isUsed: false },
       },
       watchForFirstMove: {
         firstMoveComplete: { isComplete: true },
@@ -217,6 +257,10 @@ const PAWN_ASSIGNMENTS = {
         doubleSpaceMoveComplete: { isComplete: true },
         doubleSpaceMoveNotComplete: { isComplete: false },
       },
+      watchForSingleSpaceAtStart: {
+        singleSpaceAtStartUsed: { isUsed: true },
+        singleSpaceAtStartNotUsed: { isUsed: false },
+      },
       watchForFirstMove: {
         firstMoveComplete: { isComplete: true },
         firstMoveNotComplete: { isComplete: false },
@@ -231,6 +275,10 @@ const PAWN_ASSIGNMENTS = {
       watchForDoubleSpace: {
         doubleSpaceMoveComplete: { isComplete: true },
         doubleSpaceMoveNotComplete: { isComplete: false },
+      },
+      watchForSingleSpaceAtStart: {
+        singleSpaceAtStartUsed: { isUsed: true },
+        singleSpaceAtStartNotUsed: { isUsed: false },
       },
       watchForFirstMove: {
         firstMoveComplete: { isComplete: true },
@@ -247,6 +295,10 @@ const PAWN_ASSIGNMENTS = {
         doubleSpaceMoveComplete: { isComplete: true },
         doubleSpaceMoveNotComplete: { isComplete: false },
       },
+      watchForSingleSpaceAtStart: {
+        singleSpaceAtStartUsed: { isUsed: true },
+        singleSpaceAtStartNotUsed: { isUsed: false },
+      },
       watchForFirstMove: {
         firstMoveComplete: { isComplete: true },
         firstMoveNotComplete: { isComplete: false },
@@ -261,6 +313,10 @@ const PAWN_ASSIGNMENTS = {
       watchForDoubleSpace: {
         doubleSpaceMoveComplete: { isComplete: true },
         doubleSpaceMoveNotComplete: { isComplete: false },
+      },
+      watchForSingleSpaceAtStart: {
+        singleSpaceAtStartUsed: { isUsed: true },
+        singleSpaceAtStartNotUsed: { isUsed: false },
       },
       watchForFirstMove: {
         firstMoveComplete: { isComplete: true },
