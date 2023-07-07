@@ -1,7 +1,6 @@
 import { getCellIds } from "../../../modules/ChessPieceAssignments.js"
 import { pawnAssignmentObject } from "../../objects/pawnObjects.js";
 import { trackGameStateObject } from "../../../objects/gameStateObjects.js";
-import { doubleSpacePawnMoveArray } from "../../objects/pawnArrays.js";
 
 const PlayerDoubleSpace = () => {
   const mappedCellIds = getCellIds.map((id) => document.getElementById(id));
