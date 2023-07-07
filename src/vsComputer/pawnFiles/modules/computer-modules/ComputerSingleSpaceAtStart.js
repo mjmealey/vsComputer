@@ -1,40 +1,40 @@
-import { singleSpaceAtStartArray } from "../../objects/pawnArrays.js"
 import { trackGameStateObject } from "../../../objects/gameStateObjects.js";
 import { pawnAssignmentObject } from "../../objects/pawnObjects.js";
 import { getCellIds } from "../../../modules/ChessPieceAssignments.js";
+import { firstMoveStatusArray } from "../../objects/pawnArrays.js";
 const ComputerSingleSpaceAtStart = () => {
   const mappedCellIds = getCellIds.map((id) => document.getElementById(id));
   let currentPawn = `${trackGameStateObject.emptyPieceSelection}`;
   const watchPieceName = `${pawnAssignmentObject.pieceName}`;
   const watchForEmptyCellAfterSingleSpaceAtStart = `${trackGameStateObject.emptyCell}`;
 
-  const handleFirstComputerSideDoubleSpaceAtStartClicks = () => {
+  const handleFirstComputerSideSingleSpaceAtStartClicks = () => {
     gridContainer.addEventListener(
       "click",
       handleFirstComputerSideSingleSpaceAtStart
     );
 
-    return { handleFirstComputerSideDoubleSpaceAtStartClicks };
+    return { handleFirstComputerSideSingleSpaceAtStartClicks };
   };
 
   const handleFirstComputerSideSingleSpaceAtStart = (e) => {
-    const computerPawnOneStartingPosition = `${pawnAssignmentObject.computerSide.pawnOne.startingPosition}`;
-    const computerPawnOneSingleSpaceNotComplete = `${pawnAssignmentObject.computerSide.pawnOne.watchForFirstMove.firstMoveNotComplete}`;
-    const computerPawnOneSingleSpaceComplete = `${pawnAssignmentObject.computerSide.pawnOne.watchForFirstMove.firstMoveComplete}`;
+    const pawnOneStartingPosition = `${pawnAssignmentObject.computerSide.pawnOne.startingPosition}`;
+    const pawnOneFirstMoveNotComplete = `${pawnAssignmentObject.computerSide.pawnOne.watchForFirstMove.firstMoveNotComplete}`;
+    const pawnOneFirstMoveComplete = `${pawnAssignmentObject.computerSide.pawnOne.watchForFirstMove.firstMoveComplete}`;
     const firstComputerSideSingleSpaceAtStart = e.target.id;
 
     switch (firstComputerSideSingleSpaceAtStart) {
       case getCellIds[1]:
         if (
           mappedCellIds[1].textContent === `${watchPieceName}` &&
-          singleSpaceAtStartArray[0] === `${computerPawnOneSingleSpaceNotComplete}`
+          firstMoveStatusArray[0] === `${pawnOneFirstMoveNotComplete}`
         ) {
-          currentPawn = `${computerPawnOneStartingPosition}`;
+          currentPawn = `${pawnOneStartingPosition}`;
         }
         break;
       case getCellIds[2]:
-        if (currentPawn === `${computerPawnOneStartingPosition}`) {
-          singleSpaceAtStartArray[0] = `${computerPawnOneSingleSpaceComplete}`;
+        if (currentPawn === `${pawnOneStartingPosition}`) {
+          firstMoveStatusArray[0] = `${pawnOneFirstMoveComplete}`;
           mappedCellIds[1].textContent = `${watchForEmptyCellAfterSingleSpaceAtStart}`;
           mappedCellIds[2].textContent = `${watchPieceName}`;
         }
@@ -52,25 +52,25 @@ const ComputerSingleSpaceAtStart = () => {
   };
 
   const handleSecondComputerSideSingleSpaceAtStart = (e) => {
-    const computerPawnTwoStartingPosition = `${pawnAssignmentObject.computerSide.pawnTwo.startingPosition}`;
-    const computerPawnTwoSingleSpaceNotComplete = `${pawnAssignmentObject.computerSide.pawnTwo.watchForFirstMove.firstMoveNotComplete}`;
-    const computerPawnTwoSingleSpaceComplete = `${pawnAssignmentObject.computerSide.pawnTwo.watchForFirstMove.firstMoveComplete}`;
+    const pawnTwoStartingPosition = `${pawnAssignmentObject.computerSide.pawnTwo.startingPosition}`;
+    const pawnTwoFirstMoveNotComplete = `${pawnAssignmentObject.computerSide.pawnTwo.watchForFirstMove.firstMoveNotComplete}`;
+    const pawnTwoFirstMoveComplete = `${pawnAssignmentObject.computerSide.pawnTwo.watchForFirstMove.firstMoveComplete}`;
     const secondComputerSideSingleSpaceAtStart = e.target.id;
 
     switch (secondComputerSideSingleSpaceAtStart) {
       case getCellIds[9]:
         if (
           mappedCellIds[9].textContent === `${watchPieceName}` &&
-          singleSpaceAtStartArray[1] === `${computerPawnTwoSingleSpaceNotComplete}`
+          firstMoveStatusArray[1] === `${pawnTwoFirstMoveNotComplete}`
         ) {
-          currentPawn = `${computerPawnTwoStartingPosition}`;
+          currentPawn = `${pawnTwoStartingPosition}`;
         }
         break;
       case getCellIds[10]:
-        if (currentPawn === `${computerPawnTwoStartingPosition}`) {
+        if (currentPawn === `${pawnTwoStartingPosition}`) {
           mappedCellIds[9].textContent = `${watchForEmptyCellAfterSingleSpaceAtStart}`;
           mappedCellIds[10].textContent = `${watchPieceName}`;
-          singleSpaceAtStartArray[1] = `${computerPawnTwoSingleSpaceComplete}`;
+          firstMoveStatusArray[1] = `${pawnTwoFirstMoveComplete}`;
         }
         break;
     }
@@ -86,26 +86,25 @@ const ComputerSingleSpaceAtStart = () => {
   };
 
   const handleThirdComputerSideSingleSpaceAtStart = (e) => {
-    const computerPawnThreeStartingPosition = `${pawnAssignmentObject.computerSide.pawnThree.startingPosition}`;
-    const computerPawnThreeSingleSpaceNotComplete = `${pawnAssignmentObject.computerSide.pawnThree.watchForFirstMove.firstMoveNotComplete}`;
-    const computerPawnThreeSingleSpaceComplete = `${pawnAssignmentObject.computerSide.pawnThree.watchForFirstMove.firstMoveComplete}`;
+    const pawnThreeStartingPosition = `${pawnAssignmentObject.computerSide.pawnThree.startingPosition}`;
+    const pawnThreeFirstMoveNotComplete = `${pawnAssignmentObject.computerSide.pawnThree.watchForFirstMove.firstMoveNotComplete}`;
+    const pawnThreeFirstMoveComplete = `${pawnAssignmentObject.computerSide.pawnThree.watchForFirstMove.firstMoveComplete}`;
     const thirdComputerSideSingleSpaceAtStart = e.target.id;
 
     switch (thirdComputerSideSingleSpaceAtStart) {
       case getCellIds[17]:
         if (
           mappedCellIds[17].textContent === `${watchPieceName}` &&
-          singleSpaceAtStartArray[2] ===
-            `${computerPawnThreeSingleSpaceNotComplete}`
+          firstMoveStatusArray[2] === `${pawnThreeFirstMoveNotComplete}`
         ) {
-          currentPawn = `${computerPawnThreeStartingPosition}`;
+          currentPawn = `${pawnThreeStartingPosition}`;
         }
         break;
       case getCellIds[18]:
-        if (currentPawn === `${computerPawnThreeStartingPosition}`) {
+        if (currentPawn === `${pawnThreeStartingPosition}`) {
           mappedCellIds[17].textContent = `${watchForEmptyCellAfterSingleSpaceAtStart}`;
           mappedCellIds[18].textContent = `${watchPieceName}`;
-          singleSpaceAtStartArray[2] = `${computerPawnThreeSingleSpaceComplete}`;
+          firstMoveStatusArray[2] = `${pawnThreeFirstMoveComplete}`;
         }
         break;
     }
@@ -121,25 +120,25 @@ const ComputerSingleSpaceAtStart = () => {
   };
 
   const handleFourthComputerSideSingleSpaceAtStart = (e) => {
-    const computerPawnFourStartingPosition = `${pawnAssignmentObject.computerSide.pawnFour.startingPosition}`;
-    const computerPawnFourSingleSpaceNotComplete = `${pawnAssignmentObject.computerSide.pawnFour.watchForFirstMove.firstMoveNotComplete}`;
-    const computerPawnFourSingleSpaceComplete = `${pawnAssignmentObject.computerSide.pawnFour.watchForFirstMove.firstMoveComplete}`;
+    const pawnFourStartingPosition = `${pawnAssignmentObject.computerSide.pawnFour.startingPosition}`;
+    const pawnFourFirstMoveNotComplete = `${pawnAssignmentObject.computerSide.pawnFour.watchForFirstMove.firstMoveNotComplete}`;
+    const pawnFourFirstMoveComplete = `${pawnAssignmentObject.computerSide.pawnFour.watchForFirstMove.firstMoveComplete}`;
     const fourthComputerSideSingleSpaceAtStart = e.target.id;
 
     switch (fourthComputerSideSingleSpaceAtStart) {
       case getCellIds[25]:
         if (
           mappedCellIds[25].textContent === `${watchPieceName}` &&
-          singleSpaceAtStartArray[3] === `${computerPawnFourSingleSpaceNotComplete}`
+          firstMoveStatusArray[3] === `${pawnFourFirstMoveNotComplete}`
         ) {
-          currentPawn = `${computerPawnFourStartingPosition}`;
+          currentPawn = `${pawnFourStartingPosition}`;
         }
         break;
       case getCellIds[26]:
-        if (currentPawn === `${computerPawnFourStartingPosition}`) {
+        if (currentPawn === `${pawnFourStartingPosition}`) {
           mappedCellIds[25].textContent = `${watchForEmptyCellAfterSingleSpaceAtStart}`;
           mappedCellIds[26].textContent = `${watchPieceName}`;
-          singleSpaceAtStartArray[3] = `${computerPawnFourSingleSpaceComplete}`;
+          firstMoveStatusArray[3] = `${pawnFourFirstMoveComplete}`;
         }
         break;
     }
@@ -155,26 +154,25 @@ const ComputerSingleSpaceAtStart = () => {
   };
 
   const handleFifthComputerSideSingleSpaceAtStart = (e) => {
-    const computerPawnFiveStartingPosition = `${pawnAssignmentObject.computerSide.pawnFive.startingPosition}`;
-    const computerPawnFiveSingleSpaceNotComplete = `${pawnAssignmentObject.computerSide.pawnFive.watchForFirstMove.firstMoveNotComplete}`;
-    const computerPawnFiveSingleSpaceComplete = `${pawnAssignmentObject.computerSide.pawnFive.watchForFirstMove.firstMoveComplete}`;
+    const pawnFiveStartingPosition = `${pawnAssignmentObject.computerSide.pawnFive.startingPosition}`;
+    const pawnFiveFirstMoveNotComplete = `${pawnAssignmentObject.computerSide.pawnFive.watchForFirstMove.firstMoveNotComplete}`;
+    const pawnFiveFirstMoveComplete = `${pawnAssignmentObject.computerSide.pawnFive.watchForFirstMove.firstMoveComplete}`;
     const fifthComputerSideSingleSpaceAtStart = e.target.id;
 
     switch (fifthComputerSideSingleSpaceAtStart) {
       case getCellIds[33]:
         if (
           mappedCellIds[33].textContent === `${watchPieceName}` &&
-          singleSpaceAtStartArray[4] === `${computerPawnFiveSingleSpaceNotComplete}`
+          firstMoveStatusArray[4] === `${pawnFiveFirstMoveNotComplete}`
         ) {
-          console.log("hi");
-          currentPawn = `${computerPawnFiveStartingPosition}`;
+          currentPawn = `${pawnFiveStartingPosition}`;
         }
         break;
       case getCellIds[34]:
-        if (currentPawn === `${computerPawnFiveStartingPosition}`) {
+        if (currentPawn === `${pawnFiveStartingPosition}`) {
           mappedCellIds[33].textContent = `${watchForEmptyCellAfterSingleSpaceAtStart}`;
           mappedCellIds[34].textContent = `${watchPieceName}`;
-          singleSpaceAtStartArray[4] = `${computerPawnFiveSingleSpaceComplete}`;
+          firstMoveStatusArray[4] = `${pawnFiveFirstMoveComplete}`;
         }
         break;
     }
@@ -190,25 +188,25 @@ const ComputerSingleSpaceAtStart = () => {
   };
 
   const handleSixthComputerSideSingleSpaceAtStart = (e) => {
-    const computerPawnSixStartingPosition = `${pawnAssignmentObject.computerSide.pawnSix.startingPosition}`;
-    const computerPawnSixSingleSpaceNotComplete = `${pawnAssignmentObject.computerSide.pawnSix.watchForFirstMove.firstMoveNotComplete}`;
-    const computerPawnSixSingleSpaceComplete = `${pawnAssignmentObject.computerSide.pawnFive.watchForFirstMove.firstMoveComplete}`;
+    const pawnSixStartingPosition = `${pawnAssignmentObject.computerSide.pawnSix.startingPosition}`;
+    const pawnSixFirstMoveNotComplete = `${pawnAssignmentObject.computerSide.pawnSix.watchForFirstMove.firstMoveNotComplete}`;
+    const pawnSixFirstMoveComplete = `${pawnAssignmentObject.computerSide.pawnSix.watchForFirstMove.firstMoveComplete}`;
     const sixthComputerSideSingleSpaceAtStart = e.target.id;
 
     switch (sixthComputerSideSingleSpaceAtStart) {
       case getCellIds[41]:
         if (
           mappedCellIds[41].textContent === `${watchPieceName}` &&
-          singleSpaceAtStartArray[5] === `${computerPawnSixSingleSpaceNotComplete}`
+          firstMoveStatusArray[5] === `${pawnSixFirstMoveNotComplete}`
         ) {
-          currentPawn = `${computerPawnSixStartingPosition}`;
+          currentPawn = `${pawnSixStartingPosition}`;
         }
         break;
       case getCellIds[42]:
-        if (currentPawn === `${computerPawnSixStartingPosition}`) {
+        if (currentPawn === `${pawnSixStartingPosition}`) {
           mappedCellIds[41].textContent = `${watchForEmptyCellAfterSingleSpaceAtStart}`;
           mappedCellIds[42].textContent = `${watchPieceName}`;
-          singleSpaceAtStartArray[5] = `${computerPawnSixSingleSpaceComplete}`;
+          firstMoveStatusArray[5] = `${pawnSixFirstMoveComplete}`;
         }
         break;
     }
@@ -224,26 +222,25 @@ const ComputerSingleSpaceAtStart = () => {
   };
 
   const handleSeventhComputerSideSingleSpaceAtStart = (e) => {
-    const computerPawnSevenStartingPosition = `${pawnAssignmentObject.computerSide.pawnSeven.startingPosition}`;
-    const computerPawnSevenSingleSpaceNotComplete = `${pawnAssignmentObject.computerSide.pawnSeven.watchForFirstMove.firstMoveNotComplete}`;
-    const computerPawnSevenSingleSpaceComplete = `${pawnAssignmentObject.computerSide.pawnSeven.watchForFirstMove.firstMoveComplete}`;
+    const pawnSevenStartingPosition = `${pawnAssignmentObject.computerSide.pawnSeven.startingPosition}`;
+    const pawnSevenSingleSpaceNotComplete = `${pawnAssignmentObject.computerSide.pawnSeven.watchForFirstMove.firstMoveNotComplete}`;
+    const pawnSevenSingleSpaceComplete = `${pawnAssignmentObject.computerSide.pawnSeven.watchForFirstMove.firstMoveComplete}`;
     const seventhComputerSideSingleSpaceAtStart = e.target.id;
 
     switch (seventhComputerSideSingleSpaceAtStart) {
       case getCellIds[49]:
         if (
           mappedCellIds[49].textContent === `${watchPieceName}` &&
-          singleSpaceAtStartArray[6] ===
-            `${computerPawnSevenSingleSpaceNotComplete}`
+          firstMoveStatusArray[6] === `${pawnSevenSingleSpaceNotComplete}`
         ) {
-          currentPawn = `${computerPawnSevenStartingPosition}`;
+          currentPawn = `${pawnSevenStartingPosition}`;
         }
         break;
       case getCellIds[50]:
-        if (currentPawn === `${computerPawnSevenStartingPosition}`) {
+        if (currentPawn === `${pawnSevenStartingPosition}`) {
           mappedCellIds[49].textContent = `${watchForEmptyCellAfterSingleSpaceAtStart}`;
           mappedCellIds[50].textContent = `${watchPieceName}`;
-          singleSpaceAtStartArray[6] = `${computerPawnSevenSingleSpaceComplete}`;
+          firstMoveStatusArray[6] = `${pawnSevenSingleSpaceComplete}`;
         }
         break;
     }
@@ -258,33 +255,32 @@ const ComputerSingleSpaceAtStart = () => {
     return { handleEighthComputerSideSingleSpaceAtStartClicks };
   };
   const handleEighthComputerSideSingleSpaceAtStart = (e) => {
-    const computerPawnEightStartingPosition = `${pawnAssignmentObject.computerSide.pawnEight.startingPosition}`;
-    const computerPawnEightSingleSpaceNotComplete = `${pawnAssignmentObject.computerSide.pawnEight.watchForFirstMove.firstMoveNotComplete}`;
-    const computerPawnEightSingleSpaceComplete = `${pawnAssignmentObject.computerSide.pawnEight.watchForFirstMove.firstMoveComplete}`;
+    const pawnEightStartingPosition = `${pawnAssignmentObject.computerSide.pawnEight.startingPosition}`;
+    const pawnEightSingleSpaceNotComplete = `${pawnAssignmentObject.computerSide.pawnEight.watchForFirstMove.firstMoveNotComplete}`;
+    const pawnEightSingleSpaceComplete = `${pawnAssignmentObject.computerSide.pawnEight.watchForFirstMove.firstMoveComplete}`;
     const eighthComputerSideSingleSpaceAtStart = e.target.id;
 
     switch (eighthComputerSideSingleSpaceAtStart) {
       case getCellIds[57]:
         if (
           mappedCellIds[57].textContent === `${watchPieceName}` &&
-          singleSpaceAtStartArray[7] ===
-            `${computerPawnEightSingleSpaceNotComplete}`
+          firstMoveStatusArray[7] === `${pawnEightSingleSpaceNotComplete}`
         ) {
-          currentPawn = `${computerPawnEightStartingPosition}`;
+          currentPawn = `${pawnEightStartingPosition}`;
         }
         break;
       case getCellIds[58]:
-        if (currentPawn === `${computerPawnEightStartingPosition}`) {
+        if (currentPawn === `${pawnEightStartingPosition}`) {
           mappedCellIds[57].textContent = `${watchForEmptyCellAfterSingleSpaceAtStart}`;
           mappedCellIds[58].textContent = `${watchPieceName}`;
-          singleSpaceAtStartArray[7] = `${computerPawnEightSingleSpaceComplete}`;
+          firstMoveStatusArray[7] = `${pawnEightSingleSpaceComplete}`;
         }
         break;
     }
   };
 
   return {
-    handleFirstComputerSideDoubleSpaceAtStartClicks,
+    handleFirstComputerSideSingleSpaceAtStartClicks,
     handleSecondComputerSideSingleSpaceAtStartClicks,
     handleThirdComputerSideSingleSpaceAtStartClicks,
     handleFourthComputerSideSingleSpaceAtStartClicks,
