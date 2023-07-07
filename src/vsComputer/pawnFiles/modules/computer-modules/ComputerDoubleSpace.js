@@ -1,13 +1,43 @@
 import { getCellIds } from "../../../modules/ChessPieceAssignments.js";
 import { pawnAssignmentObject } from "../../objects/pawnObjects.js";
 import { trackGameStateObject } from "../../../objects/gameStateObjects.js";
-import { doubleSpacePawnMoveArray } from "../../objects/pawnArrays.js";
+import { firstMoveStatusArray } from "../../objects/pawnArrays.js";
 
 const ComputerDoubleSpace = () => {
+  const mappedCellIds = getCellIds.map((id) => document.getElementById(id));
+  //current pawn watches for the current pawn based on its starting position
+  let currentPawn = `${trackGameStateObject.emptyPieceSelection}`;
+  const watchPieceName = `${pawnAssignmentObject.pieceName}`;
+  const watchForEmptyCellAfterDoubleSpace = `${trackGameStateObject.emptyCell}`;
+
   const handleFirstComputerSideDoubleSpaceClicks = () => {
     gridContainer.addEventListener("click", handleFirstComputerSideDoubleSpace);
 
     return { handleFirstComputerSideDoubleSpaceClicks };
+  };
+
+  const handleFirstComputerSideDoubleSpace = (e) => {
+    const pawnOneStartingPosition = `${pawnAssignmentObject.computerSide.pawnOne.startingPosition}`;
+    const pawnOneFirstMoveNotComplete = `${pawnAssignmentObject.computerSide.pawnOne.watchForFirstMove.firstMoveNotComplete}`
+    const pawnOneFirstMoveComplete = `${pawnAssignmentObject.computerSide.pawnOne.watchForFirstMove.firstMoveComplete}`;
+    const firstComputerSideDoubleSpace = e.target.id;
+
+    switch (firstComputerSideDoubleSpace) {
+      case getCellIds[1]:
+        if (
+          mappedCellIds[1].textContent === `${watchPieceName}` &&
+          firstMoveStatusArray[0] === `${pawnOneFirstMoveNotComplete}`
+        ) {
+          currentPawn = `${pawnOneStartingPosition}`;
+        }
+        break;
+      case getCellIds[3]:
+        if (currentPawn === pawnOneStartingPosition) {
+          mappedCellIds[1].textContent = `${watchForEmptyCellAfterDoubleSpace}`;
+          mappedCellIds[3].textContent = `${watchPieceName}`;
+          firstMoveStatusArray[0] = `${pawnOneFirstMoveComplete}`
+        }
+    }
   };
 
   const handleSecondComputerSideDoubleSpaceClicks = () => {
@@ -19,10 +49,59 @@ const ComputerDoubleSpace = () => {
     return { handleSecondComputerSideDoubleSpaceClicks };
   };
 
+  const handleSecondComputerSideDoubleSpace = (e) => {
+    const pawnTwoStartingPosition = `${pawnAssignmentObject.computerSide.pawnTwo.startingPosition}`;
+    const pawnTwoFirstMoveNotComplete = `${pawnAssignmentObject.computerSide.pawnTwo.watchForFirstMove.firstMoveNotComplete}`
+    const pawnTwoFirstMoveComplete = `${pawnAssignmentObject.computerSide.pawnTwo.watchForFirstMove.firstMoveComplete}`;
+    const secondComputerSideDoubleSpace = e.target.id;
+
+    switch (secondComputerSideDoubleSpace) {
+      case getCellIds[9]:
+        if (
+          mappedCellIds[9].textContent === `${watchPieceName}` &&
+          firstMoveStatusArray[1] === `${pawnTwoFirstMoveNotComplete}`
+        ) {
+          currentPawn = `${pawnTwoStartingPosition}`;
+        }
+        break;
+      case getCellIds[11]:
+        if (currentPawn === `${pawnTwoStartingPosition}`) {
+          mappedCellIds[9].textContent = `${watchForEmptyCellAfterDoubleSpace}`;
+          mappedCellIds[11].textContent = `${watchPieceName}`;
+          firstMoveStatusArray[1] = `${pawnTwoFirstMoveComplete}`;
+        }
+        break;
+    }
+  };
+
   const handleThirdComputerSideDoubleSpaceClicks = () => {
     gridContainer.addEventListener("click", handleThirdComputerSideDoubleSpace);
 
     return { handleThirdComputerSideDoubleSpaceClicks };
+  };
+
+  const handleThirdComputerSideDoubleSpace = (e) => {
+    const pawnThreeStartingPosition = `${pawnAssignmentObject.computerSide.pawnThree.startingPosition}`;
+    const pawnThreeFirstMoveNotComplete = `${pawnAssignmentObject.computerSide.pawnThree.watchForFirstMove.firstMoveNotComplete}`;
+    const pawnThreeFirstMoveComplete = `${pawnAssignmentObject.computerSide.pawnThree.watchForFirstMove.firstMoveComplete}`;
+    const thirdComputerSideDoubleSpace = e.target.id;
+    switch (thirdComputerSideDoubleSpace) {
+      case getCellIds[17]:
+        if (
+          mappedCellIds[17].textContent === `${watchPieceName}` &&
+          firstMoveStatusArray[2] === `${pawnThreeFirstMoveNotComplete}`
+        ) {
+          currentPawn = `${pawnThreeStartingPosition}`;
+        }
+        break;
+      case getCellIds[19]:
+        if (currentPawn === `${pawnThreeStartingPosition}`) {
+          mappedCellIds[17].textContent = `${watchForEmptyCellAfterDoubleSpace}`;
+          mappedCellIds[19].textContent = `${watchPieceName}`;
+          firstMoveStatusArray[2] = `${pawnThreeFirstMoveComplete}`
+        }
+        break;
+    }
   };
 
   const handleFourthComputerSideDoubleSpaceClicks = () => {
@@ -34,16 +113,88 @@ const ComputerDoubleSpace = () => {
     return { handleFourthComputerSideDoubleSpaceClicks };
   };
 
+  const handleFourthComputerSideDoubleSpace = (e) => {
+    const pawnFourStartingPosition = `${pawnAssignmentObject.computerSide.pawnFour.startingPosition}`;
+    const pawnFourFirstMoveNotComplete = `${pawnAssignmentObject.computerSide.pawnFour.watchForFirstMove.firstMoveNotComplete}`;
+    const pawnFourFirstMoveComplete = `${pawnAssignmentObject.computerSide.pawnFour.watchForFirstMove.firstMoveComplete}`;
+    const fourthComputerSideDoubleSpace = e.target.id;
+    switch (fourthComputerSideDoubleSpace) {
+      case getCellIds[25]:
+        if (
+          mappedCellIds[25].textContent === `${watchPieceName}` &&
+          firstMoveStatusArray[3] === `${pawnFourFirstMoveNotComplete}`
+        ) {
+          currentPawn = `${pawnFourStartingPosition}`;
+        }
+        break;
+      case getCellIds[27]:
+        if (currentPawn === `${pawnFourStartingPosition}`) {
+          mappedCellIds[25].textContent = `${watchForEmptyCellAfterDoubleSpace}`;
+          mappedCellIds[27].textContent = `${watchPieceName}`;
+          firstMoveStatusArray[3] = `${pawnFourFirstMoveComplete}`;
+        }
+        break;
+    }
+  };
+
   const handleFifthComputerSideDoubleSpaceClicks = () => {
     gridContainer.addEventListener("click", handleFifthComputerSideDoubleSpace);
 
     return { handleFifthComputerSideDoubleSpaceClicks };
   };
 
+  const handleFifthComputerSideDoubleSpace = (e) => {
+    const pawnFiveStartingPosition = `${pawnAssignmentObject.computerSide.pawnFive.startingPosition}`;
+    const pawnFiveFirstMoveNotComplete = `${pawnAssignmentObject.computerSide.pawnFive.watchForFirstMove.firstMoveNotComplete}`;
+    const pawnFiveFirstMoveComplete  = `${pawnAssignmentObject.computerSide.pawnFive.watchForFirstMove.firstMoveComplete}`;
+    const fifthComputerSideDoubleSpace = e.target.id;
+    switch (fifthComputerSideDoubleSpace) {
+      case getCellIds[33]:
+        if (
+          mappedCellIds[33].textContent === `${watchPieceName}` &&
+          firstMoveStatusArray[4] === `${pawnFiveFirstMoveNotComplete}`
+        ) {
+          currentPawn = `${pawnFiveStartingPosition}`;
+        }
+        break;
+      case getCellIds[35]:
+        if (currentPawn === `${pawnFiveStartingPosition}`) {
+          mappedCellIds[33].textContent = `${watchForEmptyCellAfterDoubleSpace}`;
+          mappedCellIds[35].textContent = `${watchPieceName}`;
+          firstMoveStatusArray[4] = `${pawnFiveFirstMoveComplete}`
+        }
+        break;
+    }
+  };
+
   const handleSixthComputerSideDoubleSpaceClicks = () => {
     gridContainer.addEventListener("click", handleSixthComputerSideDoubleSpace);
 
     return { handleSixthComputerSideDoubleSpaceClicks };
+  };
+
+  const handleSixthComputerSideDoubleSpace = (e) => {
+    const pawnSixStartingPosition = `${pawnAssignmentObject.computerSide.pawnSix.startingPosition}`;
+    const pawnSixFirstMoveNotComplete = `${pawnAssignmentObject.computerSide.pawnSix.watchForDoubleSpace.doubleSpaceMoveNotComplete}`;
+    const pawnSixFirstMoveComplete = `${pawnAssignmentObject.computerSide.pawnSix.watchForDoubleSpace.doubleSpaceMoveComplete}`;
+    const sixthComputerSideDoubleSpace = e.target.id;
+    switch (sixthComputerSideDoubleSpace) {
+      case getCellIds[41]:
+        if (
+          mappedCellIds[41].textContent === `${watchPieceName}` &&
+          firstMoveStatusArray[5] === `${pawnSixFirstMoveNotComplete}`
+        ) {
+          currentPawn = `${pawnSixStartingPosition}`;
+        }
+        break;
+      case getCellIds[43]:
+        if (currentPawn === `${pawnSixStartingPosition}`) {
+          mappedCellIds[41].textContent = `${watchForEmptyCellAfterDoubleSpace}`;
+          mappedCellIds[43].textContent = `${watchPieceName}`;
+          firstMoveStatusArray[5] = `${pawnSixFirstMoveComplete}`;
+        }
+        break;
+    }
   };
 
   const handleSeventhComputerSideDoubleSpaceClicks = () => {
@@ -55,6 +206,30 @@ const ComputerDoubleSpace = () => {
     return { handleSeventhComputerSideDoubleSpaceClicks };
   };
 
+  const handleSeventhComputerSideDoubleSpace = (e) => {
+    const pawnSevenStartingPosition = `${pawnAssignmentObject.computerSide.pawnSeven.startingPosition}`;
+    const pawnSevenFirstMoveNotComplete = `${pawnAssignmentObject.computerSide.pawnSeven.watchForFirstMove.firstMoveNotComplete}`;
+    const pawnSevenFirstMoveComplete = `${pawnAssignmentObject.computerSide.pawnSeven.watchForFirstMove.firstMoveComplete}`;
+    const seventhComputerSideDoubleSpace = e.target.id;
+    switch (seventhComputerSideDoubleSpace) {
+      case getCellIds[49]:
+        if (
+          mappedCellIds[49].textContent === `${watchPieceName}` &&
+          firstMoveStatusArray[6] === `${pawnSevenFirstMoveNotComplete}`
+        ) {
+          currentPawn = `${pawnSevenStartingPosition}`;
+        }
+        break;
+      case getCellIds[51]:
+        if (currentPawn === `${pawnSevenStartingPosition}`) {
+          mappedCellIds[49].textContent = `${watchForEmptyCellAfterDoubleSpace}`;
+          mappedCellIds[51].textContent = `${watchPieceName}`;
+          firstMoveStatusArray[6] = `${pawnSevenFirstMoveComplete}`
+        }
+        break;
+    }
+  };
+
   const handleEighthComputerSideDoubleSpaceClicks = () => {
     gridContainer.addEventListener(
       "click",
@@ -64,191 +239,16 @@ const ComputerDoubleSpace = () => {
     return { handleEighthComputerSideDoubleSpaceClicks };
   };
 
-  const mappedCellIds = getCellIds.map((id) => document.getElementById(id));
-  //current pawn watches for the current pawn based on its starting position
-  let currentPawn = `${trackGameStateObject.emptyPieceSelection}`;
-  const watchPieceName = `${pawnAssignmentObject.pieceName}`;
-  const watchForEmptyCellAfterDoubleSpace = `${trackGameStateObject.emptyCell}`;
-
-  const handleFirstComputerSideDoubleSpace = (e) => {
-    const pawnOneStartingPosition = `${pawnAssignmentObject.computerSide.pawnOne.startingPosition}`;
-    const pawnOneDoubleSpaceNotComplete = `${pawnAssignmentObject.computerSide.pawnOne.watchForDoubleSpace.doubleSpaceMoveNotComplete}`;
-    const pawnOneDoubleSpaceComplete = `${pawnAssignmentObject.computerSide.pawnOne.watchForDoubleSpace.doubleSpaceMoveComplete}`;
-    const firstComputerSideDoubleSpace = e.target.id;
-
-    switch (firstComputerSideDoubleSpace) {
-      case getCellIds[1]:
-        if (
-          mappedCellIds[1].textContent === `${watchPieceName}` &&
-          doubleSpacePawnMoveArray[0] === `${pawnOneDoubleSpaceNotComplete}`
-        ) {
-          currentPawn = `${pawnOneStartingPosition}`;
-        }
-        break;
-      case getCellIds[3]:
-        if (currentPawn === pawnOneStartingPosition) {
-          mappedCellIds[1].textContent = `${watchForEmptyCellAfterDoubleSpace}`;
-          mappedCellIds[3].textContent = `${watchPieceName}`;
-          doubleSpacePawnMoveArray[0] = `${pawnOneDoubleSpaceComplete}`;
-        }
-    }
-  };
-
-  const handleSecondComputerSideDoubleSpace = (e) => {
-    const pawnTwoStartingPosition = `${pawnAssignmentObject.computerSide.pawnTwo.startingPosition}`;
-    const pawnTwoDoubleSpaceNotComplete = `${pawnAssignmentObject.computerSide.pawnTwo.watchForDoubleSpace.doubleSpaceMoveNotComplete}`;
-    const pawnTwoDoubleSpaceComplete = `${pawnAssignmentObject.computerSide.pawnTwo.watchForDoubleSpace.doubleSpaceMoveComplete}`;
-    const secondComputerSideDoubleSpace = e.target.id;
-
-    switch (secondComputerSideDoubleSpace) {
-      case getCellIds[9]:
-        if (
-          mappedCellIds[9].textContent === `${watchPieceName}` &&
-          doubleSpacePawnMoveArray[1] === `${pawnTwoDoubleSpaceNotComplete}`
-        ) {
-          currentPawn = `${pawnTwoStartingPosition}`;
-        }
-        break;
-      case getCellIds[11]:
-        if (currentPawn === `${pawnTwoStartingPosition}`) {
-          mappedCellIds[9].textContent = `${watchForEmptyCellAfterDoubleSpace}`;
-          mappedCellIds[11].textContent = `${watchPieceName}`;
-          doubleSpacePawnMoveArray[1] = `${pawnTwoDoubleSpaceComplete}`;
-        }
-        break;
-    }
-  };
-
-  const handleThirdComputerSideDoubleSpace = (e) => {
-    const pawnThreeStartingPosition = `${pawnAssignmentObject.computerSide.pawnThree.startingPosition}`;
-    const pawnThreeDoubleSpaceNotComplete = `${pawnAssignmentObject.computerSide.pawnThree.watchForDoubleSpace.doubleSpaceMoveNotComplete}`;
-    const pawnThreeDoubleSpaceComplete = `${pawnAssignmentObject.computerSide.pawnThree.watchForDoubleSpace.doubleSpaceMoveComplete}`;
-    const thirdComputerSideDoubleSpace = e.target.id;
-    switch (thirdComputerSideDoubleSpace) {
-      case getCellIds[17]:
-        if (
-          mappedCellIds[17].textContent === `${watchPieceName}` &&
-          doubleSpacePawnMoveArray[2] === `${pawnThreeDoubleSpaceNotComplete}`
-        ) {
-          currentPawn = `${pawnThreeStartingPosition}`;
-        }
-        break;
-      case getCellIds[19]:
-        if (currentPawn === `${pawnThreeStartingPosition}`) {
-          mappedCellIds[17].textContent = `${watchForEmptyCellAfterDoubleSpace}`;
-          mappedCellIds[19].textContent = `${watchPieceName}`;
-          doubleSpacePawnMoveArray[2] = `${pawnThreeDoubleSpaceComplete}`;
-        }
-        break;
-    }
-  };
-
-  const handleFourthComputerSideDoubleSpace = (e) => {
-    const pawnFourStartingPosition = `${pawnAssignmentObject.computerSide.pawnFour.startingPosition}`;
-    const pawnFourDoubleSpaceNotComplete = `${pawnAssignmentObject.computerSide.pawnFour.watchForDoubleSpace.doubleSpaceMoveNotComplete}`;
-    const pawnFourDoubleSpaceComplete = `${pawnAssignmentObject.computerSide.pawnFour.watchForDoubleSpace.doubleSpaceMoveComplete}`;
-    const fourthComputerSideDoubleSpace = e.target.id;
-    switch (fourthComputerSideDoubleSpace) {
-      case getCellIds[25]:
-        if (
-          mappedCellIds[25].textContent === `${watchPieceName}` &&
-          doubleSpacePawnMoveArray[3] === `${pawnFourDoubleSpaceNotComplete}`
-        ) {
-          currentPawn = `${pawnFourStartingPosition}`;
-        }
-        break;
-      case getCellIds[27]:
-        if (currentPawn === `${pawnFourStartingPosition}`) {
-          mappedCellIds[25].textContent = `${watchForEmptyCellAfterDoubleSpace}`;
-          mappedCellIds[27].textContent = `${watchPieceName}`;
-          doubleSpacePawnMoveArray[3] = `${pawnFourDoubleSpaceComplete}`;
-        }
-        break;
-    }
-  };
-
-  const handleFifthComputerSideDoubleSpace = (e) => {
-    const pawnFiveStartingPosition = `${pawnAssignmentObject.computerSide.pawnFive.startingPosition}`;
-    const pawnFiveDoubleSpaceNotComplete = `${pawnAssignmentObject.computerSide.pawnFive.watchForDoubleSpace.doubleSpaceMoveNotComplete}`;
-    const pawnFiveDoubleSpaceComplete = `${pawnAssignmentObject.computerSide.pawnFive.watchForDoubleSpace.doubleSpaceMoveComplete}`;
-    const fifthComputerSideDoubleSpace = e.target.id;
-    switch (fifthComputerSideDoubleSpace) {
-      case getCellIds[33]:
-        if (
-          mappedCellIds[33].textContent === `${watchPieceName}` &&
-          doubleSpacePawnMoveArray[4] === `${pawnFiveDoubleSpaceNotComplete}`
-        ) {
-          currentPawn = `${pawnFiveStartingPosition}`;
-        }
-        break;
-      case getCellIds[35]:
-        if (currentPawn === `${pawnFiveStartingPosition}`) {
-          mappedCellIds[33].textContent = `${watchForEmptyCellAfterDoubleSpace}`;
-          mappedCellIds[35].textContent = `${watchPieceName}`;
-          doubleSpacePawnMoveArray[4] = `${pawnFiveDoubleSpaceComplete}`;
-        }
-        break;
-    }
-  };
-
-  const handleSixthComputerSideDoubleSpace = (e) => {
-    const pawnSixStartingPosition = `${pawnAssignmentObject.computerSide.pawnSix.startingPosition}`;
-    const pawnSixDoubleSpaceNotComplete = `${pawnAssignmentObject.computerSide.pawnSix.watchForDoubleSpace.doubleSpaceMoveNotComplete}`;
-    const pawnSixDoubleSpaceComplete = `${pawnAssignmentObject.computerSide.pawnSix.watchForDoubleSpace.doubleSpaceMoveComplete}`;
-    const sixthComputerSideDoubleSpace = e.target.id;
-    switch (sixthComputerSideDoubleSpace) {
-      case getCellIds[41]:
-        if (
-          mappedCellIds[41].textContent === `${watchPieceName}` &&
-          doubleSpacePawnMoveArray[5] === `${pawnSixDoubleSpaceNotComplete}`
-        ) {
-          currentPawn = `${pawnSixStartingPosition}`;
-        }
-        break;
-      case getCellIds[43]:
-        if (currentPawn === `${pawnSixStartingPosition}`) {
-          mappedCellIds[41].textContent = `${watchForEmptyCellAfterDoubleSpace}`;
-          mappedCellIds[43].textContent = `${watchPieceName}`;
-          doubleSpacePawnMoveArray[5] = `${pawnSixDoubleSpaceComplete}`;
-        }
-        break;
-    }
-  };
-
-  const handleSeventhComputerSideDoubleSpace = (e) => {
-    const pawnSevenStartingPosition = `${pawnAssignmentObject.computerSide.pawnSeven.startingPosition}`;
-    const pawnSevenDoubleSpaceNotComplete = `${pawnAssignmentObject.computerSide.pawnSeven.watchForDoubleSpace.doubleSpaceMoveNotComplete}`;
-    const pawnSevenDoubleSpaceComplete = `${pawnAssignmentObject.computerSide.pawnSeven.watchForDoubleSpace.doubleSpaceMoveComplete}`;
-    const seventhComputerSideDoubleSpace = e.target.id;
-    switch (seventhComputerSideDoubleSpace) {
-      case getCellIds[49]:
-        if (
-          mappedCellIds[49].textContent === `${watchPieceName}` &&
-          doubleSpacePawnMoveArray[6] === `${pawnSevenDoubleSpaceNotComplete}`
-        ) {
-          currentPawn = `${pawnSevenStartingPosition}`;
-        }
-        break;
-      case getCellIds[51]:
-        if (currentPawn === `${pawnSevenStartingPosition}`) {
-          mappedCellIds[49].textContent = `${watchForEmptyCellAfterDoubleSpace}`;
-          mappedCellIds[51].textContent = `${watchPieceName}`;
-          doubleSpacePawnMoveArray[6] = `${pawnSevenDoubleSpaceComplete}`;
-        }
-        break;
-    }
-  };
-
   const handleEighthComputerSideDoubleSpace = (e) => {
     const pawnEightStartingPosition = `${pawnAssignmentObject.computerSide.pawnEight.startingPosition}`;
-    const pawnEightDoubleSpaceNotComplete = `${pawnAssignmentObject.computerSide.pawnEight.watchForDoubleSpace.doubleSpaceMoveNotComplete}`;
-    const pawnEightDoubleSpaceComplete = `${pawnAssignmentObject.computerSide.pawnEight.watchForDoubleSpace.doubleSpaceMoveNotComplete}`;
+    const pawnEightFirstMoveNotComplete = `${pawnAssignmentObject.computerSide.pawnEight.watchForFirstMove.firstMoveNotComplete}`;
+    const pawnEightFirstMoveComplete = `${pawnAssignmentObject.computerSide.pawnEight.watchForFirstMove.firstMoveComplete}`;
     const eighthComputerSideDoubleSpace = e.target.id;
     switch (eighthComputerSideDoubleSpace) {
       case getCellIds[57]:
         if (
           mappedCellIds[57].textContent === `${watchPieceName}` &&
-          doubleSpacePawnMoveArray[7] === `${pawnEightDoubleSpaceNotComplete}`
+          firstMoveStatusArray[7] === `${pawnEightFirstMoveNotComplete}`
         ) {
           console.log("hi");
           currentPawn = `${pawnEightStartingPosition}`;
@@ -258,7 +258,7 @@ const ComputerDoubleSpace = () => {
         if (currentPawn === `${pawnEightStartingPosition}`) {
           mappedCellIds[57].textContent = `${watchForEmptyCellAfterDoubleSpace}`;
           mappedCellIds[59].textContent = `${watchPieceName}`;
-          doubleSpacePawnMoveArray[7] = `${pawnEightDoubleSpaceComplete}`;
+          firstMoveStatusArray[7] = `${pawnEightFirstMoveComplete}`
         }
         break;
     }
