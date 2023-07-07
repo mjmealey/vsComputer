@@ -4,6 +4,7 @@ import PlayerDoubleSpace from "./modules/player-modules/PlayerDoubleSpace.js";
 import ComputerSingleSpaceAtStart from "./modules/computer-modules/ComputerSingleSpaceAtStart.js";
 import PlayerSingleSpaceAtStart from "./modules/player-modules/PlayerSingleSpace.js";
 import PreventComputerDuplication from "./modules/computer-modules/PreventComputerDuplication.js";
+import PreventPlayerDuplication from "./modules/player-modules/PreventPlayerDuplication.js";
 
 const Pawn = () => {
   const newPawnAssignments = PawnCellAssignments();
@@ -28,7 +29,7 @@ const Pawn = () => {
   newPlayerDoubleSpace.seventhPlayerSideDoubleSpaceClicks();
   newPlayerDoubleSpace.eighthPlayerSideDoubleSpaceClicks();
   const newComputerSingleSpaceAtStart = ComputerSingleSpaceAtStart();
-  newComputerSingleSpaceAtStart.handleFirstComputerSideDoubleSpaceAtStartClicks();
+  newComputerSingleSpaceAtStart.handleFirstComputerSideSingleSpaceAtStartClicks();
   newComputerSingleSpaceAtStart.handleSecondComputerSideSingleSpaceAtStartClicks();
   newComputerSingleSpaceAtStart.handleThirdComputerSideSingleSpaceAtStartClicks();
   newComputerSingleSpaceAtStart.handleFourthComputerSideSingleSpaceAtStartClicks();
@@ -54,6 +55,15 @@ const Pawn = () => {
   newPreventComputerDuplication.sixthComputerPreventDuplicationClicks();
   newPreventComputerDuplication.seventhComputerPreventDuplicationClicks();
   newPreventComputerDuplication.eighthComputerPreventDuplicationClicks();
+  const newPreventPlayerDuplication = PreventPlayerDuplication()
+  newPreventPlayerDuplication.firstPlayerPreventDuplicationClicks()
+  newPreventPlayerDuplication.secondPlayerPreventDuplicationClicks()
+  newPreventPlayerDuplication.thirdPlayerPreventDuplicationClicks()
+  newPreventPlayerDuplication.fourthPlayerPreventDuplicationClicks()
+  newPreventPlayerDuplication.fifthPlayerPreventDuplicationClicks()
+  newPreventPlayerDuplication.sixthPlayerPreventDuplicationClicks()
+  newPreventPlayerDuplication.seventhPlayerPreventDuplicationClicks()
+  newPreventPlayerDuplication.eighthPlayerPreventDuplicationClicks()
 };
 
 export default Pawn;

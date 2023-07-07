@@ -1,9 +1,7 @@
 import { getCellIds } from "../../../modules/ChessPieceAssignments.js";
 import { pawnAssignmentObject } from "../../objects/pawnObjects.js";
 import { trackGameStateObject } from "../../../objects/gameStateObjects.js";
-import { doubleSpacePawnMoveArray } from "../../objects/pawnArrays.js";
-import { singleSpaceAtStartArray } from "../../objects/pawnArrays.js";
-
+import { firstMoveStatusArray } from "../../objects/pawnArrays.js";
 const PreventPlayerDuplication = () => {
   const mappedCellIds = getCellIds.map((id) => document.getElementById(id));
   const watchPieceName = `${pawnAssignmentObject.pieceName}`;
@@ -18,7 +16,7 @@ const PreventPlayerDuplication = () => {
 
   const firstPlayerPreventDuplication = (e) => {
     const firstPlayerDoubleSpaceComplete = `${pawnAssignmentObject.playerSide.pawnOne.watchForDoubleSpace.doubleSpaceMoveComplete}`;
-    const firstPlayerSingleSpaceComplete = `${pawnAssignmentObject.playerSide.pawnOne.watchForFirstMove.firstMoveComplete}`;
+    const firstPlayerSingleSpaceComplete = `${pawnAssignmentObject.playerSide.pawnOne.watchForSingleSpaceAtStart.singleSpaceAtStartUsed}`;
     const firstPlayerPreventDuplication = e.target.id;
 
     switch (firstPlayerPreventDuplication) {
@@ -49,7 +47,7 @@ const PreventPlayerDuplication = () => {
 
   const secondPlayerPreventDuplication = (e) => {
     const secondPlayerDoubleSpaceComplete = `${pawnAssignmentObject.playerSide.pawnTwo.watchForDoubleSpace.doubleSpaceMoveComplete}`;
-    const secondPlayerSingleSpaceComplete = `${pawnAssignmentObject.playerSide.pawnTwo.watchForFirstMove.firstMoveComplete}`;
+    const secondPlayerSingleSpaceComplete = `${pawnAssignmentObject.playerSide.pawnTwo.watchForSingleSpaceAtStart.singleSpaceAtStartUsed}}`;
     const secondPlayerPreventDuplication = e.target.id;
 
     switch (secondPlayerPreventDuplication) {
@@ -66,6 +64,7 @@ const PreventPlayerDuplication = () => {
           mappedCellIds[13].textContent === `${watchPieceName}` &&
           singleSpaceAtStartArray[9] === `${secondPlayerSingleSpaceComplete}`
         ) {
+          console.log("hi");
           mappedCellIds[12].textContent = `${watchForEmptyCellAfterSingleSpace}`;
         }
         break;
@@ -80,7 +79,7 @@ const PreventPlayerDuplication = () => {
 
   const thirdPlayerPreventDuplication = (e) => {
     const thirdPlayerDoubleSpaceComplete = `${pawnAssignmentObject.playerSide.pawnThree.watchForDoubleSpace.doubleSpaceMoveComplete}`;
-    const thirdPlayerSingleSpaceComplete = `${pawnAssignmentObject.playerSide.pawnThree.watchForFirstMove.firstMoveComplete}`;
+    const thirdPlayerSingleSpaceComplete = `${pawnAssignmentObject.playerSide.pawnThree.watchForSingleSpaceAtStart.singleSpaceAtStartUsed}}`;
     const thirdPlayerPreventDuplication = e.target.id;
 
     switch (thirdPlayerPreventDuplication) {
@@ -111,7 +110,7 @@ const PreventPlayerDuplication = () => {
 
   const fourthPlayerPreventDuplication = (e) => {
     const fourthPlayerDoubleSpaceComplete = `${pawnAssignmentObject.playerSide.pawnFour.watchForDoubleSpace.doubleSpaceMoveComplete}`;
-    const fourthPlayerSingleSpaceComplete = `${pawnAssignmentObject.playerSide.pawnFour.watchForFirstMove.firstMoveComplete}`;
+    const fourthPlayerSingleSpaceComplete = `${pawnAssignmentObject.playerSide.pawnFour.watchForSingleSpaceAtStart.singleSpaceAtStartUsed}}`;
     const fourthPlayerPreventDuplication = e.target.id;
 
     switch (fourthPlayerPreventDuplication) {
@@ -142,7 +141,7 @@ const PreventPlayerDuplication = () => {
 
   const fifthPlayerPreventDuplication = (e) => {
     const fifthPlayerDoubleSpaceComplete = `${pawnAssignmentObject.playerSide.pawnFive.watchForDoubleSpace.doubleSpaceMoveComplete}`;
-    const fifthPlayerSingleSpaceComplete = `${pawnAssignmentObject.playerSide.pawnFive.watchForFirstMove.firstMoveComplete}`;
+    const fifthPlayerSingleSpaceComplete = `${pawnAssignmentObject.playerSide.pawnFive.watchForSingleSpaceAtStart.singleSpaceAtStartUsed}}`;
     const fifthPlayerPreventDuplication = e.target.id;
 
     switch (fifthPlayerPreventDuplication) {
@@ -173,7 +172,7 @@ const PreventPlayerDuplication = () => {
 
   const sixthPlayerPreventDuplication = (e) => {
     const sixthPlayerDoubleSpaceComplete = `${pawnAssignmentObject.playerSide.pawnSix.watchForDoubleSpace.doubleSpaceMoveComplete}`;
-    const sixthPlayerSingleSpaceComplete = `${pawnAssignmentObject.playerSide.pawnSix.watchForFirstMove.firstMoveComplete}`;
+    const sixthPlayerSingleSpaceComplete = `${pawnAssignmentObject.playerSide.pawnSix.watchForSingleSpaceAtStart.singleSpaceAtStartUsed}}`;
     const sixthPlayerPreventDuplication = e.target.id;
 
     switch (sixthPlayerPreventDuplication) {
@@ -204,7 +203,7 @@ const PreventPlayerDuplication = () => {
 
   const seventhPlayerPreventDuplication = (e) => {
     const seventhPlayerDoubleSpaceComplete = `${pawnAssignmentObject.playerSide.pawnSeven.watchForDoubleSpace.doubleSpaceMoveComplete}`;
-    const seventhPlayerSingleSpaceComplete = `${pawnAssignmentObject.playerSide.pawnSeven.watchForFirstMove.firstMoveComplete}`;
+    const seventhPlayerSingleSpaceComplete = `${pawnAssignmentObject.playerSide.pawnSeven.watchForSingleSpaceAtStart.singleSpaceAtStartUsed}}`;
     const seventhPlayerPreventDuplication = e.target.id;
 
     switch (seventhPlayerPreventDuplication) {
@@ -235,7 +234,7 @@ const PreventPlayerDuplication = () => {
 
   const eighthPlayerPreventDuplication = (e) => {
     const eighthPlayerDoubleSpaceComplete = `${pawnAssignmentObject.playerSide.pawnEight.watchForDoubleSpace.doubleSpaceMoveComplete}`;
-    const eighthComputerSingleSpaceComplete = `${pawnAssignmentObject.playerSide.pawnEight.watchForFirstMove.firstMoveComplete}`;
+    const eighthComputerSingleSpaceComplete = `${pawnAssignmentObject.playerSide.pawnEight.watchForSingleSpaceAtStart.singleSpaceAtStartUsed}}`;
     const eighthPlayerPreventDuplication = e.target.id;
 
     switch (eighthPlayerPreventDuplication) {
