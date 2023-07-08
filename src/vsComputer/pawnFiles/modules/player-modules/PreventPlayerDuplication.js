@@ -8,22 +8,21 @@ const PreventPlayerDuplication = () => {
   const watchForEmptyCellAfterDoubleSpace = `${trackGameStateObject.emptyCell}`;
   const watchForEmptyCellAfterSingleSpace = `${trackGameStateObject.emptyCell}`;
 
-  const firstPlayerPreventDuplicationClicks = () => {
-    gridContainer.addEventListener("click", firstPlayerPreventDuplication);
+  const handleFirstPreventDuplicationClicks = () => {
+    gridContainer.addEventListener("click", handleFirstPreventDuplication);
 
-    return { firstPlayerPreventDuplicationClicks };
+    return { handleFirstPreventDuplicationClicks };
   };
+z
+  const handleFirstPreventDuplication = (e) => {
+    const pawnOneFirstMoveComplete = `${pawnAssignmentObject.playerSide.pawnOne.watchForFirstMove.firstMoveNotComplete}`;
+    const preventFirstPawnDuplication = e.target.id;
 
-  const firstPlayerPreventDuplication = (e) => {
-    const firstPlayerDoubleSpaceComplete = `${pawnAssignmentObject.playerSide.pawnOne.watchForDoubleSpace.doubleSpaceMoveComplete}`;
-    const firstPlayerSingleSpaceComplete = `${pawnAssignmentObject.playerSide.pawnOne.watchForSingleSpaceAtStart.singleSpaceAtStartUsed}`;
-    const firstPlayerPreventDuplication = e.target.id;
-
-    switch (firstPlayerPreventDuplication) {
+    switch (preventFirstPawnDuplication) {
       case getCellIds[5]:
         if (
           mappedCellIds[4].textContent === `${watchPieceName}` &&
-          doubleSpacePawnMoveArray[8] === `${firstPlayerDoubleSpaceComplete}`
+          firstMoveStatusArray[8] === `${pawnOneFirstMoveComplete}`
         ) {
           mappedCellIds[5].textContent = `${watchForEmptyCellAfterDoubleSpace}`;
         }
@@ -31,7 +30,7 @@ const PreventPlayerDuplication = () => {
       case getCellIds[4]:
         if (
           mappedCellIds[5].textContent === `${watchPieceName}` &&
-          singleSpaceAtStartArray[8] === `${firstPlayerSingleSpaceComplete}`
+          firstMoveStatusArray[8] === `${pawnOneFirstMoveComplete}`
         ) {
           mappedCellIds[4].textContent = `${watchForEmptyCellAfterSingleSpace}`;
         }
@@ -40,12 +39,12 @@ const PreventPlayerDuplication = () => {
   };
 
   const secondPlayerPreventDuplicationClicks = () => {
-    gridContainer.addEventListener("click", secondPlayerPreventDuplication);
+    gridContainer.addEventListener("click", handleSecondPreventDuplication);
 
     return { secondPlayerPreventDuplicationClicks };
   };
 
-  const secondPlayerPreventDuplication = (e) => {
+  const handleSecondPreventDuplication = (e) => {
     const secondPlayerDoubleSpaceComplete = `${pawnAssignmentObject.playerSide.pawnTwo.watchForDoubleSpace.doubleSpaceMoveComplete}`;
     const secondPlayerSingleSpaceComplete = `${pawnAssignmentObject.playerSide.pawnTwo.watchForSingleSpaceAtStart.singleSpaceAtStartUsed}}`;
     const secondPlayerPreventDuplication = e.target.id;
