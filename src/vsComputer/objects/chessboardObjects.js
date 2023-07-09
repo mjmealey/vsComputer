@@ -1,12 +1,9 @@
-let chessBoardPositions = {
-  A: ["r", "p", "-", "-", "-", "-", "P", "R"],
-  B: ["k", "p", "-", "-", "-", "-", "P", "K"],
-  C: ["b", "p", "-", "-", "-", "-", "P", "B"],
-  D: ["q", "p", "-", "-", "-", "-", "P", "Q"],
-  E: ["k", "p", "-", "-", "-", "-", "P", "K"],
-  F: ["b", "p", "-", "-", "-", "-", "P", "B"],
-  G: ["k", "p", "-", "-", "-", "-", "P", "K"],
-  H: ["r", "p", "-", "-", "-", "-", "P", "R"],
+const gridElements = {
+  div: "div",
+  gridElementsClass: "gridElements",
+  gridContainerId: "gridContainer",
 };
 
-export let chessBoardStartingPositionsArray = chessBoardPositions;
+
+
+export default gridElements
