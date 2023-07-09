@@ -1,55 +1,51 @@
 import { pawnAssignmentObject } from "./pawnObjects.js";
 
-let firstMoveStatus = [
-  //watching for computer side first moves
-  `${pawnAssignmentObject.computerSide.pawnOne.watchForFirstMove.firstMoveNotComplete}`,
-  `${pawnAssignmentObject.computerSide.pawnTwo.watchForFirstMove.firstMoveNotComplete}`,
-  `${pawnAssignmentObject.computerSide.pawnThree.watchForFirstMove.firstMoveNotComplete}`,
-  `${pawnAssignmentObject.computerSide.pawnFour.watchForFirstMove.firstMoveNotComplete}`,
-  `${pawnAssignmentObject.computerSide.pawnFour.watchForFirstMove.firstMoveNotComplete}`,
-  `${pawnAssignmentObject.computerSide.pawnFive.watchForFirstMove.firstMoveNotComplete}`,
-  `${pawnAssignmentObject.computerSide.pawnSix.watchForFirstMove.firstMoveNotComplete}`,
-  `${pawnAssignmentObject.computerSide.pawnSeven.watchForFirstMove.firstMoveNotComplete}`,
-  `${pawnAssignmentObject.computerSide.pawnEight.watchForFirstMove.firstMoveNotComplete}`,
-  //watching for player side first moves
-  `${pawnAssignmentObject.playerSide.pawnOne.watchForFirstMove.firstMoveNotComplete}`,
-  `${pawnAssignmentObject.playerSide.pawnTwo.watchForFirstMove.firstMoveNotComplete}`,
-  `${pawnAssignmentObject.playerSide.pawnThree.watchForFirstMove.firstMoveNotComplete}`,
-  `${pawnAssignmentObject.playerSide.pawnFour.watchForFirstMove.firstMoveNotComplete}`,
-  `${pawnAssignmentObject.playerSide.pawnFive.watchForFirstMove.firstMoveNotComplete}`,
-  `${pawnAssignmentObject.playerSide.pawnSix.watchForFirstMove.firstMoveNotComplete}`,
-  `${pawnAssignmentObject.playerSide.pawnSeven.watchForFirstMove.firstMoveNotComplete}`,
-  `${pawnAssignmentObject.playerSide.pawnEight.watchForFirstMove.firstMoveNotComplete}`,
+const computerAssignedNames = [
+  pawnAssignmentObject.computerSide.pawnOne.assignedName,
+  pawnAssignmentObject.computerSide.pawnTwo.assignedName,
+  pawnAssignmentObject.computerSide.pawnThree.assignedName,
+  pawnAssignmentObject.computerSide.pawnFour.assignedName,
+  pawnAssignmentObject.computerSide.pawnFive.assignedName,
+  pawnAssignmentObject.computerSide.pawnSix.assignedName,
+  pawnAssignmentObject.computerSide.pawnSeven.assignedName,
+  pawnAssignmentObject.computerSide.pawnEight.assignedName,
 ];
 
-let nextPawnMove = [
-  `${pawnAssignmentObject.computerSide.pawnOne.watchForNextMove.notReadyForNextMove}`,
-  `${pawnAssignmentObject.computerSide.pawnTwo.watchForNextMove.notReadyForNextMove}`,
-  `${pawnAssignmentObject.computerSide.pawnThree.watchForNextMove.notReadyForNextMove}`,
-  `${pawnAssignmentObject.computerSide.pawnFour.watchForNextMove.notReadyForNextMove}`,
-  `${pawnAssignmentObject.computerSide.pawnFive.watchForNextMove.notReadyForNextMove}`,
-  `${pawnAssignmentObject.computerSide.pawnSix.watchForNextMove.notReadyForNextMove}`,
-  `${pawnAssignmentObject.computerSide.pawnSeven.watchForNextMove.notReadyForNextMove}`,
-  `${pawnAssignmentObject.computerSide.pawnEight.watchForNextMove.notReadyForNextMove}`,
-  //watching for bottom side first pawn moves
-  `${pawnAssignmentObject.playerSide.pawnOne.watchForNextMove.notReadyForNextMove}`,
-  `${pawnAssignmentObject.playerSide.pawnTwo.watchForNextMove.notReadyForNextMove}`,
-  `${pawnAssignmentObject.playerSide.pawnThree.watchForNextMove.notReadyForNextMove}`,
-  `${pawnAssignmentObject.playerSide.pawnFour.watchForNextMove.notReadyForNextMove}`,
-  `${pawnAssignmentObject.playerSide.pawnFive.watchForNextMove.notReadyForNextMove}`,
-  `${pawnAssignmentObject.playerSide.pawnSix.watchForNextMove.notReadyForNextMove}`,
-  `${pawnAssignmentObject.playerSide.pawnSeven.watchForNextMove.notReadyForNextMove}`,
-  `${pawnAssignmentObject.playerSide.pawnEight.watchForNextMove.notReadyForNextMove}`,
+const computerStartingRows = [
+  pawnAssignmentObject.computerSide.pawnOne.startingPosition.row,
+  pawnAssignmentObject.computerSide.pawnTwo.startingPosition.row,
+  pawnAssignmentObject.computerSide.pawnThree.startingPosition.row,
+  pawnAssignmentObject.computerSide.pawnFour.startingPosition.row,
+  pawnAssignmentObject.computerSide.pawnFive.startingPosition.row,
+  pawnAssignmentObject.computerSide.pawnSix.startingPosition.row,
+  pawnAssignmentObject.computerSide.pawnSeven.startingPosition.row,
+  pawnAssignmentObject.computerSide.pawnEight.startingPosition.row,
 ];
 
-let possibleCellOnePositions = [
-  `${pawnAssignmentObject.computerSide.pawnOne.cellOnePawnNotOnCellOne}`,
-  `${pawnAssignmentObject.computerSide.pawnOne.cellOnePawnNotOnCellTwo}`,
-  `${pawnAssignmentObject.computerSide.pawnOne.cellOnePawnNotOnCellThree}`,
-  `${pawnAssignmentObject.computerSide.pawnOne.cellOnePawnNotOnCellFour}`,
-  `${pawnAssignmentObject.computerSide.pawnOne.cellOnePawnNotOnCellFive}`,
+const computerStartingColumns = [
+  pawnAssignmentObject.computerSide.pawnOne.startingPosition.col,
+  pawnAssignmentObject.computerSide.pawnTwo.startingPosition.col,
+  pawnAssignmentObject.computerSide.pawnThree.startingPosition.col,
+  pawnAssignmentObject.computerSide.pawnFour.startingPosition.col,
+  pawnAssignmentObject.computerSide.pawnFive.startingPosition.col,
+  pawnAssignmentObject.computerSide.pawnSix.startingPosition.col,
+  pawnAssignmentObject.computerSide.pawnSeven.startingPosition.col,
+  pawnAssignmentObject.computerSide.pawnSeven.startingPosition.col,
 ];
 
-export let firstMoveStatusArray = firstMoveStatus
-export let nextPawnMoveArray = nextPawnMove;
-export let possibleCellOnePositionsArray = possibleCellOnePositions;
+const computerDoubleSpacingPositions = [
+  pawnAssignmentObject.computerSide.pawnOne.doubleSpacingPosition,
+  pawnAssignmentObject.computerSide.pawnTwo.doubleSpacingPosition,
+  pawnAssignmentObject.computerSide.pawnThree.doubleSpacingPosition,
+  pawnAssignmentObject.computerSide.pawnFour.doubleSpacingPosition,
+  pawnAssignmentObject.computerSide.pawnFive.doubleSpacingPosition,
+  pawnAssignmentObject.computerSide.pawnSix.doubleSpacingPosition,
+  pawnAssignmentObject.computerSide.pawnSeven.doubleSpacingPosition,
+  pawnAssignmentObject.computerSide.pawnEight.doubleSpacingPosition,
+];
+
+export const computerAssignedNamesArray = computerAssignedNames;
+export const computerStartingRowsArray = computerStartingRows;
+export const computerStartingColumnsArray = computerStartingColumns;
+export const computerDoubleSpacingPositionsArray =
+  computerDoubleSpacingPositions;
