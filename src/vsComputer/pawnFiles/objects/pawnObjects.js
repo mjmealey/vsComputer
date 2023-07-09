@@ -1,328 +1,107 @@
-const PAWN_ASSIGNMENTS = {
+const pawnAssignments = {
   pieceName: "Pawn",
-  //tracks the top side pawns
+
   computerSide: {
     pawnOne: {
-      startingPosition: 1,
-      watchForNextMove: {
-        readyForNextMove: { isReadyForNextMove: true },
-        notReadyForNextMove: { isReadyForNextMove: false },
-      },
-      watchForFirstMove: {
-        firstMoveComplete: { isComplete: true },
-        firstMoveNotComplete: { isComplete: false },
-      },
-
-      watchForPosition: {
-        //watches for the position of cell one's pawn(going off of array index which starts from 0 and counts up)
-        onCellOneOfRowOne: { Cell: 1, Row: 1 },
-        onCellTwo: { Cell: 2, Row: 1 },
-        onCellThree: { Cell: 3, Row: 1 },
-        onCellFour: { Cell: 4, Row: 1 },
-        onCellFive: { Cell: 5, Row: 1 },
-        //watches for the positions where the cell one pawn is not located
-        cellOnePawnNotOnCellOne: "Cell One Pawn is not on Cell One",
-        cellOnePawnNotOnCellTwo: "Cell One Pawn is not on Cell Two",
-        cellOnePawnNotOnCellThree: "Cell One Pawn not is on Cell Three",
-        cellOnePawnNotOnCellFour: "Cell One Pawn is not on Cell Four",
-        cellOnePawnNotOnCellFive: "Cell One Pawn is not on Cell Five",
-      },
+      assignedName: "p1",
+      startingPosition: { row: 0, col: 1 },
+      doubleSpacingPosition: { row: 0, col: 3 },
     },
-
     pawnTwo: {
-      startingPosition: 9,
-      watchForNextMove: {
-        readyForNextMove: { isReadyForNextMove: true },
-        notReadyForNextMove: { isReadyForNextMove: false },
-      },
-      watchForDoubleSpace: {
-        doubleSpaceMoveComplete: { isComplete: true },
-        doubleSpaceMoveNotComplete: { isComplete: false },
-      },
-      watchForSingleSpaceAtStart: {
-        singleSpaceAtStartUsed: { isUsed: true },
-        singleSpaceAtStartNotUsed: { isUsed: false },
-      },
-      watchForFirstMove: {
-        firstMoveComplete: { isComplete: true },
-        firstMoveNotComplete: { isComplete: false },
-      },
+      assignedName: "p2",
+      startingPosition: { row: 1, col: 1 },
+      doubleSpacingPosition: { row: 1, col: 3 },
+  
     },
 
     pawnThree: {
-      startingPosition: 17,
-      watchForNextMove: {
-        readyForNextMove: { isReadyForNextMove: true },
-        notReadyForNextMove: { isReadyForNextMove: false },
-      },
-      watchForDoubleSpace: {
-        doubleSpaceMoveComplete: { isComplete: true },
-        doubleSpaceMoveNotComplete: { isComplete: false },
-      },
-      watchForSingleSpaceAtStart: {
-        singleSpaceAtStartUsed: { isUsed: true },
-        singleSpaceAtStartNotUsed: { isUsed: false },
-      },
-      watchForFirstMove: {
-        firstMoveComplete: { isComplete: true },
-        firstMoveNotComplete: { isComplete: false },
-      },
+      assignedName: "p3",
+      startingPosition: { row: 2, col: 1 },
+      doubleSpacingPosition: { row: 2, col: 3 },
+
     },
 
     pawnFour: {
-      startingPosition: 25,
-      watchForNextMove: {
-        readyForNextMove: { isReadyForNextMove: true },
-        notReadyForNextMove: { isReadyForNextMove: false },
-      },
-      watchForDoubleSpace: {
-        doubleSpaceMoveComplete: { isComplete: true },
-        doubleSpaceMoveNotComplete: { isComplete: false },
-      },
-      watchForSingleSpaceAtStart: {
-        singleSpaceAtStartUsed: { isUsed: true },
-        singleSpaceAtStartNotUsed: { isUsed: false },
-      },
-      watchForFirstMove: {
-        firstMoveComplete: { isComplete: true },
-        firstMoveNotComplete: { isComplete: false },
-      },
+      assignedName: "p4",
+      startingPosition: { row: 3, col: 1 },
+      doubleSpacingPosition: { row: 3, col: 3 },
+
     },
 
     pawnFive: {
-      startingPosition: 33,
-      watchForNextMove: {
-        readyForNextMove: { isReadyForNextMove: true },
-        notReadyForNextMove: { isReadyForNextMove: false },
-      },
-      watchForDoubleSpace: {
-        doubleSpaceMoveComplete: { isComplete: true },
-        doubleSpaceMoveNotComplete: { isComplete: false },
-      },
-      watchForSingleSpaceAtStart: {
-        singleSpaceAtStartUsed: { isUsed: true },
-        singleSpaceAtStartNotUsed: { isUsed: false },
-      },
-      watchForFirstMove: {
-        firstMoveComplete: { isComplete: true },
-        firstMoveNotComplete: { isComplete: false },
-      },
+      assignedName: "p5",
+      startingPosition: { row: 4, col: 1 },
+      doubleSpacingPosition: { row: 4, col: 3 },
+
     },
 
     pawnSix: {
-      startingPosition: 41,
-      watchForNextMove: {
-        readyForNextMove: { isReadyForNextMove: true },
-        notReadyForNextMove: { isReadyForNextMove: false },
-      },
-      watchForDoubleSpace: {
-        doubleSpaceMoveComplete: { isComplete: true },
-        doubleSpaceMoveNotComplete: { isComplete: false },
-      },
-      watchForSingleSpaceAtStart: {
-        singleSpaceAtStartUsed: { isUsed: true },
-        singleSpaceAtStartNotUsed: { isUsed: false },
-      },
-      watchForFirstMove: {
-        firstMoveComplete: { isComplete: true },
-        firstMoveNotComplete: { isComplete: false },
-      },
+      assignedName: "p6",
+      startingPosition: { row: 5, col: 1 },
+      doubleSpacingPosition: { row: 5, col: 3 },
     },
 
     pawnSeven: {
-      startingPosition: 49,
-      watchForNextMove: {
-        readyForNextMove: { isReadyForNextMove: true },
-        notReadyForNextMove: { isReadyForNextMove: false },
-      },
-      watchForDoubleSpace: {
-        doubleSpaceMoveComplete: { isComplete: true },
-        doubleSpaceMoveNotComplete: { isComplete: false },
-      },
-      watchForSingleSpaceAtStart: {
-        singleSpaceAtStartUsed: { isUsed: true },
-        singleSpaceAtStartNotUsed: { isUsed: false },
-      },
-      watchForFirstMove: {
-        firstMoveComplete: { isComplete: true },
-        firstMoveNotComplete: { isComplete: false },
-      },
+      assignedName: "p7",
+      startingPosition: { row: 6, col: 1 },
+      doubleSpacingPosition: { row: 6, col: 3 },
     },
 
     pawnEight: {
-      startingPosition: 57,
-      watchForNextMove: {
-        readyForNextMove: { isReadyForNextMove: true },
-        notReadyForNextMove: { isReadyForNextMove: false },
-      },
-      watchForDoubleSpace: {
-        doubleSpaceMoveComplete: { isComplete: true },
-        doubleSpaceMoveNotComplete: { isComplete: false },
-      },
-      watchForSingleSpaceAtStart: {
-        singleSpaceAtStartUsed: { isUsed: true },
-        singleSpaceAtStartNotUsed: { isUsed: false },
-      },
-      watchForFirstMove: {
-        firstMoveComplete: { isComplete: true },
-        firstMoveNotComplete: { isComplete: false },
-      },
+      assignedName: "p8",
+      startingPosition: { row: 7, col: 1 },
+      doubleSpacingPosition: { row: 7, col: 3 },
     },
   },
-
   playerSide: {
     pawnOne: {
-      startingPosition: 6,
-      watchForNextMove: {
-        readyForNextMove: { isReadyForNextMove: true },
-        notReadyForNextMove: { isReadyForNextMove: false },
-      },
-      watchForDoubleSpace: {
-        doubleSpaceMoveComplete: { isComplete: true },
-        doubleSpaceMoveNotComplete: { isComplete: false },
-      },
-      watchForSingleSpaceAtStart: {
-        singleSpaceAtStartUsed: { isUsed: true },
-        singleSpaceAtStartNotUsed: { isUsed: false },
-      },
-      watchForFirstMove: {
-        firstMoveComplete: { isComplete: true },
-        firstMoveNotComplete: { isComplete: false },
+      startingPosition: "a7",
+      colors: {
+        default: "black",
       },
     },
     pawnTwo: {
-      startingPosition: 14,
-      watchForNextMove: {
-        readyForNextMove: { isReadyForNextMove: true },
-        notReadyForNextMove: { isReadyForNextMove: false },
-      },
-      watchForDoubleSpace: {
-        doubleSpaceMoveComplete: { isComplete: true },
-        doubleSpaceMoveNotComplete: { isComplete: false },
-      },
-      watchForSingleSpaceAtStart: {
-        singleSpaceAtStartUsed: { isUsed: true },
-        singleSpaceAtStartNotUsed: { isUsed: false },
-      },
-      watchForFirstMove: {
-        firstMoveComplete: { isComplete: true },
-        firstMoveNotComplete: { isComplete: false },
+      startingPosition: "b7",
+      colors: {
+        default: "black",
       },
     },
     pawnThree: {
-      startingPosition: 22,
-      watchForNextMove: {
-        readyForNextMove: { isReadyForNextMove: true },
-        notReadyForNextMove: { isReadyForNextMove: false },
-      },
-      watchForDoubleSpace: {
-        doubleSpaceMoveComplete: { isComplete: true },
-        doubleSpaceMoveNotComplete: { isComplete: false },
-      },
-      watchForSingleSpaceAtStart: {
-        singleSpaceAtStartUsed: { isUsed: true },
-        singleSpaceAtStartNotUsed: { isUsed: false },
-      },
-      watchForFirstMove: {
-        firstMoveComplete: { isComplete: true },
-        firstMoveNotComplete: { isComplete: false },
+      startingPosition: "c7",
+      colors: {
+        default: "black",
       },
     },
     pawnFour: {
-      startingPosition: 30,
-      watchForNextMove: {
-        readyForNextMove: { isReadyForNextMove: true },
-        notReadyForNextMove: { isReadyForNextMove: false },
-      },
-      watchForDoubleSpace: {
-        doubleSpaceMoveComplete: { isComplete: true },
-        doubleSpaceMoveNotComplete: { isComplete: false },
-      },
-      watchForSingleSpaceAtStart: {
-        singleSpaceAtStartUsed: { isUsed: true },
-        singleSpaceAtStartNotUsed: { isUsed: false },
-      },
-      watchForFirstMove: {
-        firstMoveComplete: { isComplete: true },
-        firstMoveNotComplete: { isComplete: false },
+      startingPosition: "d7",
+      colors: {
+        default: "black",
       },
     },
     pawnFive: {
-      startingPosition: 38,
-      watchForNextMove: {
-        readyForNextMove: { isReadyForNextMove: true },
-        notReadyForNextMove: { isReadyForNextMove: false },
-      },
-      watchForDoubleSpace: {
-        doubleSpaceMoveComplete: { isComplete: true },
-        doubleSpaceMoveNotComplete: { isComplete: false },
-      },
-      watchForSingleSpaceAtStart: {
-        singleSpaceAtStartUsed: { isUsed: true },
-        singleSpaceAtStartNotUsed: { isUsed: false },
-      },
-      watchForFirstMove: {
-        firstMoveComplete: { isComplete: true },
-        firstMoveNotComplete: { isComplete: false },
+      startingPosition: "e7",
+      colors: {
+        default: "black",
       },
     },
     pawnSix: {
-      startingPosition: 46,
-      watchForNextMove: {
-        readyForNextMove: { isReadyForNextMove: true },
-        notReadyForNextMove: { isReadyForNextMove: false },
-      },
-      watchForDoubleSpace: {
-        doubleSpaceMoveComplete: { isComplete: true },
-        doubleSpaceMoveNotComplete: { isComplete: false },
-      },
-      watchForSingleSpaceAtStart: {
-        singleSpaceAtStartUsed: { isUsed: true },
-        singleSpaceAtStartNotUsed: { isUsed: false },
-      },
-      watchForFirstMove: {
-        firstMoveComplete: { isComplete: true },
-        firstMoveNotComplete: { isComplete: false },
+      startingPosition: "f7",
+      colors: {
+        default: "black",
       },
     },
     pawnSeven: {
-      startingPosition: 54,
-      watchForNextMove: {
-        readyForNextMove: { isReadyForNextMove: true },
-        notReadyForNextMove: { isReadyForNextMove: false },
-      },
-      watchForDoubleSpace: {
-        doubleSpaceMoveComplete: { isComplete: true },
-        doubleSpaceMoveNotComplete: { isComplete: false },
-      },
-      watchForSingleSpaceAtStart: {
-        singleSpaceAtStartUsed: { isUsed: true },
-        singleSpaceAtStartNotUsed: { isUsed: false },
-      },
-      watchForFirstMove: {
-        firstMoveComplete: { isComplete: true },
-        firstMoveNotComplete: { isComplete: false },
+      startingPosition: "g7",
+      colors: {
+        default: "black",
       },
     },
     pawnEight: {
-      startingPosition: 62,
-      watchForNextMove: {
-        readyForNextMove: { isReadyForNextMove: true },
-        notReadyForNextMove: { isReadyForNextMove: false },
-      },
-      watchForDoubleSpace: {
-        doubleSpaceMoveComplete: { isComplete: true },
-        doubleSpaceMoveNotComplete: { isComplete: false },
-      },
-      watchForSingleSpaceAtStart: {
-        singleSpaceAtStartUsed: { isUsed: true },
-        singleSpaceAtStartNotUsed: { isUsed: false },
-      },
-      watchForFirstMove: {
-        firstMoveComplete: { isComplete: true },
-        firstMoveNotComplete: { isComplete: false },
+      startingPosition: "h7",
+      colors: {
+        default: "black",
       },
     },
   },
 };
-export const pawnAssignmentObject = PAWN_ASSIGNMENTS;
+export const pawnAssignmentObject = pawnAssignments;
