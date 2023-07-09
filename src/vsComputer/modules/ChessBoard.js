@@ -1,13 +1,10 @@
+import gridElements from "../objects/chessboardObjects.js";
+
 const ChessBoard = () => {
   const gridCellIds = [];
   const createChessBoard = () => {
-    const gridElements = {
-      div:"div",
-      gridElementsClass:"gridElements",
-      gridContainerId:"gridContainer",
-    }
+ 
     const gridContainer = document.getElementById(gridElements.gridContainerId);
-
     console.log(gridElements.gridContainerId);
 
     for (let i = 0; i < 8; i++) {
@@ -26,11 +23,12 @@ const ChessBoard = () => {
         gridCellIds.push(cellsId);
       }
     }
-    return gridCellIds
+  
+    return gridCellIds;
   };
-  createChessBoard()
-  return gridCellIds
+  createChessBoard();
+
+  return gridCellIds;
 };
 
-
-export default ChessBoard
+export default ChessBoard;
