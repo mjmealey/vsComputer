@@ -1,5 +1,4 @@
 import chessBoard from "../../../objects/chessBoardArray.js";
-import { computerAssignedNamesArray } from "../../objects/pawnArrays.js";
 import { getCellIds } from "../../../modules/ChessPieceAssignments.js";
 import { pawnAssignmentObject } from "../../objects/pawnObjects.js";
 import { computerStartingRowsArray } from "../../objects/pawnArrays.js";
@@ -24,6 +23,7 @@ const ComputerDoubleSpacing = () => {
               col === computerStartingColumnsArray[0]
             ) {
               doubleSpacingUsed = false;
+              
             } else if (
               row === computerStartingRowsArray[0] &&
               col === computerStartingColumnsArray[0] + 1
