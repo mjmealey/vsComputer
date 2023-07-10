@@ -34,14 +34,30 @@ const computerStartingColumns = [
 ];
 
 const computerDoubleSpacingPositions = [
-  pawnAssignmentObject.computerSide.pawnOne.doubleSpacingPosition,
-  pawnAssignmentObject.computerSide.pawnTwo.doubleSpacingPosition,
-  pawnAssignmentObject.computerSide.pawnThree.doubleSpacingPosition,
-  pawnAssignmentObject.computerSide.pawnFour.doubleSpacingPosition,
-  pawnAssignmentObject.computerSide.pawnFive.doubleSpacingPosition,
-  pawnAssignmentObject.computerSide.pawnSix.doubleSpacingPosition,
-  pawnAssignmentObject.computerSide.pawnSeven.doubleSpacingPosition,
-  pawnAssignmentObject.computerSide.pawnEight.doubleSpacingPosition,
+  //first pawn
+  pawnAssignmentObject.computerSide.pawnOne.doubleSpacingPosition.row,
+  pawnAssignmentObject.computerSide.pawnOne.doubleSpacingPosition.col,
+  //second pawn
+  pawnAssignmentObject.computerSide.pawnTwo.doubleSpacingPosition.row,
+  pawnAssignmentObject.computerSide.pawnTwo.doubleSpacingPosition.col,
+  //third pawn
+  pawnAssignmentObject.computerSide.pawnThree.doubleSpacingPosition.row,
+  pawnAssignmentObject.computerSide.pawnThree.doubleSpacingPosition.col,
+  //fourth pawn
+  pawnAssignmentObject.computerSide.pawnFour.doubleSpacingPosition.row,
+  pawnAssignmentObject.computerSide.pawnFour.doubleSpacingPosition.col,
+  //fifth pawn
+  pawnAssignmentObject.computerSide.pawnFive.doubleSpacingPosition.row,
+  pawnAssignmentObject.computerSide.pawnFive.doubleSpacingPosition.col,
+  //sixth pawn
+  pawnAssignmentObject.computerSide.pawnSix.doubleSpacingPosition.row,
+  pawnAssignmentObject.computerSide.pawnSix.doubleSpacingPosition.col,
+  //seventh pawn
+  pawnAssignmentObject.computerSide.pawnSeven.doubleSpacingPosition.row,
+  pawnAssignmentObject.computerSide.pawnSeven.doubleSpacingPosition.col,
+  //eighth pawn
+  pawnAssignmentObject.computerSide.pawnEight.doubleSpacingPosition.row,
+  pawnAssignmentObject.computerSide.pawnEight.doubleSpacingPosition.col,
 ];
 
 export const computerAssignedNamesArray = computerAssignedNames;
