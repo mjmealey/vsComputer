@@ -3,12 +3,12 @@ import { pawnAssignmentObject } from "../pawnFiles/objects/pawnObjects.js";
 const chessBoard = [
   [
     "r",
-    pawnAssignmentObject.computerSide.pawnOne.assignedName,
+    pawnAssignmentObject.playerSide.pawnOne.assignedName,
     "-",
     "-",
     "-",
     "-",
-    pawnAssignmentObject.playerSide.pawnOne.startingPosition,
+    pawnAssignmentObject.playerSide.pawnOne.assignedName,
     "R",
   ],
   [
@@ -82,5 +82,5 @@ const chessBoard = [
     "R",
   ],
 ];
-
+console.log(chessBoard[1])
 export default chessBoard
