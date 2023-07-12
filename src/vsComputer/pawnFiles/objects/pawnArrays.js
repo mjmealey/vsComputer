@@ -22,5 +22,18 @@ const playerDoubleSpacingColumns = [
   pawnAssignmentObject.playerSide.pawnEight.doubleSpacingPosition.col,
 ]
 
+const playerAssignedNumbers  = [
+  pawnAssignmentObject.playerSide.pawnOne.assignedNumber,
+  pawnAssignmentObject.playerSide.pawnTwo.assignedNumber,
+  pawnAssignmentObject.playerSide.pawnThree.assignedNumber,
+  pawnAssignmentObject.playerSide.pawnFour.assignedNumber,
+  pawnAssignmentObject.playerSide.pawnFive.assignedNumber,
+  pawnAssignmentObject.playerSide.pawnSix.assignedNumber,
+  pawnAssignmentObject.playerSide.pawnSeven.assignedNumber,
+  pawnAssignmentObject.playerSide.pawnEight.assignedNumber
+]
+
+
 export const playerDoubleSpacingRowsArray = playerDoubleSpacingRows
 export const playerDoubleSpacingColumnsArray = playerDoubleSpacingColumns
+export const playerAssignedNumbersArray = playerAssignedNumbers
