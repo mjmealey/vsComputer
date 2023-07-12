@@ -8,6 +8,8 @@ const Pawn = () => {
   newPawnAssignments.playerSideAssignments();
   const newPlayerDoubleSpacing = PlayerDoubleSpacing()
   newPlayerDoubleSpacing.validateDoubleSpacing()
+  newPlayerDoubleSpacing.handleP1DoubleSpacing()
+
 };
 
 export default Pawn;
