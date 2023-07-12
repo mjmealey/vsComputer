@@ -62,6 +62,7 @@ const pawnAssignments = {
       assignedName: "P1",
       assignedNumber: 1,
       startingPosition: { row: 0, col: 6 },
+      singleSpacingAtStartPosition: { row: 0, col: 5 },
       doubleSpacingPosition: { row: 0, col: 4 },
       colors: {
         default: "black",
@@ -71,6 +72,7 @@ const pawnAssignments = {
       assignedName: "P2",
       assignedNumber: 2,
       startingPosition: { row: 1, col: 14 },
+      singleSpacingAtStartPosition: { row: 1, col: 13 },
       doubleSpacingPosition: { row: 1, col: 12 },
       colors: {
         default: "black",
@@ -80,6 +82,7 @@ const pawnAssignments = {
       assignedName: "P3",
       assignedNumber: 3,
       startingPosition: { row: 2, col: 22 },
+      singleSpacingAtStartPosition: { row: 2, col: 21 },
       doubleSpacingPosition: { row: 2, col: 20 },
       colors: {
         default: "black",
@@ -89,6 +92,7 @@ const pawnAssignments = {
       assignedName: "P4",
       assignedNumber: 4,
       startingPosition: { row: 3, col: 30 },
+      singleSpacingAtStartPosition: { row: 3, col: 29 },
       doubleSpacingPosition: { row: 3, col: 28 },
       colors: {
         default: "black",
@@ -98,6 +102,7 @@ const pawnAssignments = {
       assignedName: "P5",
       assignedNumber: 5,
       startingPosition: { row: 4, col: 38 },
+      singleSpacingAtStartPosition: { row: 4, col: 37 },
       doubleSpacingPosition: { row: 4, col: 36 },
       colors: {
         default: "black",
@@ -107,6 +112,7 @@ const pawnAssignments = {
       assignedName: "P6",
       assignedNumber: 6,
       startingPosition: { row: 5, col: 46 },
+      singleSpacingAtStartPosition: { row: 5, col: 45 },
       doubleSpacingPosition: { row: 5, col: 44 },
       colors: {
         default: "black",
@@ -116,6 +122,7 @@ const pawnAssignments = {
       assignedName: "P7",
       assignedNumber: 7,
       startingPosition: { row: 6, col: 54 },
+      singleSpacingAtStartPosition: { row: 6, col: 53 },
       doubleSpacingPosition: { row: 6, col: 52 },
       colors: {
         default: "black",
@@ -125,6 +132,7 @@ const pawnAssignments = {
       assignedName: "P8",
       assignedNumber: 8,
       startingPosition: { row: 7, col: 62 },
+      singleSpacingAtStartPosition: { row: 7, col: 61 },
       doubleSpacingPosition: { row: 7, col: 60 },
       colors: {
         default: "black",
