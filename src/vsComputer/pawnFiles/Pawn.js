@@ -1,16 +1,11 @@
 import PawnCellAssignments from "./modules/general-modules/PawnCellAssignments.js";
-import PlayerDoubleSpacing from "./modules/player-modules/PlayerDoubleSpace.js";
-import PlayerSingleSpaceAtStart from "./modules/player-modules/PlayerSingleSpace.js";
-
+import FirstMoves from "./modules/player-modules/FirstMove.js";
 const Pawn = () => {
   const newPawnAssignments = PawnCellAssignments();
   newPawnAssignments.computerSideAssignments();
   newPawnAssignments.playerSideAssignments();
-  const newPlayerDoubleSpacing = PlayerDoubleSpacing()
-  newPlayerDoubleSpacing.validateDoubleSpacing()
-  newPlayerDoubleSpacing.handleP1DoubleSpacing()
-  const newPlayerSingleSpaceAtStart = PlayerSingleSpaceAtStart()
-  newPlayerSingleSpaceAtStart.validateSingleSpaceAtStart() 
+  const newFirstMoves = FirstMoves()
+  newFirstMoves.validateFirstMoves()
 
 };
 
