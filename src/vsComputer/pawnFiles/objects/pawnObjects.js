@@ -64,6 +64,10 @@ const pawnAssignments = {
       startingPosition: { row: 0, col: 6 },
       singleSpacingAtStartPosition: { row: 0, col: 5 },
       doubleSpacingPosition: { row: 0, col: 4 },
+      firstMoveIsSingleSpace: {isSingleSpace: true},
+      firstMoveIsNotSingleSpace: {isSingleSpace: false},
+      firstMoveIsDoubleSpace: {isDoubleSpace: true},
+      firstMoveIsNotDoubleSpace: {isDoubleSpace: false},
       colors: {
         default: "black",
       },
