@@ -21,6 +21,8 @@ const displayGameStateText = {
     //first move
     emptyFirstMove: "",
     emptyCell: "",
+    emptyRowSelection:"",
+    emptyColumnSelection:"",
     emptyPieceSelection: "",
     pawnFirstMove: "Pawn",
     knightFirstMove: "Knight",
