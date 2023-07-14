@@ -6,6 +6,8 @@ const Pawn = () => {
   newPawnAssignments.playerSideAssignments();
   const newFirstMoves = FirstMoves()
   newFirstMoves.validateFirstMoves()
+  newFirstMoves.handleP2SingleSpaceDisplay()
+  newFirstMoves.handleP2DoubleSpaceDisplay()
 
 };
 
