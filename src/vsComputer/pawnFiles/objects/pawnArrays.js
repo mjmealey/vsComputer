@@ -1,7 +1,5 @@
 import { pawnAssignmentObject } from "./pawnObjects.js";
 
-let trackFirstMoves = []
-
 const playerDoubleSpacingRows = [
   pawnAssignmentObject.playerSide.pawnOne.doubleSpacingPosition.row,
   pawnAssignmentObject.playerSide.pawnTwo.doubleSpacingPosition.row,
@@ -57,7 +55,6 @@ const playerSingleSpacingAtStartColumns = [
   pawnAssignmentObject.playerSide.pawnEight.singleSpacingAtStartPosition.col,
 ];
 
-export let trackFirstMovesArray = trackFirstMoves
 export const playerDoubleSpacingRowsArray = playerDoubleSpacingRows;
 export const playerDoubleSpacingColumnsArray = playerDoubleSpacingColumns;
 export const playerAssignedNumbersArray = playerAssignedNumbers;
