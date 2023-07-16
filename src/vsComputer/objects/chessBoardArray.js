@@ -1,4 +1,3 @@
-import { pawnAssignmentObject } from "../pawnFiles/objects/pawnObjects.js";
 
 const chessBoard = [
   ["r", "p1", "-", "-", "-", "-", "P1", "R"],
