@@ -1,5 +1,5 @@
 import vsComputer from "./vsComputer/vsComputer.js";
-import Pawn from "./vsComputer/pawnFiles/Pawn.js";
+import Pawn from "./vsComputer/chessPieces/pawn/Pawn.js"
 
 const ChessApp = () => {
   vsComputer();
