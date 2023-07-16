@@ -19,27 +19,188 @@ const FirstMoves = () => {
 
         switch (firstMoveForEachPawn) {
           case "P1":
-            handleP1StartSpace(row, column);
-            break;
-          case "P2":
-            handleP2StartSpace(row, column);
-            break;
-          case "P3":
-            handleP3StartSpace(row, column);
-            break;
-          case "P4":
-            handleP4StartSpace(row, column);
-            break;
-          case "P5":
-            handleP5StartSpace(row, column);
-            break;
-          case "P6":
-            handleP6StartSpace(row, column);
+            handleStartSpaces(row, column);
             break;
         }
       }
     }
   };
+
+  const handleStartSpaces = (row, column) => {
+    let assignedNumber = trackGameStateObject.emptyPieceSelection;
+    let assignedName = trackGameStateObject.emptyPieceSelection;
+    let isFirstMoveReady = trackGameStateObject.emptyFirstMove;
+
+    const isPawnFirstMoveReady = (name) => {
+      return !trackFirstMoves.includes(name);
+    };
+
+    const handleStartSpaceClick = (index, pawnNumber, pawnName) => {
+      assignedNumber = pawnNumber;
+      assignedName = pawnName;
+      isFirstMoveReady = isPawnFirstMoveReady(assignedName);
+
+      if (mappedCellIds[index].textContent === pieceName && isFirstMoveReady) {
+        currentPawn = assignedNumber;
+      }
+    };
+
+    gridContainer.addEventListener("click", (e) => {
+      const startSpaceClicks = e.target.id;
+      //the pawns go from left to right
+      switch (startSpaceClicks) {
+        case getCellIds[6]:
+          handleStartSpaceClick(
+            6,
+            pawnAssignmentObject.playerSide.pawnOne.assignedNumber,
+            pawnAssignmentObject.playerSide.pawnOne.assignedName
+          );
+          break;
+        case getCellIds[14]:
+          handleStartSpaceClick(
+            14,
+            pawnAssignmentObject.playerSide.pawnTwo.assignedNumber,
+            pawnAssignmentObject.playerSide.pawnTwo.assignedName
+          );
+          break;
+        case getCellIds[22]:
+          handleStartSpaceClick(
+            22,
+            pawnAssignmentObject.playerSide.pawnThree.assignedNumber,
+            pawnAssignmentObject.playerSide.pawnThree.assignedName
+          );
+          break;
+        case getCellIds[30]:
+          handleStartSpaceClick(
+            30,
+            pawnAssignmentObject.playerSide.pawnFour.assignedNumber,
+            pawnAssignmentObject.playerSide.pawnFour.assignedName
+          );
+          break;
+        case getCellIds[38]:
+          handleStartSpaceClick(
+            38,
+            pawnAssignmentObject.playerSide.pawnFive.assignedNumber,
+            pawnAssignmentObject.playerSide.pawnFive.assignedName
+          );
+          break;
+        case getCellIds[46]:
+          handleStartSpaceClick(
+            46,
+            pawnAssignmentObject.playerSide.pawnSix.assignedNumber,
+            pawnAssignmentObject.playerSide.pawnSix.assignedName
+          );
+          break;
+        case getCellIds[54]:
+          handleStartSpaceClick(
+            54,
+            pawnAssignmentObject.playerSide.pawnSeven.assignedNumber,
+            pawnAssignmentObject.playerSide.pawnSeven.assignedName
+          );
+          break;
+        case getCellIds[62]:
+          handleStartSpaceClick(
+            62,
+            pawnAssignmentObject.playerSide.pawnEight.assignedNumber,
+            pawnAssignmentObject.playerSide.pawnEight.assignedName
+          );
+      }
+    });
+    handleSingleSpacePositions(row, column);
+  };
+
+  const handleSingleSpacePositions = (row, column) => {
+    let targetSingleSpaceRow = trackGameStateObject.emptyRowSelection;
+    let targetSingleSpaceColumn = trackGameStateObject.emptyColumnSelection;
+    let pawnSingleSpaceNumber = trackGameStateObject.emptyPieceSelection
+
+    gridContainer.addEventListener("click", (e) => {
+      const singleSpaceClicks = e.target.id;
+
+      switch (singleSpaceClicks) {
+        case getCellIds[5]:
+          targetSingleSpaceRow = pawnAssignmentObject.playerSide.pawnOne.singleSpacingAtStartPosition.row
+          targetSingleSpaceColumn = pawnAssignmentObject.playerSide.pawnOne.singleSpacingAtStartPosition.col 
+          pawnSingleSpaceNumber = pawnAssignmentObject.playerSide.pawnOne.assignedNumber
+
+          if (currentPawn === pawnSingleSpaceNumber) {
+            row = targetSingleSpaceRow
+            column = targetSingleSpaceColumn  
+          }
+        case getCellIds[13]:
+          targetSingleSpaceRow = pawnAssignmentObject.playerSide.pawnTwo.singleSpacingAtStartPosition.row
+          targetSingleSpaceColumn = pawnAssignmentObject.playerSide.pawnTwo.singleSpacingAtStartPosition.col
+          pawnSingleSpaceNumber = pawnAssignmentObject.playerSide.pawnTwo.assignedNumber
+
+          if(currentPawn === pawnSingleSpaceNumber){
+            row = targetSingleSpaceRow
+            column = targetSingleSpaceColumn
+          }
+          break;
+        case getCellIds[22]:
+          targetSingleSpaceRow = pawnAssignmentObject.playerSide.pawnThree.singleSpacingAtStartPosition.row
+          targetSingleSpaceColumn = pawnAssignmentObject.playerSide.pawnThree.singleSpacingAtStartPosition.col
+          pawnSingleSpaceNumber = pawnAssignmentObject.playerSide.pawnThree.assignedNumber
+
+          if(currentPawn === pawnSingleSpaceNumber){
+            row = targetSingleSpaceRow 
+            column = targetSingleSpaceColumn
+          }
+          break;
+        case getCellIds[30]:
+          targetSingleSpaceRow = pawnAssignmentObject.playerSide.pawnFour.singleSpacingAtStartPosition.row
+          targetSingleSpaceColumn = pawnAssignmentObject.playerSide.pawnFour.singleSpacingAtStartPosition.col
+          pawnSingleSpaceNumber = pawnAssignmentObject.playerSide.pawnFour.assignedNumber
+
+          if(currentPawn === pawnSingleSpaceNumber){
+            row = targetSingleSpaceRow
+            column = targetSingleSpaceColumn
+          }
+          break;
+        case getCellIds[38]:
+          targetSingleSpaceRow = pawnAssignmentObject.playerSide.pawnFive.singleSpacingAtStartPosition.row
+          targetSingleSpaceColumn = pawnAssignmentObject.playerSide.pawnFive.singleSpacingAtStartPosition.col
+          pawnSingleSpaceNumber = pawnAssignmentObject.playerSide.pawnFive.assignedNumber
+          
+          if(currentPawn === pawnSingleSpaceNumber){
+            row = targetSingleSpaceRow
+            column = targetSingleSpaceColumn 
+          }
+          break;
+        case getCellIds[46]:
+          targetSingleSpaceRow = pawnAssignmentObject.playerSide.pawnSix.singleSpacingAtStartPosition.row
+          targetSingleSpaceColumn = pawnAssignmentObject.playerSide.pawnFive.singleSpacingAtStartPosition.col
+          pawnSingleSpaceNumber = pawnAssignmentObject.playerSide.pawnSix.assignedNumber
+
+          if(currentPawn === pawnSingleSpaceNumber){
+            row = targetSingleSpaceRow
+            column = targetSingleSpaceColumn
+          }
+          break;
+        case getCellIds[54]:
+          targetSingleSpaceRow = pawnAssignmentObject.playerSide.pawnSeven.singleSpacingAtStartPosition.row
+          targetSingleSpaceColumn = pawnAssignmentObject.playerSide.pawnSeven.singleSpacingAtStartPosition.col
+          pawnSingleSpaceNumber = pawnAssignmentObject.playerSide.pawnSeven.assignedNumber
+
+          if(currentPawn === pawnSingleSpaceNumber){
+            row = targetSingleSpaceRow
+            column = targetSingleSpaceColumn 
+          }
+          break;
+        case getCellIds[62]:
+          targetSingleSpaceRow = pawnAssignmentObject.playerSide.pawnEight.singleSpacingAtStartPosition.row
+          targetSingleSpaceColumn = pawnAssignmentObject.playerSide.pawnEight.singleSpacingAtStartPosition.col
+          pawnSingleSpaceNumber = pawnAssignmentObject.playerSide.pawnEight.assignedNumber
+
+          if(currentPawn === pawnSingleSpaceNumber){
+            row = targetSingleSpaceRow
+            column = targetSingleSpaceColumn
+          }
+          break;
+      }
+    });
+  };
+
   //handles the situation where P1 is picked in the chessboard array
   const handleP1StartSpace = (row, column) => {
     const assignedNumberForP1 =
@@ -486,36 +647,43 @@ const FirstMoves = () => {
   };
 
   const handleP5DoubleSpace = (row, column, assignedNumberForP5, fifthPawn) => {
-    const targetRowForP5DoubleSpace = pawnAssignmentObject.playerSide.pawnFive.doubleSpacingPosition.row
-    const targetColumnForP5DoubleSpace = pawnAssignmentObject.playerSide.pawnFive.doubleSpacingPosition.col 
-    const targetSpaceForP5DoubleSpace = mappedCellIds[36]
+    const targetRowForP5DoubleSpace =
+      pawnAssignmentObject.playerSide.pawnFive.doubleSpacingPosition.row;
+    const targetColumnForP5DoubleSpace =
+      pawnAssignmentObject.playerSide.pawnFive.doubleSpacingPosition.col;
+    const targetSpaceForP5DoubleSpace = mappedCellIds[36];
     targetSpaceForP5DoubleSpace.addEventListener("click", () => {
-      if(currentPawn === assignedNumberForP5){
-        row = targetRowForP5DoubleSpace
-        column = targetColumnForP5DoubleSpace
+      if (currentPawn === assignedNumberForP5) {
+        row = targetRowForP5DoubleSpace;
+        column = targetColumnForP5DoubleSpace;
       }
 
-      if(row === targetRowForP5DoubleSpace && column === targetColumnForP5DoubleSpace){
-        trackFirstMoves.push(fifthPawn)
+      if (
+        row === targetRowForP5DoubleSpace &&
+        column === targetColumnForP5DoubleSpace
+      ) {
+        trackFirstMoves.push(fifthPawn);
       }
-    })
-    handleP5DoubleSpaceDisplay(fifthPawn)
-  }
+    });
+    handleP5DoubleSpaceDisplay(fifthPawn);
+  };
 
   const handleP5DoubleSpaceDisplay = (fifthPawn) => {
-    const targetSpaceForP5DoubleSpaceDisplay = mappedCellIds[36]
+    const targetSpaceForP5DoubleSpaceDisplay = mappedCellIds[36];
 
     targetSpaceForP5DoubleSpaceDisplay.addEventListener("click", () => {
-      const isP5DoubleSpaceReady = trackFirstMoves.includes(fifthPawn)
+      const isP5DoubleSpaceReady = trackFirstMoves.includes(fifthPawn);
 
-      if(isP5DoubleSpaceReady){
-        mappedCellIds[38].textContent = emptyCellAfterFirstMove
-        mappedCellIds[36].textContent = pieceName
-        trackFirstMoves = trackFirstMoves.filter((remove_P5) => remove_P5 !== fifthPawn)
-        currentPawn = trackGameStateObject.emptyPieceSelection
+      if (isP5DoubleSpaceReady) {
+        mappedCellIds[38].textContent = emptyCellAfterFirstMove;
+        mappedCellIds[36].textContent = pieceName;
+        trackFirstMoves = trackFirstMoves.filter(
+          (remove_P5) => remove_P5 !== fifthPawn
+        );
+        currentPawn = trackGameStateObject.emptyPieceSelection;
       }
-    })
-  }
+    });
+  };
 
   const handleP6StartSpace = (row, column) => {
     const assignedNumberForP6 =
@@ -530,7 +698,7 @@ const FirstMoves = () => {
       }
     });
     handleP6SingleSpace(row, column, assignedNumberForP6, sixthPawn);
-    handleP6DoubleSpace(row, column, assignedNumberForP6, sixthPawn)
+    handleP6DoubleSpace(row, column, assignedNumberForP6, sixthPawn);
   };
 
   const handleP6SingleSpace = (row, column, assignedNumberForP6, sixthPawn) => {
@@ -553,57 +721,288 @@ const FirstMoves = () => {
         trackFirstMoves.push(sixthPawn);
       }
     });
-    handleP6SingleSpaceDisplay(sixthPawn)
+    handleP6SingleSpaceDisplay(sixthPawn);
   };
 
   const handleP6SingleSpaceDisplay = (sixthPawn) => {
-    const targetSpaceForP6SingleSpaceDisplay = mappedCellIds[45]
+    const targetSpaceForP6SingleSpaceDisplay = mappedCellIds[45];
 
     targetSpaceForP6SingleSpaceDisplay.addEventListener("click", () => {
-      const isP6SingleSpaceReady = trackFirstMoves.includes(sixthPawn)
+      const isP6SingleSpaceReady = trackFirstMoves.includes(sixthPawn);
 
-      if(isP6SingleSpaceReady){
-        mappedCellIds[46].textContent = emptyCellAfterFirstMove
-        mappedCellIds[45].textContent = pieceName
-        trackFirstMoves = trackFirstMoves.filter((remove_P6) => remove_P6 !== sixthPawn)
-        currentPawn = trackGameStateObject.emptyPieceSelection
+      if (isP6SingleSpaceReady) {
+        mappedCellIds[46].textContent = emptyCellAfterFirstMove;
+        mappedCellIds[45].textContent = pieceName;
+        trackFirstMoves = trackFirstMoves.filter(
+          (remove_P6) => remove_P6 !== sixthPawn
+        );
+        currentPawn = trackGameStateObject.emptyPieceSelection;
       }
-    })
-  }
+    });
+  };
 
-  const handleP6DoubleSpace = (row,column, assignedNumberForP6, sixthPawn) => {
-    const targetRowForP6DoubleSpace = pawnAssignmentObject.playerSide.pawnSix.doubleSpacingPosition.row
-    const targetColumnForP6DoubleSpace = pawnAssignmentObject.playerSide.pawnSix.doubleSpacingPosition.col
-    const targetSpaceForP6DoubleSpace = mappedCellIds[44]
+  const handleP6DoubleSpace = (row, column, assignedNumberForP6, sixthPawn) => {
+    const targetRowForP6DoubleSpace =
+      pawnAssignmentObject.playerSide.pawnSix.doubleSpacingPosition.row;
+    const targetColumnForP6DoubleSpace =
+      pawnAssignmentObject.playerSide.pawnSix.doubleSpacingPosition.col;
+    const targetSpaceForP6DoubleSpace = mappedCellIds[44];
 
     targetSpaceForP6DoubleSpace.addEventListener("click", () => {
-      if(currentPawn === assignedNumberForP6){
-        row = targetRowForP6DoubleSpace
-        column = targetColumnForP6DoubleSpace        
+      if (currentPawn === assignedNumberForP6) {
+        row = targetRowForP6DoubleSpace;
+        column = targetColumnForP6DoubleSpace;
       }
-      if(row === targetRowForP6DoubleSpace && column === targetColumnForP6DoubleSpace){
-        trackFirstMoves.push(sixthPawn)
+      if (
+        row === targetRowForP6DoubleSpace &&
+        column === targetColumnForP6DoubleSpace
+      ) {
+        trackFirstMoves.push(sixthPawn);
       }
-    })
-    handleP6DoubleSpaceDisplay(sixthPawn)
-  }
+    });
+    handleP6DoubleSpaceDisplay(sixthPawn);
+  };
 
   const handleP6DoubleSpaceDisplay = (sixthPawn) => {
-     const targetSpaceForP6DoubleSpaceDisplay = mappedCellIds[44]
-     
-     targetSpaceForP6DoubleSpaceDisplay.addEventListener("click", () => {
-      const isP6DoubleSpaceReady = trackFirstMoves.includes(sixthPawn)
-      if(isP6DoubleSpaceReady){
-      mappedCellIds[46].textContent = emptyCellAfterFirstMove 
-      mappedCellIds[44].textContent = pieceName
-      trackFirstMoves = trackFirstMoves.filter((remove_P6) => remove_P6 !== sixthPawn)
-      currentPawn = trackGameStateObject.emptyPieceSelection
-     }})
-  }
+    const targetSpaceForP6DoubleSpaceDisplay = mappedCellIds[44];
+
+    targetSpaceForP6DoubleSpaceDisplay.addEventListener("click", () => {
+      const isP6DoubleSpaceReady = trackFirstMoves.includes(sixthPawn);
+      if (isP6DoubleSpaceReady) {
+        mappedCellIds[46].textContent = emptyCellAfterFirstMove;
+        mappedCellIds[44].textContent = pieceName;
+        trackFirstMoves = trackFirstMoves.filter(
+          (remove_P6) => remove_P6 !== sixthPawn
+        );
+        currentPawn = trackGameStateObject.emptyPieceSelection;
+      }
+    });
+  };
+
+  const handleP7StartSpace = (row, column) => {
+    const assignedNumberForP7 =
+      pawnAssignmentObject.playerSide.pawnSeven.assignedNumber;
+    const seventhPawn = pawnAssignmentObject.playerSide.pawnSeven.assignedName;
+    const startSpaceForP7 = mappedCellIds[54];
+
+    startSpaceForP7.addEventListener("click", () => {
+      const isP7FirstMove = !trackFirstMoves.includes(seventhPawn);
+
+      if (isP7FirstMove) {
+        currentPawn = assignedNumberForP7;
+      }
+    });
+    handleP7SingleSpace(row, column, seventhPawn, assignedNumberForP7);
+    handleP7DoubleSpace(row, column, seventhPawn, assignedNumberForP7);
+  };
+
+  const handleP7SingleSpace = (
+    row,
+    column,
+    seventhPawn,
+    assignedNumbrForP7
+  ) => {
+    const targetRowForP7SingleSpace =
+      pawnAssignmentObject.playerSide.pawnSeven.singleSpacingAtStartPosition
+        .row;
+    const targetColumnForP7SingleSpace =
+      pawnAssignmentObject.playerSide.pawnSeven.singleSpacingAtStartPosition
+        .col;
+    const targetSpaceForP7SingleSpace = mappedCellIds[53];
+
+    targetSpaceForP7SingleSpace.addEventListener("click", () => {
+      if (currentPawn === assignedNumbrForP7) {
+        row = targetRowForP7SingleSpace;
+        column = targetColumnForP7SingleSpace;
+      }
+
+      if (
+        row === targetRowForP7SingleSpace &&
+        column === targetColumnForP7SingleSpace
+      ) {
+        trackFirstMoves.push(seventhPawn);
+      }
+    });
+    handleP7SingleSpaceDisplay(seventhPawn);
+  };
+
+  const handleP7SingleSpaceDisplay = (seventhPawn) => {
+    const targetSpaceForP7SingleSpaceDisplay = mappedCellIds[53];
+
+    targetSpaceForP7SingleSpaceDisplay.addEventListener("click", () => {
+      const isP7SingleSpaceReady = trackFirstMoves.includes(seventhPawn);
+
+      if (isP7SingleSpaceReady) {
+        mappedCellIds[54].textContent = emptyCellAfterFirstMove;
+        mappedCellIds[53].textContent = pieceName;
+        trackFirstMoves = trackFirstMoves.filter(
+          (remove_P7) => remove_P7 !== seventhPawn
+        );
+        currentPawn = trackGameStateObject.emptyPieceSelection;
+      }
+    });
+  };
+
+  const handleP7DoubleSpace = (
+    row,
+    column,
+    seventhPawn,
+    assignedNumbrForP7
+  ) => {
+    const targetRowForP7DoubleSpace =
+      pawnAssignmentObject.playerSide.pawnSeven.singleSpacingAtStartPosition
+        .row;
+    const targetColumnForP7DoubleSpace =
+      pawnAssignmentObject.playerSide.pawnSeven.singleSpacingAtStartPosition
+        .col;
+    const targetSpaceForP7DoubleSpace = mappedCellIds[52];
+
+    targetSpaceForP7DoubleSpace.addEventListener("click", () => {
+      if (currentPawn === assignedNumbrForP7) {
+        row = targetRowForP7DoubleSpace;
+        column = targetColumnForP7DoubleSpace;
+
+        if (
+          row === targetRowForP7DoubleSpace &&
+          column === targetColumnForP7DoubleSpace
+        ) {
+          trackFirstMoves.push(seventhPawn);
+        }
+      }
+    });
+    handleP7DoubleSpaceDisplay(seventhPawn);
+  };
+
+  const handleP7DoubleSpaceDisplay = (seventhPawn) => {
+    const targetSpaceForP7DoubleSpaceDisplay = mappedCellIds[52];
+
+    targetSpaceForP7DoubleSpaceDisplay.addEventListener("click", () => {
+      const isP7DoubleSpaceReady = trackFirstMoves.includes(seventhPawn);
+
+      if (isP7DoubleSpaceReady) {
+        mappedCellIds[54].textContent = emptyCellAfterFirstMove;
+        mappedCellIds[52].textContent = pieceName;
+        trackFirstMoves = trackFirstMoves.filter(
+          (remove_P7) => remove_P7 !== seventhPawn
+        );
+        currentPawn = trackGameStateObject.emptyPieceSelection;
+      }
+    });
+  };
+
+  const handleP8StartSpace = (row, column) => {
+    const assignedNumberForP8 =
+      pawnAssignmentObject.playerSide.pawnEight.assignedNumber;
+    const eighthPawn = pawnAssignmentObject.computerSide.pawnEight.assignedName;
+    const startSpaceForP8 = mappedCellIds[62];
+
+    startSpaceForP8.addEventListener("click", () => {
+      const isP8FirstMoveReady = !trackFirstMoves.includes(eighthPawn);
+      if (mappedCellIds[54].textContent && isP8FirstMoveReady) {
+        currentPawn = assignedNumberForP8;
+      }
+    });
+    handleP8SingleSpace(row, column, assignedNumberForP8, eighthPawn);
+    handleP8DoubleSpace(row, column, assignedNumberForP8, eighthPawn);
+  };
+
+  const handleP8SingleSpace = (
+    row,
+    column,
+    assignedNumberForP8,
+    eighthPawn
+  ) => {
+    const targetRowForP8SingleSpace =
+      pawnAssignmentObject.playerSide.pawnEight.singleSpacingAtStartPosition
+        .row;
+    const targetColumnForP8SingleSpace =
+      pawnAssignmentObject.playerSide.pawnEight.singleSpacingAtStartPosition
+        .col;
+    const targetSpaceForP8SingleSpace = mappedCellIds[61];
+
+    targetSpaceForP8SingleSpace.addEventListener("click", () => {
+      if (currentPawn === assignedNumberForP8) {
+        row = targetRowForP8SingleSpace;
+        column = targetColumnForP8SingleSpace;
+
+        if (
+          row === targetRowForP8SingleSpace &&
+          column === targetColumnForP8SingleSpace
+        ) {
+          trackFirstMoves.push(eighthPawn);
+        }
+      }
+    });
+    handleP8SingleSpaceDisplay(eighthPawn);
+  };
+
+  const handleP8SingleSpaceDisplay = (eighthPawn) => {
+    const targetSpaceForP8SingleSpaceDisplay = mappedCellIds[61];
+
+    targetSpaceForP8SingleSpaceDisplay.addEventListener("click", () => {
+      const isP8SingleSpaceReady = trackFirstMoves.includes(eighthPawn);
+
+      if (isP8SingleSpaceReady) {
+        mappedCellIds[62].textContent = emptyCellAfterFirstMove;
+        mappedCellIds[61].textContent = pieceName;
+        trackFirstMoves = trackFirstMoves.filter(
+          (remove_P8) => remove_P8 !== eighthPawn
+        );
+        currentPawn = trackGameStateObject.emptyPieceSelection;
+      }
+    });
+  };
+
+  const handleP8DoubleSpace = (
+    row,
+    column,
+    assignedNumberForP8,
+    eighthPawn
+  ) => {
+    const targetRowForP8DoubleSpace =
+      pawnAssignmentObject.playerSide.pawnEight.doubleSpacingPosition.row;
+    const targetColumnForP8DoubleSpace =
+      pawnAssignmentObject.playerSide.pawnEight.doubleSpacingPosition.col;
+    const targetSpaceForP8DoubleSpace = mappedCellIds[60];
+
+    targetSpaceForP8DoubleSpace.addEventListener("click", () => {
+      if (currentPawn === assignedNumberForP8) {
+        row = targetRowForP8DoubleSpace;
+        column = targetColumnForP8DoubleSpace;
+      }
+
+      if (
+        row === targetRowForP8DoubleSpace &&
+        column === targetColumnForP8DoubleSpace
+      ) {
+        trackFirstMoves.push(eighthPawn);
+      }
+    });
+    handleP8DoubleSpaceDisplay(eighthPawn);
+  };
+
+  const handleP8DoubleSpaceDisplay = (eighthPawn) => {
+    const targetSpaceForP8DoubleSpaceDisplay = mappedCellIds[60];
+
+    targetSpaceForP8DoubleSpaceDisplay.addEventListener("click", () => {
+      const isP8DoubleSpaceReady = trackFirstMoves.includes(eighthPawn);
+
+      if (isP8DoubleSpaceReady) {
+        mappedCellIds[62].textContent = emptyCellAfterFirstMove;
+        mappedCellIds[60].textContent = pieceName;
+        trackFirstMoves = trackFirstMoves.filter(
+          (remove_P8) => remove_P8 !== eighthPawn
+        );
+        currentPawn = trackGameStateObject.emptyPieceSelection;
+      }
+    });
+  };
+
   return {
     validateFirstMoves,
     handleP2SingleSpaceDisplay,
     handleP2DoubleSpaceDisplay,
+    handleP7StartSpace,
   };
 };
 
