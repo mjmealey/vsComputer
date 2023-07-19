@@ -14,4 +14,4 @@ const assignPawnNames = (mappedCellIds) => {
 };
 
 
-export default assignPawn
+export default assignPawnNames
