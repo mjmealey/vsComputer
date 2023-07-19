@@ -1,4 +1,4 @@
-const pieceAssignments = {
+const pawnAssignmentData = {
   pawnOne: {
     name: "P1",
     number: 1,
@@ -33,4 +33,4 @@ const pieceAssignments = {
   },
 };
 
-export default assignments
+export const pawnAssignments =  pawnAssignmentData
