@@ -1,4 +1,4 @@
-const positioning = {
+const pawnPositioningData = {
   pawnOne: {
     atStart: { row: 0, column: 6 },
     firstMove: {
@@ -59,4 +59,4 @@ const positioning = {
   },
 };
 
-export default positioning
+export const pawnPositioning = pawnPositioningData
