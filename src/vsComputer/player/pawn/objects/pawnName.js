@@ -1,5 +1,7 @@
-const pawnName = {
+
+
+const pawnNameData = {
     name: "Pawn",
 }
 
-export default pawnName
+export const pawnName = pawnNameData
