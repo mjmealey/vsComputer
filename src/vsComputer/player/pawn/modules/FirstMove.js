@@ -1,18 +1,27 @@
-import chessBoard from "../../../objects/chessBoardArray.js"
-import { getCellIds } from "../../../modules/ChessPieceAssignments.js"
-import { pawnPositioning } from "../../pawn/objects/pawnPositioning.js";
+import chessBoard from "../../../objects/chessBoardArray.js";
+import { getCellIds } from "../../../modules/ChessPieceAssignments.js";
+import { pawnPositioning } from "../objects/pawnPositioning.js";
 import { pawnName } from "../../pawn/objects/pawnName.js";
 import { pawnAssignments } from "../../pawn/objects/pawnAssignments.js";
+import {
+  assignedPawnNames,
+  assignedPawnNumbers,
+} from "../arrays/pawnAssignmentData.js";
+import {
+  doubleSpacingRows,
+  doubleSpacingColumns,
+  singleSpacingAtStartRows,
+  singleSpacingAtStartColumns,
+} from "../arrays/pawnPositioningData.js";
+
 import { trackGameStateObject } from "../../../objects/gameStateObjects.js";
-import { assignedPawnNumbers } from "../../pawn/arrays/playerArrays.js";
-import { assignedPawnNames } from "../../objects/playerArrays/pawnArrays.js";
 
 const FirstMoves = () => {
   let trackFirstMoves = [];
-  const pieceName = pawnAssignmentObject.pieceName;
+  const pieceName = pawnName.name;
   const emptyCellAfterFirstMove = trackGameStateObject.emptyCell;
   let currentPawn = trackGameStateObject.emptyPieceSelection;
-
+  const currentPawnPossibilities = [1,2,3,4,5,6,7,8]  
   const mappedCellIds = getCellIds.map((id) => document.getElementById(id));
 
   const validateFirstMoves = () => {
@@ -23,6 +32,7 @@ const FirstMoves = () => {
         switch (firstMoveForEachPawn) {
           case "P1":
             handleStartSpaces(row, column);
+            handleSingleSpaceDisplay()
             break;
         }
       }
@@ -38,9 +48,9 @@ const FirstMoves = () => {
       return !trackFirstMoves.includes(name);
     };
 
-    const handleStartSpaceClick = (index, pawnNumber, pawnName) => {
-      assignedNumber = pawnNumber;
+    const handleStartSpaceClick = (index, pawnName, pawnNumber) => {
       assignedName = pawnName;
+      assignedNumber = pawnNumber;
       isFirstMoveReady = isPawnFirstMoveReady(assignedName);
 
       if (mappedCellIds[index].textContent === pieceName && isFirstMoveReady) {
@@ -53,55 +63,59 @@ const FirstMoves = () => {
       //the pawns go from left to right
       switch (startSpaceClicks) {
         case getCellIds[6]:
-          handleStartSpaceClick(6, assignedNumbers[0], assignedNames[0]);
+          handleStartSpaceClick(
+            6,
+            assignedPawnNames[0],
+            assignedPawnNumbers[0]
+          );
           break;
         case getCellIds[14]:
           handleStartSpaceClick(
             14,
-            assignedPawnNumbers[1],
-            assignedPawnNames[1]
+            assignedPawnNames[1],
+            assignedPawnNumbers[1]
           );
           break;
         case getCellIds[22]:
           handleStartSpaceClick(
             22,
-            assignedPawnNumbers[2],
-            assignedPawnNames[2]
+            assignedPawnNames[2],
+            assignedPawnNumbers[2]
           );
           break;
         case getCellIds[30]:
           handleStartSpaceClick(
             30,
-            assignedPawnNumbers[3],
-            assignedPawnNames[3]
+            assignedPawnNames[3],
+            assignedPawnNumbers[3]
           );
           break;
         case getCellIds[38]:
           handleStartSpaceClick(
             38,
-            assignedPawnNumbers[4],
-            assignedPawnNames[4]
+            assignedPawnNames[4],
+            assignedPawnNumbers[4]
           );
           break;
         case getCellIds[46]:
           handleStartSpaceClick(
             46,
-            assignedPawnNumbers[5],
-            assignedPawnNames[5]
+            assignedPawnNames[5],
+            assignedPawnNumbers[5]
           );
           break;
         case getCellIds[54]:
           handleStartSpaceClick(
             54,
-            assignedPawnNumbers[6],
-            assignedPawnNames[6]
+            assignedPawnNames[6],
+            assignedPawnNumbers[6]
           );
           break;
         case getCellIds[62]:
           handleStartSpaceClick(
             62,
-            assignedPawnNumbers[7],
-            assignedPawnNames[7]
+            assignedPawnNames[7],
+            assignedPawnNumbers[7]
           );
       }
     });
@@ -128,109 +142,153 @@ const FirstMoves = () => {
       }
     };
 
-    gridContainer.addEventListener("click", (e) => {
-      const singleSpaceClicks = e.target.id;
+   const handleSingleSpacePositionClicks = (singleSpacePositionIds) => {
+    switch (singleSpacePositionIds) {
+      case getCellIds[5]:
+        if(currentPawn === 1){
+          handleSingleSpaceClicks(
+            singleSpacingAtStartRows[0],
+            singleSpacingAtStartColumns[0],
+            currentPawnPossibilities[0],
+            assignedPawnNames[0],
+            assignedPawnNames[0]
+          );
+          console.log("P1 Pawn is located on row 0 column 5");
+          }
+        break;
+      case getCellIds[13]:
+        if (currentPawn === 2) {
+          handleSingleSpaceClicks(
+            singleSpacingAtStartRows[1],
+            singleSpacingAtStartColumns[1],
+            currentPawnPossibilities[1], 
+            assignedPawnNames[1],
+            assignedPawnNames[1]
+          );
+          console.log("P2 Pawn is located on row 1 column 13");
+        }
+        break;
+      case getCellIds[21]:
+        if (currentPawn === 3) {
+          handleSingleSpaceClicks(
+            singleSpacingAtStartRows[2],
+            singleSpacingAtStartColumns[2],
+            currentPawnPossibilities[2],
+            assignedPawnNames[2],
+            assignedPawnNames[2]
+          );
+          console.log("P3 Pawn is located on row 2 column 21");
+        }
+        break;
+      case getCellIds[29]:
+        if (currentPawn === 4) {
+          handleSingleSpaceClicks(
+            singleSpacingAtStartRows[3],
+            singleSpacingAtStartColumns[3], 
+            singleSpacingAtStartColumns[3],
+            assignedPawnNames[3],
+            assignedPawnNames[3]
+          );
+          console.log("P4 Pawn is located on row 3 column 29");
+        }
+        break;
+      case getCellIds[37]:
+        if (currentPawn === 5) {
+          handleSingleSpaceClicks(
+            singleSpacingAtStartRows[4],
+            singleSpacingAtStartColumns[4],
+            currentPawnPossibilities[4], 
+            assignedPawnNames[4],
+            assignedPawnNames[4]
+          );
+          console.log("P5 Pawn is located on row 4 column 37");
+        }
+        break;
+      case getCellIds[45]:
+        if (currentPawn === 6) {
+          handleSingleSpaceClicks(
+            singleSpacingAtStartRows[5],
+            singleSpacingAtStartColumns[5],
+            currentPawnPossibilities[5],
+            assignedPawnNames[5],
+            assignedPawnNames[5]
+          );
+          console.log("P6 Pawn is located on row 5 column 45");
+        }
+        break;
+      case getCellIds[53]:
+        if (currentPawn === 7) {
+          handleSingleSpaceClicks(
+            singleSpacingAtStartRows[6],
+            singleSpacingAtStartRows[6],
+            currentPawnPossibilities[6],
+            assignedPawnNames[6],
+            assignedPawnNames[6]
+          );
+          console.log("P7 Pawn is located on row 6 column 53");
+        }
+        break;
+      case getCellIds[61]:
+        if (currentPawn === 8) {
+          handleSingleSpaceClicks(
+            singleSpacingAtStartRows[7],
+            singleSpacingAtStartColumns[7],
+            currentPawnPossibilities[7], 
+            assignedPawnNames[7],
+            assignedPawnNames[7]
+          );
+          console.log("P8 Pawn is located on row 7 column 61");
+        }
+        break;
+    }
+  }
+  gridContainer.addEventListener("click", (e) => {
+    const singleSpacePositionIds = e.target.id
+    handleSingleSpacePositionClicks(singleSpacePositionIds)
+  })
+};
 
-      switch (singleSpaceClicks) {
-        case getCellIds[5]:
-          if (currentPawn === 1) {
-            handleSingleSpaceClicks(
-              0,
-              5,
-              1,
-              assignedPawnNames[0],
-              assignedPawnNames[0]
-            );
-            console.log("P1 Pawn is located on row 0 column 5");
+      
+
+  const handleSingleSpaceDisplay = () => {
+
+    const handleSingleSpaceDisplayClicks = (
+      pushedPawnName,
+      checkCurrentPawn,
+      emptyCell,
+      singleSpaceTextIndex,
+    ) => {
+      
+      if (trackFirstMoves.includes(pushedPawnName) && currentPawn === checkCurrentPawn) {
+        mappedCellIds[emptyCell].textContent = emptyCellAfterFirstMove;
+        mappedCellIds[singleSpaceTextIndex].textContent = pawnName.name;
+        currentPawn = emptyCellAfterFirstMove
+      } 
+    };
+
+    const handleClicks = (singleSpaceId) => {
+    const emptyCellIndices = [6,14,22,30,38,46,54,62]
+    const singleSpaceIndices = [5,13,21,29,37,45,53,61]
+        for(let i = 0; i < emptyCellIndices.length; i++){
+          if(singleSpaceId === getCellIds[singleSpaceIndices[i]]){
+            handleSingleSpaceDisplayClicks(
+              assignedPawnNames[i],
+              assignedPawnNumbers[i],
+              emptyCellIndices[i],
+              singleSpaceIndices[i]    
+            )
           }
-          break;
-        case getCellIds[13]:
-          if (currentPawn === 2) {
-            handleSingleSpaceClicks(
-              1,
-              13,
-              2,
-              assignedPawnNames[1],
-              assignedPawnNames[1]
-            );
-            console.log("P2 Pawn is located on row 1 column 13");
-          }
-          break;
-        case getCellIds[21]:
-          if (currentPawn === 3) {
-            handleSingleSpaceClicks(
-              2,
-              21,
-              3,
-              assignedPawnNames[2],
-              assignedPawnNames[2]
-            );
-            console.log("P3 Pawn is located on row 2 column 21");
-          }
-          break;
-        case getCellIds[29]:
-          if (currentPawn === 4) {
-            handleSingleSpaceClicks(
-              3,
-              29,
-              4,
-              assignedPawnNames[3],
-              assignedPawnNames[3]
-            );
-            console.log("P4 Pawn is located on row 3 column 29");
-          }
-          break;
-        case getCellIds[37]:
-          if (currentPawn === 5) {
-            handleSingleSpaceClicks(
-              4,
-              37,
-              5,
-              assignedPawnNames[4],
-              assignedPawnNames[4]
-            );
-            console.log("P5 Pawn is located on row 4 column 37");
-          }
-          break;
-        case getCellIds[45]:
-          if (currentPawn === 6) {
-            handleSingleSpaceClicks(
-              5,
-              45,
-              6,
-              assignedPawnNames[5],
-              assignedPawnNames[5]
-            );
-            console.log("P6 Pawn is located on row 5 column 45");
-          }
-          break;
-        case getCellIds[53]:
-          if (currentPawn === 7) {
-            handleSingleSpaceClicks(
-              6,
-              53,
-              7,
-              assignedPawnNames[6],
-              assignedPawnNames[6]
-            );
-            console.log("P7 Pawn is located on row 6 column 53");
-          }
-          break;
-        case getCellIds[61]:
-          if (currentPawn === 8) {
-            handleSingleSpaceClicks(
-              7,
-              61,
-              8,
-              assignedPawnNames[7],
-              assignedPawnNames[7]
-            );
-            console.log("P8 Pawn is located on row 7 column 61");
-          }
-          break;
-      }
+        }
+    };
+
+    gridContainer.addEventListener("click", (e) => {
+      const singleSpaceId = e.target.id
+      handleClicks(singleSpaceId)
+
     });
-  };
+    }
+    
+    
 
   const handleP1SingleSpaceDisplay = (firstPawn) => {
     const targetSpaceForP1SingleSpaceDisplay = mappedCellIds[5];
@@ -697,8 +755,7 @@ const FirstMoves = () => {
 
   return {
     validateFirstMoves,
-    handleP2SingleSpaceDisplay,
-    handleP2DoubleSpaceDisplay,
+    
   };
 };
 
