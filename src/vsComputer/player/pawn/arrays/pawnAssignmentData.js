@@ -11,17 +11,6 @@ const assignedPawnNameData = [
   pawnAssignments.pawnEight.name,
 ];
 
-const assignedPawnNumberData = [
-  pawnAssignments.pawnOne.number,
-  pawnAssignments.pawnTwo.number,
-  pawnAssignments.pawnThree.number,
-  pawnAssignments.pawnFour.number,
-  pawnAssignments.pawnFive.number,
-  pawnAssignments.pawnSix.number,
-  pawnAssignments.pawnSeven.number,
-  pawnAssignments.pawnEight.number,
-];
 
 
 export const assignedPawnNames = assignedPawnNameData
-export const assignedPawnNumbers = assignedPawnNumberData
