@@ -8,9 +8,29 @@ import { trackGameStateObject } from "../../../objects/gameStateObjects.js";
 
 const FirstMoves = () => {
   const trackFirstMoves = [];
+
+  //the text content for each square when a pawn move is made
   const pieceName = pawnName.name;
+
+  //handles empty cells
   const emptyCellAfterFirstMove = trackGameStateObject.emptyCell;
-  const emptyCellIndices = [6, 14, 22, 30, 38, 46, 54, 62];
+
+  //empty squares on the board after single or double space
+  const emptyCellIndices = [
+    { emptyCell: 6 },
+    { emptyCell: 14 },
+    { emptyCell: 22 },
+    { emptyCell: 30 },
+    { emptyCell: 38 },
+    { emptyCell: 46 },
+    { emptyCell: 54 },
+    { emptyCell: 62 },
+  ];
+
+  //removes pawn from trackFirstMoves array after single and double spaces for each pawn
+  const removePawns = 0;
+
+  //allows the text content to be set for each cell
   const mappedCellIds = getCellIds.map((id) => document.getElementById(id));
   //the number for each start space cell on the chessboard (left to right)
   const startSpaceIndices = [
@@ -32,7 +52,7 @@ const FirstMoves = () => {
         switch (firstMoveForEachPawn) {
           case "P1":
             handleStartSpaces(row, column);
-            handleSingleSpaceDisplay();
+            handleSingleSpaceDisplays();
             handleDoubleSpaceDisplay();
             break;
         }
@@ -160,7 +180,7 @@ const FirstMoves = () => {
     };
 
     const handleSingleSpacePositioning = (singleSpaceIndex) => {
-      if (trackFirstMoves[singleSpaceIndex]) {
+      if (trackFirstMoves) {
         handleSingleSpaceClicks(
           singleSpaceAtStartPositioning[singleSpaceIndex].singleSpaceAtStartRow,
           singleSpaceAtStartPositioning[singleSpaceIndex]
@@ -204,7 +224,8 @@ const FirstMoves = () => {
     });
   };
 
-  const handleSingleSpaceDisplay = () => {
+  const handleSingleSpaceDisplays = () => {
+    //cell numbers for each single space possibility for the pawn's first move(top to bottom left to right)
     const singleSpaceDisplayIndices = [
       { singleSpace: 5 },
       { singleSpace: 13 },
@@ -215,35 +236,213 @@ const FirstMoves = () => {
       { singleSpace: 53 },
       { singleSpace: 61 },
     ];
-    const handleSingleSpaceDisplayOutcomes = (
-      emptyCell,
-      singleSpaceText,
-      isSingleSpaceDisplayReady
-    ) => {
-      const isSingleSpaceMoveReady = trackFirstMoves.includes(
-        isSingleSpaceDisplayReady
+    /*
+    Key Comments
+    //P1-P8 goes from far left to far right on the chessboard
+    //the display functions handle the contents for both the starting cell and the single space cell after movement is complete
+    //the remove functions remove specific pawns from the trackFirstMoves array based on which pawn is clicked
+    //the displayClicks functions complete and finalize the single space process*/
+    const handleP1SingleSpaceDisplay = (emptyCell, singleSpaceCell) => {
+      mappedCellIds[emptyCell].textContent = emptyCellAfterFirstMove;
+      mappedCellIds[singleSpaceCell].textContent = pieceName;
+    };
+
+    const removeP1AfterSingleSpace = () => {
+      trackFirstMoves.splice(removePawns, 1);
+    };
+
+    const handleP1SingleSpaceDisplayClicks = () => {
+      const isP1SingleSpaceComplete = trackFirstMoves.includes(
+        assignedPawnNames[0]
       );
-      if (isSingleSpaceMoveReady) {
-        mappedCellIds[emptyCell].textContent = emptyCellAfterFirstMove;
-        mappedCellIds[singleSpaceText].textContent = pieceName;
-      }
-    };
-
-    const handleSingleSpaceDisplayClicks = (singleSpaceDisplayIndex) => {
-      if (trackFirstMoves[singleSpaceDisplayIndex]) {
-        handleSingleSpaceDisplayOutcomes(
-          startSpaceIndices[singleSpaceDisplayIndex].startSpace,
-          singleSpaceDisplayIndices[singleSpaceDisplayIndex].singleSpace,
-          assignedPawnNames[singleSpaceDisplayIndex],
-          assignedPawnNames[singleSpaceDisplayIndex]
+      if (isP1SingleSpaceComplete) {
+        handleP1SingleSpaceDisplay(
+          emptyCellIndices[0].emptyCell,
+          singleSpaceDisplayIndices[0].singleSpace
         );
+        removeP1AfterSingleSpace();
       }
     };
 
+    const handleP2SingleSpaceDisplay = (emptyCell, singleSpaceCell) => {
+      mappedCellIds[emptyCell].textContent = emptyCellAfterFirstMove;
+      mappedCellIds[singleSpaceCell].textContent = pieceName;
+    };
+
+    const removeP2AfterSingleSpace = () => {
+      trackFirstMoves.splice(removePawns, 1);
+    };
+
+    const handleP2SingleSpaceDisplayClicks = () => {
+      const isP2SingleSpaceComplete = trackFirstMoves.includes(
+        assignedPawnNames[1]
+      );
+      if (isP2SingleSpaceComplete) {
+        handleP2SingleSpaceDisplay(
+          emptyCellIndices[1].emptyCell,
+          singleSpaceDisplayIndices[1].singleSpace
+        );
+        removeP2AfterSingleSpace();
+      }
+    };
+
+    const handleP3SingleSpaceDisplay = (emptyCell, singleSpaceCell) => {
+      mappedCellIds[emptyCell].textContent = emptyCellAfterFirstMove;
+      mappedCellIds[singleSpaceCell].textContent = pieceName;
+    };
+
+    const removeP3AfterSingleSpace = () => {
+      trackFirstMoves.splice(removePawns, 1);
+    };
+
+    const handleP3SingleSpaceDisplayClicks = () => {
+      const isP3SingleSpaceComplete = trackFirstMoves.includes(
+        assignedPawnNames[2]
+      );
+      if (isP3SingleSpaceComplete) {
+        handleP3SingleSpaceDisplay(
+          emptyCellIndices[2].emptyCell,
+          singleSpaceDisplayIndices[2].singleSpace
+        );
+        removeP3AfterSingleSpace();
+      }
+    };
+
+    const handleP4SingleSpaceDisplay = (emptyCell, singleSpaceCell) => {
+      mappedCellIds[emptyCell].textContent = emptyCellAfterFirstMove;
+      mappedCellIds[singleSpaceCell].textContent = pieceName;
+    };
+
+    const removeP4AfterSingleSpace = () => {
+      trackFirstMoves.splice(removePawns, 1);
+    };
+
+    const handleP4SingleSpaceDisplayClicks = () => {
+      const isP4SingleSpaceComplete = trackFirstMoves.includes(
+        assignedPawnNames[3]
+      );
+
+      if (isP4SingleSpaceComplete) {
+        handleP4SingleSpaceDisplay(
+          emptyCellIndices[3].emptyCell,
+          singleSpaceDisplayIndices[3].singleSpace
+        );
+        removeP4AfterSingleSpace();
+      }
+    };
+
+    const handleP5SingleSpaceDisplay = (emptyCell, singleSpaceCell) => {
+      mappedCellIds[emptyCell].textContent = emptyCellAfterFirstMove;
+      mappedCellIds[singleSpaceCell].textContent = pieceName;
+    };
+
+
+    const removeP5AfterSingleSpace = () => {
+      trackFirstMoves.splice(removePawns, 1);
+    };
+
+    const handleP5SingleSpaceDisplayClicks = () => {
+      const isP5SingleSpaceComplete = trackFirstMoves.includes(
+        assignedPawnNames[4]
+      );
+
+      if (isP5SingleSpaceComplete) {
+        handleP5SingleSpaceDisplay(
+          emptyCellIndices[4].emptyCell,
+          singleSpaceDisplayIndices[4].singleSpace
+        );
+        removeP5AfterSingleSpace();
+      }
+    };
+
+    const handleP6SingleSpaceDisplay = (emptyCell, singleSpaceCell) => {
+      mappedCellIds[emptyCell].textContent = emptyCellAfterFirstMove
+      mappedCellIds[singleSpaceCell].textContent = pieceName
+    }
+    
+    const removeP6AfterSingleSpace = () => {
+      trackFirstMoves.splice(removePawns, 1)
+    }
+
+    const handleP6SingleSpaceDisplayClicks = () => {
+      const isP6SingleSpaceComplete = trackFirstMoves.includes(assignedPawnNames[5])
+
+      if(isP6SingleSpaceComplete){
+        handleP6SingleSpaceDisplay(
+          emptyCellIndices[5].emptyCell,
+          singleSpaceDisplayIndices[5].singleSpace,
+        )
+        removeP6AfterSingleSpace()
+      }
+    }
+
+    const handleP7SingleSpaceDisplay = (emptyCell, singleSpaceCell) => {
+      mappedCellIds[emptyCell].textContent = emptyCellAfterFirstMove
+      mappedCellIds[singleSpaceCell].textContent = pieceName
+    }
+
+    const removeP7AfterSingleSpace = () => {
+      trackFirstMoves.splice(removePawns, 1)
+    }
+
+    const handleP7SingleSpaceDisplayClicks = () => {
+      const isP7SingleSpaceComplete = trackFirstMoves.includes(assignedPawnNames[6])
+
+      if(isP7SingleSpaceComplete){
+        handleP7SingleSpaceDisplay(
+          emptyCellIndices[6].emptyCell,
+          singleSpaceDisplayIndices[6].singleSpace
+        )
+        removeP7AfterSingleSpace()
+      }
+    }
+
+    const handleP8SingleSpaceDisplay = (emptyCell, singleSpaceCell) => {
+      mappedCellIds[emptyCell].textContent = emptyCellAfterFirstMove
+      mappedCellIds[singleSpaceCell].textContent = pieceName
+    }
+
+    const removeP8AfterSingleSpace = () => {
+      trackFirstMoves.splice(removePawns, 1)
+    }
+
+    const handleP8SingleSpaceDisplayClicks = () => {
+      const isP8SingleSpaceComplete = trackFirstMoves.includes(assignedPawnNames[7])
+
+      if(isP8SingleSpaceComplete){
+        handleP8SingleSpaceDisplay(
+          emptyCellIndices[7].emptyCell,
+          singleSpaceDisplayIndices[7].singleSpace
+        )
+        removeP8AfterSingleSpace()
+      }
+    }
+ 
     const handleSingleSpaces = (singleSpaceDisplayId) => {
       switch (singleSpaceDisplayId) {
         case getCellIds[5]:
-          handleSingleSpaceDisplayClicks(0);
+          handleP1SingleSpaceDisplayClicks();
+          break;
+        case getCellIds[13]:
+          handleP2SingleSpaceDisplayClicks();
+          break;
+        case getCellIds[21]:
+          handleP3SingleSpaceDisplayClicks();
+          break;
+        case getCellIds[29]:
+          handleP4SingleSpaceDisplayClicks();
+          break;
+        case getCellIds[37]:
+          handleP5SingleSpaceDisplayClicks();
+          break;
+        case getCellIds[45]:
+          handleP6SingleSpaceDisplayClicks()
+          break;
+        case getCellIds[53]:
+          handleP7SingleSpaceDisplayClicks()
+          break;
+        case getCellIds[61]:
+          handleP8SingleSpaceDisplayClicks()
           break;
       }
     };
@@ -295,37 +494,18 @@ const FirstMoves = () => {
       },
     ];
 
-    const handleDoubleSpacePositionOutcomes = (
-      targetDoubleSpaceRow,
-      targetDoubleSpaceColumn,
-      doubleSpaceName,
-      isDoubleSpaceMoveReady,
-      doubleSpaceMoveIsReady
-    ) => {
-      row = targetDoubleSpaceRow;
-      column = targetDoubleSpaceColumn;
-      currentPawn = doubleSpaceName;
-      const isDoubleSpaceReady = !trackFirstMoves.includes(
-        isDoubleSpaceMoveReady
-      );
-      if (isDoubleSpaceReady) {
-        trackFirstMoves.push(doubleSpaceMoveIsReady);
-      }
-      console.log(
-        `P${currentPawn} is located at Row ${row} on Column ${column}`
-      );
-      console.log(currentPawn);
-      console.log(trackFirstMoves);
+    const handleDoubleSpacePositionOutcomes = (targetRow, targetColumn) => {
+      row = targetRow;
+      column = targetColumn;
+
+      console.log(`Row ${row} on Column ${column}`);
     };
 
     const handleDoubleSpacePositions = (doubleSpaceIndex) => {
-      if (currentPawn) {
+      if (readyToChooseFirstMove) {
         handleDoubleSpacePositionOutcomes(
           doubleSpacingPositioning[doubleSpaceIndex].doubleSpaceRow,
-          doubleSpacingPositioning[doubleSpaceIndex].doubleSpaceColumn,
-          assignedPawnNames[doubleSpaceIndex],
-          assignedPawnNames[doubleSpaceIndex],
-          assignedPawnNames[doubleSpaceIndex]
+          doubleSpacingPositioning[doubleSpaceIndex].doubleSpaceColumn
         );
       }
     };
@@ -366,32 +546,42 @@ const FirstMoves = () => {
   };
 
   const handleDoubleSpaceDisplay = () => {
+    const doubleSpaceDisplayIndices = [
+      { doubleSpaceDisplay: 4 },
+      { doubleSpaceDisplay: 12 },
+      { doubleSpaceDisplay: 20 },
+      { doubleSpaceDisplay: 28 },
+      { doubleSpaceDisplay: 36 },
+      { doubleSpaceDisplay: 44 },
+      { doubleSpaceDisplay: 52 },
+      { doubleSpaceDisplay: 60 },
+    ];
+
+    const trackDoubleSpaces = [];
+
     const handleDoubleSpaceDisplayOutcomes = (
       isDoubleSpaceDisplayReady,
-      checkCurrentPawnAfterDoubleSpace,
       emptyCellAfterDoubleSpaceIndex,
       doubleSpaceTextIndex
     ) => {
-      if (
-        trackFirstMoves.includes(isDoubleSpaceDisplayReady) &&
-        currentPawn === checkCurrentPawnAfterDoubleSpace
-      ) {
+      if (readyToChooseFirstMove.includes(isDoubleSpaceDisplayReady)) {
+        trackDoubleSpaces.push(isDoubleSpaceDisplayReady);
+        console.log(trackDoubleSpaces);
+      }
+
+      if (trackDoubleSpaces.includes(isDoubleSpaceDisplayReady)) {
         mappedCellIds[emptyCellAfterDoubleSpaceIndex].textContent =
           emptyCellAfterFirstMove;
         mappedCellIds[doubleSpaceTextIndex].textContent = pieceName;
       }
-      console.log(currentPawn);
-      console.log(trackFirstMoves);
     };
 
-    const doubleSpaceIndices = [4, 12, 20, 28, 36, 44, 52, 60];
     const handleDoubleSpaceDisplayClicks = (doubleSpaceDisplayIndex) => {
-      if (currentPawn) {
+      if (trackDoubleSpaces) {
         handleDoubleSpaceDisplayOutcomes(
           assignedPawnNames[doubleSpaceDisplayIndex],
-          assignedPawnNames[doubleSpaceDisplayIndex],
           emptyCellIndices[doubleSpaceDisplayIndex],
-          doubleSpaceIndices[doubleSpaceDisplayIndex]
+          doubleSpaceDisplayIndices[doubleSpaceDisplayIndex].doubleSpaceDisplay
         );
       }
     };
