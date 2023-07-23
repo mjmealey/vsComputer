@@ -3,7 +3,6 @@ import { getCellIds } from "../../../modules/ChessPieceAssignments.js";
 import { pawnPositioning } from "../objects/pawnPositioning.js";
 import { pawnName } from "../../pawn/objects/pawnName.js";
 import { assignedPawnNames } from "../arrays/pawnAssignmentData.js";
-
 import { trackGameStateObject } from "../../../objects/gameStateObjects.js";
 
 const FirstMoves = () => {
@@ -49,12 +48,11 @@ const FirstMoves = () => {
       for (let column = 0; column < chessBoard[row].length; column++) {
         const firstMoveForEachPawn = chessBoard[row][column];
 
-        switch (firstMoveForEachPawn) {
-          case "P1":
-            handleStartSpaces(row, column);
-            handleSingleSpaceDisplays();
-            handleDoubleSpaceDisplay();
-            break;
+        if (firstMoveForEachPawn) {
+          handleStartSpaces(row, column);
+          handleSingleSpaceDisplays();
+          handleDoubleSpaceDisplay();
+          break;
         }
       }
     }
@@ -236,213 +234,151 @@ const FirstMoves = () => {
       { singleSpace: 53 },
       { singleSpace: 61 },
     ];
+
+    const possibleSingleSpaceCells = [
+      { possibleSingleSpace: 5 },
+      { possibleSingleSpace: 13 },
+      { possibleSingleSpace: 21 },
+      { possibleSingleSpace: 29 },
+      { possibleSingleSpace: 37 },
+      { possibleSingleSpace: 45 },
+      { possibleSingleSpace: 53 },
+      { possibleSingleSpace: 61 },
+    ];
     /*
     Key Comments
     //P1-P8 goes from far left to far right on the chessboard
     //the display functions handle the contents for both the starting cell and the single space cell after movement is complete
-    //the remove functions remove specific pawns from the trackFirstMoves array based on which pawn is clicked
-    //the displayClicks functions complete and finalize the single space process*/
-    const handleP1SingleSpaceDisplay = (emptyCell, singleSpaceCell) => {
+    //the remove function removes specific pawns from the trackFirstMoves array based on which pawn is clicked
+    //the completePawnSingleSpace function allows for each individual pawn to complete their single space based on trackFirstMoves's status*/
+    //the currentSingleSpace variable tracks which cell is being interacted with during single spacing
+    let currentSingleSpace = false;
+
+    const handleSingleSpaceContent = (emptyCell, singleSpaceCell) => {
       mappedCellIds[emptyCell].textContent = emptyCellAfterFirstMove;
       mappedCellIds[singleSpaceCell].textContent = pieceName;
     };
 
-    const removeP1AfterSingleSpace = () => {
+    const removePawnsAfterSingleSpace = () => {
       trackFirstMoves.splice(removePawns, 1);
     };
 
-    const handleP1SingleSpaceDisplayClicks = () => {
-      const isP1SingleSpaceComplete = trackFirstMoves.includes(
-        assignedPawnNames[0]
-      );
-      if (isP1SingleSpaceComplete) {
-        handleP1SingleSpaceDisplay(
-          emptyCellIndices[0].emptyCell,
-          singleSpaceDisplayIndices[0].singleSpace
-        );
-        removeP1AfterSingleSpace();
+    const completePawnSingleSpace = () => {
+      switch (currentSingleSpace) {
+        case possibleSingleSpaceCells[0].possibleSingleSpace:
+          const isP1Ready = trackFirstMoves.includes(assignedPawnNames[0]);
+          if (isP1Ready) {
+            handleSingleSpaceContent(
+              emptyCellIndices[0].emptyCell,
+              singleSpaceDisplayIndices[0].singleSpace
+            );
+            removePawnsAfterSingleSpace();
+          }
+          break;
+        case possibleSingleSpaceCells[1].possibleSingleSpace:
+          const isP2Ready = trackFirstMoves.includes(assignedPawnNames[1]);
+          if (isP2Ready) {
+            handleSingleSpaceContent(
+              emptyCellIndices[1].emptyCell,
+              singleSpaceDisplayIndices[1].singleSpace
+            );
+            removePawnsAfterSingleSpace();
+          }
+        case possibleSingleSpaceCells[2].possibleSingleSpace:
+          const isP3Ready = trackFirstMoves.includes(assignedPawnNames[2]);
+          if (isP3Ready) {
+            handleSingleSpaceContent(
+              emptyCellIndices[2].emptyCell,
+              singleSpaceDisplayIndices[2].singleSpace
+            );
+            removePawnsAfterSingleSpace();
+          }
+          break;
+        case possibleSingleSpaceCells[3].possibleSingleSpace:
+          const isP4Ready = trackFirstMoves.includes(assignedPawnNames[3]);
+          if (isP4Ready) {
+            handleSingleSpaceContent(
+              emptyCellIndices[3].emptyCell,
+              singleSpaceDisplayIndices[3].singleSpace
+            );
+            removePawnsAfterSingleSpace();
+          }
+          break;
+        case possibleSingleSpaceCells[4].possibleSingleSpace:
+          const isP5Ready = trackFirstMoves.includes(assignedPawnNames[4]);
+          if (isP5Ready) {
+            handleSingleSpaceContent(
+              emptyCellIndices[4].emptyCell,
+              singleSpaceDisplayIndices[4].singleSpace
+            );
+            removePawnsAfterSingleSpace();
+          }
+          break;
+        case possibleSingleSpaceCells[5].possibleSingleSpace:
+          const isP6Ready = trackFirstMoves.includes(assignedPawnNames[5]);
+          if (isP6Ready) {
+            handleSingleSpaceContent(
+              emptyCellIndices[5].emptyCell,
+              singleSpaceDisplayIndices[5].singleSpace
+            );
+            removePawnsAfterSingleSpace();
+          }
+          break;
+        case possibleSingleSpaceCells[6].possibleSingleSpace:
+          const isP7Ready = trackFirstMoves.includes(assignedPawnNames[6]);
+          if (isP7Ready) {
+            handleSingleSpaceContent(
+              emptyCellIndices[6].emptyCell,
+              singleSpaceDisplayIndices[6].singleSpace
+            );
+            removePawnsAfterSingleSpace();
+          }
+          break;
+        case possibleSingleSpaceCells[7].possibleSingleSpace:
+          const isP8Ready = trackFirstMoves.includes(assignedPawnNames[7]);
+          if (isP8Ready) {
+            handleSingleSpaceContent(
+              emptyCellIndices[7].emptyCell,
+              singleSpaceDisplayIndices[7].singleSpace
+            );
+            removePawnsAfterSingleSpace();
+          }
       }
     };
 
-    const handleP2SingleSpaceDisplay = (emptyCell, singleSpaceCell) => {
-      mappedCellIds[emptyCell].textContent = emptyCellAfterFirstMove;
-      mappedCellIds[singleSpaceCell].textContent = pieceName;
-    };
-
-    const removeP2AfterSingleSpace = () => {
-      trackFirstMoves.splice(removePawns, 1);
-    };
-
-    const handleP2SingleSpaceDisplayClicks = () => {
-      const isP2SingleSpaceComplete = trackFirstMoves.includes(
-        assignedPawnNames[1]
-      );
-      if (isP2SingleSpaceComplete) {
-        handleP2SingleSpaceDisplay(
-          emptyCellIndices[1].emptyCell,
-          singleSpaceDisplayIndices[1].singleSpace
-        );
-        removeP2AfterSingleSpace();
-      }
-    };
-
-    const handleP3SingleSpaceDisplay = (emptyCell, singleSpaceCell) => {
-      mappedCellIds[emptyCell].textContent = emptyCellAfterFirstMove;
-      mappedCellIds[singleSpaceCell].textContent = pieceName;
-    };
-
-    const removeP3AfterSingleSpace = () => {
-      trackFirstMoves.splice(removePawns, 1);
-    };
-
-    const handleP3SingleSpaceDisplayClicks = () => {
-      const isP3SingleSpaceComplete = trackFirstMoves.includes(
-        assignedPawnNames[2]
-      );
-      if (isP3SingleSpaceComplete) {
-        handleP3SingleSpaceDisplay(
-          emptyCellIndices[2].emptyCell,
-          singleSpaceDisplayIndices[2].singleSpace
-        );
-        removeP3AfterSingleSpace();
-      }
-    };
-
-    const handleP4SingleSpaceDisplay = (emptyCell, singleSpaceCell) => {
-      mappedCellIds[emptyCell].textContent = emptyCellAfterFirstMove;
-      mappedCellIds[singleSpaceCell].textContent = pieceName;
-    };
-
-    const removeP4AfterSingleSpace = () => {
-      trackFirstMoves.splice(removePawns, 1);
-    };
-
-    const handleP4SingleSpaceDisplayClicks = () => {
-      const isP4SingleSpaceComplete = trackFirstMoves.includes(
-        assignedPawnNames[3]
-      );
-
-      if (isP4SingleSpaceComplete) {
-        handleP4SingleSpaceDisplay(
-          emptyCellIndices[3].emptyCell,
-          singleSpaceDisplayIndices[3].singleSpace
-        );
-        removeP4AfterSingleSpace();
-      }
-    };
-
-    const handleP5SingleSpaceDisplay = (emptyCell, singleSpaceCell) => {
-      mappedCellIds[emptyCell].textContent = emptyCellAfterFirstMove;
-      mappedCellIds[singleSpaceCell].textContent = pieceName;
-    };
-
-
-    const removeP5AfterSingleSpace = () => {
-      trackFirstMoves.splice(removePawns, 1);
-    };
-
-    const handleP5SingleSpaceDisplayClicks = () => {
-      const isP5SingleSpaceComplete = trackFirstMoves.includes(
-        assignedPawnNames[4]
-      );
-
-      if (isP5SingleSpaceComplete) {
-        handleP5SingleSpaceDisplay(
-          emptyCellIndices[4].emptyCell,
-          singleSpaceDisplayIndices[4].singleSpace
-        );
-        removeP5AfterSingleSpace();
-      }
-    };
-
-    const handleP6SingleSpaceDisplay = (emptyCell, singleSpaceCell) => {
-      mappedCellIds[emptyCell].textContent = emptyCellAfterFirstMove
-      mappedCellIds[singleSpaceCell].textContent = pieceName
-    }
-    
-    const removeP6AfterSingleSpace = () => {
-      trackFirstMoves.splice(removePawns, 1)
-    }
-
-    const handleP6SingleSpaceDisplayClicks = () => {
-      const isP6SingleSpaceComplete = trackFirstMoves.includes(assignedPawnNames[5])
-
-      if(isP6SingleSpaceComplete){
-        handleP6SingleSpaceDisplay(
-          emptyCellIndices[5].emptyCell,
-          singleSpaceDisplayIndices[5].singleSpace,
-        )
-        removeP6AfterSingleSpace()
-      }
-    }
-
-    const handleP7SingleSpaceDisplay = (emptyCell, singleSpaceCell) => {
-      mappedCellIds[emptyCell].textContent = emptyCellAfterFirstMove
-      mappedCellIds[singleSpaceCell].textContent = pieceName
-    }
-
-    const removeP7AfterSingleSpace = () => {
-      trackFirstMoves.splice(removePawns, 1)
-    }
-
-    const handleP7SingleSpaceDisplayClicks = () => {
-      const isP7SingleSpaceComplete = trackFirstMoves.includes(assignedPawnNames[6])
-
-      if(isP7SingleSpaceComplete){
-        handleP7SingleSpaceDisplay(
-          emptyCellIndices[6].emptyCell,
-          singleSpaceDisplayIndices[6].singleSpace
-        )
-        removeP7AfterSingleSpace()
-      }
-    }
-
-    const handleP8SingleSpaceDisplay = (emptyCell, singleSpaceCell) => {
-      mappedCellIds[emptyCell].textContent = emptyCellAfterFirstMove
-      mappedCellIds[singleSpaceCell].textContent = pieceName
-    }
-
-    const removeP8AfterSingleSpace = () => {
-      trackFirstMoves.splice(removePawns, 1)
-    }
-
-    const handleP8SingleSpaceDisplayClicks = () => {
-      const isP8SingleSpaceComplete = trackFirstMoves.includes(assignedPawnNames[7])
-
-      if(isP8SingleSpaceComplete){
-        handleP8SingleSpaceDisplay(
-          emptyCellIndices[7].emptyCell,
-          singleSpaceDisplayIndices[7].singleSpace
-        )
-        removeP8AfterSingleSpace()
-      }
-    }
- 
     const handleSingleSpaces = (singleSpaceDisplayId) => {
       switch (singleSpaceDisplayId) {
         case getCellIds[5]:
-          handleP1SingleSpaceDisplayClicks();
+          currentSingleSpace = possibleSingleSpaceCells[0].possibleSingleSpace;
+          completePawnSingleSpace();
           break;
         case getCellIds[13]:
-          handleP2SingleSpaceDisplayClicks();
+          currentSingleSpace = possibleSingleSpaceCells[1].possibleSingleSpace;
+          completePawnSingleSpace();
           break;
         case getCellIds[21]:
-          handleP3SingleSpaceDisplayClicks();
+          currentSingleSpace = possibleSingleSpaceCells[2].possibleSingleSpace;
+          completePawnSingleSpace();
           break;
         case getCellIds[29]:
-          handleP4SingleSpaceDisplayClicks();
+          currentSingleSpace = possibleSingleSpaceCells[3].possibleSingleSpace;
+          completePawnSingleSpace();
           break;
         case getCellIds[37]:
-          handleP5SingleSpaceDisplayClicks();
+          currentSingleSpace = possibleSingleSpaceCells[4].possibleSingleSpace;
+          completePawnSingleSpace();
           break;
         case getCellIds[45]:
-          handleP6SingleSpaceDisplayClicks()
+          currentSingleSpace = possibleSingleSpaceCells[5].possibleSingleSpace;
+          completePawnSingleSpace();
           break;
         case getCellIds[53]:
-          handleP7SingleSpaceDisplayClicks()
+          currentSingleSpace = possibleSingleSpaceCells[6].possibleSingleSpace;
+          completePawnSingleSpace();
           break;
         case getCellIds[61]:
-          handleP8SingleSpaceDisplayClicks()
+          currentSingleSpace = possibleSingleSpaceCells[7].possibleSingleSpace;
+          completePawnSingleSpace();
           break;
       }
     };
@@ -502,7 +438,7 @@ const FirstMoves = () => {
     };
 
     const handleDoubleSpacePositions = (doubleSpaceIndex) => {
-      if (readyToChooseFirstMove) {
+      if (trackFirstMoves) {
         handleDoubleSpacePositionOutcomes(
           doubleSpacingPositioning[doubleSpaceIndex].doubleSpaceRow,
           doubleSpacingPositioning[doubleSpaceIndex].doubleSpaceColumn
@@ -557,60 +493,150 @@ const FirstMoves = () => {
       { doubleSpaceDisplay: 60 },
     ];
 
-    const trackDoubleSpaces = [];
+    const possibleDoubleSpaceCells = [
+      { possibleDoubleSpace: 4 },
+      { possibleDoubleSpace: 12 },
+      { possibleDoubleSpace: 20 },
+      { possibleDoubleSpace: 28 },
+      { possibleDoubleSpace: 36 },
+      { possibleDoubleSpace: 44 },
+      { possibleDoubleSpace: 52 },
+      { possibleDoubleSpace: 60 },
+    ];
+ /*
+    Key Comments
+    //P1-P8 goes from far left to far right on the chessboard
+    //the display functions handle the contents for both the starting cell and the single space cell after movement is complete
+    //the remove function removes specific pawns from the trackFirstMoves array based on which pawn is clicked
+    //the completePawnDoubleSpace function allows for each individual pawn to complete their double space based on trackFirstMoves's status*/
+    //the currentDoubleSpace variable tracks which cell is being interacted with during double spacing
+    let currentDoubleSpace = false;
 
-    const handleDoubleSpaceDisplayOutcomes = (
-      isDoubleSpaceDisplayReady,
-      emptyCellAfterDoubleSpaceIndex,
-      doubleSpaceTextIndex
-    ) => {
-      if (readyToChooseFirstMove.includes(isDoubleSpaceDisplayReady)) {
-        trackDoubleSpaces.push(isDoubleSpaceDisplayReady);
-        console.log(trackDoubleSpaces);
-      }
-
-      if (trackDoubleSpaces.includes(isDoubleSpaceDisplayReady)) {
-        mappedCellIds[emptyCellAfterDoubleSpaceIndex].textContent =
-          emptyCellAfterFirstMove;
-        mappedCellIds[doubleSpaceTextIndex].textContent = pieceName;
-      }
+    const handleDoubleSpaceContent = (emptyCell, doubleSpaceCell) => {
+      mappedCellIds[emptyCell].textContent = emptyCellAfterFirstMove;
+      mappedCellIds[doubleSpaceCell].textContent = pieceName;
     };
 
-    const handleDoubleSpaceDisplayClicks = (doubleSpaceDisplayIndex) => {
-      if (trackDoubleSpaces) {
-        handleDoubleSpaceDisplayOutcomes(
-          assignedPawnNames[doubleSpaceDisplayIndex],
-          emptyCellIndices[doubleSpaceDisplayIndex],
-          doubleSpaceDisplayIndices[doubleSpaceDisplayIndex].doubleSpaceDisplay
-        );
+    const removePawnsAfterDoubleSpace = () => {
+      trackFirstMoves.splice(removePawns, 1);
+    };
+
+    const completePawnDoubleSpaceDisplays = () => {
+      switch (currentDoubleSpace) {
+        case possibleDoubleSpaceCells[0].possibleDoubleSpace:
+          const isP1Ready = trackFirstMoves.includes(assignedPawnNames[0]);
+          if (isP1Ready) {
+            handleDoubleSpaceContent(
+              emptyCellIndices[0].emptyCell,
+              doubleSpaceDisplayIndices[0].doubleSpaceDisplay
+            );
+            removePawnsAfterDoubleSpace();
+          }
+          break;
+        case possibleDoubleSpaceCells[1].possibleDoubleSpace:
+          const isP2Ready = trackFirstMoves.includes(assignedPawnNames[1]);
+          if (isP2Ready) {
+            handleDoubleSpaceContent(
+              emptyCellIndices[1].emptyCell,
+              doubleSpaceDisplayIndices[1].doubleSpaceDisplay
+            );
+            removePawnsAfterDoubleSpace();
+          }
+          break;
+        case possibleDoubleSpaceCells[2].possibleDoubleSpace:
+          const isP3Ready = trackFirstMoves.includes(assignedPawnNames[2]);
+          if (isP3Ready) {
+            handleDoubleSpaceContent(
+              emptyCellIndices[2].emptyCell,
+              doubleSpaceDisplayIndices[2].doubleSpaceDisplay
+            );
+            removePawnsAfterDoubleSpace();
+          }
+          break;
+        case possibleDoubleSpaceCells[3].possibleDoubleSpace:
+          const isP4Ready = trackFirstMoves.includes(assignedPawnNames[3]);
+          if (isP4Ready) {
+            handleDoubleSpaceContent(
+              emptyCellIndices[3].emptyCell,
+              doubleSpaceDisplayIndices[3].doubleSpaceDisplay
+            );
+          }
+          break;
+        case possibleDoubleSpaceCells[4].possibleDoubleSpace:
+          const isP5Ready = trackFirstMoves.includes(assignedPawnNames[4]);
+          if (isP5Ready) {
+            handleDoubleSpaceContent(
+              emptyCellIndices[4].emptyCell,
+              doubleSpaceDisplayIndices[4].doubleSpaceDisplay
+            );
+            removePawnsAfterDoubleSpace();
+          }
+          break;
+        case possibleDoubleSpaceCells[5].possibleDoubleSpace:
+          const isP6Ready = trackFirstMoves.includes(assignedPawnNames[5]);
+          if (isP6Ready) {
+            handleDoubleSpaceContent(
+              emptyCellIndices[5].emptyCell,
+              doubleSpaceDisplayIndices[5].doubleSpaceDisplay
+            );
+            removePawnsAfterDoubleSpace();
+          }
+          break;
+        case possibleDoubleSpaceCells[6].possibleDoubleSpace:
+          const isP7Ready = trackFirstMoves.includes(assignedPawnNames[6]);
+          if (isP7Ready) {
+            handleDoubleSpaceContent(
+              emptyCellIndices[6].emptyCell,
+              doubleSpaceDisplayIndices[6].doubleSpaceDisplay
+            );
+            removePawnsAfterDoubleSpace();
+          }
+          break;
+        case possibleDoubleSpaceCells[7].possibleDoubleSpace:
+          const isP8Ready = trackFirstMoves.includes(assignedPawnNames[7]);
+          if (isP8Ready) {
+            handleDoubleSpaceContent(
+              emptyCellIndices[7].emptyCell,
+              doubleSpaceDisplayIndices[7].doubleSpaceDisplay
+            );
+            removePawnsAfterDoubleSpace();
+          }
       }
     };
 
     const handleDoubleSpaceDisplays = (doubleSpaceId) => {
       switch (doubleSpaceId) {
         case getCellIds[4]:
-          handleDoubleSpaceDisplayClicks(0);
+          currentDoubleSpace = possibleDoubleSpaceCells[0].possibleDoubleSpace;
+          completePawnDoubleSpaceDisplays();
           break;
         case getCellIds[12]:
-          handleDoubleSpaceDisplayClicks(1);
+          currentDoubleSpace = possibleDoubleSpaceCells[1].possibleDoubleSpace;
+          completePawnDoubleSpaceDisplays();
           break;
         case getCellIds[20]:
-          handleDoubleSpaceDisplayClicks(2);
+          currentDoubleSpace = possibleDoubleSpaceCells[2].possibleDoubleSpace;
+          completePawnDoubleSpaceDisplays();
           break;
         case getCellIds[28]:
-          handleDoubleSpaceDisplayClicks(3);
+          currentDoubleSpace = possibleDoubleSpaceCells[3].possibleDoubleSpace;
+          completePawnDoubleSpaceDisplays();
           break;
         case getCellIds[36]:
-          handleDoubleSpaceDisplayClicks(4);
+          currentDoubleSpace = possibleDoubleSpaceCells[4].possibleDoubleSpace;
+          completePawnDoubleSpaceDisplays();
           break;
         case getCellIds[44]:
-          handleDoubleSpaceDisplayClicks(5);
+          currentDoubleSpace = possibleDoubleSpaceCells[5].possibleDoubleSpace;
+          completePawnDoubleSpaceDisplays();
           break;
         case getCellIds[52]:
-          handleDoubleSpaceDisplayClicks(6);
+          currentDoubleSpace = possibleDoubleSpaceCells[6].possibleDoubleSpace;
+          completePawnDoubleSpaceDisplays();
           break;
         case getCellIds[60]:
-          handleDoubleSpaceDisplayClicks(7);
+          currentDoubleSpace = possibleDoubleSpaceCells[7].possibleDoubleSpace;
+          completePawnDoubleSpaceDisplays();
           break;
       }
     };
