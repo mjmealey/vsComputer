@@ -508,8 +508,8 @@ const FirstMoves = () => {
     //P1-P8 goes from far left to far right on the chessboard
     //the display functions handle the contents for both the starting cell and the single space cell after movement is complete
     //the remove function removes specific pawns from the trackFirstMoves array based on which pawn is clicked
-    //the completePawnDoubleSpace function allows for each individual pawn to complete their double space based on trackFirstMoves's status*/
-    //the currentDoubleSpace variable tracks which cell is being interacted with during double spacing
+    //the completePawnSingleSpace function allows for each individual pawn to complete their single space based on trackFirstMoves's status*/
+    //the currentSingleSpace variable tracks which cell is being interacted with during single spacing
     let currentDoubleSpace = false;
 
     const handleDoubleSpaceContent = (emptyCell, doubleSpaceCell) => {
