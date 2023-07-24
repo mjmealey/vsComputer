@@ -46,7 +46,7 @@ const pawnPositioningData = {
         timeForPromotion: { row: 7, column: 56 },
       },
     },
-    generalPositioning: {
+    advancePositioning: {
       cellTwo: { row: 0, column: 2 },
       cellThree: { row: 0, column: 3 },
       cellFour: { row: 0, column: 4 },
@@ -120,7 +120,7 @@ const pawnPositioningData = {
         timeForPromotion: { row: 7, column: 56 },
       },
     },
-    generalPositioning: {
+    advancePositioning: {
       cellTwo: { row: 0, column: 2 },
       cellThree: { row: 0, column: 3 },
       cellFour: { row: 0, column: 4 },
@@ -194,7 +194,7 @@ const pawnPositioningData = {
         timeForPromotion: { row: 7, column: 56 },
       },
     },
-    generalPositioning: {
+    advancePositioning: {
       cellTwo: { row: 0, column: 2 },
       cellThree: { row: 0, column: 3 },
       cellFour: { row: 0, column: 4 },
@@ -269,7 +269,7 @@ const pawnPositioningData = {
         timeForPromotion: { row: 7, column: 56 },
       },
     },
-    generalPositioning: {
+    advancePositioning: {
       cellTwo: { row: 0, column: 2 },
       cellThree: { row: 0, column: 3 },
       cellFour: { row: 0, column: 4 },
@@ -344,7 +344,7 @@ const pawnPositioningData = {
         timeForPromotion: { row: 7, column: 56 },
       },
     },
-    generalPositioning: {
+    advancePositioning: {
       cellTwo: { row: 0, column: 2 },
       cellThree: { row: 0, column: 3 },
       cellFour: { row: 0, column: 4 },
@@ -418,7 +418,7 @@ const pawnPositioningData = {
         timeForPromotion: { row: 7, column: 56 },
       },
     },
-    generalPositioning: {
+    advancePositioning: {
       cellTwo: { row: 0, column: 2 },
       cellThree: { row: 0, column: 3 },
       cellFour: { row: 0, column: 4 },
@@ -492,7 +492,7 @@ const pawnPositioningData = {
         timeForPromotion: { row: 7, column: 56 },
       },
     },
-    generalPositioning: {
+    advancePositioning: {
       cellTwo: { row: 0, column: 2 },
       cellThree: { row: 0, column: 3 },
       cellFour: { row: 0, column: 4 },
@@ -567,7 +567,7 @@ const pawnPositioningData = {
       },
     },
   },
-  generalPositioning: {
+  advancePositioning: {
     cellTwo: { row: 0, column: 2 },
     cellThree: { row: 0, column: 3 },
     cellFour: { row: 0, column: 4 },
