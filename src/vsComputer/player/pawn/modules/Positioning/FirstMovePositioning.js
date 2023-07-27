@@ -1,135 +1,196 @@
 import chessBoard from "../../../../objects/chessBoardArray.js";
+import { assignedPawnNames } from "../../arrays/pawnAssignmentData.js";
 
 const FirstMovesPositioning = () => {
   const validateFirstMoves = () => {
     for (let row = 0; row < chessBoard.length; row++) {
       for (let col = 0; col < chessBoard[row].length; col++) {
         checkSingleSpaceValidity(row, col);
-        checkDoubleSpaceValidity(row, col);
       }
     }
   };
+
+  let clickedFirstMove = null; //checks which pawn is being used during the first move
+
+  const firstMoveValidation = ["Valid Move", "Invalid Move"];
+
   //rows go from 0 to 7 and columns go from 0 to 7 (rows are side by side and columns are up and down)
   //checkSingleSpaceValidity is meant to track when the user does single space instead of double space as their first move for pawns
   const checkSingleSpaceValidity = (row, col) => {
     const singleSpacePositioning = chessBoard[row][col];
+    const singleSpacePositioningIndices = [
+      { row: 0, col: 5 },
+      { row: 1, col: 5 },
+      { row: 2, col: 5 },
+      { row: 3, col: 5 },
+      { row: 4, col: 5 },
+      { row: 5, col: 5 },
+      { row: 6, col: 5 },
+      { row: 7, col: 5 },
+    ];
+
+    let validateSingleSpace = null;
+
     const isValidSingleSpace = (targetRow, targetCol) => {
+      //rows and cols go from 0 to 7
+      const minRow = 0;
+      const maxRow = 7;
+      const minCol = 0;
+      const maxCol = 5;
       return (
-        targetRow >= 0 && targetRow <= 7 && targetCol >= 0 && targetCol <= 5
+        targetRow >= minRow &&
+        targetRow <= maxRow &&
+        targetCol >= minCol &&
+        targetCol <= maxCol
       );
     };
 
-    const validateSingleSpace = () => {
-      let targetRow = null;
-      let targetCol = null;
-
-      const singleSpacePositioningIndices = [
-        { row: 0, col: 5 },
-        { row: 1, col: 5 },
-        { row: 2, col: 5 },
-        { row: 3, col: 5 },
-        { row: 4, col: 5 },
-        { row: 5, col: 5 },
-        { row: 6, col: 5 },
-        { row: 7, col: 5 },
-      ];
-
-      switch (singleSpacePositioning) {
-        case "P1":
-          targetRow = singleSpacePositioningIndices[0].row;
-          targetCol = singleSpacePositioningIndices[0].col;
-          if (isValidSingleSpace(targetRow, targetCol)) {
-            console.log("Valid Move");
-          } else {
-            console.log("Invalid Move");
-          }
-          break;
-        case "P2":
-          targetRow = singleSpacePositioningIndices[1].row;
-          targetCol = singleSpacePositioningIndices[1].col;
-          if (isValidSingleSpace(targetRow, targetCol)) {
-            console.log("Valid Move");
-          } else {
-            console.log("Invalid Move");
-          }
-          break;
-        case "P3":
-          targetRow = singleSpacePositioningIndices[2].row;
-          targetCol = singleSpacePositioningIndices[2].col;
-          if (isValidSingleSpace(targetRow, targetCol)) {
-            console.log("Valid Move");
-          } else {
-            console.log("Invalid Move");
-          }
-          break;
-        case "P4":
-          targetRow = singleSpacePositioningIndices[3].row;
-          targetCol = singleSpacePositioningIndices[3].col;
-          if (isValidSingleSpace(targetRow, targetCol)) {
-            console.log("Valid Move");
-          } else {
-            console.log("Invalid Move");
-          }
-          break;
-        case "P5":
-          targetRow = singleSpacePositioningIndices[4].row;
-          targetCol = singleSpacePositioningIndices[4].col;
-          if (isValidSingleSpace(targetRow, targetCol)) {
-            console.log("Valid Move");
-          } else {
-            console.log("Invalid Move");
-          }
-          break;
-        case "P6":
-          targetRow = singleSpacePositioningIndices[5].row;
-          targetCol = singleSpacePositioningIndices[5].col;
-          if (isValidSingleSpace(targetRow, targetCol)) {
-            console.log("Valid Move");
-          } else {
-            console.log("Invalid Move");
-          }
-          break;
-        case "P7":
-          targetRow = singleSpacePositioningIndices[6].row;
-          targetCol = singleSpacePositioningIndices[6].col;
-          if (isValidSingleSpace(targetRow, targetCol)) {
-            console.log("Valid Move");
-          } else {
-            console.log("Invalid Move");
-          }
-          break;
-        case "P8":
-          targetRow = singleSpacePositioningIndices[7].row;
-          targetCol = singleSpacePositioningIndices[7].col;
-          if (isValidSingleSpace(targetRow, targetCol)) {
-            console.log("Valid Move");
-          } else {
-            console.log("Invalid Move");
-          }
+    const clickedP1SingleSpace = (clickedPawn) => {
+      const isP1Clicked = singleSpacePositioning === clickedPawn;
+      if (isP1Clicked) {
+        clickedFirstMove = clickedPawn;
       }
     };
-    validateSingleSpace();
+
+    const validateP1SingleSpace = (targetRow, targetCol) => {
+      const checkP1SingleSpace = isValidSingleSpace(targetRow, targetCol);
+      if (checkP1SingleSpace) {
+        validateSingleSpace = firstMoveValidation[0];
+        console.log(validateSingleSpace);
+      } else {
+        validateSingleSpace = firstMoveValidation[1];
+        console.log(validateSingleSpace);
+      }
+    };
+
+    const clickedP2SingleSpace = (clickedPawn) => {
+      const isP2Clicked = singleSpacePositioning === clickedPawn;
+      if (isP2Clicked) {
+        clickedFirstMove = clickedPawn;
+      }
+    };
+
+    const validateP2SingleSpace = (targetRow, targetCol) => {
+      const checkP2SingleSpace = isValidSingleSpace(targetRow, targetCol);
+      if (checkP2SingleSpace) {
+        validateSingleSpace = firstMoveValidation[0];
+        console.log(validateSingleSpace);
+      } else {
+        validateSingleSpace = firstMoveValidation[1];
+        console.log(validateSingleSpace);
+      }
+    };
+
+    const clickedP3SingleSpace = (clickedPawn) => {
+      const isP3Clicked = singleSpacePositioning === clickedPawn;
+      if (isP3Clicked) {
+        clickedFirstMove = clickedPawn;
+      }
+    };
+
+    const validateP3SingleSpace = (targetRow, targetCol) => {
+      const checkP3SingleSpace = isValidSingleSpace(targetRow, targetCol);
+      if (checkP3SingleSpace) {
+        validateSingleSpace = firstMoveValidation[0];
+        console.log(validateSingleSpace);
+      } else {
+        validateSingleSpace = firstMoveValidation[1];
+        console.log(validateSingleSpace);
+      }
+    };
+
+    const clickedP4SingleSpace = (clickedPawn) => {
+      const isP4Clicked = singleSpacePositioning === clickedPawn;
+      if (isP4Clicked) {
+        clickedFirstMove = clickedPawn;
+      }
+    };
+
+    const validateP4SingleSpace = (targetRow, targetCol) => {
+      const checkP4SingleSpace = isValidSingleSpace(targetRow, targetCol);
+      if (checkP4SingleSpace) {
+        validateSingleSpace = firstMoveValidation[0];
+        console.log(validateSingleSpace);
+      } else {
+        validateSingleSpace = firstMoveValidation[1];
+        console.log(validateSingleSpace);
+      }
+    };
+
+    const clickedP5SingleSpace = (clickedPawn) => {
+      const isP5Clicked = singleSpacePositioning === clickedPawn;
+      if (isP5Clicked) {
+        clickedFirstMove = clickedPawn;
+      }
+    };
+
+    const validateP5SingleSpace = (targetRow, targetCol) => {
+      const checkP5SingleSpace = isValidSingleSpace(targetRow, targetCol);
+      if (checkP5SingleSpace) {
+        validateSingleSpace = firstMoveValidation[0];
+        console.log(validateSingleSpace);
+      } else {
+        validateSingleSpace = firstMoveValidation[1];
+        console.log(validateSingleSpace);
+      }
+    };
+
+    const clickedP6SingleSpace = (clickedPawn) => {
+      const isP6Clicked = singleSpacePositioning === clickedPawn;
+      if (isP6Clicked) {
+        clickedFirstMove = clickedPawn;
+      }
+    };
+
+    const validateP6SingleSpace = (targetRow, targetCol) => {
+      const checkP6SingleSpace = isValidSingleSpace(targetRow, targetCol);
+      if (checkP6SingleSpace) {
+        validateSingleSpace = firstMoveValidation[0];
+        console.log(validateSingleSpace);
+      } else {
+        validateSingleSpace = firstMoveValidation[1];
+        console.log(validateSingleSpace);
+      }
+    };
+
+    const clickedP7SingleSpace = (clickedPawn) => {
+      const isP7Clicked = singleSpacePositioning === clickedPawn;
+      if (isP7Clicked) {
+        clickedFirstMove = clickedPawn;
+      }
+    };
+
+    const validateP7SingleSpace = (targetRow, targetCol) => {
+      const checkP7SingleSpace = isValidSingleSpace(targetRow, targetCol);
+      if (checkP7SingleSpace) {
+        validateSingleSpace = firstMoveValidation[0];
+        console.log(validateSingleSpace);
+      } else {
+        validateSingleSpace = firstMoveValidation[1];
+        console.log(validateSingleSpace);
+      }
+    };
+
+    const clickedP8SingleSpace = (clickedPawn) => {
+      const isP8Clicked = singleSpacePositioning === clickedPawn;
+      if (isP8Clicked) {
+        clickedFirstMove = clickedPawn;
+      }
+    };
+
+    const validateP8SingleSpace = (targetRow, targetCol) => {
+      const checkP8SingleSpace = isValidSingleSpace(targetRow, targetCol);
+      if (checkP8SingleSpace) {
+        validateSingleSpace = firstMoveValidation[0];
+        console.log(validateSingleSpace);
+      } else {
+        validateSingleSpace = firstMoveValidation[1];
+        console.log(validateSingleSpace);
+      }
+    };
   };
-
-  const checkDoubleSpaceValidity = (row, col) => {
-    const doubleSpacePositioning = chessBoard[row][col]
-    const isValidDoubleSpace = (targetRow, targetCol) => {
-      return (
-        targetRow >= 0 && targetRow <= 7 && targetCol >= 0 && targetCol <= 4
-      )
-    }
-
-    const validateDoubleSpace = () => {
-        const doubleSpacePositioningIndices = [
-          {}
-        ]
-    }
-    
-
-  }
   return {
     validateFirstMoves,
   };
 };
-
 export default FirstMovesPositioning;
