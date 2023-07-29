@@ -1,6 +1,6 @@
 import chessBoard from "../../../../objects/chessBoardArray.js";
 import { assignedPawnNames } from "../../arrays/pawnAssignmentData.js";
-
+import PawnPositioning from "../../objects/pawnPositioning.js";
 const FirstMovesPositioning = () => {
   const validateFirstMoves = () => {
     for (let row = 0; row < chessBoard.length; row++) {
@@ -12,22 +12,15 @@ const FirstMovesPositioning = () => {
 
   let clickedFirstMove = null; //checks which pawn is being used during the first move
 
-  const firstMoveValidation = ["Valid Move", "Invalid Move"];
+  const firstMoveValidation = [
+    { isValid: "Valid Move" },
+    { notValid: "Invalid Move" },
+  ];
 
   //rows go from 0 to 7 and columns go from 0 to 7 (rows are side by side and columns are up and down)
   //checkSingleSpaceValidity is meant to track when the user does single space instead of double space as their first move for pawns
   const checkSingleSpaceValidity = (row, col) => {
     const singleSpacePositioning = chessBoard[row][col];
-    const singleSpacePositioningIndices = [
-      { row: 0, col: 5 },
-      { row: 1, col: 5 },
-      { row: 2, col: 5 },
-      { row: 3, col: 5 },
-      { row: 4, col: 5 },
-      { row: 5, col: 5 },
-      { row: 6, col: 5 },
-      { row: 7, col: 5 },
-    ];
 
     let validateSingleSpace = null;
 
