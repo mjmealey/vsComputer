@@ -1,6 +1,6 @@
 import chessBoard from "../../../../objects/chessBoardArray.js";
 import { assignedPawnNames } from "../../arrays/pawnAssignmentData.js";
-import PawnPositioning from "../../objects/pawnPositioning.js";
+import { setStartMovePositions } from "../../objects/SetStartMovePositioning.js";
 const FirstMovesPositioning = () => {
   const validateFirstMoves = () => {
     for (let row = 0; row < chessBoard.length; row++) {
@@ -9,6 +9,158 @@ const FirstMovesPositioning = () => {
       }
     }
   };
+
+  const startingMovePositions = [
+    //starting spaces
+    {
+      startingSpaceP1: {
+        row: setStartMovePositions.P1.startSpace.row,
+        col: setStartMovePositions.P1.startSpace.col,
+      },
+    },
+    {
+      startingSpaceP2: {
+        row: setStartMovePositions.P2.startSpace.row,
+        col: setStartMovePositions.P2.startSpace.col,
+      },
+    },
+    {
+      startingSpaceP3: {
+        row: setStartMovePositions.P3.startSpace.row,
+        col: setStartMovePositions.P3.startSpace.col,
+      },
+    },
+    {
+      startingSpaceP4: {
+        row: setStartMovePositions.P4.startSpace.row,
+        col: setStartMovePositions.P4.startSpace.col,
+      },
+    },
+    {
+      startingSpaceP5: {
+        row: setStartMovePositions.P5.startSpace.row,
+        col: setStartMovePositions.P5.startSpace.col,
+      },
+    },
+    {
+      startingSpaceP6: {
+        row: setStartMovePositions.P6.startSpace.row,
+        col: setStartMovePositions.P6.startSpace.col,
+      },
+    },
+    {
+      startingSpaceP7: {
+        row: setStartMovePositions.P7.startSpace.row,
+        col: setStartMovePositions.P7.startSpace.col,
+      },
+    },
+    {
+      startingSpaceP8: {
+        row: setStartMovePositions.P8.startSpace.row,
+        col: setStartMovePositions.P8.startSpace.col,
+      },
+    },
+
+    //single spaces
+    {
+      singleSpaceP1: {
+        row: setStartMovePositions.P1.singleSpace.row,
+        col: setStartMovePositions.P1.singleSpace.col,
+      },
+    },
+    {
+      singleSpaceP2: {
+        row: setStartMovePositions.P2.singleSpace.row,
+        col: setStartMovePositions.P2.singleSpace.col,
+      },
+    },
+    {
+      singleSpaceP3: {
+        row: setStartMovePositions.P3.singleSpace.row,
+        col: setStartMovePositions.P3.singleSpace.col,
+      },
+    },
+    {
+      singleSpaceP4: {
+        row: setStartMovePositions.P4.singleSpace.row,
+        col: setStartMovePositions.P4.singleSpace.col,
+      },
+    },
+    {
+      singleSpaceP5: {
+        row: setStartMovePositions.P5.singleSpace.row,
+        col: setStartMovePositions.P5.singleSpace.col,
+      },
+    },
+    {
+      singleSpaceP6: {
+        row: setStartMovePositions.P6.singleSpace.row,
+        col: setStartMovePositions.P6.singleSpace.col,
+      },
+    },
+    {
+      singleSpaceP7: {
+        row: setStartMovePositions.P7.singleSpace.row,
+        col: setStartMovePositions.P7.singleSpace.col,
+      },
+    },
+    {
+      singleSpaceP8: {
+        row: setStartMovePositions.P8.singleSpace.row,
+        col: setStartMovePositions.P8.singleSpace.col,
+      },
+    },
+
+    //double spaces
+    {
+      doubleSpaceP1: {
+        row: setStartMovePositions.P1.doubleSpace.row,
+        col: setStartMovePositions.P1.doubleSpace.col,
+      },
+    },
+    {
+      doubleSpaceP2: {
+        row: setStartMovePositions.P2.doubleSpace.row,
+        col: setStartMovePositions.P2.doubleSpace.col,
+      },
+    },
+    {
+      doubleSpaceP3: {
+        row: setStartMovePositions.P3.doubleSpace.row,
+        col: setStartMovePositions.P3.doubleSpace.col,
+      },
+    },
+    {
+      doubleSpaceP4: {
+        row: setStartMovePositions.P4.doubleSpace.row,
+        col: setStartMovePositions.P4.doubleSpace.col,
+      },
+    },
+    {
+      doubleSpaceP5: {
+        row: setStartMovePositions.P5.doubleSpace.row,
+        col: setStartMovePositions.P5.doubleSpace.col,
+      },
+    },
+    {
+      doubleSpaceP6: {
+        row: setStartMovePositions.P6.doubleSpace.row,
+        col: setStartMovePositions.P6.doubleSpace.col,
+      },
+    },
+    {
+      doubleSpaceP7: {
+        row: setStartMovePositions.P7.doubleSpace.row,
+        col: setStartMovePositions.P7.doubleSpace.col,
+      },
+    },
+    {
+      doubleSpaceP8: {
+        row: setStartMovePositions.P8.doubleSpace.row,
+        col: setStartMovePositions.P8.doubleSpace.col,
+      },
+    },
+  ];
 
   let clickedFirstMove = null; //checks which pawn is being used during the first move
 
@@ -19,17 +171,13 @@ const FirstMovesPositioning = () => {
 
   //rows go from 0 to 7 and columns go from 0 to 7 (rows are side by side and columns are up and down)
   //checkSingleSpaceValidity is meant to track when the user does single space instead of double space as their first move for pawns
-  const checkSingleSpaceValidity = (row, col) => {
-    const singleSpacePositioning = chessBoard[row][col];
+  const checkStartMoveValidity = (row, col) => {
+    const startMovePositioning = chessBoard[row][col];
 
-    let validateSingleSpace = null;
-
-    const isValidSingleSpace = (targetRow, targetCol) => {
-      //rows and cols go from 0 to 7
+    const isValidStartingPosition = (minCol, maxCol, targetRow, targetCol) => {
       const minRow = 0;
       const maxRow = 7;
-      const minCol = 0;
-      const maxCol = 5;
+      //rows and cols go from 0 to 7
       return (
         targetRow >= minRow &&
         targetRow <= maxRow &&
@@ -38,152 +186,13 @@ const FirstMovesPositioning = () => {
       );
     };
 
-    const clickedP1SingleSpace = (clickedPawn) => {
-      const isP1Clicked = singleSpacePositioning === clickedPawn;
-      if (isP1Clicked) {
-        clickedFirstMove = clickedPawn;
-      }
-    };
-
-    const validateP1SingleSpace = (targetRow, targetCol) => {
-      const checkP1SingleSpace = isValidSingleSpace(targetRow, targetCol);
-      if (checkP1SingleSpace) {
-        validateSingleSpace = firstMoveValidation[0];
-        console.log(validateSingleSpace);
-      } else {
-        validateSingleSpace = firstMoveValidation[1];
-        console.log(validateSingleSpace);
-      }
-    };
-
-    const clickedP2SingleSpace = (clickedPawn) => {
-      const isP2Clicked = singleSpacePositioning === clickedPawn;
-      if (isP2Clicked) {
-        clickedFirstMove = clickedPawn;
-      }
-    };
-
-    const validateP2SingleSpace = (targetRow, targetCol) => {
-      const checkP2SingleSpace = isValidSingleSpace(targetRow, targetCol);
-      if (checkP2SingleSpace) {
-        validateSingleSpace = firstMoveValidation[0];
-        console.log(validateSingleSpace);
-      } else {
-        validateSingleSpace = firstMoveValidation[1];
-        console.log(validateSingleSpace);
-      }
-    };
-
-    const clickedP3SingleSpace = (clickedPawn) => {
-      const isP3Clicked = singleSpacePositioning === clickedPawn;
-      if (isP3Clicked) {
-        clickedFirstMove = clickedPawn;
-      }
-    };
-
-    const validateP3SingleSpace = (targetRow, targetCol) => {
-      const checkP3SingleSpace = isValidSingleSpace(targetRow, targetCol);
-      if (checkP3SingleSpace) {
-        validateSingleSpace = firstMoveValidation[0];
-        console.log(validateSingleSpace);
-      } else {
-        validateSingleSpace = firstMoveValidation[1];
-        console.log(validateSingleSpace);
-      }
-    };
-
-    const clickedP4SingleSpace = (clickedPawn) => {
-      const isP4Clicked = singleSpacePositioning === clickedPawn;
-      if (isP4Clicked) {
-        clickedFirstMove = clickedPawn;
-      }
-    };
-
-    const validateP4SingleSpace = (targetRow, targetCol) => {
-      const checkP4SingleSpace = isValidSingleSpace(targetRow, targetCol);
-      if (checkP4SingleSpace) {
-        validateSingleSpace = firstMoveValidation[0];
-        console.log(validateSingleSpace);
-      } else {
-        validateSingleSpace = firstMoveValidation[1];
-        console.log(validateSingleSpace);
-      }
-    };
-
-    const clickedP5SingleSpace = (clickedPawn) => {
-      const isP5Clicked = singleSpacePositioning === clickedPawn;
-      if (isP5Clicked) {
-        clickedFirstMove = clickedPawn;
-      }
-    };
-
-    const validateP5SingleSpace = (targetRow, targetCol) => {
-      const checkP5SingleSpace = isValidSingleSpace(targetRow, targetCol);
-      if (checkP5SingleSpace) {
-        validateSingleSpace = firstMoveValidation[0];
-        console.log(validateSingleSpace);
-      } else {
-        validateSingleSpace = firstMoveValidation[1];
-        console.log(validateSingleSpace);
-      }
-    };
-
-    const clickedP6SingleSpace = (clickedPawn) => {
-      const isP6Clicked = singleSpacePositioning === clickedPawn;
-      if (isP6Clicked) {
-        clickedFirstMove = clickedPawn;
-      }
-    };
-
-    const validateP6SingleSpace = (targetRow, targetCol) => {
-      const checkP6SingleSpace = isValidSingleSpace(targetRow, targetCol);
-      if (checkP6SingleSpace) {
-        validateSingleSpace = firstMoveValidation[0];
-        console.log(validateSingleSpace);
-      } else {
-        validateSingleSpace = firstMoveValidation[1];
-        console.log(validateSingleSpace);
-      }
-    };
-
-    const clickedP7SingleSpace = (clickedPawn) => {
-      const isP7Clicked = singleSpacePositioning === clickedPawn;
-      if (isP7Clicked) {
-        clickedFirstMove = clickedPawn;
-      }
-    };
-
-    const validateP7SingleSpace = (targetRow, targetCol) => {
-      const checkP7SingleSpace = isValidSingleSpace(targetRow, targetCol);
-      if (checkP7SingleSpace) {
-        validateSingleSpace = firstMoveValidation[0];
-        console.log(validateSingleSpace);
-      } else {
-        validateSingleSpace = firstMoveValidation[1];
-        console.log(validateSingleSpace);
-      }
-    };
-
-    const clickedP8SingleSpace = (clickedPawn) => {
-      const isP8Clicked = singleSpacePositioning === clickedPawn;
-      if (isP8Clicked) {
-        clickedFirstMove = clickedPawn;
-      }
-    };
-
-    const validateP8SingleSpace = (targetRow, targetCol) => {
-      const checkP8SingleSpace = isValidSingleSpace(targetRow, targetCol);
-      if (checkP8SingleSpace) {
-        validateSingleSpace = firstMoveValidation[0];
-        console.log(validateSingleSpace);
-      } else {
-        validateSingleSpace = firstMoveValidation[1];
-        console.log(validateSingleSpace);
-      }
+    const setValidStartingPostions = (clickedPawn) => {
+      clickedFirstMove = assignedPawnNames.indexOf(clickedPawn);
     };
   };
   return {
     validateFirstMoves,
+    checkStartMoveValidity,
   };
 };
 export default FirstMovesPositioning;
