@@ -11,6 +11,4 @@ const assignedPawnNameData = [
   pawnAssignments.pawnEight.name,
 ];
 
-
-
 export const assignedPawnNames = assignedPawnNameData
