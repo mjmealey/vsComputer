@@ -1,4 +1,4 @@
-import { pawnAssignments } from "../objects/pawnAssignments.js";
+import {pawnAssignments} from "../../pawn/objects/pawnAssignments.js"
 
 const assignedPawnNameData = [
   pawnAssignments.pawnOne.name,
