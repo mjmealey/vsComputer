@@ -2,7 +2,8 @@ import SingleSpacePositioning from "./firstMoves/SingleSpacePositioning.js";
 
 const PawnPositioning = () => {
   const newSingleSpacePositioning = SingleSpacePositioning();
-  newSingleSpacePositioning.validateSingleSpace();
+  newSingleSpacePositioning.validateSingleSpace()
+
 };
 
 export default PawnPositioning;
