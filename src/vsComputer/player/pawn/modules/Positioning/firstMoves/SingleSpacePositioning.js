@@ -1,68 +1,91 @@
 import chessBoard from "../../../../../objects/chessBoardArray.js";
 import { getCellIds } from "../../../../../modules/ChessPieceAssignments.js";
-import { setStartMovePositions } from "../../../objects/SetStartMovePositioning.js";
 import { assignedPawnNames } from "../../../arrays/pawnAssignmentData.js";
-
-
+import { pawnName } from "../../../objects/pawnName.js";
 const SingleSpacePositioning = () => {
-  const trackSingleSpacePositions = [];
-
   const validateSingleSpace = () => {
     for (let row = 0; row < chessBoard.length; row++) {
       for (let col = 0; col < chessBoard[row].length; col++) {
-      
-        const singleSpacePositions = [
-          {
-            row: setStartMovePositions.P1.singleSpace.row,
-            col: setStartMovePositions.P1.singleSpace.col,
+        const trackSingleSpacePositions = [];
+        const singleSpacePositions = {
+          P1: {
+            fromRow: 0,
+            fromCol: 6,
+            targetRow: 0,
+            targetCol: 5,
           },
-          {
-            row: setStartMovePositions.P2.singleSpace.row,
-            col: setStartMovePositions.P2.singleSpace.col,
+          P2: {
+            fromRow: 1,
+            fromCol: 6,
+            targetRow: 1,
+            targetCol: 5,
           },
-          {
-            row: setStartMovePositions.P3.singleSpace.row,
-            col: setStartMovePositions.P3.singleSpace.col,
+          P3: {
+            fromRow: 2,
+            fromCol: 6,
+            targetRow: 2,
+            targetCol: 5,
           },
-          {
-            row: setStartMovePositions.P4.singleSpace.row,
-            col: setStartMovePositions.P4.singleSpace.col,
+          P4: {
+            fromRow: 3,
+            fromCol: 6,
+            targetRow: 3,
+            targetCol: 5,
           },
-          {
-            row: setStartMovePositions.P5.singleSpace.row,
-            col: setStartMovePositions.P5.singleSpace.col,
+          P5: {
+            fromRow: 4,
+            fromCol: 6,
+            targetRow: 4,
+            targetCol: 5,
           },
-          {
-            row: setStartMovePositions.P6.singleSpace.row,
-            col: setStartMovePositions.P6.singleSpace.col,
+          P6: {
+            fromRow: 5,
+            fromCol: 6,
+            targetRow: 5,
+            targetCol: 5,
           },
-          {
-            row: setStartMovePositions.P7.singleSpace.row,
-            col: setStartMovePositions.P7.singleSpace.col,
+          P7: {
+            fromRow: 6,
+            fromCol: 6,
+            targetRow: 6,
+            targetCol: 5,
           },
-          {
-            row: setStartMovePositions.P8.singleSpace.row,
-            col: setStartMovePositions.P8.singleSpace.col,
+          P8: {
+            fromRow: 7,
+            fromCol: 6,
+            targetRow: 7,
+            targetCol: 5,
           },
-        ];
-      
+        };
+
+        const singleSpaceCellState = {
+          emptyCell: "",
+          pawnCell: "P",
+        };
         const checkSingleSpace = (targetRow, targetCol) => {
-          const minRow = singleSpacePositions[0].row;
-          const maxRow = singleSpacePositions[7].row;
+          const minRow = singleSpacePositions.P1.fromRow;
+          const maxRow = singleSpacePositions.P8.fromRow;
           const singleSpaceCol = 5;
-      
+
           return (
-            targetRow >= minRow && targetRow <= maxRow && targetCol === singleSpaceCol
+            targetRow >= minRow &&
+            targetRow <= maxRow &&
+            targetCol === singleSpaceCol
           );
         };
-      
+
+        const mappedCellIds = getCellIds.map((id) =>
+          document.getElementById(id)
+        );
+        const pieceName = pawnName.name;
+
         const isValidSingleSpace = (targetRow, targetCol) => {
           return checkSingleSpace(targetRow, targetCol);
         };
-      
+
         const isSingleSpaceReady = (targetRow, targetCol, assignedPawn) => {
           const singleSpaceValidity = isValidSingleSpace(targetRow, targetCol);
-      
+
           if (singleSpaceValidity) {
             assignedPawnNames.indexOf(assignedPawn);
             console.log(
@@ -72,35 +95,133 @@ const SingleSpacePositioning = () => {
             console.log("Move is Invalid");
           }
         };
-      
-        const handleSingleSpacePositionClicks = (fromRow, fromCol, toRow, toCol) => {
-          const mappedCellIds = getCellIds.map((id) => document.getElementById(id));
-          const emptyCell = "";
-          const filledCell = "P";
-          
-          const trackSingleSpacing = (assignedPawn) => {
-            return !trackSingleSpacePositions.includes(assignedPawn);
-          };
-      
-          const handleSingleSpacePositions = (assignedPawn) => {
-            if(trackSingleSpacing(assignedPawn)){
-              chessBoard[fromRow][fromCol] = emptyCell
-              chessBoard[toRow][toCol] = filledCell  
-            }
-          }
-      
-          handleSingleSpacePositions(0, 5)
-      
-          gridContainer.addEventListener("click", (e) => {
-            const cellId = e.target.id;
-          });
-        };
-      
-    
-      };
-    }}
-    return {
-      validateSingleSpace
-    };} 
 
-  export default SingleSpacePositioning;
+        const fromPositions = (fromRow, fromCol) => {
+          const emptyCell = singleSpaceCellState.emptyCell;
+          chessBoard[fromRow][fromCol] = emptyCell;
+        };
+        const targetPositions = (targetRow, targetCol) => {
+          const filledCell = singleSpaceCellState.pawnCell;
+          chessBoard[targetRow][targetCol] = filledCell;
+        };
+
+        const singleSpacePositioning = (
+          fromRow,
+          fromCol,
+          targetRow,
+          targetCol,
+          targetPawn
+        ) => {
+          if (isSingleSpaceReady(targetRow, targetCol, targetPawn)) {
+            fromPositions(fromRow, fromCol);
+            targetPositions(targetRow, targetCol);
+          }
+        };
+
+        const cellContent = (pawnContent) => {
+          return (mappedCellIds[pawnContent].textContent = pieceName);
+        };
+
+        const singleSpaceStatus = (assignedPawn) => {
+          return !trackSingleSpacePositions.includes(assignedPawn);
+        };
+
+        const handleSingleSpaceOutcomes = (singleSpacePositionsId) => {
+          let fromRow = null;
+          let fromCol = null;
+          let targetRow = null;
+          let targetCol = null;
+          let targetPawn = null;
+          let isCellContent = null;
+          let isSingleSpaceStatus = null;
+
+          switch (singleSpacePositionsId) {
+            case getCellIds[5]:
+              fromRow = singleSpacePositions.P1.fromRow;
+              fromCol = singleSpacePositions.P1.fromCol;
+              targetRow = singleSpacePositions.P1.targetRow;
+              targetCol = singleSpacePositions.P1.targetCol;
+              targetPawn = assignedPawnNames[0];
+              isCellContent = cellContent(targetCol);
+              isSingleSpaceStatus = singleSpaceStatus(targetPawn);
+              if (isCellContent && isSingleSpaceStatus) {
+                singleSpacePositioning(
+                  fromRow,
+                  fromCol,
+                  targetRow,
+                  targetCol,
+                  targetPawn
+                );
+              }
+              break;
+            case getCellIds[13]:
+              fromRow = singleSpacePositions.P2.fromRow;
+              fromCol = singleSpacePositions.P2.fromCol;
+              targetRow = singleSpacePositions.P2.targetRow;
+              targetCol = singleSpacePositions.P2.targetCol;
+              targetPawn = assignedPawnNames[1];
+              isCellContent = cellContent(targetCol);
+              isSingleSpaceStatus = singleSpaceStatus(targetPawn);
+              if (isCellContent && isSingleSpaceStatus) {
+                singleSpacePositioning(
+                  fromRow,
+                  fromCol,
+                  targetRow,
+                  targetCol,
+                  targetPawn
+                );
+              }
+              break;
+            case getCellIds[21]:
+              fromRow = singleSpacePositions.P3.fromRow;
+              fromCol = singleSpacePositions.P3.fromCol;
+              targetRow = singleSpacePositions.P3.targetRow;
+              targetCol = singleSpacePositions.P3.targetCol;
+              targetPawn = assignedPawnNames[2];
+              isCellContent = cellContent(targetCol);
+              isSingleSpaceStatus = singleSpaceStatus(targetPawn);
+              if (isCellContent && isSingleSpaceStatus) {
+                singleSpacePositioning(
+                  fromRow,
+                  fromCol,
+                  targetRow,
+                  targetCol,
+                  targetPawn
+                );
+              }
+              break;
+            case getCellIds[29]:
+              fromRow = singleSpacePositions.P4.fromRow;
+              fromCol = singleSpacePositions.P4.fromCol;
+              targetRow = singleSpacePositions.P4.targetRow;
+              targetCol = singleSpacePositions.P4.targetCol;
+              targetPawn = assignedPawnNames[3];
+              isCellContent = cellContent(targetCol);
+              isSingleSpaceStatus = singleSpaceStatus(targetPawn);
+              if (isCellContent && isSingleSpaceStatus) {
+                singleSpacePositioning(
+                  fromRow,
+                  fromCol,
+                  targetRow,
+                  targetCol,
+                  targetPawn
+                );
+              }
+              break;
+          }
+        };
+
+        gridContainer.addEventListener("click", (e) => {
+          const singleSpacePositionsId = e.target.id;
+          handleSingleSpaceOutcomes(singleSpacePositionsId);
+        });
+      }
+    }
+  };
+
+  return {
+    validateSingleSpace,
+  };
+};
+
+export default SingleSpacePositioning;
