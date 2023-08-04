@@ -144,7 +144,7 @@ const SingleSpacePositioning = () => {
               targetPawn = assignedPawnNames[0];
               isCellContent = cellContent(targetCol);
               isSingleSpaceStatus = singleSpaceStatus(targetPawn);
-              if (isCellContent && isSingleSpaceStatus) {
+              if (isSingleSpaceStatus) {
                 singleSpacePositioning(
                   fromRow,
                   fromCol,
@@ -162,7 +162,7 @@ const SingleSpacePositioning = () => {
               targetPawn = assignedPawnNames[1];
               isCellContent = cellContent(targetCol);
               isSingleSpaceStatus = singleSpaceStatus(targetPawn);
-              if (isCellContent && isSingleSpaceStatus) {
+              if (isSingleSpaceStatus) {
                 singleSpacePositioning(
                   fromRow,
                   fromCol,
@@ -196,6 +196,78 @@ const SingleSpacePositioning = () => {
               targetRow = singleSpacePositions.P4.targetRow;
               targetCol = singleSpacePositions.P4.targetCol;
               targetPawn = assignedPawnNames[3];
+              isCellContent = cellContent(targetCol);
+              isSingleSpaceStatus = singleSpaceStatus(targetPawn);
+              if (isCellContent && isSingleSpaceStatus) {
+                singleSpacePositioning(
+                  fromRow,
+                  fromCol,
+                  targetRow,
+                  targetCol,
+                  targetPawn
+                );
+              }
+              break;
+            case getCellIds[37]:
+              fromRow = singleSpacePositions.P5.fromRow;
+              fromCol = singleSpacePositions.P5.fromCol;
+              targetRow = singleSpacePositions.P5.targetRow;
+              targetCol = singleSpacePositions.P5.targetCol;
+              targetPawn = assignedPawnNames[4];
+              isCellContent = cellContent(targetCol);
+              isSingleSpaceStatus = singleSpaceStatus(targetPawn);
+              if (isCellContent && isSingleSpaceStatus) {
+                singleSpacePositioning(
+                  fromRow,
+                  fromCol,
+                  targetRow,
+                  targetCol,
+                  targetPawn
+                );
+              }
+              break;
+            case getCellIds[45]:
+              fromRow = singleSpacePositions.P6.fromRow;
+              fromCol = singleSpacePositions.P6.fromCol;
+              targetRow = singleSpacePositions.P6.targetRow;
+              targetCol = singleSpacePositions.P6.targetCol;
+              targetPawn = assignedPawnNames[5];
+              isCellContent = cellContent(targetCol);
+              isSingleSpaceStatus = singleSpaceStatus(targetPawn);
+              if (isCellContent && isSingleSpaceStatus) {
+                singleSpacePositioning(
+                  fromRow,
+                  fromCol,
+                  targetRow,
+                  targetCol,
+                  targetPawn
+                );
+              }
+              break;
+            case getCellIds[53]:
+              fromRow = singleSpacePositions.P7.fromRow;
+              fromCol = singleSpacePositions.P7.fromCol;
+              targetRow = singleSpacePositions.P7.targetRow;
+              targetCol = singleSpacePositions.P7.targetCol;
+              targetPawn = assignedPawnNames[6];
+              isCellContent = cellContent(targetCol);
+              isSingleSpaceStatus = singleSpaceStatus(targetPawn);
+              if (isCellContent && isSingleSpaceStatus) {
+                singleSpacePositioning(
+                  fromRow,
+                  fromCol,
+                  targetRow,
+                  targetCol,
+                  targetPawn
+                );
+              }
+              break;
+            case getCellIds[61]:
+              fromRow = singleSpacePositions.P8.fromRow;
+              fromCol = singleSpacePositions.P8.fromCol;
+              targetRow = singleSpacePositions.P8.targetRow;
+              targetCol = singleSpacePositions.P8.targetCol;
+              targetPawn = assignedPawnNames[7];
               isCellContent = cellContent(targetCol);
               isSingleSpaceStatus = singleSpaceStatus(targetPawn);
               if (isCellContent && isSingleSpaceStatus) {
