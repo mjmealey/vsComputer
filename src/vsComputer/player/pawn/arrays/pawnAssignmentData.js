@@ -1,4 +1,4 @@
-import {pawnAssignments} from "../../pawn/objects/pawnAssignments.js"
+import { pawnAssignments } from "../../pawn/objects/pawnAssignments.js";
 
 const assignedPawnNameData = [
   pawnAssignments.pawnOne.name,
@@ -11,4 +11,32 @@ const assignedPawnNameData = [
   pawnAssignments.pawnEight.name,
 ];
 
-export const assignedPawnNames = assignedPawnNameData
+const assignedPawnNamesIndexData = [
+  {
+    P1: 0,
+  },
+  {
+    P2: 1,
+  },
+  {
+    P3: 2,
+  },
+  {
+    P4: 3,
+  },
+  {
+    P5: 4,
+  },
+  {
+    P6: 5,
+  },
+  {
+    P7: 6,
+  },
+  {
+    P8: 7,
+  },
+];
+
+export const assignedPawnNames = assignedPawnNameData;
+export const assignedPawnNamesIndexNumbers = assignedPawnNamesIndexData
