@@ -1,13 +1,12 @@
 import PawnCellAssignments from "./assignPawnNames.js";
-import FirstMoveDisplays from "./modules/Displays/FirstMoveDisplays.js";
+import DoubleSpaceDisplays from "./modules/Displays/DoubleSpaceDisplay.js";
+import SingleSpaceDisplays from "./modules/Displays/SingleSpaceDisplay.js";
 import PawnPositioning from "./modules/Positioning/PawnPositioning.js";
 const Pawn = () => {
-  const newPawnAssignments = PawnCellAssignments();
-  const newFirstMoveDisplays = FirstMoveDisplays();
-  newFirstMoveDisplays.handleStartSpaces();
-  newFirstMoveDisplays.handleSingleSpaceDisplays();
-  newFirstMoveDisplays.handleDoubleSpaceDisplay();
-  PawnPositioning()
+  PawnCellAssignments();
+  SingleSpaceDisplays();
+  DoubleSpaceDisplays()
+  PawnPositioning();
 };
 
 export default Pawn;
