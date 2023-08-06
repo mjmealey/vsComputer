@@ -118,10 +118,6 @@ const SingleSpacePositioning = () => {
           }
         };
 
-        const cellContent = (pawnContent) => {
-          return (mappedCellIds[pawnContent].textContent = pieceName);
-        };
-
         const singleSpaceStatus = (assignedPawn) => {
           return !trackSingleSpacePositions.includes(assignedPawn);
         };
@@ -132,8 +128,6 @@ const SingleSpacePositioning = () => {
           let targetRow = null;
           let targetCol = null;
           let targetPawn = null;
-          let isCellContent = null;
-          let isSingleSpaceStatus = null;
 
           switch (singleSpacePositionsId) {
             case getCellIds[5]:
@@ -142,9 +136,9 @@ const SingleSpacePositioning = () => {
               targetRow = singleSpacePositions.P1.targetRow;
               targetCol = singleSpacePositions.P1.targetCol;
               targetPawn = assignedPawnNames[0];
-              isCellContent = cellContent(targetCol);
-              isSingleSpaceStatus = singleSpaceStatus(targetPawn);
-              if (isSingleSpaceStatus) {
+              const isP1Displayed = mappedCellIds[5].textContent === pieceName;
+              const isP1Complete = singleSpaceStatus(targetPawn);
+              if (isP1Displayed && isP1Complete) {
                 singleSpacePositioning(
                   fromRow,
                   fromCol,
@@ -160,9 +154,9 @@ const SingleSpacePositioning = () => {
               targetRow = singleSpacePositions.P2.targetRow;
               targetCol = singleSpacePositions.P2.targetCol;
               targetPawn = assignedPawnNames[1];
-              isCellContent = cellContent(targetCol);
-              isSingleSpaceStatus = singleSpaceStatus(targetPawn);
-              if (isSingleSpaceStatus) {
+              const isP2Displayed = mappedCellIds[13].textContent === pieceName;
+              const isP2Complete = singleSpaceStatus(targetPawn);
+              if (isP2Displayed && isP2Complete) {
                 singleSpacePositioning(
                   fromRow,
                   fromCol,
@@ -178,9 +172,9 @@ const SingleSpacePositioning = () => {
               targetRow = singleSpacePositions.P3.targetRow;
               targetCol = singleSpacePositions.P3.targetCol;
               targetPawn = assignedPawnNames[2];
-              isCellContent = cellContent(targetCol);
-              isSingleSpaceStatus = singleSpaceStatus(targetPawn);
-              if (isCellContent && isSingleSpaceStatus) {
+              const isP3Displayed = mappedCellIds[21].textContent === pieceName;
+              const isP3Complete = singleSpaceStatus(targetPawn);
+              if (isP3Displayed && isP3Complete) {
                 singleSpacePositioning(
                   fromRow,
                   fromCol,
@@ -196,9 +190,9 @@ const SingleSpacePositioning = () => {
               targetRow = singleSpacePositions.P4.targetRow;
               targetCol = singleSpacePositions.P4.targetCol;
               targetPawn = assignedPawnNames[3];
-              isCellContent = cellContent(targetCol);
-              isSingleSpaceStatus = singleSpaceStatus(targetPawn);
-              if (isCellContent && isSingleSpaceStatus) {
+              const isP4Displayed = mappedCellIds[29].textContent === pieceName;
+              const isP4Complete = singleSpaceStatus(targetPawn);
+              if (isP4Displayed && isP4Complete) {
                 singleSpacePositioning(
                   fromRow,
                   fromCol,
@@ -214,9 +208,9 @@ const SingleSpacePositioning = () => {
               targetRow = singleSpacePositions.P5.targetRow;
               targetCol = singleSpacePositions.P5.targetCol;
               targetPawn = assignedPawnNames[4];
-              isCellContent = cellContent(targetCol);
-              isSingleSpaceStatus = singleSpaceStatus(targetPawn);
-              if (isCellContent && isSingleSpaceStatus) {
+              const isP5Displayed = mappedCellIds[37].textContent === pieceName;
+              const isP5Complete = singleSpaceStatus(targetPawn);
+              if (isP5Displayed && isP5Complete) {
                 singleSpacePositioning(
                   fromRow,
                   fromCol,
@@ -232,9 +226,9 @@ const SingleSpacePositioning = () => {
               targetRow = singleSpacePositions.P6.targetRow;
               targetCol = singleSpacePositions.P6.targetCol;
               targetPawn = assignedPawnNames[5];
-              isCellContent = cellContent(targetCol);
-              isSingleSpaceStatus = singleSpaceStatus(targetPawn);
-              if (isCellContent && isSingleSpaceStatus) {
+              const isP6Displayed = mappedCellIds[45].textContent === pieceName;
+              const isP6Complete = singleSpaceStatus(targetPawn);
+              if (isP6Displayed && isP6Complete) {
                 singleSpacePositioning(
                   fromRow,
                   fromCol,
@@ -250,9 +244,9 @@ const SingleSpacePositioning = () => {
               targetRow = singleSpacePositions.P7.targetRow;
               targetCol = singleSpacePositions.P7.targetCol;
               targetPawn = assignedPawnNames[6];
-              isCellContent = cellContent(targetCol);
-              isSingleSpaceStatus = singleSpaceStatus(targetPawn);
-              if (isCellContent && isSingleSpaceStatus) {
+              const isP7Displayed = mappedCellIds[53].textContent === pieceName;
+              const isP7Complete = singleSpaceStatus(targetPawn);
+              if (isP7Displayed && isP7Complete) {
                 singleSpacePositioning(
                   fromRow,
                   fromCol,
@@ -268,9 +262,9 @@ const SingleSpacePositioning = () => {
               targetRow = singleSpacePositions.P8.targetRow;
               targetCol = singleSpacePositions.P8.targetCol;
               targetPawn = assignedPawnNames[7];
-              isCellContent = cellContent(targetCol);
-              isSingleSpaceStatus = singleSpaceStatus(targetPawn);
-              if (isCellContent && isSingleSpaceStatus) {
+              const isP8Displayed = mappedCellIds[61].textContent === pieceName;
+              const isP8Complete = singleSpaceStatus(targetPawn);
+              if (isP8Displayed && isP8Complete) {
                 singleSpacePositioning(
                   fromRow,
                   fromCol,
