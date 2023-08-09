@@ -1,5 +1,5 @@
 import chessBoard from "../../../../../objects/chessBoardArray.js";
-import { getCellIds } from "../../../../../modules/ChessPieceAssignments.js";
+import { getCellIds } from "../../../../../modules/ChessBoard.js";
 import { assignedPawnNames } from "../../../arrays/pawnAssignmentData.js";
 import { pawnName } from "../../../objects/pawnName.js";
 const SingleSpacePositioning = () => {
