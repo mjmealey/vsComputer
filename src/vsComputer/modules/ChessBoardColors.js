@@ -1,4 +1,4 @@
-import { getCellIds } from "./ChessPieceAssignments.js";
+import { getCellIds } from "./ChessBoard.js";
 import {
   gridColorsObject,
   colorSelectAttributesObject,
