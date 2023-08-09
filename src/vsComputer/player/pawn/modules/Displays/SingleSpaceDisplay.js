@@ -1,4 +1,4 @@
-import { getCellIds } from "../../../../modules/ChessPieceAssignments.js";
+import { getCellIds } from "../../../../modules/ChessBoard.js";
 import { assignedPawnNames } from "../../arrays/pawnAssignmentData.js";
 import { removePawns } from "../../objects/removePawns.js";
 import { displayStatus } from "../../objects/displayStatus.js";
