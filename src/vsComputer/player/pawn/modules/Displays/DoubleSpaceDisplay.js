@@ -1,4 +1,4 @@
-import { getCellIds } from "../../../../modules/ChessPieceAssignments.js";
+import { getCellIds } from "../../../../modules/ChessBoard.js";
 import { assignedPawnNames } from "../../arrays/pawnAssignmentData.js";
 import { displayStatus } from "../../objects/displayStatus.js";
 
@@ -6,20 +6,17 @@ const DoubleSpaceDisplays = () => {
   const trackPreDoubleSpace = [];
   const trackDoubleSpaces = [];
   const mappedCellIds = getCellIds.map((id) => document.getElementById(id));
-  const removePawns = {
-    indexToRemove: 0,
-    amountToRemove: 1,
-  };
+
   const checkStartSpaces = (assignedPawn) => {
     return !trackPreDoubleSpace.includes(assignedPawn);
   };
 
-  const isStartSpaceReady = (assignedPawn) => {
-    return trackPreDoubleSpace.push(assignedPawn);
+  const isStartSpaceReady = (trackPreDoubleSpaces, assignedPawn) => {
+    return trackPreDoubleSpaces.push(assignedPawn);
   };
 
-  const removeStartSpacePawns = (removePawn, amountToRemove) => {
-    return trackPreDoubleSpace.splice(removePawn, amountToRemove);
+  const removeStartSpacePawns = (trackPreDoubleSpaces, removeIndex, amount) => {
+    return trackPreDoubleSpaces.splice(removeIndex, amount);
   };
 
   const completeStartSpaces = (assignedPawns) => {
@@ -333,13 +330,20 @@ const DoubleSpaceDisplays = () => {
     }
   };
 
-  gridContainer.addEventListener("click", (e) => {
-    const isDoubleSpaceClicksReady = e.target.id;
-    startSpaceClicks(isDoubleSpaceClicksReady);
-    handleDoubleSpaceClicks(isDoubleSpaceClicksReady);
-    handleDoubleSpaceDisplayClicks(isDoubleSpaceClicksReady);
-    handleDuplicationAfterDoubleSpaceClicks(isDoubleSpaceClicksReady);
-  });
+  const handleClicks = () => {
+    gridContainer.addEventListener("click", (e) => {
+      const isDoubleSpaceClicksReady = e.target.id;
+      startSpaceClicks(isDoubleSpaceClicksReady);
+      handleDoubleSpaceClicks(isDoubleSpaceClicksReady);
+      handleDoubleSpaceDisplayClicks(isDoubleSpaceClicksReady);
+      handleDuplicationAfterDoubleSpaceClicks(isDoubleSpaceClicksReady);
+    });
+  };
+
+  return {
+    checkStartSpaces,
+    isStartSpaceReady,
+  };
 };
 
 export default DoubleSpaceDisplays;
