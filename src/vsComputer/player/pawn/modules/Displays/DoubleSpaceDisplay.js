@@ -11,59 +11,59 @@ const DoubleSpaceDisplays = () => {
     return !trackPreDoubleSpace.includes(assignedPawn);
   };
 
-  const isStartSpaceReady = (trackPreDoubleSpaces, assignedPawn) => {
-    return trackPreDoubleSpaces.push(assignedPawn);
+  const isFirstMoveReady = (assignedPawn) => {
+    return trackPreDoubleSpace.push(assignedPawn);
   };
 
-  const removeStartSpacePawns = (trackPreDoubleSpaces, removeIndex, amount) => {
-    return trackPreDoubleSpaces.splice(removeIndex, amount);
+  const removePreviousFirstMove = (removeIndex, amount) => {
+    return trackPreDoubleSpace.splice(removeIndex, amount);
   };
 
-  const completeStartSpaces = (assignedPawns) => {
-    const checkStartSpacePawns = checkStartSpaces(assignedPawns);
-    if (checkStartSpacePawns) {
-      //controls when other pawns are clicked to avoid overlap
-      const prevClickedPawnIndex = removePawns.indexToRemove;
-      const removePrevClickedPawn = removePawns.amountToRemove;
-      removeStartSpacePawns(prevClickedPawnIndex, removePrevClickedPawn);
-      isStartSpaceReady(assignedPawns);
+  const assignPawns = (startSpaceId) => {
+    switch (startSpaceId) {
+      case getCellIds[6]:
+        return assignedPawnNames[0]
+      case getCellIds[14]:
+        return assignedPawnNames[1];
+      case getCellIds[22]:
+        return assignedPawnNames[2];
+      case getCellIds[30]:
+        return assignedPawnNames[3];
+      case getCellIds[38]:
+        return assignedPawnNames[4];
+      case getCellIds[46]:
+        return assignedPawnNames[5];
+      case getCellIds[54]:
+        return assignedPawnNames[6];
+      case getCellIds[62]:
+        return assignedPawnNames[7];
+      default:
+        return null;
     }
   };
 
-  const startSpaceClicks = (startSpaceId) => {
-    let assignedPawn = null;
-    switch (startSpaceId) {
-      case getCellIds[6]:
-        assignedPawn = assignedPawnNames[0];
-        completeStartSpaces(assignedPawn);
-        break;
-      case getCellIds[14]:
-        assignedPawn = assignedPawnNames[1];
-        completeStartSpaces(assignedPawn);
-        break;
-      case getCellIds[22]:
-        assignedPawn = assignedPawnNames[2];
-        completeStartSpaces(assignedPawn);
-        break;
-      case getCellIds[30]:
-        assignedPawn = assignedPawnNames[3];
-        completeStartSpaces(assignedPawn);
-        break;
-      case getCellIds[38]:
-        assignedPawn = assignedPawnNames[4];
-        completeStartSpaces(assignedPawn);
-        break;
-      case getCellIds[46]:
-        assignedPawn = assignedPawnNames[5];
-        completeStartSpaces(assignedPawn);
-        break;
-      case getCellIds[54]:
-        assignedPawn = assignedPawnNames[6];
-        completeStartSpaces(assignedPawn);
-        break;
-      case getCellIds[62]:
-        assignedPawn = assignedPawnNames[7];
-        completeStartSpaces(assignedPawn);
+  const removeFirstMoveClicks = (startSpaceId) => {
+    const removeAssignedPawn = assignPawns(startSpaceId);
+    const unknownAssignedPawn = null;
+    const isValidPawn = removeAssignedPawn !== unknownAssignedPawn;
+    if (isValidPawn) {
+      const indexToRemove = 0;
+      const amountToRemove = 1;
+      removePreviousFirstMove(indexToRemove, amountToRemove);
+    } else {
+      return unknownAssignedPawn;
+    }
+  };
+
+  const prepareFirstMoveClicks = (startSpaceId) => {
+    const addAssignedPawn = assignPawns(startSpaceId);
+    const unknownAssignedPawn = null;
+    const isValidPawn = addAssignedPawn !== unknownAssignedPawn;
+    if (isValidPawn) {
+      trackPreDoubleSpace.push(addAssignedPawn);
+      console.log(trackPreDoubleSpace)
+    } else {
+      return unknownAssignedPawn;
     }
   };
   //emptyCell is the cell the pawns start on (becomes empty after double space is complete)
@@ -125,8 +125,8 @@ const DoubleSpaceDisplays = () => {
     const isReadyToMoveFromIndex = checkDoubleSpaces(assignedPawn);
     const isReadyToPushIntoIndex = checkDoubleSpaceDisplay(assignedPawn);
     if (isReadyToMoveFromIndex && isReadyToPushIntoIndex) {
-      const removeFromPrevIndex = removePawns.indexToRemove;
-      const amountFromPrevIndex = removePawns.amountToRemove;
+      const removeFromPrevIndex = 0;
+      const amountFromPrevIndex = 1;
       removePreDoubleSpaceIndex(removeFromPrevIndex, amountFromPrevIndex);
       isDoubleSpaceDisplayReady(assignedPawn);
     }
@@ -331,18 +331,23 @@ const DoubleSpaceDisplays = () => {
   };
 
   const handleClicks = () => {
-    gridContainer.addEventListener("click", (e) => {
+    document.addEventListener("click", (e) => {
       const isDoubleSpaceClicksReady = e.target.id;
-      startSpaceClicks(isDoubleSpaceClicksReady);
+      removeFirstMoveClicks(isDoubleSpaceClicksReady);
+      prepareFirstMoveClicks(isDoubleSpaceClicksReady);
       handleDoubleSpaceClicks(isDoubleSpaceClicksReady);
       handleDoubleSpaceDisplayClicks(isDoubleSpaceClicksReady);
       handleDuplicationAfterDoubleSpaceClicks(isDoubleSpaceClicksReady);
     });
   };
 
+  handleClicks()
+
   return {
     checkStartSpaces,
-    isStartSpaceReady,
+    isFirstMoveReady,
+    removePreviousFirstMove,
+    assignPawns,
   };
 };
 
