@@ -348,6 +348,7 @@ const DoubleSpaceDisplays = () => {
     isFirstMoveReady,
     removePreviousFirstMove,
     assignPawns,
+    checkDoubleSpaces
   };
 };
 
