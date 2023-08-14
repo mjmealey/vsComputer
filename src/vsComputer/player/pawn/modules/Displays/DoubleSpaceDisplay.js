@@ -22,7 +22,7 @@ const DoubleSpaceDisplays = () => {
   const assignPawns = (startSpaceId) => {
     switch (startSpaceId) {
       case getCellIds[6]:
-        return assignedPawnNames[0]
+        return assignedPawnNames[0];
       case getCellIds[14]:
         return assignedPawnNames[1];
       case getCellIds[22]:
@@ -61,7 +61,7 @@ const DoubleSpaceDisplays = () => {
     const isValidPawn = addAssignedPawn !== unknownAssignedPawn;
     if (isValidPawn) {
       trackPreDoubleSpace.push(addAssignedPawn);
-      console.log(trackPreDoubleSpace)
+      console.log(trackPreDoubleSpace);
     } else {
       return unknownAssignedPawn;
     }
@@ -132,6 +132,7 @@ const DoubleSpaceDisplays = () => {
     }
   };
 
+  
   const displayDoubleSpaceContent = (emptyCell, filledCell) => {
     mappedCellIds[emptyCell].textContent = displayStatus.emptyCell;
     mappedCellIds[filledCell].textContent = displayStatus.filledCell;
@@ -341,14 +342,16 @@ const DoubleSpaceDisplays = () => {
     });
   };
 
-  handleClicks()
+  handleClicks();
 
   return {
     checkStartSpaces,
     isFirstMoveReady,
     removePreviousFirstMove,
     assignPawns,
-    checkDoubleSpaces
+    checkDoubleSpaces,
+    checkDoubleSpaceDisplay,
+    isDoubleSpaceDisplayContentReady,
   };
 };
 
