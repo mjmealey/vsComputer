@@ -1,7 +1,7 @@
 import { getCellIds } from "../../../../modules/ChessBoard.js";
 import { assignedPawnNames } from "../../arrays/pawnAssignmentData.js";
 
-const trackStartSpace = [];
+const trackStartSpaceData = [];
 
 const preparePawn = (assignedPawn) => {
   return trackStartSpace.push(assignedPawn);
@@ -38,4 +38,4 @@ document.addEventListener("click", (e) => {
   handleStartSpaceClicks(startSpaceId);
 });
 
-export const trackStartSpaceData = trackStartSpace;
+export const trackStartSpace = trackStartSpaceData;
