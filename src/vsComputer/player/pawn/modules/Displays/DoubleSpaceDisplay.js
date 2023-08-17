@@ -1,71 +1,9 @@
 import { getCellIds } from "../../../../modules/ChessBoard.js";
 import { assignedPawnNames } from "../../arrays/pawnAssignmentData.js";
 import { displayStatus } from "../../objects/displayStatus.js";
-
+import { trackStartSpace } from "./StartSpace.js";
 const DoubleSpaceDisplays = () => {
-  const trackPreDoubleSpace = [];
-  const trackDoubleSpaces = [];
-  const mappedCellIds = getCellIds.map((id) => document.getElementById(id));
-
-  const checkStartSpaces = (assignedPawn) => {
-    return !trackPreDoubleSpace.includes(assignedPawn);
-  };
-
-  const isFirstMoveReady = (assignedPawn) => {
-    return trackPreDoubleSpace.push(assignedPawn);
-  };
-
-  const removePreviousFirstMove = (removeIndex, amount) => {
-    return trackPreDoubleSpace.splice(removeIndex, amount);
-  };
-
-  const assignPawns = (startSpaceId) => {
-    switch (startSpaceId) {
-      case getCellIds[6]:
-        return assignedPawnNames[0];
-      case getCellIds[14]:
-        return assignedPawnNames[1];
-      case getCellIds[22]:
-        return assignedPawnNames[2];
-      case getCellIds[30]:
-        return assignedPawnNames[3];
-      case getCellIds[38]:
-        return assignedPawnNames[4];
-      case getCellIds[46]:
-        return assignedPawnNames[5];
-      case getCellIds[54]:
-        return assignedPawnNames[6];
-      case getCellIds[62]:
-        return assignedPawnNames[7];
-      default:
-        return null;
-    }
-  };
-
-  const removeFirstMoveClicks = (startSpaceId) => {
-    const removeAssignedPawn = assignPawns(startSpaceId);
-    const unknownAssignedPawn = null;
-    const isValidPawn = removeAssignedPawn !== unknownAssignedPawn;
-    if (isValidPawn) {
-      const indexToRemove = 0;
-      const amountToRemove = 1;
-      removePreviousFirstMove(indexToRemove, amountToRemove);
-    } else {
-      return unknownAssignedPawn;
-    }
-  };
-
-  const prepareFirstMoveClicks = (startSpaceId) => {
-    const addAssignedPawn = assignPawns(startSpaceId);
-    const unknownAssignedPawn = null;
-    const isValidPawn = addAssignedPawn !== unknownAssignedPawn;
-    if (isValidPawn) {
-      trackPreDoubleSpace.push(addAssignedPawn);
-      console.log(trackPreDoubleSpace);
-    } else {
-      return unknownAssignedPawn;
-    }
-  };
+  const mappedCellIds = getCellIds.map((id) => document.getElementById(id))
   //emptyCell is the cell the pawns start on (becomes empty after double space is complete)
   //filledCell is the cell the pawns end on after double space
   const doubleSpaceDisplayIndices = [
@@ -345,10 +283,6 @@ const DoubleSpaceDisplays = () => {
   handleClicks();
 
   return {
-    checkStartSpaces,
-    isFirstMoveReady,
-    removePreviousFirstMove,
-    assignPawns,
     checkDoubleSpaces,
     checkDoubleSpaceDisplay,
     isDoubleSpaceDisplayContentReady,
