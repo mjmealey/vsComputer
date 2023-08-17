@@ -27,7 +27,6 @@ const handleStartSpaceClicks = (startSpaceId) => {
     case P1Cell:
       removePreviousPawn(0, 1);
       preparePawn(assignedPawns[0].assignedPawn);
-      console.log(trackStartSpace);
       break;
     
   }
