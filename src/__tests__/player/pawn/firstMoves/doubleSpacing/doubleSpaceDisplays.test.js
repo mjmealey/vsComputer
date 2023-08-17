@@ -156,39 +156,252 @@ describe("DoubleSpaceDisplays", () => {
   });
 
   describe("checkDoubleSpaces", () => {
-    it("should check if a pawn has been clicked", () => {
-      const assignedPawnPossibilities = [{
-        P1: assignedPawnNames[0], expectedCell: getCellIds[6]
-      }]
+    it("should check if the trackPreDoubleSpace array contains one assigned pawn at a time based on the most recently clicked cell", () => {
+      const assignedPawns = [
+        { assignedPawn: assignedPawnNames[0] },
+        { assignedPawn: assignedPawnNames[1] },
+        { assignedPawn: assignedPawnNames[2] },
+        { assignedPawn: assignedPawnNames[3] },
+        { assignedPawn: assignedPawnNames[4] },
+        { assignedPawn: assignedPawnNames[5] },
+        { assignedPawn: assignedPawnNames[6] },
+        { assignedPawn: assignedPawnNames[7] },
+      ];
       const trackPreDoubleSpace = [];
 
-      const isP1Clicked = () => {
-        const P1 = assignedPawnPossibilities[0].P1;
-        const isP1 = !trackPreDoubleSpace.includes(P1);
-        if (isP1) {
-          trackPreDoubleSpace.push(P1);
+      const checkForPawns = (assignedPawn) => {
+        trackPreDoubleSpace.push(assignedPawn);
+        const checkDoubleSpace = trackPreDoubleSpace.includes(assignedPawn);
+        if (checkDoubleSpace) {
+          trackPreDoubleSpace.splice(1, 1);
+          expect(trackPreDoubleSpace).toContain(assignedPawn);
         }
       };
+
+      const checkForPawnClicks = (doubleSpaceId) => {
+        let clickedPawn = null;
+        const P1Cell = getCellIds[6];
+        const P2Cell = getCellIds[14];
+        const P3Cell = getCellIds[22];
+        const P4Cell = getCellIds[30];
+        const P5Cell = getCellIds[38];
+        const P6Cell = getCellIds[46];
+        const P7Cell = getCellIds[54];
+        const P8Cell = getCellIds[62];
+
+        switch (doubleSpaceId) {
+          case P1Cell:
+            clickedPawn = assignedPawns[0].assignedPawn;
+            checkForPawns(clickedPawn);
+            break;
+          case P2Cell:
+            clickedPawn = assignedPawns[1].assignedPawn;
+            checkForPawns(clickedPawn);
+            break;
+          case P3Cell:
+            clickedPawn = assignedPawns[2].assignedPawn;
+            checkForPawns(clickedPawn);
+            break;
+          case P4Cell:
+            clickedPawn = assignedPawns[3].assignedPawn;
+            checkForPawns(clickedPawn);
+            break;
+          case P5Cell:
+            clickedPawn = assignedPawns[4].assignedPawn;
+            checkForPawns(clickedPawn);
+            break;
+          case P6Cell:
+            clickedPawn = assignedPawns[5].assignedPawn;
+            checkForPawns(clickedPawn);
+            break;
+          case P7Cell:
+            clickedPawn = assignedPawns[6].assignedPawn;
+            checkForPawns(clickedPawn);
+            break;
+          case P8Cell:
+            clickedPawn = assignedPawns[7].assignedPawn;
+            checkForPawns(clickedPawn);
+            break;
+          default:
+            return null;
+        }
+      };
+      checkForPawnClicks(getCellIds);
     });
+
     describe("removePreDoubleSpaceIndex", () => {
-      it("should remove the zero index from the trackPreDoubleSpace array", () => {
-        const removedPawnPossibilities = [
-          { removePawn: assignedPawnNames[0] },
-          { removedPawn: assignedPawnNames[1] },
-          { removedPawn: assignedPawnNames[2] },
-          { removePawn: assignedPawnNames[3] },
-          { removePawn: assignedPawnNames[4] },
-          { removePawn: assignedPawnNames[5] },
-          { removePawn: assignedPawnNames[6] },
-          { removePawn: assignedPawnNames[7] },
+      it("should remove the zero index from the trackPreDoubleSpace array and move the value into the trackDoubleSpace array", () => {
+        const removePawnPossibilities = [
+          { removePawn: assignedPawnNames[0], cell: getCellIds[6] },
+          { removePawn: assignedPawnNames[1], cell: getCellIds[14] },
+          { removePawn: assignedPawnNames[2], cell: getCellIds[22] },
+          { removePawn: assignedPawnNames[3], cell: getCellIds[30] },
+          { removePawn: assignedPawnNames[4], cell: getCellIds[38] },
+          { removePawn: assignedPawnNames[5], cell: getCellIds[46] },
+          { removePawn: assignedPawnNames[6], cell: getCellIds[54] },
+          { removePawn: assignedPawnNames[7], cell: getCellIds[62] },
         ];
-        const removePawns = [];
-        removePawns.push(removedPawnPossibilities[0].removePawn);
-        const indexToRemove = 0;
-        const amountToRemove = 1;
-        removePawns.splice(indexToRemove, amountToRemove);
-        expect(removePawns).toHaveLength(0);
+        const trackPreDoubleSpace = [];
+        const trackDoubleSpace = [];
+        const removeOnePawn = (assignedPawn) => {
+          const indexToRemove = 0;
+          const amountToRemove = 1;
+          trackPreDoubleSpace.splice(indexToRemove, amountToRemove);
+          trackDoubleSpace.push(assignedPawn);
+          const trackPreDoubleSpaceState = 0;
+          const trackDoubleSpaceState = 1;
+          expect(trackPreDoubleSpace).toHaveLength(trackPreDoubleSpaceState);
+          expect(trackDoubleSpace).toHaveLength(trackDoubleSpaceState);
+        };
+        const removeablePawnClicks = (doubleSpaceId) => {
+          const P1Cell = removePawnPossibilities[0].cell;
+          const P2Cell = removePawnPossibilities[1].cell;
+          const P3Cell = removePawnPossibilities[2].cell;
+          const P4Cell = removePawnPossibilities[3].cell;
+          const P5Cell = removePawnPossibilities[4].cell;
+          const P6Cell = removePawnPossibilities[5].cell;
+          const P7Cell = removePawnPossibilities[6].cell;
+          const P8Cell = removePawnPossibilities[7].cell;
+          let clickedPawn = null;
+          switch (doubleSpaceId) {
+            case P1Cell:
+              clickedPawn = removePawnPossibilities[0].removePawn;
+              removeOnePawn(clickedPawn);
+              break;
+            case P2Cell:
+              clickedPawn = removePawnPossibilities[1].removePawn;
+              removeOnePawn(clickedPawn);
+              break;
+            case P3Cell:
+              clickedPawn = removePawnPossibilities[2].removePawn;
+              removeOnePawn(clickedPawn);
+              break;
+            case P4Cell:
+              clickedPawn = removePawnPossibilities[3].removePawn;
+              removeOnePawn(clickedPawn);
+              break;
+            case P5Cell:
+              clickedPawn = removePawnPossibilities[4];
+              removeOnePawn(clickedPawn);
+              break;
+            case P6Cell:
+              clickedPawn = removePawnPossibilities[5];
+              removeOnePawn(clickedPawn);
+              break;
+            case P7Cell:
+              clickedPawn = removePawnPossibilities[6];
+              removeOnePawn(clickedPawn);
+              break;
+            case P8Cell:
+              clickedPawn = removePawnPossibilities[7];
+              removeOnePawn(clickedPawn);
+              break;
+            default:
+              return null;
+          }
+        };
+        removeablePawnClicks(getCellIds);
       });
     });
   });
+
+  describe("checkDoubleSpaceDisplay", () => {
+    it("should check if the trackDoubleSpace array does not currently contain a specified pawn in its index", () => {
+      const possiblePawns = {
+        P1: assignedPawnNames[0],
+        P2: assignedPawnNames[1],
+        P3: assignedPawnNames[2],
+        P4: assignedPawnNames[3],
+        P5: assignedPawnNames[4],
+        P6: assignedPawnNames[5],
+        P7: assignedPawnNames[6],
+        P8: assignedPawnNames[7],
+      };
+
+      const trackDoubleSpace = [possiblePawns.P1];
+      const notIncludedAssignedPawn = possiblePawns.P2;
+
+      expect(trackDoubleSpace).not.toContain(notIncludedAssignedPawn);
+    });
+  });
+  describe("isDoubleSpaceDisplayReady", () => {
+    it("should check if the trackPreDoubleSpace array adds and includes one pawn in its index brought over from the trackPreDoubleSpace array", () => {
+      const possiblePawns = [
+        { assignedPawn: assignedPawnNames[0], cell: getCellIds[4] },
+        { assignedPawn: assignedPawnNames[1], cell: getCellIds[12] },
+        { assignedPawn: assignedPawnNames[2], cell: getCellIds[20] },
+        { assignedPawn: assignedPawnNames[3], cell: getCellIds[28] },
+        { assignedPawn: assignedPawnNames[4], cell: getCellIds[36] },
+        { assignedPawn: assignedPawnNames[5], cell: getCellIds[44] },
+        { assignedPawn: assignedPawnNames[6], cell: getCellIds[52] },
+        { assignedPawn: assignedPawnNames[7], cell: getCellIds[60] },
+      ];
+  
+      const trackDoubleSpace = [];
+
+     
+      const P1Cell = possiblePawns[0].cell;
+      const P2Cell = possiblePawns[1].cell;
+      const P3Cell = possiblePawns[2].cell;
+      const P4Cell = possiblePawns[3].cell;
+      const P5Cell = possiblePawns[4].cell;
+      const P6Cell = possiblePawns[5].cell;
+      const P7Cell = possiblePawns[6].cell;
+      const P8Cell = possiblePawns[7].cell;
+      let clickedPawn = null;
+    
+      switch (getCellIds) {
+        case P1Cell:
+          clickedPawn = possiblePawns[0].assignedPawn;
+          addPawn(clickedPawn);
+          break;
+        case P2Cell:
+          clickedPawn = possiblePawns[1].assignedPawn;
+          addPawn(clickedPawn);
+          break;
+        case P3Cell:
+          clickedPawn = possiblePawns[2].assignedPawn;
+          addPawn(clickedPawn);
+          break;
+        case P4Cell:
+          clickedPawn = possiblePawns[3].assignedPawn;
+          addPawn(clickedPawn);
+          break;
+        case P5Cell:
+          clickedPawn = possiblePawns[4].assignedPawn;
+          addPawn(clickedPawn);
+          break;
+        case P6Cell:
+          clickedPawn = possiblePawns[5].assignedPawn;
+          addPawn(clickedPawn);
+          break;
+        case P7Cell:
+          clickedPawn = possiblePawns[6].assignedPawn;
+          addPawn(clickedPawn);
+          break;
+        case P8Cell:
+          clickedPawn = possiblePawns[7].assignedPawn;
+          addPawn(clickedPawn);
+          break;
+      }
+      trackDoubleSpace.push(clickedPawn)
+      expect(trackDoubleSpace).toContain(clickedPawn)
+    });
+  });
+  describe("isDoubleSpaceDisplayContentReady", () => {
+    it("should remove a pawn from the trackPreDoubleSpace array and add a new pawn to the trackDoubleSpace array", () => {
+      const assignedPawnPossibilities = {
+        P1: assignedPawnNames[0],
+        P2: assignedPawnNames[1],
+        P3: assignedPawnNames[2],
+        P4: assignedPawnNames[3],
+        P5: assignedPawnNames[4],
+        P6: assignedPawnNames[5],
+        P7: assignedPawnNames[6],
+        P8: assignedPawnNames[7]
+      }
+
+      
+    })
+  })
 });
