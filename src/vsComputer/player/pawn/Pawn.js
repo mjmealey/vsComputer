@@ -6,7 +6,8 @@ import PawnPositioning from "./modules/Positioning/PawnPositioning.js";
 const Pawn = () => {
   PawnCellAssignments();
   SingleSpaceDisplays();
-  DoubleSpaceDisplays()
+  DoubleSpaceDisplays();
+
   PawnPositioning();
 };
 
