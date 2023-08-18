@@ -39,4 +39,4 @@ const assignedPawnNamesIndexData = [
 ];
 
 export const assignedPawnNames = assignedPawnNameData;
-export const assignedPawnNamesIndexNumbers = assignedPawnNamesIndexData
+export const assignedPawnNamesIndex = assignedPawnNamesIndexData
