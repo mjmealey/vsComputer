@@ -7,7 +7,6 @@ const Pawn = () => {
   PawnCellAssignments();
   SingleSpaceDisplays();
   DoubleSpaceDisplays();
-
   PawnPositioning();
 };
 
