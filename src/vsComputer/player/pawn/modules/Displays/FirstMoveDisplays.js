@@ -130,7 +130,6 @@ const FirstMoveDisplays = () => {
       case getCellIds[6]:
         assignedPawn = firstMoveStatus[0].P1.assignedPawn;
         trackStartSpaces(assignedPawn);
-        console.log(trackFirstMove);
         break;
       case getCellIds[14]:
         assignedPawn = firstMoveStatus[1].P2.assignedPawn;
@@ -175,9 +174,8 @@ const FirstMoveDisplays = () => {
   };
 
   const preventFurtherPawns = () => {
-    return trackFirstMove.splice(0, 1)
-  }
-
+    return trackFirstMove.splice(0, 1);
+  };
 
   let emptyCell = null;
   let filledCell = null;
@@ -213,65 +211,141 @@ const FirstMoveDisplays = () => {
         emptyCell = firstMoveStatus[0].P1.startCell;
         filledCell = firstMoveStatus[0].P1.singleSpaceCell;
         checkCellsAfterSingleSpace(assignedPawn, emptyCell, filledCell);
-        preventFurtherPawns()
+        preventFurtherPawns();
         break;
       case singleSpaceP2Cell:
         emptyCell = firstMoveStatus[1].P2.startCell;
         filledCell = firstMoveStatus[1].P2.singleSpaceCell;
         checkCellsAfterSingleSpace(assignedPawn, emptyCell, filledCell);
-        preventFurtherPawns()
+        preventFurtherPawns();
         break;
       case singleSpaceP3Cell:
         emptyCell = firstMoveStatus[2].P3.startCell;
         filledCell = firstMoveStatus[2].P3.singleSpaceCell;
         checkCellsAfterSingleSpace(assignedPawn, emptyCell, filledCell);
-        preventFurtherPawns()
+        preventFurtherPawns();
         break;
       case singleSpaceP4Cell:
         emptyCell = firstMoveStatus[3].P4.startCell;
         filledCell = firstMoveStatus[3].P4.singleSpaceCell;
         checkCellsAfterSingleSpace(assignedPawn, emptyCell, filledCell);
-        preventFurtherPawns()
+        preventFurtherPawns();
         break;
       case singleSpaceP5Cell:
         emptyCell = firstMoveStatus[4].P5.startCell;
         filledCell = firstMoveStatus[4].P5.singleSpaceCell;
         checkCellsAfterSingleSpace(assignedPawn, emptyCell, filledCell);
-        preventFurtherPawns()
+        preventFurtherPawns();
         break;
       case singleSpaceP6Cell:
         emptyCell = firstMoveStatus[5].P6.startCell;
         filledCell = firstMoveStatus[5].P6.singleSpaceCell;
         checkCellsAfterSingleSpace(assignedPawn, emptyCell, filledCell);
-        preventFurtherPawns()
+        preventFurtherPawns();
         break;
       case singleSpaceP7Cell:
         emptyCell = firstMoveStatus[6].P7.startCell;
         filledCell = firstMoveStatus[6].P7.singleSpaceCell;
         checkCellsAfterSingleSpace(assignedPawn, emptyCell, filledCell);
-        preventFurtherPawns()
+        preventFurtherPawns();
         break;
       case singleSpaceP8Cell:
         emptyCell = firstMoveStatus[7].P8.startCell;
         filledCell = firstMoveStatus[7].P8.singleSpaceCell;
         checkCellsAfterSingleSpace(assignedPawn, emptyCell, filledCell);
-        preventFurtherPawns()
+        preventFurtherPawns();
         break;
     }
-  };  
+  };
 
   const handleSingleSpaceClicks = (singleSpaceId) => {
     cellsAfterSingleSpaceClicks(singleSpaceId);
   };
-  
-  const checkCellsAfterDoubleSpace = (assignedPawn, emptyCell, filledCell) => {
-      
-  }
 
-  gridContainer.addEventListener("click", (e) => {
+  const doubleSpaceP1Cell = getCellIds[4];
+  const doubleSpaceP2Cell = getCellIds[12];
+  const doubleSpaceP3Cell = getCellIds[20];
+  const doubleSpaceP4Cell = getCellIds[28];
+  const doubleSpaceP5Cell = getCellIds[36];
+  const doubleSpaceP6Cell = getCellIds[44];
+  const doubleSpaceP7Cell = getCellIds[52];
+  const doubleSpaceP8Cell = getCellIds[60];
+
+  const checkCellsAfterDoubleSpace = (assignedPawn, emptyCell, filledCell) => {
+    const checkFirstMoveStatus = isFirstMoveReady(assignedPawn);
+    if (checkFirstMoveStatus) {
+      mappedCellIds[emptyCell].textContent = displayStatus.emptyCell;
+      mappedCellIds[filledCell].textContent = displayStatus.filledCell;
+    }
+  };
+
+  const handleDoubleSpaceContent = (doubleSpaceId) => {
+    switch (doubleSpaceId) {
+      case doubleSpaceP1Cell:
+        emptyCell = firstMoveStatus[0].P1.startCell;
+        filledCell = firstMoveStatus[0].P1.doubleSpaceCell;
+        checkCellsAfterDoubleSpace(assignedPawn, emptyCell, filledCell);
+        preventFurtherPawns();
+        break;
+      case doubleSpaceP2Cell:
+        emptyCell = firstMoveStatus[1].P2.startCell;
+        filledCell = firstMoveStatus[1].P2.doubleSpaceCell;
+        checkCellsAfterDoubleSpace(assignedPawn, emptyCell, filledCell);
+        preventFurtherPawns();
+      case doubleSpaceP3Cell:
+        emptyCell = firstMoveStatus[2].P3.startCell;
+        filledCell = firstMoveStatus[2].P3.doubleSpaceCell;
+        checkCellsAfterDoubleSpace(assignedPawn, emptyCell, filledCell);
+        preventFurtherPawns();
+      case doubleSpaceP4Cell:
+        emptyCell = firstMoveStatus[3].P4.startCell;
+        filledCell = firstMoveStatus[3].P4.doubleSpaceCell;
+        checkCellsAfterDoubleSpace(assignedPawn, emptyCell, filledCell);
+        preventFurtherPawns();
+      case doubleSpaceP5Cell:
+        emptyCell = firstMoveStatus[4].P5.startCell;
+        filledCell = firstMoveStatus[4].P5.doubleSpaceCell;
+        checkCellsAfterDoubleSpace(assignedPawn, emptyCell, filledCell);
+        preventFurtherPawns();
+        break;
+      case doubleSpaceP6Cell:
+        emptyCell = firstMoveStatus[5].P6.startCell;
+        filledCell = firstMoveStatus[5].P6.doubleSpaceCell;
+        checkCellsAfterDoubleSpace(assignedPawn, emptyCell, filledCell);
+        preventFurtherPawns();
+        break;
+      case doubleSpaceP7Cell:
+        emptyCell = firstMoveStatus[6].P7.startCell;
+        filledCell = firstMoveStatus[6].P7.doubleSpaceCell;
+        checkCellsAfterDoubleSpace(assignedPawn, emptyCell, filledCell);
+        preventFurtherPawns();
+        break;
+      case doubleSpaceP8Cell:
+        emptyCell = firstMoveStatus[7].P8.startCell;
+        filledCell = firstMoveStatus[7].P8.doubleSpaceCell;
+        checkCellsAfterDoubleSpace(assignedPawn, emptyCell, filledCell);
+        preventFurtherPawns();
+        break;
+      default:
+        return null;
+    }
+  };
+
+  const handleDoubleSpaceClicks = (doubleSpaceId) => {
+    handleDoubleSpaceContent(doubleSpaceId);
+  };
+
+  document.addEventListener("click", (e) => {
     const firstMoveId = e.target.id;
     handleStartSpaceClicks(firstMoveId);
     handleSingleSpaceClicks(firstMoveId);
+    handleDoubleSpaceClicks(firstMoveId);
   });
+
+  return {
+    isFirstMoveReady,
+    postSingleSpaceEmptyCells,
+    postSingleSpaceFilledCells
+  };
 };
 export default FirstMoveDisplays;
