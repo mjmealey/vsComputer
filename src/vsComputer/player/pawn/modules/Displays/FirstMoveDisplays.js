@@ -84,7 +84,7 @@ const FirstMoveDisplays = () => {
   const startP6Cell = getCellIds[46];
   const startP7Cell = getCellIds[54];
   const startP8Cell = getCellIds[62];
-
+  
   const removePrevPawn = (indexToRemove, amountToRemove) => {
     return trackFirstMove.splice(indexToRemove, amountToRemove);
   };
@@ -124,6 +124,8 @@ const FirstMoveDisplays = () => {
         return null;
     }
   };
+
+  console.log(getCellIds[6])
   let assignedPawn = null;
   const assignPawns = (firstMoveId) => {
     switch (firstMoveId) {
