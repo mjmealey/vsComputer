@@ -233,28 +233,106 @@ test("complete double space for P3", async ({ page }) => {
 });
 
 test("complete double space for P4", async ({ page }) => {
-    page.goto("http://127.0.0.1:5501/src/vsComputer/vsComputer.html")
+  page.goto("http://127.0.0.1:5501/src/vsComputer/vsComputer.html");
 
-    const startCellForP4 = "#cell-3-6"
+  const startCellForP4 = "#cell-3-6";
 
-    await page.click(startCellForP4)
+  await page.click(startCellForP4);
 
-    const targetCellForP4 = "#cell-3-4"
+  const targetCellForP4 = "#cell-3-4";
 
-    await page.click(targetCellForP4)
+  await page.click(targetCellForP4);
 
-    const startP4CellContent = await page.textContent(startCellForP4)
-    const targetP4CellContent = await page.textContent(targetCellForP4)
+  const startP4CellContent = await page.textContent(startCellForP4);
+  const targetP4CellContent = await page.textContent(targetCellForP4);
 
-    const emptyCellAfterP3SingleSpace = displayStatus.emptyCell
-    const filledCellAfterP3SingleSpace = displayStatus.filledCell
+  const emptyCellAfterP4SingleSpace = displayStatus.emptyCell;
+  const filledCellAfterP4SingleSpace = displayStatus.filledCell;
 
-    expect(startP4CellContent).toBe(emptyCellAfterP3SingleSpace)
-    expect(targetP4CellContent).toBe(filledCellAfterP3SingleSpace)
+  expect(startP4CellContent).toBe(emptyCellAfterP4SingleSpace);
+  expect(targetP4CellContent).toBe(filledCellAfterP4SingleSpace);
 });
 
-test("complete double space for P5", async ({page}) => {
-    page.goto("http://127.0.0.1:5501/src/vsComputer/vsComputer.html")
+test("complete double space for P5", async ({ page }) => {
+  page.goto("http://127.0.0.1:5501/src/vsComputer/vsComputer.html");
 
-    const startCellForP5 = "#cell-4-6"
-})
+  const startCellForP5 = "#cell-4-6";
+
+  await page.click(startCellForP5);
+
+  const targetCellForP5 = "#cell-4-4";
+
+  await page.click(targetCellForP5);
+
+  const startP5CellContent = await page.textContent(startCellForP5);
+  const targetP5CellContent = await page.textContent(targetCellForP5);
+
+  const emptyCellAfterP5DoubleSpace = displayStatus.emptyCell;
+  const filledCellAfterP5DoubleSpace = displayStatus.filledCell;
+
+  expect(startP5CellContent).toBe(emptyCellAfterP5DoubleSpace);
+  expect(targetP5CellContent).toBe(filledCellAfterP5DoubleSpace);
+});
+
+test("complete double space for P6", async ({ page }) => {
+  page.goto("http://127.0.0.1:5501/src/vsComputer/vsComputer.html");
+
+  const startCellForP6 = "#cell-5-6";
+
+  await page.click(startCellForP6);
+
+  const targetCellForP6 = "#cell-5-4";
+
+  await page.click(targetCellForP6);
+
+  const startP6CellContent = await page.textContent(startCellForP6);
+  const targetP6CellContent = await page.textContent(targetCellForP6);
+
+  const emptyCellAfterP6DoubleSpace = displayStatus.emptyCell;
+  const filledCellAfterP6DoubleSpace = displayStatus.filledCell;
+
+  expect(startP6CellContent).toBe(emptyCellAfterP6DoubleSpace);
+  expect(targetP6CellContent).toBe(filledCellAfterP6DoubleSpace);
+});
+
+test("complete double space for P7", async ({ page }) => {
+  page.goto("http://127.0.0.1:5501/src/vsComputer/vsComputer.html");
+
+  const startCellForP7 = "#cell-6-6";
+
+  await page.click(startCellForP7);
+
+  const targetCellForP7 = "#cell-6-4";
+
+  await page.click(targetCellForP7);
+
+  const startP7CellContent = await page.textContent(startCellForP7);
+  const targetP7CellContent = await page.textContent(targetCellForP7);
+
+  const emptyCellAfterP7DoubleSpace = displayStatus.emptyCell;
+  const filledCellAfterP7DoubleSpace = displayStatus.filledCell;
+
+  expect(startP7CellContent).toBe(emptyCellAfterP7DoubleSpace);
+  expect(targetP7CellContent).toBe(filledCellAfterP7DoubleSpace);
+});
+
+test("complete double space for P8", async ({ page }) => {
+  page.goto("http://127.0.0.1:5501/src/vsComputer/vsComputer.html");
+
+  const startCellForP8 = "#cell-7-6";
+
+  await page.click(startCellForP8);
+
+  const targetCellForP8 = "#cell-7-4";
+
+  await page.click(targetCellForP8);
+
+  const startP8CellContent = await page.textContent(startCellForP8);
+  const targetP8CellContent = await page.textContent(targetCellForP8);
+0
+  const emptyCellAfterP8DoubleSpace = displayStatus.emptyCell;
+  const filledCellAfterP8DoubleSpace = displayStatus.filledCell;
+
+  expect(startP8CellContent).toBe(emptyCellAfterP8DoubleSpace);
+  expect(targetP8CellContent).toBe(filledCellAfterP8DoubleSpace);
+});
