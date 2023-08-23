@@ -9,10 +9,10 @@ const chessBoard = [
   ["r", "p", "", "", "", "", "P", "R"],
 ];
 
-const stateOfBoardData = [{
-  P: "P",
-  empty: ""
-}]
+const singleSpaceCellStateData = {
+  pawnCell: "Pawn",
+  emptyCell: ""
+}
 
 export default chessBoard;
-export const stateOfBoard = stateOfBoardData 
+export const singleSpaceCellState = singleSpaceCellStateData
