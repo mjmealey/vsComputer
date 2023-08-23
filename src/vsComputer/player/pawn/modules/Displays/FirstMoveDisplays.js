@@ -125,7 +125,6 @@ const FirstMoveDisplays = () => {
     }
   };
 
-  console.log(getCellIds[6])
   let assignedPawn = null;
   const assignPawns = (firstMoveId) => {
     switch (firstMoveId) {
