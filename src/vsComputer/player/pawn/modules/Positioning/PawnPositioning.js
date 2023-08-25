@@ -1,8 +1,6 @@
-import SingleSpacePositioning from "./firstMoves/SingleSpacePositioning.js";
-
+import FirstMovePositioning from "./FirstMovePositioning.js";
 const PawnPositioning = () => {
-  const newSingleSpacePositioning = SingleSpacePositioning();
-  
+  FirstMovePositioning()
 };
 
 export default PawnPositioning;
