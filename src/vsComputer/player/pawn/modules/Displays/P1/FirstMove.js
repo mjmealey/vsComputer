@@ -72,8 +72,8 @@ const DisplayP1FirstMove = () => {
   };
 
   const handleP1Content = (emptyCell, filledCell) => {
-    mappedCellIds[emptyCell].textContent = displayStatus.emptyCell
-    mappedCellIds[filledCell].textContent = displayStatus.filledCell
+    mappedCellIds[emptyCell].textContent = displayStatus.emptyCell;
+    mappedCellIds[filledCell].textContent = displayStatus.filledCell;
   };
 
   const handleP1 = (assignedPawn, emptyCell, filledCell) => {
@@ -98,14 +98,47 @@ const DisplayP1FirstMove = () => {
         break;
       case doubleSpaceP1Cell:
         handleP1(assignedPawn, emptyCell, isDoubleSpaceFilledCell);
-        removeP1()
+        removeP1();
     }
+  };
+
+  const preventP2FirstMoveDuplication = () => {
+    const indexToRemove = 0;
+    const amountToRemove = 1;
+    trackP1FirstMove.splice(indexToRemove, amountToRemove);
+  };
+
+  const handleP1FirstMoveDuplication = (singleSpaceCell, doubleSpaceCell) => {
+    const isSingleSpaceFilledCell =
+      mappedCellIds[singleSpaceCell].textContent === displayStatus.filledCell;
+    const isDoubleSpaceFilledCell =
+      mappedCellIds[doubleSpaceCell].textContent === displayStatus.filledCell;
+    const duplicationIsPossible =
+      isSingleSpaceFilledCell || isDoubleSpaceFilledCell;
+    if (duplicationIsPossible) {
+      preventP2FirstMoveDuplication();
+    }
+  };
+
+  const handleP1FirstMoveDuplicationClicks = (firstMoveP1Id) => {
+    const sourceOfDuplication = getCellIds[6];
+    switch (firstMoveP1Id) {
+      case sourceOfDuplication:
+        const singleSpaceCell = 5;
+        const doubleSpaceCell = 4;
+        handleP1FirstMoveDuplication(singleSpaceCell, doubleSpaceCell);
+    }
+  };
+
+  const handleP1FirstMoveDisplayClicks = (firstMoveP1Id) => {
+    isStartSpaceReadyClicks(firstMoveP1Id);
+    handleP1FirstMoveClicks(firstMoveP1Id);
+    handleP1FirstMoveDuplicationClicks(firstMoveP1Id);
   };
 
   document.addEventListener("click", (e) => {
     const firstMoveP1Id = e.target.id;
-    isStartSpaceReadyClicks(firstMoveP1Id);
-    handleP1FirstMoveClicks(firstMoveP1Id);
+    handleP1FirstMoveDisplayClicks(firstMoveP1Id);
   });
 };
 

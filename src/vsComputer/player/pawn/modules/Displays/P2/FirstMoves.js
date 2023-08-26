@@ -64,10 +64,10 @@ const DisplayP2FirstMove = () => {
   };
 
   const preventMoveAfterFirstMove = () => {
-    const indexToRemove = 0
-    const amountToRemove = 1
-    return trackP2FirstMoves.splice(indexToRemove, amountToRemove)
-  }
+    const indexToRemove = 0;
+    const amountToRemove = 1;
+    return trackP2FirstMoves.splice(indexToRemove, amountToRemove);
+  };
 
   const isFirstMoveDisplayReady = (assignedPawn) => {
     return trackP2FirstMoves.includes(assignedPawnNames[assignedPawn]);
@@ -84,12 +84,12 @@ const DisplayP2FirstMove = () => {
   };
 
   const handleDoubleSpaceDisplay = (assignedPawn, emptyCell, filledCell) => {
-    const isReady = isFirstMoveDisplayReady(assignedPawn)
-    if(isReady){
-      mappedCellIds[emptyCell].textContent = displayStatus.emptyCell
-      mappedCellIds[filledCell].textContent = displayStatus.filledCell
+    const isReady = isFirstMoveDisplayReady(assignedPawn);
+    if (isReady) {
+      mappedCellIds[emptyCell].textContent = displayStatus.emptyCell;
+      mappedCellIds[filledCell].textContent = displayStatus.filledCell;
     }
-  }
+  };
 
   const handleP2SingleSpaceDisplayClicks = (displayFirstP2MovesId) => {
     const isP2SingleSpace = getCellIds[13];
@@ -99,27 +99,54 @@ const DisplayP2FirstMove = () => {
         const emptyCell = 14;
         const filledCell = 13;
         handleSingleSpaceDisplay(assignedPawn, emptyCell, filledCell);
-        preventMoveAfterFirstMove()
-        
+        preventMoveAfterFirstMove();
     }
   };
 
   const handleP2DoubleSpaceDisplayClicks = (displayFirstP2MovesId) => {
-    const isP2DoubleSpace = getCellIds[12]
-    switch(displayFirstP2MovesId){
+    const isP2DoubleSpace = getCellIds[12];
+    switch (displayFirstP2MovesId) {
       case isP2DoubleSpace:
-        const assignedPawn = 1
-        const emptyCell = 14
-        const filledCell = 12
-        handleDoubleSpaceDisplay(assignedPawn, emptyCell, filledCell)
-        preventMoveAfterFirstMove()
+        const assignedPawn = 1;
+        const emptyCell = 14;
+        const filledCell = 12;
+        handleDoubleSpaceDisplay(assignedPawn, emptyCell, filledCell);
+        preventMoveAfterFirstMove();
     }
-  }
+  };
 
+  const isDuplicationPossible = () => {
+    const indexToRemove = 0;
+    const amountToRemove = 1;
+    trackP2FirstMoves.splice(indexToRemove, amountToRemove);
+  };
+
+  const handleP2FirstMoveDuplication = (singleSpaceCell, doubleSpaceCell) => {
+    const singleSpaceCellIsFilled =
+      mappedCellIds[singleSpaceCell].textContent === displayStatus.filledCell;
+    const doubleSpaceCellIsFilled =
+      mappedCellIds[doubleSpaceCell].textContent === displayStatus.filledCell;
+    const duplicationIsPossible =
+      singleSpaceCellIsFilled || doubleSpaceCellIsFilled;
+    if (duplicationIsPossible) {
+      isDuplicationPossible();
+    }
+  };
+
+  const handleP2FirstMoveDuplicationClicks = (displayFirstP2MovesId) => {
+    const sourceOfDuplication = getCellIds[14]
+    switch (displayFirstP2MovesId) {
+      case sourceOfDuplication:
+        const singleSpaceCell = 13;
+        const doubleSpaceCell = 12;
+        handleP2FirstMoveDuplication(singleSpaceCell, doubleSpaceCell);
+    }
+  };
 
   const handleP2FirstMoveDisplayClicks = (displayFirstP2MovesId) => {
     handleP2SingleSpaceDisplayClicks(displayFirstP2MovesId);
-    handleP2DoubleSpaceDisplayClicks(displayFirstP2MovesId)
+    handleP2DoubleSpaceDisplayClicks(displayFirstP2MovesId);
+    handleP2FirstMoveDuplicationClicks(displayFirstP2MovesId);
   };
 
   document.addEventListener("click", (e) => {
