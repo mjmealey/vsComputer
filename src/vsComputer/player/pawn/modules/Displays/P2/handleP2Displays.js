@@ -1,7 +1,7 @@
-import FirstMoveP2Display from "./FirstMoves.js";
+import FirstMoveP2Displays from "./DisplayP2FirstMoves.js";
 
 const handleP2Displays = () => {
-    FirstMoveP2Display()
+    FirstMoveP2Displays()
 }
 
 export default handleP2Displays

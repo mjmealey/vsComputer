@@ -1,4 +1,4 @@
-import DisplayP1FirstMove from "./FirstMove.js";
+import DisplayP1FirstMove from "./DisplayP1FirstMoves.js"
 
 const handleP1 = () => {
   DisplayP1FirstMove()

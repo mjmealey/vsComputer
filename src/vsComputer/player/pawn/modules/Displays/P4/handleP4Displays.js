@@ -1,7 +1,7 @@
-import displayP4FirstMoves from "./FirstMoves.js";
+import DisplayP4FirstMoves from "./DisplayP4FirstMoves.js";
 
 const handleP4Displays = () => {
-    displayP4FirstMoves()
+    DisplayP4FirstMoves()
 }
 
 export default handleP4Displays
