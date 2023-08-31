@@ -1,4 +1,4 @@
-import vsComputer from "./vsComputer/vsComputer.js";
+import vsComputer from "./vsComputer/compiledTypescript/vsComputer.js"
 import Pawn from "./vsComputer/player/pawn/Pawn.js"
 
 const ChessApp = () => {
