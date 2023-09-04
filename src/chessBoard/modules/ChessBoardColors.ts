@@ -1,12 +1,12 @@
-import { getCellIds } from "./ChessBoard.js";
+import { getCellIds } from "../gridCellIds.js";
 import { ChessColorData } from "../objects/chessColors.js";
+
 const ChessBoardColors = () => {
+  const coloredCellIds = getCellIds.map((id) => document.getElementById(id));
   const colorSelect = document.getElementById(
     ChessColorData.selectId
   ) as HTMLInputElement;
-  const coloredCellIds = getCellIds.map((id: string) =>
-    document.getElementById(id)
-  );
+
   const primaryColors = (primaryColor: string) => {
     const primaryColorCells = [
       1, 3, 5, 7, 8, 10, 12, 14, 17, 19, 21, 23, 24, 26, 28, 30, 33, 35, 37, 39,
@@ -15,8 +15,9 @@ const ChessBoardColors = () => {
     primaryColorCells.forEach((cellColors: number) => {
       const isCellIncluded: boolean = primaryColorCells.includes(cellColors);
       if (isCellIncluded) {
-        const primaryColorCells: HTMLElement = coloredCellIds[cellColors];
-        if (primaryColorCells instanceof HTMLElement) {
+        const primaryColorCells: HTMLElement | null =
+          coloredCellIds[cellColors];
+        if (primaryColorCells) {
           primaryColorCells.style.backgroundColor = primaryColor;
           primaryColorCells.style.borderColor = primaryColor;
         }
@@ -32,83 +33,70 @@ const ChessBoardColors = () => {
     secondaryColorCells.forEach((cellColors: number) => {
       const isCellIncluded = secondaryColorCells.includes(cellColors);
       if (isCellIncluded) {
-        const secondaryColorCells: HTMLElement = coloredCellIds[cellColors];
-
-        if (secondaryColorCells instanceof HTMLElement) {
-          secondaryColorCells.style.backgroundColor = secondaryColor;
-          secondaryColorCells.style.borderColor = secondaryColor;
+        const secondaryColors = coloredCellIds[cellColors];
+        if (secondaryColors) {
+          secondaryColors.style.backgroundColor = secondaryColor;
+          secondaryColors.style.borderColor = secondaryColor;
         }
       }
     });
   };
 
-  const defaultPrimaryColor: string = ChessColorData.default.primary
-  primaryColors(defaultPrimaryColor);
-  const defaultSecondaryColor: string = ChessColorData.default.secondary
-  secondaryColors(defaultSecondaryColor);
+  const setColors = (primary: string, secondary: string) => {
+    primaryColors(primary);
+    secondaryColors(secondary);
+  };
 
-  const handleColorSelectionInputs = () => {
-    const colorSelection: string = ChessColorData.selectId;
-    const defaultColors: string = ChessColorData.default.selectValue;
-    const woodlandColors: string = ChessColorData.woodland.selectValue;
-    const checkerColors: string = ChessColorData.checker.selectValue;
-    const skyColors: string = ChessColorData.sky.selectValue;
-    const funKingdomColors: string = ChessColorData.funKingdom.selectValue;
-    const classicColors: string = ChessColorData.classic.selectValue;
-    const vikingColors: string = ChessColorData.viking.selectValue;
-    const fireAndIceColors: string = ChessColorData.fireAndIce.selectValue;
+  const handleColorSelectionInput = () => {
+    const colorSelection = colorSelect.value;
+    const woodland = ChessColorData.woodland.selectValue;
+    const checker = ChessColorData.checker.selectValue;
+    const sky = ChessColorData.sky.selectValue;
+    const funKingdom = ChessColorData.funKingdom.selectValue;
+    const classic = ChessColorData.classic.selectValue;
+    const viking = ChessColorData.viking.selectValue;
+    const fireAndIce = ChessColorData.fireAndIce.selectValue;
     switch (colorSelection) {
-      case defaultColors:
-        primaryColors(defaultPrimaryColor);
-        secondaryColors(defaultSecondaryColor);
+      case woodland:
+        const woodPrimary = ChessColorData.woodland.primary;
+        const woodSecondary = ChessColorData.woodland.secondary;
+        setColors(woodPrimary, woodSecondary);
         break;
-      case woodlandColors:
-        const woodlandBrown: string = ChessColorData.woodland.primary
-        primaryColors(woodlandBrown);
-        const woodlandGreen: string = ChessColorData.woodland.secondary
-        secondaryColors(woodlandGreen);
+      case checker:
+        const checkerPrimary = ChessColorData.checker.primary;
+        const checkerSecondary = ChessColorData.checker.secondary;
+        setColors(checkerPrimary, checkerSecondary);
         break;
-      case checkerColors:
-        const checkerRed: string = ChessColorData.checker.primary
-        primaryColors(checkerRed);
-        const checkerBlack: string = ChessColorData.checker.secondary
-        secondaryColors(checkerBlack);
+      case sky:
+        const skyPrimary = ChessColorData.sky.primary;
+        const skySecondary = ChessColorData.sky.secondary;
+        setColors(skyPrimary, skySecondary);
         break;
-      case skyColors:
-        const skyBlue: string = ChessColorData.sky.primary
-        primaryColors(skyBlue);
-        const skyWhite: string = ChessColorData.sky.secondary
-        secondaryColors(skyWhite);
+      case funKingdom:
+        const funKingdomPrimary = ChessColorData.funKingdom.primary;
+        const funKingdomSecondary = ChessColorData.funKingdom.secondary;
+        setColors(funKingdomPrimary, funKingdomSecondary);
         break;
-      case funKingdomColors:
-        const funKingdomPurple: string = ChessColorData.funKingdom.primary
-        primaryColors(funKingdomPurple);
-        const funKingdomPink: string = ChessColorData.funKingdom.secondary
-        secondaryColors(funKingdomPink);
+      case classic:
+        const classicPrimary = ChessColorData.classic.primary;
+        const classicSecondary = ChessColorData.classic.secondary;
+        setColors(classicPrimary, classicSecondary);
         break;
-      case classicColors:
-        const classicWhite: string = ChessColorData.classic.primary
-        primaryColors(classicWhite);
-        const classicBlack: string = ChessColorData.classic.secondary
-        secondaryColors(classicBlack);
+      case viking:
+        const vikingPrimary = ChessColorData.viking.primary;
+        const vikingSecondary = ChessColorData.viking.secondary;
+        setColors(vikingPrimary, vikingSecondary);
         break;
-      case vikingColors:
-        const vikingBlue: string = ChessColorData.viking.primary
-        primaryColors(vikingBlue);
-        const vikingYellow: string = ChessColorData.viking.secondary
-        secondaryColors(vikingYellow);
-        break;
-      case fireAndIceColors:
-        const fireRed: string = ChessColorData.fireAndIce.primary
-        primaryColors(fireRed);
-        const iceBlue: string = ChessColorData.fireAndIce.secondary
-        secondaryColors(iceBlue);
+      case fireAndIce:
+        const fireAndIcePrimary = ChessColorData.fireAndIce.primary;
+        const fireAndIceSecondary = ChessColorData.fireAndIce.secondary;
+        setColors(fireAndIcePrimary, fireAndIceSecondary);
         break;
     }
   };
 
   colorSelect.addEventListener("input", () => {
-    handleColorSelectionInputs();
+    handleColorSelectionInput();
   });
 };
 
