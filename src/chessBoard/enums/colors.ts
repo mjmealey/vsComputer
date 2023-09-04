@@ -25,7 +25,7 @@
 }
 
 export enum ColorSelect {
-    //ids
+    //id
   selectId = "colorSelect",
   //values
   selectColor = "selectColor",
