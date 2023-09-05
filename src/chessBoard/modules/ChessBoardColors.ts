@@ -47,8 +47,18 @@ const ChessBoardColors = () => {
     secondaryColors(secondary);
   };
 
+
+  const defaultColors = () => {
+    const defaultPrimary = ChessColorData.default.primary
+    const defaultSecondary = ChessColorData.default.secondary
+    setColors(defaultPrimary, defaultSecondary)
+  }
+
+  defaultColors()
+
   const handleColorSelectionInput = () => {
     const colorSelection = colorSelect.value;
+    const defaultColor = ChessColorData.default.selectValue
     const woodland = ChessColorData.woodland.selectValue;
     const checker = ChessColorData.checker.selectValue;
     const sky = ChessColorData.sky.selectValue;
@@ -57,6 +67,9 @@ const ChessBoardColors = () => {
     const viking = ChessColorData.viking.selectValue;
     const fireAndIce = ChessColorData.fireAndIce.selectValue;
     switch (colorSelection) {
+      case defaultColor:
+        defaultColors()
+        break;
       case woodland:
         const woodPrimary = ChessColorData.woodland.primary;
         const woodSecondary = ChessColorData.woodland.secondary;
